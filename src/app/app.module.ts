@@ -7,6 +7,8 @@ import { LoginComponent } from './uni-component/login/login.component';
 import { ApplicantLoginComponent } from './uni-component/applicant-login/applicant-login.component';
 import { HrLoginComponent } from './uni-component/hr-login/hr-login.component';
 import { SignupComponent } from './uni-component/signup/signup.component';
+import { HrComponent } from './uni-component/signup/hr/hr.component';
+import { ApplicantComponent } from './uni-component/signup/applicant/applicant.component';
 
 
 @NgModule({
@@ -15,7 +17,9 @@ import { SignupComponent } from './uni-component/signup/signup.component';
     LoginComponent,
     ApplicantLoginComponent,
     HrLoginComponent,
-    SignupComponent
+    SignupComponent,
+    HrComponent,
+    ApplicantComponent
   ],
   imports: [
     BrowserModule
