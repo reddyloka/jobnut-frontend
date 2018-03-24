@@ -1,3 +1,16 @@
-<p>
-  hr works!
-</p>
+
+    <div class="col s4">
+        <label class="left-align" for="country">Country</label>
+        <select (change)="countryAdded()" class="brwoser-default" id="country"></select>
+    </div>
+
+    <div class="col s4">
+        <label class="left-align" for="region">Region</label>
+        <select class="brwoser-default" id="region"></select>
+    </div>
+
+    <div class="col s4">
+        <label class="left-align" for="city">City</label>
+        <select class="autocomplete" id="city"></select>
+    </div>
+   
