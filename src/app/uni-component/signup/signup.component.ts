@@ -1,11 +1,7 @@
-<<<<<<< HEAD
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-=======
-import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
->>>>>>> 5ff6da708c72b35e02324dfb35d6cb719a8217fc
 
 @Component({
   selector: 'app-signup',
@@ -13,12 +9,6 @@ import { Location } from '@angular/common';
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
-<<<<<<< HEAD
-  
-  ngOnInit(){
-    
-  }
-=======
 
   hrActive: boolean;
   applicantActive: boolean;
@@ -44,30 +34,30 @@ export class SignupComponent implements OnInit {
     this.location.back();
   }
 
-  frontViewChange(sender, cb) {
-    if (this.signupActive) {
-      return false;
-    }
+  frontViewChange(): Promise<any> {
+   return new Promise((resolve,reject)=> {
     this.signUpHead['fadeOutDownBig'] = true;
     this.userActiveClasses.push(
       'fadeOut',
       'animated'
     );
-    cb(true);
-  }
+    setTimeout(resolve,200);
+  });
+}
 
-  signupComponentCall(caller: string) {
-    this.signupActive = !this.signupActive;
-    this.frontViewChange(caller, (res) => {
-      if (res) {
-        if (caller === 'hr') {
-          this.hrActive = true;
-        } else if (caller === 'applicant') {
-          this.applicantActive = true;
-        }
+  async signupComponentCall(caller: string) {
+
+    await this.frontViewChange(); 
+    
+    // await new Promise((res,rej)=> setTimeout(res,1000));
+    this.signupActive = false;
+    // if ( response ) {
+      if (caller === 'hr') {
+        this.hrActive = true;
+      } else if (caller === 'applicant') {
+        this.applicantActive = true;
       }
-    });
+    // }
   }
 
->>>>>>> 5ff6da708c72b35e02324dfb35d6cb719a8217fc
 }

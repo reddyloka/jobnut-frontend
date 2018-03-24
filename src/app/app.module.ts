@@ -12,13 +12,9 @@ import { LoginComponent } from './uni-component/login/login.component';
 import { SignupComponent } from './uni-component/signup/signup.component';
 import { HrComponent } from './uni-component/signup/hr/hr.component';
 import { ApplicantComponent } from './uni-component/signup/applicant/applicant.component';
-<<<<<<< HEAD
-import { ReactiveFormsModule } from '@angular/forms';
-=======
-import { Route } from '@angular/compiler/src/core';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
-import { BattutaService } from './services/battuta.service';
->>>>>>> 5ff6da708c72b35e02324dfb35d6cb719a8217fc
+
+
 
 
 @NgModule({
@@ -30,10 +26,7 @@ import { BattutaService } from './services/battuta.service';
     ApplicantComponent
   ],
   imports: [
-<<<<<<< HEAD
     BrowserModule,
-    ReactiveFormsModule
-=======
     ReactiveFormsModule,
     BrowserModule,
     FormsModule,
@@ -63,8 +56,7 @@ import { BattutaService } from './services/battuta.service';
   ],
   providers: [
     { provide: LocationStrategy, useClass: HashLocationStrategy },
-    BattutaService
->>>>>>> 5ff6da708c72b35e02324dfb35d6cb719a8217fc
+
   ],
   bootstrap: [AppComponent]
 })

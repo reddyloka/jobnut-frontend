@@ -1,6 +1,4 @@
-<<<<<<< HEAD
-=======
-<div class="mid-body sign-up">
+<div *ngIf="signupActive" class="mid-body sign-up">
   <div class="ui raised container">
     <div class="ui two column centered grid">
       <div class="column">
@@ -47,4 +45,3 @@
 </div>
 <app-hr *ngIf="!signupActive && hrActive"></app-hr>
 <app-applicant *ngIf="!signupActive && applicantActive"></app-applicant>
->>>>>>> 5ff6da708c72b35e02324dfb35d6cb719a8217fc
