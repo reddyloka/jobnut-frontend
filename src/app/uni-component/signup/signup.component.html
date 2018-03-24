@@ -1,1 +1,51 @@
+<<<<<<< HEAD
 
+=======
+<div *ngIf="signupActive" class="mid-body sign-up">
+  <div class="ui raised container">
+    <div class="ui two column centered grid">
+      <div class="column">
+        <div [ngClass]="signUpHead" class="text-center fnt alfa abhi frame" style="margin:0 auto;"><p class="alp"> Tell Us Something About You </p></div>
+      </div>
+      <div [ngClass]="userActiveClasses" class="four column centered row">
+
+        <div class="column">
+          <div class="ui segment">
+            <div class="ui fluid card">
+              <div class="image">
+                <img src="/assets/images/avatars/daniel.jpg" alt="applicant">
+              </div>
+              <div class="content">
+                <a (click)="signupComponentCall('applicant')" class="text-center header">I've got some talent.</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="column two wide"></div>
+        <div class="column">
+          <div class="ui segment">
+            <div class="ui fluid card">
+              <div class="image">
+                <img src="/assets/images/avatars/elliot.jpg" alt="hr">
+              </div>
+              <div class="content">
+                <a (click)="signupComponentCall('hr')" class="text-center header">I'm searching for a talent.</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="column" [ngClass]="userActiveClasses">
+        <div class="ui horizontal divider">
+          Already In?
+        </div>
+        <div class="column">
+          <button class="ui orange fluid basic button" (click)="goBackButton()"> Login </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-hr *ngIf="!signupActive && hrActive"></app-hr>
+<app-applicant *ngIf="!signupActive && applicantActive"></app-applicant>
+>>>>>>> 08c1cfa40623ab5e18cc91d4a6bdea9dc6b714ff
