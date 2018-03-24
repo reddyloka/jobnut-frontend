@@ -1,1 +1,88 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css?family=Alfa+Slab+One|Amatic+SC|Anton|Lobster|Pacifico|Pragati+Narrow|Rammetto+One|Saira+Extra+Condensed');
+
+* {
+    color: #222222;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 0px;
+}
+
+.tomato {
+    border-color: tomato;
+}
+
+/* font and text */
+
+.text-center {
+    text-align:center;
+}
+.self-center {
+    align-self: center;
+}
+@media only screen and (max-width: 600px){
+    div {
+        text-overflow: ellipsis;
+        font-size: 1vh;
+    }
+}
+
+/* text */
+
+div.mid-body {
+    margin: 11em auto;
+}
+
+/* Font Family Requires */
+
+.fnt.anton{font-family: 'Anton', sans-serif;}
+.fnt.saira{font-family: 'Saira Extra Condensed', sans-serif;}
+.fnt.lobster{font-family: 'Lobster', cursive;}
+.fnt.pacifico{font-family: 'Pacifico', cursive;}
+.fnt.rametto{font-family: 'Rammetto One', cursive;}
+.fnt.amatic{font-family: 'Amatic SC', cursive;}
+.fnt.alfa{font-family: 'Alfa Slab One', cursive;}
+.fnt.pragati{font-family: 'Pragati Narrow', sans-serif;}
+
+/* Font Family Requires */
+
+/* Changing line animation */
+
+.abhi.frame {
+    line-height: 2em;
+    width: 50%;
+    border-bottom: 1px solid #212121;
+    border-top: 1px solid #212121;
+}
+/* .alp::after {
+    content: '';
+    width:11em;
+    right: 15%;
+    position:absolute;
+    margin: 0 auto;
+    display: block;
+    overflow:hidden;
+    transition-delay: 800ms;
+    transition-timing-function: ease-out;
+}
+.alp::before {
+    content: '';
+    width:11em;
+    right: 15%;
+    margin: 0 auto;
+    position:absolute;
+    display: block;
+    overflow:hidden;
+    transition-delay: 800ms;
+    transition-timing-function: ease-out;
+} */ 
+/* 
+.abhi.frame.flyout {
+    height: 0%;
+} */
+
+
+/* Changing line animation */
