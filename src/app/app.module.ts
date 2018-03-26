@@ -23,7 +23,6 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
     SignupComponent,
     HrComponent,
     ApplicantComponent,
-    IndexComponent,
     OtherQualificationComponent
   ],
   imports: [
