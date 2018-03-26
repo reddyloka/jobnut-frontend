@@ -9,7 +9,6 @@ performance/temp*.html
 .idea/workspace.xml
 *~
 *.swp
-*.spec.ts
 angular.js.tmproj
 node_modules/
 angular.xcodeproj
