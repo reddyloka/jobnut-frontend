@@ -2,7 +2,9 @@
   <div class="ui raised container">
     <div class="ui two column centered grid">
       <div class="column">
-        <div [ngClass]="signUpHead" class="text-center fnt alfa abhi frame" style="margin:0 auto;"><p class="alp"> Tell Us Something About You </p></div>
+        <div [ngClass]="signUpHead" class="text-center fnt alfa abhi frame" style="margin:0 auto;">
+          <p class="alp"> Tell Us Something About You </p>
+        </div>
       </div>
       <div [ngClass]="userActiveClasses" class="four column centered row">
 
@@ -43,5 +45,6 @@
     </div>
   </div>
 </div>
-<app-hr *ngIf="!signupActive && hrActive"></app-hr>
-<app-applicant *ngIf="!signupActive && applicantActive"></app-applicant>
+<router-outlet></router-outlet>
+<!-- <app-hr *ngIf="!signupActive && hrActive"></app-hr>
+<app-applicant *ngIf="!signupActive && applicantActive"></app-applicant> -->

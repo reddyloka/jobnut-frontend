@@ -35,8 +35,15 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
     RouterModule.forRoot([
       // basic routes
       { path: 'login', component: LoginComponent },
-      { path: 'signin', component: SignupComponent },
+      {
+        path: 'signin', component: SignupComponent, children: [
+          { path: 'signin-hr', component: HrComponent },
+          { path: 'signin-applicant', component: ApplicantComponent }
+        ]
+      },
       { path: '', redirectTo: 'login', pathMatch: 'full' },
+      {path: 'page-not-avaiable', component: LoginComponent},
+      { path: '**', redirectTo: '/page-not-available'},
       // { path: 'contactus', redirectTo: 'contact' },
 
       // auth demo
