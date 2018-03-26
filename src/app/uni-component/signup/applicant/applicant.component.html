@@ -1,3 +1,155 @@
-<p>
-  applicant works!
-</p>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <ul class="nav navbar-nav" style="padding-left:35%">
+      <li [style.background-color]="personalInfo?'lightgrey':default">
+        <a>Personal Details</a>
+      </li>
+      <li [style.background-color]="educationInfo?'lightgrey':default">
+        <a>Education</a>
+      </li>
+    </ul>
+
+  </div>
+</nav>
+<form class="ui form" [formGroup]="applicantForm">
+<div class="container" *ngIf="personalInfo">
+  
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-6">
+        
+        <div class="field">
+          <label>Name</label>
+          <input type="text" name="Name" formControlName="name" placeholder="Full Name" >
+        </div>
+        <div class="field">
+          <label>Email</label>
+          <input type="text" name="email" formControlName="email" placeholder="valid Email addresss">
+        </div>
+        <div class="field">
+          <label>Password</label>
+          <input type="text" name="Password" formControlName="password" placeholder="create password">
+        </div>
+        <div class="field">
+          <label>Mobile Number</label>
+          <input type="number" name="mobile" formControlName="number" placeholder="enter number">
+        </div>
+        <button class="ui button" type="submit" (click)="personalDetailClicked()">Next</button>
+   
+    </div>
+  </div>
+</div>
+
+
+<div class="container" *ngIf="educationInfo">
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-6">
+      <div class="field">
+          <label>Highest Qualification*</label>
+          <select (change)="highestEducation($event.target.value)">
+            <option>Select your highest qualification</option>
+            <option formControlName="higherDegreeValue" *ngFor="let i of highestDegreeArray">{{i}}</option>
+          </select>
+        </div>
+        <div *ngIf="doctorateInfo">
+          <div class="field">
+            <label>Course*</label>
+            <select>
+              <option>Select your course</option>
+              <option formControlName="courseValue" *ngFor="let i of coursesArray">{{i}}</option>
+              <option value="Other" (onselect)="otherFunction()">Other</option>
+            </select>
+          </div>
+          <div class="field" *ngIf="otherInfo">
+            <input type="text" placeholder="enter your course" />
+          </div>
+
+          <div class="field">
+            <label>Specialization*</label>
+            <select>
+              <option>Select Specialization</option>
+              <option  formControlName="specializationValue" *ngFor="let i of specializationArray">{{i}}</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>University/College*</label>
+            <input type="text"  formControlName="universityName" placeholder="Institute Name" />
+          </div>
+          <div class="field">
+            <label>Passing Year*</label>
+            <select>
+              <option>Select</option>
+              <option  formControlName="passingYearValue" *ngFor="let i of yearArray">{{i}}</option>
+            </select>
+          </div>
+        </div>
+        <div *ngIf="twelthInfo">
+          <div class="field">
+            <label>Board*</label>
+            <select>
+              <option>Please Select Board</option>
+              <option  formControlName="boardValue" *ngFor="let i of boardArray">{{i}}</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Year of Passing*</label>
+            <select>
+              <option>Select</option>
+              <option  formControlName="passingValue" *ngFor="let i of yearArray">{{i}}</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Medium*</label>
+            <select>
+              <option>Please Select language Medium</option>
+              <option  formControlName="mediumValue" *ngFor="let i of mediumArray">{{i}}</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Percentage*</label>
+            <input type="text"  formControlName="percentageValue" placeholder="Please enter your percentage" />
+          </div>
+
+        </div>
+
+        <div *ngIf="belowTenth">
+        
+        </div>
+      
+        <div class="field" *ngIf="addMore1">
+          <input type="button" value="Add more qualifications" (click)="addMoreQualifications2()" />
+        </div>
+        <div *ngIf="addEducation1">
+          <app-other-qualification [qualArray]="qualificationArray1" (addmore)="addMoreQualifications5($event)"></app-other-qualification>
+        </div>
+
+
+        <div *ngIf="addEducation2">
+          <app-other-qualification [qualArray]="qualificationArray2" (addmore)="addMoreQualifications5($event)"></app-other-qualification>
+        </div>
+
+
+        <div *ngIf="addEducation3">
+          <app-other-qualification [qualArray]="qualificationArray3" (addmore)="addMoreQualifications5($event)"></app-other-qualification>
+        </div>
+
+        <div *ngIf="addEducation4">
+          <app-other-qualification [qualArray]="qualificationArray4"></app-other-qualification>
+        </div>
+
+          <div class="field">
+            <label>Skills*</label>
+            <input type="text" placeholder="Please enter your Skills" />
+          </div>
+          <div class="field">
+              <input type="submit" value="Register" (click)="onSubmit()" />
+            </div>
+    </div>
+  </div>
+</div>
+
+  
+</form>
