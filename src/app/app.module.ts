@@ -12,6 +12,11 @@ import { HrComponent } from './uni-component/signup/hr/hr.component';
 import { ApplicantComponent } from './uni-component/signup/applicant/applicant.component';
 import { OtherQualificationComponent } from './uni-component/signup/applicant/other-qualification/other-qualification.component';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+import { PdComponent } from './misc/try/pd/pd.component';
+import { EdComponent } from './misc/try/ed/ed.component';
+import { TryService } from './misc/try/try.service';
+import { QulComponent } from './misc/try/ed/qul/qul.component';
+import { TryComponent } from './misc/try/try.component';
 
 
 
@@ -22,8 +27,12 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
     LoginComponent,
     SignupComponent,
     HrComponent,
+    QulComponent,
     ApplicantComponent,
-    OtherQualificationComponent
+    OtherQualificationComponent,
+    TryComponent,
+    PdComponent,
+    EdComponent
   ],
   imports: [
     BrowserModule,
@@ -33,11 +42,24 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
     HttpClientModule,
     RouterModule.forRoot([
       // basic routes
-      { path: 'login', component: LoginComponent },
-      { path: 'signin', component: SignupComponent },
-      { path: '', redirectTo: 'login', pathMatch: 'full' },
+      // { path: 'login', component: LoginComponent },
+      // { path: 'signin', component: SignupComponent },
+      {
+        path: 'try',
+        component: TryComponent,
+        children: [
+          {
+            path: 'pd',
+            component: PdComponent
+          },
+          {
+            path: 'education',
+            component: EdComponent
+          }
+        ]
+      },
+      { path: 'try', redirectTo: 'pd', pathMatch: 'full' }
       // { path: 'contactus', redirectTo: 'contact' },
-
       // auth demo
       // {
       //   path: 'protected',
@@ -54,6 +76,7 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
     ])
   ],
   providers: [
+    TryService,
     { provide: LocationStrategy, useClass: HashLocationStrategy },
 
   ],
