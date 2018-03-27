@@ -9,10 +9,11 @@
           <label>Name *</label>
           <div class="two fields">
             <div class="field">
-              <input type="text" id="first" placeholder="First Name" formControlName="first">
+              <input type="text" id="first" placeholder="First Name" 
+              [(ngModel)]="user_details.fname"formControlName="fname">
             </div>
             <div class="field">
-              <input type="text" id="last" placeholder="Last Name" formControlName="last">
+              <input type="text" id="last" placeholder="Last Name" [(ngModel)]="user_details.lname" formControlName="lname">
             </div>
           </div>
         </div>
@@ -20,10 +21,10 @@
           <label>Email *</label>
           <div class="fields">
             <div class="eight wide field">
-              <input type="text" id="email" placeholder="Email" formControlName="email">
+              <input type="text" id="email" placeholder="Email" [(ngModel)]="user_details.email" formControlName="email">
             </div>
             <div class="eight wide field">
-              <input type="password" id="password" placeholder="Password" formControlName="password">
+              <input type="password" id="password" placeholder="Password" [(ngModel)]="user_details.password" formControlName="password">
             </div>
           </div>
         </div>

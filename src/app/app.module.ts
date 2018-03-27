@@ -1,18 +1,19 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { ReactiveFormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import {RouterModule} from '@angular/router';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
-
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './uni-component/login/login.component';
 import { SignupComponent } from './uni-component/signup/signup.component';
 import { HrComponent } from './uni-component/signup/hr/hr.component';
 import { ApplicantComponent } from './uni-component/signup/applicant/applicant.component';
+import { OtherQualificationComponent } from './uni-component/signup/applicant/other-qualification/other-qualification.component';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+import { routerConfig } from './app.router-config';
+import { UserBaseService } from './services/userbase/user-base.service';
 
 
 
@@ -23,45 +24,19 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
     LoginComponent,
     SignupComponent,
     HrComponent,
-    ApplicantComponent
+    ApplicantComponent,
+    OtherQualificationComponent
   ],
   imports: [
     BrowserModule,
-    ReactiveFormsModule,
-    BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpModule,
     HttpClientModule,
-    RouterModule.forRoot([
-      // basic routes
-      { path: 'login', component: LoginComponent },
-      {
-        path: 'signin', component: SignupComponent, children: [
-          { path: 'signin-hr', component: HrComponent },
-          { path: 'signin-applicant', component: ApplicantComponent }
-        ]
-      },
-      { path: '', redirectTo: 'login', pathMatch: 'full' },
-      {path: 'page-not-avaiable', component: LoginComponent},
-      { path: '**', redirectTo: '/page-not-available'},
-      // { path: 'contactus', redirectTo: 'contact' },
-
-      // auth demo
-      // {
-      //   path: 'protected',
-      //   component: ProtectedComponent,
-      //   canActivate: [LoginComponent]
-      // },
-
-      // nested
-      // {
-      //   path: 'products',
-      //   component: productcomponent,
-      //   children: childRoutes
-      // }
-    ])
+    RouterModule.forRoot(routerConfig)
   ],
   providers: [
+    UserBaseService,
     { provide: LocationStrategy, useClass: HashLocationStrategy },
 
   ],

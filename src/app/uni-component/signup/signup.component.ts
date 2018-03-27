@@ -1,7 +1,8 @@
-import { Component, OnInit, ViewChild, Input } from '@angular/core';
+import { Component, OnInit, ViewChild, Input, OnChanges } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Location } from '@angular/common';
+import { Location, PlatformLocation } from '@angular/common';
+
 
 @Component({
   selector: 'app-signup',
@@ -10,6 +11,7 @@ import { Location } from '@angular/common';
 })
 export class SignupComponent implements OnInit {
 
+  t: any;
   hrActive: boolean;
   applicantActive: boolean;
   signupActive: boolean;
@@ -17,6 +19,7 @@ export class SignupComponent implements OnInit {
   signUpHead: any;
   constructor(private router: Router,
     private location: Location,
+    private platform: PlatformLocation,
     private activatedRoute: ActivatedRoute) {
     this.userActiveClasses = [];
     this.signupActive = true;
@@ -26,12 +29,20 @@ export class SignupComponent implements OnInit {
     };
     this.applicantActive = false;
     this.hrActive = false;
+    this.t = platform.pathname;
+    platform.onPopState(() => {
+      // this.signupActive = true;
+      console.log('back button clicked');
+    });
+
   }
 
   ngOnInit() {
-    if (this.router.url.split('/').splice(-1).toString() === 'signin-hr') {
+    if (this.router.url.split('/').splice(-1).toString() === 'signin-hr' || this.router.url.split('/').splice(-1).toString() === 'signin-applicant') {
       this.signupActive = false;
     }
+
+
     // console.log(this.router.url);
     // console.log('hrsignup: ', this.hrsignupActive);
   }
@@ -57,13 +68,14 @@ export class SignupComponent implements OnInit {
 
     // await new Promise((res,rej)=> setTimeout(res,1000));
     // if ( response ) {
+    this.signupActive = false;
     if (caller === 'hr') {
       // this.hrActive = true;
-      this.signupActive = false;
       // this.router.navigate(['./', 'signin-hr']);
       this.router.navigateByUrl('signin/signin-hr');
     } else if (caller === 'applicant') {
-      // this.router.navigate(['./', 'signin-applicant']);
+      console.log('in here', this.router.navigate(['./', 'signin-applicant']));
+      this.router.navigateByUrl('signin/signin-applicant');
       // this.applicantActive = true;
     }
     // }
