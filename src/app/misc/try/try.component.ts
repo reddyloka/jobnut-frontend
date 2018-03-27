@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, ValidatorFn, FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { TryService } from './try.service';
 @Component({
-  selector: 'app-applicant',
-  templateUrl: './applicant.component.html',
-  styleUrls: ['./applicant.component.css']
+  selector: 'app-try',
+  templateUrl: './try.component.html',
+  styleUrls: ['./try.component.css']
 })
-export class ApplicantComponent implements OnInit {
+export class TryComponent implements OnInit {
   skills: string[];
   applicantForm: FormGroup;
   higherEducationValue: string;
@@ -36,7 +38,10 @@ export class ApplicantComponent implements OnInit {
 
 
 
-  constructor() {
+  constructor(
+    private route: Router,
+    private _tryservice: TryService
+  ) {
     this.personalInfo = true;
     this.educationInfo = false;
     this.doctorateInfo = false;
@@ -62,8 +67,15 @@ export class ApplicantComponent implements OnInit {
     this.boardArray = ['CBSE', 'ICSE', 'ISC'];
     this.mediumArray = ['Telugu', 'Hindi', 'English', 'Kannada', 'Sanskrit'];
     this.skills = ['Angular', 'CSS', 'Graphic Design', 'Ember', 'HTML',
-                    'Information Architecture', 'Javascript', 'Mechanical Engineering',
-                    'Meteor', 'NodeJS', 'UI Design', 'Python', 'Rails', 'React', 'Ruby', ];
+      'Information Architecture', 'Javascript', 'Mechanical Engineering',
+      'Meteor', 'NodeJS', 'UI Design', 'Python', 'Rails', 'React', 'Ruby'
+    ];
+
+    _tryservice.changeEmitted$.subscribe(
+      event => {
+        console.log(event, 'has been clicked');
+        this.route.navigateByUrl('try/education');
+      });
 
   }
   ngOnInit() {
@@ -85,10 +97,7 @@ export class ApplicantComponent implements OnInit {
 
     });
   }
-  personalDetailClicked() {
-    this.educationInfo = true;
-    this.personalInfo = false;
-  }
+
   otherFunction() {
     console.log('other function');
     this.otherInfo = true;
@@ -155,4 +164,13 @@ export class ApplicantComponent implements OnInit {
   onSubmit() {
     console.log('form value is', this.applicantForm);
   }
+
+  // personalDetailClicked(event) {
+  //   // this.educationInfo = true;
+  //   // this.personalInfo = false;
+  // console.log(event, 'has been clicked');
+  // this.route.navigateByUrl('signin-applicant/education');
+
+  // }
+
 }

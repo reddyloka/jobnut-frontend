@@ -14,6 +14,11 @@ import { OtherQualificationComponent } from './uni-component/signup/applicant/ot
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { routerConfig } from './app.router-config';
 import { UserBaseService } from './services/userbase/user-base.service';
+import { PdComponent } from './misc/try/pd/pd.component';
+import { EdComponent } from './misc/try/ed/ed.component';
+import { TryService } from './misc/try/try.service';
+import { QulComponent } from './misc/try/ed/qul/qul.component';
+import { TryComponent } from './misc/try/try.component';
 
 
 
@@ -24,8 +29,12 @@ import { UserBaseService } from './services/userbase/user-base.service';
     LoginComponent,
     SignupComponent,
     HrComponent,
+    QulComponent,
     ApplicantComponent,
-    OtherQualificationComponent
+    OtherQualificationComponent,
+    TryComponent,
+    PdComponent,
+    EdComponent
   ],
   imports: [
     BrowserModule,
