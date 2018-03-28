@@ -19,6 +19,8 @@ import { EdComponent } from './misc/try/ed/ed.component';
 import { TryService } from './misc/try/try.service';
 import { QulComponent } from './misc/try/ed/qul/qul.component';
 import { TryComponent } from './misc/try/try.component';
+import { CallbackComponent } from './uni-component/misc/callback/callback.component';
+import { AuthService } from './services/authentication/auth.service';
 
 
 
@@ -34,7 +36,8 @@ import { TryComponent } from './misc/try/try.component';
     OtherQualificationComponent,
     TryComponent,
     PdComponent,
-    EdComponent
+    EdComponent,
+    CallbackComponent
   ],
   imports: [
     BrowserModule,
@@ -46,6 +49,8 @@ import { TryComponent } from './misc/try/try.component';
   ],
   providers: [
     UserBaseService,
+    AuthService,
+    TryService,
     { provide: LocationStrategy, useClass: HashLocationStrategy },
 
   ],

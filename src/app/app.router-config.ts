@@ -8,36 +8,36 @@ import { TryComponent } from './misc/try/try.component';
 import { PdComponent } from './misc/try/pd/pd.component';
 import { EdComponent } from './misc/try/ed/ed.component';
 // import { Routes } from "@angular/router";
+import { CallbackComponent } from './uni-component/misc/callback/callback.component';
 
 export const routerConfig: Routes = [
-    // basic routes
-    { path: 'login', component: LoginComponent },
-    {
-      path: 'signin', component: SignupComponent, children: [
-        { path: 'signin-hr', component: HrComponent },
-        { path: 'signin-applicant', component: ApplicantComponent }
-      ]
-    },
-    { path: '', redirectTo: 'login', pathMatch: 'full' },
-    {path: 'page-not-avaiable', component: LoginComponent},
-    { path: '**', redirectTo: '/page-not-available'},
-    {
-      path: 'try',
-      redirectTo: 'pd',
-      component: TryComponent,
-      children: [
-        {
-          path: 'pd',
-          component: PdComponent
-        },
-        {
-          path: 'education',
-          component: EdComponent
-        }
-      ],
-      pathMatch: 'full'
-    },
-    // { path: 'contactus', redirectTo: 'contact' },
+  // basic routes
+  { path: 'login', component: LoginComponent },
+  { path: 'callback', component: CallbackComponent },
+  {
+    path: 'signin', component: SignupComponent, children: [
+      { path: 'signin-hr', component: HrComponent },
+      { path: 'signin-applicant', component: ApplicantComponent }
+    ]
+  },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: 'page-not-avaiable', component: LoginComponent },
+  // { path: '**', redirectTo: '/page-not-available'},
+  {
+    path: 'try',
+    component: TryComponent,
+    children: [
+      {
+        path: 'pd',
+        component: PdComponent
+      },
+      {
+        path: 'education',
+        component: EdComponent
+      }
+    ]
+  },
+  { path: 'try', redirectTo: 'pd', pathMatch: 'full' }
 
     // auth demo
     // {
