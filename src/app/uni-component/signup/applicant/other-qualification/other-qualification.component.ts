@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { AbstractControl, ValidatorFn, FormBuilder, FormGroup, FormControl, Validators , FormsModule} from '@angular/forms';
 
 @Component({
   selector: 'app-other-qualification',
@@ -7,6 +8,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 })
 export class OtherQualificationComponent implements OnInit {
+  otherForm: FormGroup;
 
   higherEducationValue: string;
   addMore1: boolean;
@@ -25,9 +27,15 @@ export class OtherQualificationComponent implements OnInit {
   addMoreQualifications1() {
     this.addMore1 = false;
     this.addmore.emit(this.higherEducationValue);
+    this.qualification();
+  }
+
+  // tslint:disable-next-line:member-ordering
+  @Output() adddata = new EventEmitter<any>();
+  qualification() {
+    this.adddata.emit(this.otherForm);
   }
   constructor() {
-
     this.coursesArray = ['Ph.D/Doctorate', 'MPHIL'];
     this.specializationArray = ['Agriculture', 'Advertising'];
     this.yearArray = ['2017', '2016', '2015', '2014', '2013', '2012', '2011', '2010', '2009', '2008', '2007', '2006', '2005', '2004'];
@@ -66,8 +74,21 @@ export class OtherQualificationComponent implements OnInit {
 
   ngOnInit() {
 
-  }
+    this.otherForm = new FormGroup({
+      'higherDegreeValue': new FormControl(null, Validators.required),
+      'courseValue': new FormControl(null, Validators.required),
+      'specializationValue': new FormControl(null, Validators.required),
+      'universityName': new FormControl(null, Validators.required),
+      'passingYearValue': new FormControl(null, Validators.required),
+      'boardValue': new FormControl(null, Validators.required),
+      'passingValue': new FormControl(null, Validators.required),
+      'mediumValue': new FormControl(null, Validators.required),
+      'percentageValue': new FormControl(null, Validators.required),
+      'skillsValue': new FormControl(null, Validators.required),
 
+    });
+  }
+  
 
 
 

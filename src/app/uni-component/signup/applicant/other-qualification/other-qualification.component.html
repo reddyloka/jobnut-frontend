@@ -1,6 +1,7 @@
+<form class="ui form" [formGroup]='otherForm' >
 <div class="field">
   <label>Qualification*</label>
-  <select (change)="highestEducation1($event.target.value)">
+  <select (change)="highestEducation1($event.target.value)" formControlName="higherDegreeValue">
     <option>Select your qualification</option>
     <option  *ngFor="let i of qualArray">{{i}}</option>
   </select>
@@ -9,32 +10,32 @@
 <div *ngIf="doctorateInfo1">
   <div class="field">
     <label>Course*</label>
-    <select>
+    <select formControlName="courseValue">
       <option>Select your course</option>
       <option    *ngFor="let i of coursesArray">{{i}}</option>
-      <option value="Other" (Keyup)="otherFunction()">Other</option>
+      
     </select>
   </div>
 
   <div class="field" *ngIf="otherInfo">
-    <input type="text" placeholder="enter your course">
+    <input type="text"  placeholder="enter your course">
   </div>
 
   <div class="field">
     <label>Specialization*</label>
-    <select>
+    <select formControlName="specializationValue">
       <option>Select Specialization</option>
       <option   *ngFor="let i of specializationArray">{{i}}</option>
-      <option value="Other">Other</option>
+    
     </select>
   </div>
   <div class="field">
     <label>University/College*</label>
-    <input type="text"   placeholder="Institute Name" />
+    <input type="text"  formControlName="universityName" placeholder="Institute Name" />
   </div>
   <div class="field">
     <label>Passing Year*</label>
-    <select>
+    <select formControlName="passingYearValue">
       <option>Select</option>
       <option  *ngFor="let i of yearArray">{{i}}</option>
     </select>
@@ -43,29 +44,29 @@
 <div *ngIf="twelthInfo1">
   <div class="field">
     <label>Board*</label>
-    <select>
+    <select formControlName="boardValue">
       <option>Please Select Board</option>
       <option  *ngFor="let i of boardArray">{{i}}</option>
-      <option value="Other">Other</option>
+    
     </select>
   </div>
   <div class="field">
     <label>Year of Passing*</label>
-    <select>
+    <select formControlName="passingValue">
       <option>Select</option>
       <option   *ngFor="let i of yearArray">{{i}}</option>
     </select>
   </div>
   <div class="field">
     <label>Medium*</label>
-    <select>
+    <select formControlName="mediumValue">
       <option>Please Select language Medium</option>
       <option   *ngFor="let i of mediumArray">{{i}}</option>
     </select>
   </div>
   <div class="field">
     <label>Percentage*</label>
-    <input type="text"   placeholder="Please enter your percentage" />
+    <input type="text" formControlName="percentageValue"  placeholder="Please enter your percentage" />
   </div>
 
 </div>

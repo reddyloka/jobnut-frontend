@@ -10,7 +10,7 @@ import { LoginComponent } from './uni-component/login/login.component';
 import { SignupComponent } from './uni-component/signup/signup.component';
 import { HrComponent } from './uni-component/signup/hr/hr.component';
 import { ApplicantComponent } from './uni-component/signup/applicant/applicant.component';
-
+import { OtherQualificationComponent } from './uni-component/signup/applicant/other-qualification/other-qualification.component';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
 
@@ -23,7 +23,7 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
     SignupComponent,
     HrComponent,
     ApplicantComponent,
- 
+    OtherQualificationComponent
   ],
   imports: [
     BrowserModule,

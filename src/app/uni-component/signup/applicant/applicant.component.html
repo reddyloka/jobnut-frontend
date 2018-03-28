@@ -11,7 +11,7 @@
 
   </div>
 </nav>
-<form class="ui form" >
+<form  [formGroup]="applicantForm" (ngSubmit)="onSubmit(applicantForm)" >
 <div class="container" *ngIf="personalInfo">
   
   <div class="row">
@@ -20,36 +20,62 @@
         
         <div class="field">
           <label>Name</label>
-          <input type="text" name="Name" formControlName="name" placeholder="Full Name" >
+          <input type="text"  formControlName="name" class="form-control"  placeholder="Full Name" >
         </div>
+        <!-- <div class="alert alert-danger" *ngIf="!applicantForm.value.name && applicantForm.touched">
+         <p>Name  is required</p>
+        </div> -->
         <div class="field">
           <label>Email</label>
-          <input type="text" name="email" formControlName="email" placeholder="valid Email addresss">
+          <input type="text"   formControlName="email" class="form-control"  placeholder="valid Email addresss">
         </div>
+        <!-- <div class="alert alert-danger" *ngIf="!applicantForm.value.email && applicantForm.touched">
+          <p>Name  is required</p>
+         </div> -->
         <div class="field">
-          <label>Password</label>
-          <input type="text" name="Password" formControlName="password" placeholder="create password">
+          <label>Date Of Birth</label>
+          <input type="date" name="mobile"   formControlName="dob" class="form-control"  placeholder="enter date of birth">
         </div>
+        <!-- <div class="alert alert-danger" *ngIf="!applicantForm.value.dob && applicantForm.touched">
+          <p>Name  is required</p>
+         </div> -->
+
         <div class="field">
           <label>Mobile Number</label>
-          <input type="number" name="mobile" formControlName="number" placeholder="enter number">
+          <input type="number" name="mobile"   formControlName="phone" class="form-control"  placeholder="enter number">
         </div>
-        <button class="ui button" type="submit" (click)="personalDetailClicked()">Next</button>
-      
+        <!-- <div class="alert alert-danger" *ngIf="!applicantForm.value.phone && applicantForm.touched">
+          <p>Name  is required</p>
+         </div> -->
+
+        <div class="field">
+          <label>Password</label>
+          <input type="text" name="Password"  formControlName="password" class="form-control"   placeholder="create password">
+        </div>
+        <!-- <div class="alert alert-danger" *ngIf="!applicantForm.value.password && applicantForm.touched">
+          <p>Name  is required</p>
+         </div> -->
+          <!-- <buuton class="btn btn-success" [disabled]="applicantForm.invalid" (click)="personalDetailClicked()">Next</button> -->
+            <!-- [disabled]="!applicantForm.value.password" -->
+          <button class="btn btn-success"  (click)="personalDetailClicked()">Next</button>
+        
+        
+        
+
+          
     </div>
   </div>
 </div>
-</form>
-
 
 <div class="container" *ngIf="educationInfo">
   <div class="row">
     <div class="col-md-2"></div>
     <div class="col-md-6">
-      <form class="ui form" >
-      <div class="field">
+
+     <div>
+             <div class="field">
           <label>Highest Qualification*</label>
-          <select (change)="highestEducation($event.target.value)">
+          <select (change)="highestEducation($event.target.value)"  class="form-control"formControlName="higherDegreeValue">
             <option>Select your highest qualification</option>
             <option  *ngFor="let i of highestDegreeArray">{{i}}</option>
           </select>
@@ -57,10 +83,10 @@
         <div *ngIf="doctorateInfo">
           <div class="field">
             <label>Course*</label>
-            <select>
+            <select formControlName="courseValue" class="form-control" >
               <option>Select your course</option>
               <option  *ngFor="let i of coursesArray">{{i}}</option>
-              <option value="Other" (onselect)="otherFunction()">Other</option>
+            
             </select>
           </div>
           <div class="field" *ngIf="otherInfo">
@@ -69,28 +95,27 @@
 
           <div class="field">
             <label>Specialization*</label>
-            <select>
+            <select formControlName="specializationValue"  class="form-control">
               <option>Select Specialization</option>
               <option  *ngFor="let i of specializationArray">{{i}}</option>
-              <option value="Other">Other</option>
             </select>
           </div>
           <div class="field">
             <label>University/College*</label>
-            <input type="text"   placeholder="Institute Name" />
+            <input type="text" formControlName="universityName" class="form-control"  placeholder="Institute Name" />
           </div>
           <div class="field">
             <label>Passing Year*</label>
-            <select>
+            <select formControlName="passingYearValue" class="form-control">
               <option>Select</option>
-              <option   *ngFor="let i of yearArray">{{i}}</option>
+              <option *ngFor="let i of yearArray">{{i}}</option>
             </select>
           </div>
         </div>
         <div *ngIf="twelthInfo">
           <div class="field">
             <label>Board*</label>
-            <select>
+            <select formControlName="boardValue" class="form-control">
               <option>Please Select Board</option>
               <option *ngFor="let i of boardArray">{{i}}</option>
               <option value="Other">Other</option>
@@ -98,21 +123,21 @@
           </div>
           <div class="field">
             <label>Year of Passing*</label>
-            <select>
+            <select formControlName="passingValue" class="form-control">
               <option>Select</option>
               <option   *ngFor="let i of yearArray">{{i}}</option>
             </select>
           </div>
           <div class="field">
             <label>Medium*</label>
-            <select>
+            <select formControlName="mediumValue" class="form-control">
               <option>Please Select language Medium</option>
               <option   *ngFor="let i of mediumArray">{{i}}</option>
             </select>
           </div>
           <div class="field">
             <label>Percentage*</label>
-            <input type="text"   placeholder="Please enter your percentage" />
+            <input type="text" formControlName="percentageValue" class="form-control"  placeholder="Please enter your percentage" />
           </div>
 
         </div>
@@ -124,34 +149,35 @@
         <div class="field" *ngIf="addMore1">
           <input type="button" value="Add more qualifications" (click)="addMoreQualifications2()" />
         </div>
+        </div>
         <div *ngIf="addEducation1">
-          <app-other-qualification [qualArray]="qualificationArray1" (addmore)="addMoreQualifications5($event)"></app-other-qualification>
+          <app-other-qualification [qualArray]="qualificationArray1" (adddata)="adddataform($event)" (addmore)="addMoreQualifications5($event)"></app-other-qualification>
         </div>
 
 
         <div *ngIf="addEducation2">
-          <app-other-qualification [qualArray]="qualificationArray2" (addmore)="addMoreQualifications5($event)"></app-other-qualification>
+          <app-other-qualification [qualArray]="qualificationArray2" (adddata)="adddataform($event)" (addmore)="addMoreQualifications5($event)"></app-other-qualification>
         </div>
 
 
         <div *ngIf="addEducation3">
-          <app-other-qualification [qualArray]="qualificationArray3" (addmore)="addMoreQualifications5($event)"></app-other-qualification>
+          <app-other-qualification [qualArray]="qualificationArray3" (adddata)="adddataform($event)" (addmore)="addMoreQualifications5($event)"></app-other-qualification>
         </div>
 
         <div *ngIf="addEducation4">
-          <app-other-qualification [qualArray]="qualificationArray4"></app-other-qualification>
+          <app-other-qualification (adddata)="adddataform($event)" [qualArray]="qualificationArray4"></app-other-qualification>
         </div>
 
           <div class="field">
             <label>Skills*</label>
-            <input type="text" placeholder="Please enter your Skills" />
+            <input type="text" class="form-control" placeholder="Please enter your Skills" />
           </div>
           <div class="field">
-              <input type="submit" value="Register" (click)="onSubmit()" />
+              <input type="submit" class="btn btn-success" [disabled]="!applicantForm.invalid" value="Register" />
             </div>
-          </form>
+         
     </div>
   </div>
 </div>
-
+</form>
   
