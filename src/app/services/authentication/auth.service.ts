@@ -5,6 +5,11 @@ import { HttpClient } from '@angular/common/http';
 
 import { shareReplay } from 'rxjs/operator/shareReplay';
 import { Userbase } from '../../model/userbase';
+import * as moment from 'moment';
+import 'rxjs/add/operator/do';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/shareReplay';
+
 
 const USER_SERVER = 'http://localhost:3000';
 @Injectable()
@@ -16,98 +21,37 @@ export class AuthService {
 
   login(email: string, password: string) {
     console.log('inside');
-    return this.http.post<Userbase>(
-      USER_SERVER + '/v1/hr', { email, password }
-    );
+    return this.http.post(
+      USER_SERVER + '/v1/hr', { email, password })
+      // .map((res: Response) => res.json())
+      .do(res => {
+        return this.setSession;
+      })
+      .shareReplay();
   }
-}
 
+  private setSession(authResult) {
+    console.log(' authResult is : ');
+    console.log(' authResult is : ', authResult);
+    // const expiresAt = moment().add(authResult.expiresIn, 'second');
 
+    localStorage.setItem('id_token', authResult.token);
+    // localStorage.setItem('expires_at', JSON.stringify(expiresAt.valueOf()));
+  }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- // auth0 = new auth0.WebAuth({
-  //   clientID: 'Osz2IAntzF_-3wiH8WEL04ZWY8B6BjNq',
-  //   domain: 'abhishek-mittal.auth0.com',
-  //   responseType: 'token id_token',
-  //   audience: 'https://abhishek-mittal.auth0.com/userinfo',
-  //   redirectUri: 'http://localhost:3000/callback',
-  //   scope: 'openid'
-  // });
-
-  // constructor(private router: Router) { }
-
-  // public login(): void {
-  //   this.auth0.authorize();
-  // }
-
-  // // handleAuthentication: looks for the result of authentication in the URL hash. Then, the result is processed with the parseHash method from auth0.js.
-
-  // public handleAuthentication(): void {
-  //   this.auth0.parseHash((err, authResult) => {
-  //     if ( authResult && authResult.accessToken && authResult.idToken) {
-  //       window.location.hash = '';
-  //       this.setSession(authResult);
-  //       this.router.navigate(['/']);
-  //     } else if (err) {
-  //       this.router.navigate(['/signin']);
-  //       console.log(err);
-  //     }
-  //   });
-  // }
-
-  // private setSession( authResult ): void {
-  //   // Set the time that the Access Token will expire at
-  //   const expiresAt = JSON.stringify((authResult.expiresIn * 1000 ) + new Date().getTime());
-  //   localStorage.setItem('access_token', authResult.accessToken);
-  //   localStorage.setItem('id_token', authResult.idToken);
-  //   localStorage.setItem('expires_at', expiresAt);
-  // }
-
-  // public logout(): void {
-  //   // Remove tokens and expiry time from localStorage
-  //   localStorage.removeItem('access_token');
+  // logout() {
   //   localStorage.removeItem('id_token');
   //   localStorage.removeItem('expires_at');
-  //   // Go back to the home route
-  //   this.router.navigate(['/']);
   // }
 
-  // public isAuthenticated(): boolean {
-  //   // Check whether the current time is past the
-  //   // Access Token's expiry time
-  //   const expiresAt = JSON.parse(localStorage.getItem('expires_at'));
-  //   return new Date().getTime() < expiresAt;
+  // public isLoggedIn() {
+  //   return moment().isBefore(this.getExpiration());
   // }
+
+  // getExpiration() {
+  //   const expiration = localStorage.getItem('expires_at');
+  //   const expiresAt = JSON.parse(expiration);
+
+  //   return moment(expiresAt);
+  // }
+}

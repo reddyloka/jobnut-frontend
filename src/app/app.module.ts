@@ -14,11 +14,11 @@ import { OtherQualificationComponent } from './uni-component/signup/applicant/ot
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { routerConfig } from './app.router-config';
 import { UserBaseService } from './services/userbase/user-base.service';
-import { PdComponent } from './misc/try/pd/pd.component';
-import { EdComponent } from './misc/try/ed/ed.component';
-import { TryService } from './misc/try/try.service';
-import { QulComponent } from './misc/try/ed/qul/qul.component';
-import { TryComponent } from './misc/try/try.component';
+// import { PdComponent } from './misc/try/pd/pd.component';
+// import { EdComponent } from './misc/try/ed/ed.component';
+// import { TryService } from './misc/try/try.service';
+// import { QulComponent } from './misc/try/ed/qul/qul.component';
+// import { TryComponent } from './misc/try/try.component';
 import { CallbackComponent } from './uni-component/misc/callback/callback.component';
 import { AuthService } from './services/authentication/auth.service';
 
@@ -31,12 +31,12 @@ import { AuthService } from './services/authentication/auth.service';
     LoginComponent,
     SignupComponent,
     HrComponent,
-    QulComponent,
     ApplicantComponent,
     OtherQualificationComponent,
-    TryComponent,
-    PdComponent,
-    EdComponent,
+    // QulComponent,
+    // TryComponent,
+    // PdComponent,
+    // EdComponent,
     CallbackComponent
   ],
   imports: [
@@ -50,7 +50,7 @@ import { AuthService } from './services/authentication/auth.service';
   providers: [
     UserBaseService,
     AuthService,
-    TryService,
+    // TryService,
     { provide: LocationStrategy, useClass: HashLocationStrategy },
 
   ],

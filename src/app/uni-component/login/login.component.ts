@@ -43,18 +43,21 @@ export class LoginComponent implements OnInit {
     this.router.navigateByUrl('signin');
     return false;
   }
-
+  // abhishek's changes for routing data token jwt
   login(): void {
     const val = this.loginForm.value;
     console.log(val);
 
     if (val.username && val.pass) {
-      this._authService.login(val.username, val.pass).subscribe(
-        () => {
-          console.log('user logged in');
-        }
-      );
+      console.log(' :im here');
+      this._authService.login(val.username, val.pass)
+        .subscribe(
+          (yo) => {
+            console.log('user logged in', yo);
+            this.router.navigateByUrl('signin');
+          });
     }
   }
+  // abhishek's changes for routing data token jwt
 
 }
