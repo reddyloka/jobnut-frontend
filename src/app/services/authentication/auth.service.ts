@@ -19,12 +19,12 @@ export class AuthService {
     private http: HttpClient
   ) { }
 
-  login(email: string, password: string) {
-    console.log('inside');
+  login(formData) {
+    console.log('inside', formData);
     return this.http.post(
-      USER_SERVER + '/v1/hr', { email, password })
+      USER_SERVER + '/v1/hr', formData)
       // .map((res: Response) => res.json())
-      .do(res => {
+      .do((res) => {
         return this.setSession;
       })
       .shareReplay();
@@ -34,7 +34,6 @@ export class AuthService {
     console.log(' authResult is : ');
     console.log(' authResult is : ', authResult);
     // const expiresAt = moment().add(authResult.expiresIn, 'second');
-
     localStorage.setItem('id_token', authResult.token);
     // localStorage.setItem('expires_at', JSON.stringify(expiresAt.valueOf()));
   }
@@ -44,14 +43,14 @@ export class AuthService {
   //   localStorage.removeItem('expires_at');
   // }
 
-  // public isLoggedIn() {
-  //   return moment().isBefore(this.getExpiration());
-  // }
+  public isLoggedIn() {
+    return moment().isBefore(this.getExpiration());
+  }
 
-  // getExpiration() {
-  //   const expiration = localStorage.getItem('expires_at');
-  //   const expiresAt = JSON.parse(expiration);
+  getExpiration() {
+    const expiration = localStorage.getItem('expires_at');
+    const expiresAt = JSON.parse(expiration);
 
-  //   return moment(expiresAt);
-  // }
+    return moment(expiresAt);
+  }
 }

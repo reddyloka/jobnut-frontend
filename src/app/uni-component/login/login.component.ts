@@ -13,8 +13,8 @@ export class LoginComponent implements OnInit {
   password: string;
   username: string;
   loginForm: FormGroup;
-
-
+  message: any;
+  variable: any;
 
   constructor(
     private fb: FormBuilder,
@@ -22,9 +22,21 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private _authService: AuthService
   ) {
+    this.message = {
+      username: {
+        text: 'Username Required!',
+        class: 'hidden'
+      },
+      password: {
+        text: 'Password Required!',
+        class: 'hidden'
+      }
+    };
+
     this.loginForm = fb.group({
       username: ['', Validators.required],
-      pass: ['', Validators.required]
+      pass: ['', Validators.required],
+      isHr: [false, Validators.required]
     });
   }
 
@@ -48,9 +60,9 @@ export class LoginComponent implements OnInit {
     const val = this.loginForm.value;
     console.log(val);
 
-    if (val.username && val.pass) {
-      console.log(' :im here');
-      this._authService.login(val.username, val.pass)
+    if (val.username && val.pass && val.isHr) {
+      // console.log(' :im here');
+      this._authService.login(val)
         .subscribe(
           (yo) => {
             console.log('user logged in', yo);
@@ -59,5 +71,8 @@ export class LoginComponent implements OnInit {
     }
   }
   // abhishek's changes for routing data token jwt
+  checkValid() {
+    console.log(this.loginForm.value);
+  }
 
 }
