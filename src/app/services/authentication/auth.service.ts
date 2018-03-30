@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import * as auth0 from 'auth0-js';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 

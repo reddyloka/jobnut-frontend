@@ -21,17 +21,13 @@
     "@angular/platform-browser": "^5.2.0",
     "@angular/platform-browser-dynamic": "^5.2.0",
     "@angular/router": "^5.2.0",
-<<<<<<< HEAD
     "bootstrap": "^4.0.0",
     "core-js": "^2.4.1",
     "jquery": "^3.3.1",
     "ng2-select": "^2.0.0",
     "npm": "^5.8.0",
-=======
     "auth0-js": "^9.4.1",
-    "core-js": "^2.4.1",
     "moment": "2.21.0",
->>>>>>> 6eddc1ac651eab7237f9e76718112a931074183d
     "rxjs": "^5.5.6",
     "zone.js": "^0.8.19"
   },

@@ -12,9 +12,7 @@ import { HrComponent } from './uni-component/signup/hr/hr.component';
 import { ApplicantComponent } from './uni-component/signup/applicant/applicant.component';
 import { OtherQualificationComponent } from './uni-component/signup/applicant/other-qualification/other-qualification.component';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
-<<<<<<< HEAD
 import { HrDashboardComponent } from './dashboard-component/hr-dashboard/hr-dashboard.component';
-=======
 import { routerConfig } from './app.router-config';
 import { UserBaseService } from './services/userbase/user-base.service';
 // import { PdComponent } from './misc/try/pd/pd.component';
@@ -25,10 +23,6 @@ import { UserBaseService } from './services/userbase/user-base.service';
 import { CallbackComponent } from './uni-component/misc/callback/callback.component';
 import { AuthService } from './services/authentication/auth.service';
 
-
->>>>>>> 6eddc1ac651eab7237f9e76718112a931074183d
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,15 +31,12 @@ import { AuthService } from './services/authentication/auth.service';
     HrComponent,
     ApplicantComponent,
     OtherQualificationComponent,
-<<<<<<< HEAD
     HrDashboardComponent,
-=======
     // QulComponent,
     // TryComponent,
     // PdComponent,
     // EdComponent,
     CallbackComponent
->>>>>>> 6eddc1ac651eab7237f9e76718112a931074183d
   ],
   imports: [
     BrowserModule,
@@ -53,36 +44,12 @@ import { AuthService } from './services/authentication/auth.service';
     ReactiveFormsModule,
     HttpModule,
     HttpClientModule,
-<<<<<<< HEAD
-    RouterModule.forRoot([
-      // basic routes
-      { path: 'login', component: LoginComponent },
-      { path: 'signin', component: SignupComponent },
-      
-      // { path: 'contactus', redirectTo: 'contact' },
-      
-      // auth demo
-      // {
-        //   path: 'protected',
-        //   component: ProtectedComponent,
-        //   canActivate: [LoginComponent]
-        // },
-        
-        // nested
-        { path: 'hr', component: HrDashboardComponent },
-        
-        { path: '', redirectTo: 'login', pathMatch: 'full' },
-    ])
-  ],
-  providers: [ 
-=======
     RouterModule.forRoot(routerConfig)
   ],
   providers: [
     UserBaseService,
     AuthService,
     // TryService,
->>>>>>> 6eddc1ac651eab7237f9e76718112a931074183d
     { provide: LocationStrategy, useClass: HashLocationStrategy },
 
   ],
