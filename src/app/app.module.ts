@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {RouterModule} from '@angular/router';
+import { RouterModule } from '@angular/router';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
@@ -12,8 +12,7 @@ import { HrComponent } from './uni-component/signup/hr/hr.component';
 import { ApplicantComponent } from './uni-component/signup/applicant/applicant.component';
 import { OtherQualificationComponent } from './uni-component/signup/applicant/other-qualification/other-qualification.component';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
-
-
+import { HrDashboardComponent } from './dashboard-component/hr-dashboard/hr-dashboard.component';
 
 
 @NgModule({
@@ -23,7 +22,8 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
     SignupComponent,
     HrComponent,
     ApplicantComponent,
-    OtherQualificationComponent
+    OtherQualificationComponent,
+    HrDashboardComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,25 +35,23 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
       // basic routes
       { path: 'login', component: LoginComponent },
       { path: 'signin', component: SignupComponent },
-      { path: '', redirectTo: 'login', pathMatch: 'full' },
+      
       // { path: 'contactus', redirectTo: 'contact' },
-
+      
       // auth demo
       // {
-      //   path: 'protected',
-      //   component: ProtectedComponent,
-      //   canActivate: [LoginComponent]
-      // },
-
-      // nested
-      // {
-      //   path: 'products',
-      //   component: productcomponent,
-      //   children: childRoutes
-      // }
+        //   path: 'protected',
+        //   component: ProtectedComponent,
+        //   canActivate: [LoginComponent]
+        // },
+        
+        // nested
+        { path: 'hr', component: HrDashboardComponent },
+        
+        { path: '', redirectTo: 'login', pathMatch: 'full' },
     ])
   ],
-  providers: [
+  providers: [ 
     { provide: LocationStrategy, useClass: HashLocationStrategy },
 
   ],

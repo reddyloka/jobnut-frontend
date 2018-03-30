@@ -1,4 +1,4 @@
-<div class = "ui very padded container segment">
+<div class="ui very padded container segment">
   <form [formGroup]="signupForm" (ngSubmit)="onSubmit()" class="ui form">
     <h4 class="ui dividing header">New H.R Registration</h4>
     <div class="field">
@@ -32,40 +32,29 @@
         </select>
       </div>
       <div class="field">
-        <label>Country</label>
-        <div class="ui fluid search selection dropdown">
-          <input type="" id="country">
-          <i class="dropdown icon"></i>
-          <div class="default text">Select Country</div>
-          <div class="menu">
-            <div class="item" data-value="af"><i class="af flag"></i>Afghanistan</div>
-          </div>
+          <label>Country</label>
+          <div class="field">
+              <select id="country" class="ui fluid dropdown" formControlName= "country">
+                <option>Select</option>
+                  <option>India</option>
+              </select>
+            </div>
         </div>
-      </div>
     </div>
     <div class="two fields">
       <div class="field">
         <label>State</label>
-        <div class="ui fluid search selection dropdown">
-          <input type="" id="states">
-          <i class="dropdown icon"></i>
-          <div class="default text">Select State</div>
-          <div class="menu">
-            <div class="item" data-value="af"><i class="af flag"></i>Punjab</div>
+        <div class="field">
+            <select id="state" class="ui fluid dropdown" formControlName= "state">
+              <option>Select</option>
+                <option [value]="option" *ngFor = "let state of states">{{state}}</option>
+            </select>
           </div>
-        </div>
       </div>
       <div class="field">
-        <label>City</label>
-        <div class="ui fluid search selection dropdown">
-          <input type="" id="city">
-          <i class="dropdown icon"></i>
-          <div class="default text">Select City</div>
-          <div class="menu">
-            <div class="item" data-value="af"><i class="af flag"></i>Phagwara</div>
-          </div>
+        <label for="">City</label>
+          <input type="text" id="city" formControlName= "city">
         </div>
-      </div>
     </div>
     <div class="eight wide field">
       <label>Designation *</label>
@@ -79,9 +68,9 @@
       <label>Profile Photo:</label>
       <input id="image" type="file" id="profile_photo" placeholder="Photo" required="" capture>
     </div>
-    <div class=" field ui checkbox">
-        <input type="checkbox" name="example">
-        <label>I Agree to the <a href="#">Terms and Conditions</a></label>                
+    <div class="ui slider checkbox">
+      <input type="checkbox" name="newsletter">
+    <label>I Agree to the <a href="#">Terms and Conditions</a></label>                
     </div>
     <div class="field">
       <button class="ui button" type="submit" tabindex="0">Register</button>
