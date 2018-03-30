@@ -15,15 +15,15 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { routerConfig } from './app.router-config';
 import { UserBaseService } from './services/userbase/user-base.service';
 import { SearchComponent } from './dashboard-component/login-dashboard/features/search/search.component';
-
-
 import { CallbackComponent } from './uni-component/misc/callback/callback.component';
 import { AuthService } from './services/authentication/auth.service';
 import { HrDashboardComponent } from './dashboard-component/hr-dashboard/hr-dashboard.component';
 import { JwtService } from './_helper/jwt.service';
 import { HrDetailsComponent } from './dashboard-component/hr-dashboard/hr-details/hr-details.component';
-
-
+import { HrNewjobComponent } from './dashboard-component/hr-dashboard/hr-newjob/hr-newjob.component';
+import { HrSkillComponent } from './dashboard-component/hr-dashboard/hr-skill/hr-skill.component';
+import { NgSelectComponent } from './dashboard-component/hr-dashboard/ng-select/ng-select.component';
+import {SelectModule} from 'ng2-select';
 
 
 @NgModule({
@@ -37,10 +37,14 @@ import { HrDetailsComponent } from './dashboard-component/hr-dashboard/hr-detail
     ApplicantComponent,
     OtherQualificationComponent,
     SearchComponent,
-    CallbackComponent
+    CallbackComponent,
+    HrNewjobComponent,
+    HrSkillComponent,
+    NgSelectComponent,
   ],
   imports: [
     BrowserModule,
+    SelectModule,
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
@@ -51,9 +55,7 @@ import { HrDetailsComponent } from './dashboard-component/hr-dashboard/hr-detail
     UserBaseService,
     AuthService,
     JwtService,
-    // TryService,
     { provide: LocationStrategy, useClass: HashLocationStrategy },
-
   ],
   bootstrap: [AppComponent]
 })

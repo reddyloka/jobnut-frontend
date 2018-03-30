@@ -1,0 +1,49 @@
+<div class="ui very padded container segment">
+    <form [formGroup]="hrnewjobForm" (ngSubmit)="onSubmit()" class="ui form">
+      <div class="field">
+        <label>Job Title / Designation *</label>
+        <div class="field">
+          <input type="text" id="title" formControlName= "title">
+        </div>
+      </div>
+      <div class="field">
+        <label>Job Description *</label>
+        <div class="field">
+          <textarea type="text" id="description" formControlName= "description"></textarea>
+        </div>
+      </div>
+      <div class="field">
+        <label>Keywords *</label>
+        <div class="field">
+          <input type="text" id="keywords" formControlName= "keywords">
+        </div>
+      </div>
+      <div class="two fields">
+        <div class="field two wide">
+          <label>Work Experience (minimum) *</label>   
+          <input type="text" id="minexp" placeholder="min" formControlName= "minexp">  
+        </div>
+        <div class="field two wide">
+          <label>Work Experience (maximum) *</label>   
+          <input type="text" id="maxexp" placeholder="max" formControlName= "maxexp">  
+        </div>
+      </div>
+      
+      <div class="field">
+        <label>Location(s) hiring for *</label>   
+        <input type="text" id="location" formControlName= "location">  
+      </div>
+      <div class="field">
+        <label>Company hiring for *</label>   
+        <input type="text" id="hiringfor" formControlName= "hiringfor">  
+      </div>
+      <div class="field">
+          <label>Link to Job (optional)</label>
+          <div class="field">
+            <input type="text" id="joblink" formControlName= "joblink">
+          </div>
+        </div>
+      <button class="ui primary button" type="submit"> Save </button>
+      <button class="ui button" (click)="discardClicked()"> Discard </button>
+    </form>
+  </div>
