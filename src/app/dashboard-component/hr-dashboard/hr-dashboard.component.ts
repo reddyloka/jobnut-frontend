@@ -47,4 +47,11 @@ export class HrDashboardComponent implements OnInit {
     this.skillsOpen = false;
   }
 
+
+  // abhishek code
+
+  logoutClicked() {
+    console.log('log out clicked');
+    this._authService.logout();
+  }
 }
