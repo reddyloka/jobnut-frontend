@@ -35,18 +35,16 @@ export class LoginComponent implements OnInit {
 
     this.loginForm = fb.group({
       username: ['', Validators.required],
-      pass: ['', Validators.required],
+      password: ['', Validators.required],
       isHr: [false, Validators.required]
     });
   }
 
   ngOnInit() {
-    if (this._authService.isLoggedIn) {
-      if (this._jwtService.getToken()) {
-        this.router.navigateByUrl('signin');
+      if (this._authService.isLoggedIn) {
+        this.router.navigateByUrl('hr');
       }
       this.router.navigateByUrl('');
-    }
   }
 
 
@@ -66,7 +64,7 @@ export class LoginComponent implements OnInit {
     const val = this.loginForm.value;
     console.log(val);
 
-    if (val.username && val.pass) {
+    if (val.username && val.password) {
       // console.log(' :im here');
       this._authService.login(val)
         .subscribe(
