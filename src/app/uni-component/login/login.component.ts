@@ -66,13 +66,15 @@ export class LoginComponent implements OnInit {
     const val = this.loginForm.value;
     console.log(val);
 
-    if (val.username && val.pass && val.isHr) {
+    if (val.username && val.pass) {
       // console.log(' :im here');
       this._authService.login(val)
         .subscribe(
-          (yo) => {
-            console.log('user logged in', yo);
-            this.router.navigateByUrl('signin');
+          (yo:  any) => {
+            if (yo && yo.status && yo.isHr) {
+              console.log('user logged in', yo);
+              this.router.navigateByUrl('hr');
+            }
           });
     }
   }

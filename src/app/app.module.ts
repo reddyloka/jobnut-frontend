@@ -21,6 +21,7 @@ import { CallbackComponent } from './uni-component/misc/callback/callback.compon
 import { AuthService } from './services/authentication/auth.service';
 import { HrDashboardComponent } from './dashboard-component/hr-dashboard/hr-dashboard.component';
 import { JwtService } from './_helper/jwt.service';
+import { HrDetailsComponent } from './dashboard-component/hr-dashboard/hr-details/hr-details.component';
 
 
 
@@ -32,6 +33,7 @@ import { JwtService } from './_helper/jwt.service';
     SignupComponent,
     HrDashboardComponent,
     HrComponent,
+    HrDetailsComponent,
     ApplicantComponent,
     OtherQualificationComponent,
     SearchComponent,
