@@ -15,7 +15,7 @@ import { LoggedInGuard } from './_guards/logged-in.guard';
 export const routerConfig: Routes = [
   // basic routes
   { path: 'login', component: LoginComponent },
-  {path: 'hr', component: HrDashboardComponent, canActivate: [LoggedInGuard]},
+  {path: 'hr', component: HrDashboardComponent},
   { path: 'callback', component: CallbackComponent },
   {
     path: 'signin', component: SignupComponent, children: [
