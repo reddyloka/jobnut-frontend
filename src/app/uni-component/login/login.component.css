@@ -34,3 +34,8 @@ h1.h1-login {
     border-color: tomato;
     background-color: tomato;
 }
+
+.ng-invalid {
+    border-color: red;
+    /* background-color: red; */
+}

@@ -170,34 +170,10 @@ export class ApplicantComponent implements OnInit {
     }
   }
 
-  // addMoreQualifications2() {
-  //   if (this.higherEducationValue === 'Doctorate/Phd') {
-  //     this.addEducation1 = true;
-  //     this.addMore1 = false;
-  //   } else if (this.higherEducationValue === 'Masters/Post-Graduation') {
-  //     this.addEducation2 = true;
-  //     this.addMore1 = false;
-  //   } else if (this.higherEducationValue === 'Graduation/Diploma') {
-  //     this.addEducation3 = true;
-  //     this.addMore1 = false;
-  //   } else if (this.higherEducationValue === '12th') {
-  //     this.addEducation4 = true;
-  //     this.addMore1 = false;
-  //   }
-  // }
   addMoreQualifications2() {
     this.addMore1 = false;
     // tslint:disable-next-line:no-unused-expression
     this.qualifications.push(this.base);
-    // console.log('qweekArray', this.qualifications);
-    // this.highestDegreeArray.forEach((element, index) => {
-    //   for (const i of this.qualifications) {
-    //     if (i === element) {
-    //       this.indexValue = index;
-    //     }
-    //   }
-    // });
-    // this.degryIn = this.highestDegreeArray;
     if (this.base === 'Doctorate/Phd') {
         this.degryIn.shift();
     } else if (this.base === 'Masters/Post-Graduation') {
@@ -212,19 +188,6 @@ export class ApplicantComponent implements OnInit {
     }
 
   }
-
-  // addMoreQualifications5(event: string) {
-  //   if (event === 'Masters/Post-Graduation') {
-  //     this.addEducation2 = true;
-
-  //   } else if (event === 'Graduation/Diploma') {
-  //     this.addEducation3 = true;
-
-  //   } else if (event === '12th') {
-  //     this.addEducation4 = true;
-
-  //   }
-  // }
 
   onSubmit() {
     console.log('form value is', this.applicantForm);

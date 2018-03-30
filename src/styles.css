@@ -36,6 +36,12 @@ div.mid-body {
     margin: 11em auto;
 }
 
+div.check{
+    border: 2px solid;
+}
+.inline{
+    display: inline;
+}
 /* Font Family Requires */
 
 .fnt.anton{font-family: 'Anton', sans-serif;}
@@ -48,6 +54,18 @@ div.mid-body {
 .fnt.pragati{font-family: 'Pragati Narrow', sans-serif;}
 
 /* Font Family Requires */
+
+
+/* float left right */
+
+.fl{
+    float: left;
+}
+.fr{
+    float: right;
+}
+
+/* float left right */
 
 /* Changing line animation */
 
