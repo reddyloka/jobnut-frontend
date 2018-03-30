@@ -12,10 +12,6 @@ import { HrComponent } from './uni-component/signup/hr/hr.component';
 import { ApplicantComponent } from './uni-component/signup/applicant/applicant.component';
 import { OtherQualificationComponent } from './uni-component/signup/applicant/other-qualification/other-qualification.component';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
-<<<<<<< HEAD
-import { HrDashboardComponent } from './dashboard-component/hr-dashboard/hr-dashboard.component';
-=======
->>>>>>> 43d5fe62d12d9ef85437eed5de6361c9d228dd3d
 import { routerConfig } from './app.router-config';
 import { UserBaseService } from './services/userbase/user-base.service';
 // import { PdComponent } from './misc/try/pd/pd.component';
@@ -28,12 +24,9 @@ import { AuthService } from './services/authentication/auth.service';
 import { HrDashboardComponent } from './dashboard-component/hr-dashboard/hr-dashboard.component';
 import { JwtService } from './_helper/jwt.service';
 
-<<<<<<< HEAD
-=======
 
 
 
->>>>>>> 43d5fe62d12d9ef85437eed5de6361c9d228dd3d
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,10 +36,6 @@ import { JwtService } from './_helper/jwt.service';
     HrComponent,
     ApplicantComponent,
     OtherQualificationComponent,
-<<<<<<< HEAD
-    HrDashboardComponent,
-=======
->>>>>>> 43d5fe62d12d9ef85437eed5de6361c9d228dd3d
     // QulComponent,
     // TryComponent,
     // PdComponent,

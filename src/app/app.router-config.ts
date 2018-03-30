@@ -10,19 +10,12 @@ import { ApplicantComponent } from './uni-component/signup/applicant/applicant.c
 // import { Routes } from "@angular/router";
 import { CallbackComponent } from './uni-component/misc/callback/callback.component';
 import { HrDashboardComponent } from './dashboard-component/hr-dashboard/hr-dashboard.component';
-<<<<<<< HEAD
-=======
 import { LoggedInGuard } from './_guards/logged-in.guard';
->>>>>>> 43d5fe62d12d9ef85437eed5de6361c9d228dd3d
 
 export const routerConfig: Routes = [
   // basic routes
   { path: 'login', component: LoginComponent },
-<<<<<<< HEAD
-  { path: 'hr', component: HrDashboardComponent},
-=======
-  {path: 'hr', component: HrDashboardComponent, canActivate: [LoggedInGuard]},
->>>>>>> 43d5fe62d12d9ef85437eed5de6361c9d228dd3d
+  {path: 'hr', component: HrDashboardComponent},
   { path: 'callback', component: CallbackComponent },
   {
     path: 'signin', component: SignupComponent, children: [

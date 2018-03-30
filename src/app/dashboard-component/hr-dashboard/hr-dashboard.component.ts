@@ -11,28 +11,16 @@ export class HrDashboardComponent implements OnInit {
   jobOpen: boolean;
   skillsOpen: boolean;
 
-<<<<<<< HEAD
-  constructor(private router: Router) { 
-   this.detailsOpen = false; 
-   this.jobOpen = false;
-   this.skillsOpen = false;
-=======
 
   constructor(private router: Router) {
     this.detailsOpen = false;
     this.jobOpen = false;
     this.skillsOpen = false;
->>>>>>> 43d5fe62d12d9ef85437eed5de6361c9d228dd3d
   }
 
   ngOnInit() {
   }
-<<<<<<< HEAD
-  
-  getDetails(){
-=======
   getDetails() {
->>>>>>> 43d5fe62d12d9ef85437eed5de6361c9d228dd3d
     this.detailsOpen = true;
   }
   closeDetails() {

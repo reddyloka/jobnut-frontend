@@ -23,23 +23,13 @@
         "animate.css",
         "styles.css"
       ],
-<<<<<<< HEAD
-      "scripts": ["../node_modules/jquery/dist/jquery.min.js",
-        "../node_modules/auth0-js/build/auth0.min.js"
-      ],
-=======
       "scripts": [],
->>>>>>> 43d5fe62d12d9ef85437eed5de6361c9d228dd3d
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",
         "prod": "environments/environment.prod.ts"
       }
-<<<<<<< HEAD
-  }],
-=======
     }],
->>>>>>> 43d5fe62d12d9ef85437eed5de6361c9d228dd3d
   "e2e": {
     "protractor": {
       "config": "./protractor.conf.js"
