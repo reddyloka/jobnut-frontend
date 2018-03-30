@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {RouterModule} from '@angular/router';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { RouterModule } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -14,11 +14,7 @@ import { OtherQualificationComponent } from './uni-component/signup/applicant/ot
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { routerConfig } from './app.router-config';
 import { UserBaseService } from './services/userbase/user-base.service';
-import { PdComponent } from './misc/try/pd/pd.component';
-import { EdComponent } from './misc/try/ed/ed.component';
-import { TryService } from './misc/try/try.service';
-import { QulComponent } from './misc/try/ed/qul/qul.component';
-import { TryComponent } from './misc/try/try.component';
+
 import { HrDashboardComponent } from './dashboard-component/hr-dashboard/hr-dashboard.component';
 import { HrPostdetailsComponent } from './dashboard-component/hr-dashboard/features/hr-postdetails/hr-postdetails.component';
 import { HrPostComponent } from './dashboard-component/hr-dashboard/features/hr-post/hr-post.component';
@@ -33,6 +29,13 @@ import { LoginViewPostDetailsComponent } from './dashboard-component/login-dashb
 import { LoginViewPostDeatilssummaryComponent } from './dashboard-component/login-dashboard/features/login-view-post/login-view-post-details/login-view-post-deatilssummary/login-view-post-deatilssummary.component';
 
 
+import { CallbackComponent } from './uni-component/misc/callback/callback.component';
+import { AuthService } from './services/authentication/auth.service';
+import { JwtService } from './_helper/jwt.service';
+import { HrDetailsComponent } from './dashboard-component/hr-dashboard/hr-details/hr-details.component';
+import { LoggedInGuard } from './_guards/logged-in.guard';
+
+
 
 
 @NgModule({
@@ -40,13 +43,12 @@ import { LoginViewPostDeatilssummaryComponent } from './dashboard-component/logi
     AppComponent,
     LoginComponent,
     SignupComponent,
+    HrDashboardComponent,
     HrComponent,
-    QulComponent,
+    HrDetailsComponent,
     ApplicantComponent,
     OtherQualificationComponent,
-    TryComponent,
-    PdComponent,
-    EdComponent,
+
     HrDashboardComponent,
     HrPostdetailsComponent,
     HrPostComponent,
@@ -57,7 +59,9 @@ import { LoginViewPostDeatilssummaryComponent } from './dashboard-component/logi
     LoginViewPostComponent,
     LoginViewComponent,
     LoginViewPostDetailsComponent,
-    LoginViewPostDeatilssummaryComponent
+    LoginViewPostDeatilssummaryComponent,
+    CallbackComponent
+
   ],
   imports: [
     BrowserModule,
@@ -70,6 +74,10 @@ import { LoginViewPostDeatilssummaryComponent } from './dashboard-component/logi
   providers: [
     UserBaseService,
     HrbaseService,
+    AuthService,
+    JwtService,
+    LoggedInGuard,
+    // TryService,
     { provide: LocationStrategy, useClass: HashLocationStrategy },
 
   ],

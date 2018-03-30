@@ -42,6 +42,9 @@ export class HrComponent implements OnInit {
       'email': new FormControl(this.user_details.email, [Validators.required, Validators.email]),
       'password': new FormControl(this.user_details.password, Validators.required),
       'option': new FormControl(null, Validators.required),
+      'country': new FormControl(null, Validators.required),
+      'state': new FormControl(null, Validators.required),
+      'city': new FormControl(null, Validators.required),
       'designation': new FormControl(null, Validators.required),
       'address': new FormControl(null, Validators.required),
     };

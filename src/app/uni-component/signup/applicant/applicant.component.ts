@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, ValidatorFn, FormBuilder, FormGroup, FormControl, Validators,FormsModule } from '@angular/forms';
+import { AbstractControl, ValidatorFn, FormBuilder, FormGroup, FormControl, Validators, FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-applicant',
   templateUrl: './applicant.component.html',
@@ -62,30 +62,30 @@ export class ApplicantComponent implements OnInit {
     this.boardArray = ['CBSE', 'ICSE', 'ISC'];
     this.mediumArray = ['Telugu', 'Hindi', 'English', 'Kannada', 'Sanskrit'];
     this.skills = ['Angular', 'CSS', 'Graphic Design', 'Ember', 'HTML',
-                    'Information Architecture', 'Javascript', 'Mechanical Engineering',
-                    'Meteor', 'NodeJS', 'UI Design', 'Python', 'Rails', 'React', 'Ruby', ];
-     this.buildFormGroup();
+      'Information Architecture', 'Javascript', 'Mechanical Engineering',
+      'Meteor', 'NodeJS', 'UI Design', 'Python', 'Rails', 'React', 'Ruby',];
+    this.buildFormGroup();
   }
   buildFormGroup(): void {
     const fg = {
-    'name': new FormControl(null, [Validators.required]),
-    'email': new FormControl(null, [Validators.required, Validators.email]),
-    'dob': new FormControl(null, [Validators.required]),
-    'password': new FormControl(null, Validators.required),
-    'phone': new FormControl(null, [Validators.required, Validators.minLength(10), Validators.maxLength(10)] ),
-    'higherDegreeValue': new FormControl(null, ),
-    'courseValue': new FormControl(null, ),
-    'specializationValue': new FormControl(null, ),
-    'universityName': new FormControl(null, ),
-    'passingYearValue': new FormControl(null, ),
-    'boardValue': new FormControl(null, ),
-    'passingValue': new FormControl(null, ),
-    'mediumValue': new FormControl(null, ),
-    'percentageValue': new FormControl(null, ),
-    'skillsValue': new FormControl(null, Validators.required),
-     };
-  this.applicantForm = new FormGroup(fg);
-}
+      'name': new FormControl(null, [Validators.required]),
+      'email': new FormControl(null, [Validators.required, Validators.email]),
+      'dob': new FormControl(null, [Validators.required]),
+      'password': new FormControl(null, Validators.required),
+      'phone': new FormControl(null, [Validators.required, Validators.minLength(10), Validators.maxLength(10)]),
+      'higherDegreeValue': new FormControl(null, ),
+      'courseValue': new FormControl(null, ),
+      'specializationValue': new FormControl(null, ),
+      'universityName': new FormControl(null, ),
+      'passingYearValue': new FormControl(null, ),
+      'boardValue': new FormControl(null, ),
+      'passingValue': new FormControl(null, ),
+      'mediumValue': new FormControl(null, ),
+      'percentageValue': new FormControl(null, ),
+      'skillValue': new FormControl(null, Validators.required),
+    };
+    this.applicantForm = new FormGroup(fg);
+  }
   ngOnInit() {
   }
   personalDetailClicked() {

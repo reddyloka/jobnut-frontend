@@ -12,7 +12,7 @@ export class UserBaseService {
   constructor(private http: Http) { }
 
   addNewUser(userDetail: Userbase, files: {}): Promise<boolean> {
-    return this.http.put(USER_SERVER + `/v1/jobnut.json`, userDetail)
+    return this.http.put(USER_SERVER + `/v1/hr`, userDetail)
       .toPromise()
       .then((response) => {
         return true;
