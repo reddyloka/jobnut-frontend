@@ -11,7 +11,11 @@ import { LoggedInGuard } from './_guards/logged-in.guard';
 export const routerConfig: Routes = [
   // basic routes
   { path: 'login', component: LoginComponent },
-  {path: 'hr', component: HrDashboardComponent},
+  {
+    path: 'hr',
+    component: HrDashboardComponent,
+    canActivate: [LoggedInGuard]
+  },
   { path: 'callback', component: CallbackComponent },
   {
     path: 'signin', component: SignupComponent, children: [
@@ -38,17 +42,17 @@ export const routerConfig: Routes = [
   // },
   { path: 'try', redirectTo: 'pd', pathMatch: 'full' }
 
-    // auth demo
-    // {
-    //   path: 'protected',
-    //   component: ProtectedComponent,
-    //   canActivate: [LoginComponent]
-    // },
+  // auth demo
+  // {
+  //   path: 'protected',
+  //   component: ProtectedComponent,
+  //   canActivate: [LoginComponent]
+  // },
 
-    // nested
-    // {
-    //   path: 'products',
-    //   component: productcomponent,
-    //   children: childRoutes
-    // }
-  ];
+  // nested
+  // {
+  //   path: 'products',
+  //   component: productcomponent,
+  //   children: childRoutes
+  // }
+];

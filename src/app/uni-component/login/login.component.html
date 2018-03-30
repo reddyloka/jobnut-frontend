@@ -16,10 +16,10 @@
             <div class="field">
               <label>Password</label>
               <div class="ui left icon input">
-                <input type="password" placeholder="Password" formControlName="pass" (change)="checkValid()">
+                <input type="password" placeholder="Password" formControlName="password" (change)="checkValid()">
                 <i class="lock icon"></i>
               </div>
-              <div *ngIf="!this.loginForm.value.pass && loginForm.touched" class="ui red message">{{message.password.text}}</div>
+              <div *ngIf="!this.loginForm.value.password && loginForm.touched" class="ui red message">{{message.password.text}}</div>
             </div>
             <div class="field">
               <input class="ui tomato fluid submit button" type="button" value="Login" [disabled]="!loginForm.valid" (click)="login()">

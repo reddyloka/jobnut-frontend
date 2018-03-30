@@ -8,6 +8,7 @@ import * as moment from 'moment';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/shareReplay';
+import { JwtService } from '../../_helper/jwt.service';
 
 
 const USER_SERVER = 'http://localhost:3000';
@@ -15,15 +16,17 @@ const USER_SERVER = 'http://localhost:3000';
 export class AuthService {
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private jwtservice: JwtService
   ) { }
 
   login(formData) {
     console.log('inside', formData);
     return this.http.post(
       USER_SERVER + '/v1/hr', formData)
-      .do((res) => {
-        return this.setSession;
+      .do(res => {
+        // console.log('response is: ', res);
+        this.setSession(res);
       })
       .shareReplay();
   }
@@ -42,13 +45,18 @@ export class AuthService {
   }
 
   public isLoggedIn() {
-    return moment().isBefore(this.getExpiration());
+    console.log('you got this : ', this.jwtservice.getToken());
+    if (this.jwtservice.getToken() && this.jwtservice.getToken().length) {
+      return true;
+    }
+    return false;
+    // return moment().isBefore(this.getExpiration());
   }
 
-  getExpiration() {
-    const expiration = localStorage.getItem('expires_at');
-    const expiresAt = JSON.parse(expiration);
+  // getExpiration() {
+  //   const expiration = localStorage.getItem('expires_at');
+  //   const expiresAt = JSON.parse(expiration);
 
-    return moment(expiresAt);
-  }
+  //   return moment(expiresAt);
+  // }
 }

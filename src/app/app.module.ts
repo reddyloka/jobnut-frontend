@@ -22,6 +22,7 @@ import { AuthService } from './services/authentication/auth.service';
 import { HrDashboardComponent } from './dashboard-component/hr-dashboard/hr-dashboard.component';
 import { JwtService } from './_helper/jwt.service';
 import { HrDetailsComponent } from './dashboard-component/hr-dashboard/hr-details/hr-details.component';
+import { LoggedInGuard } from './_guards/logged-in.guard';
 
 
 
@@ -51,6 +52,7 @@ import { HrDetailsComponent } from './dashboard-component/hr-dashboard/hr-detail
     UserBaseService,
     AuthService,
     JwtService,
+    LoggedInGuard,
     // TryService,
     { provide: LocationStrategy, useClass: HashLocationStrategy },
 
