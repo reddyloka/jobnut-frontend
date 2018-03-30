@@ -1,0 +1,54 @@
+<div class="topnav">
+    <a class="active" href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+   
+    <div class="search-container" >
+         <input type="text" placeholder="search for available jobs" [(ngModel)]="searchText"/>  
+        <button class="btn-btn-button" type="submit" (click)="searchClicked()"><span class="glyphicon glyphicon-search"></span></button>
+   </div>
+</div>
+<div class="row">
+    <div class="col-md-3">
+   </div>
+    <div class="col-md-6">
+        <div *ngIf="jobInfo">
+            <div class='panel panel-default' *ngFor="let i of jobData" style="max-width:900px">
+                <div class="panel-body">
+                    <h2>{{i.designation}}</h2>    <h4>{{i.companyName}}</h4>
+
+                    <div>
+                        <p>
+                            <span class="glyphicon glyphicon-map-marker"></span> {{i.location}}
+                        </p>
+                    </div>
+                    <div>
+                        <h4>Skills Required:</h4>
+                        <p>{{i.skillRequired}}</p>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+        <div *ngIf="searchInfo">
+            <div class='panel panel-default' *ngFor="let i of searchData " style="max-width:900px">
+                <div class="panel-body">
+                    <h2>{{i.designation}}</h2>   <h4>{{i.companyName}}</h4>
+                    <div>
+                        <p>
+                            <span class="glyphicon glyphicon-map-marker"></span> {{i.location}}
+                        </p>
+                    </div>
+                    <div>
+                        <h4>Skills Required:</h4>
+                        <p>{{i.skillRequired}}</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+</div>

@@ -6,6 +6,13 @@ import { AbstractControl, ValidatorFn, FormBuilder, FormGroup, FormControl, Vali
   styleUrls: ['./applicant.component.css']
 })
 export class ApplicantComponent implements OnInit {
+  doctorateInfo1: boolean;
+  twelthInfo1: boolean;
+  fieldStatus: any;
+  indexValue: number;
+  degryIn: string[];
+  qualifications: any[];
+  base: any;
   skills: string[];
   applicantForm: FormGroup;
   higherEducationValue: string;
@@ -64,7 +71,16 @@ export class ApplicantComponent implements OnInit {
     this.skills = ['Angular', 'CSS', 'Graphic Design', 'Ember', 'HTML',
                     'Information Architecture', 'Javascript', 'Mechanical Engineering',
                     'Meteor', 'NodeJS', 'UI Design', 'Python', 'Rails', 'React', 'Ruby', ];
-
+    this.qualifications = [];
+    this.degryIn = ['Doctorate/Phd', 'Masters/Post-Graduation', 'Graduation/Diploma', '12th', '10th', 'Below 10th'];
+    this.fieldStatus = {
+      'Doctorate/Phd': false,
+      'Masters/Post-Graduation': false,
+      'Graduation/Diploma': false,
+      '12th': false,
+      '10th': false,
+      'Below 10th': false
+    };
   }
   ngOnInit() {
     this.applicantForm = new FormGroup({
@@ -89,14 +105,14 @@ export class ApplicantComponent implements OnInit {
     this.educationInfo = true;
     this.personalInfo = false;
   }
-  otherFunction() {
-    console.log('other function');
-    this.otherInfo = true;
-  }
+  // otherFunction() {
+  //   console.log('other function');
+  //   this.otherInfo = true;
+  // }
 
 
   highestEducation(value0: string) {
-    this.higherEducationValue = value0;
+    this.base = value0;
     if (value0 === 'Doctorate/Phd') {
       this.doctorateInfo = true;
       this.twelthInfo = false;
@@ -123,33 +139,54 @@ export class ApplicantComponent implements OnInit {
     }
   }
 
-  addMoreQualifications2() {
-    if (this.higherEducationValue === 'Doctorate/Phd') {
-      this.addEducation1 = true;
-      this.addMore1 = false;
-    } else if (this.higherEducationValue === 'Masters/Post-Graduation') {
-      this.addEducation2 = true;
-      this.addMore1 = false;
-    } else if (this.higherEducationValue === 'Graduation/Diploma') {
-      this.addEducation3 = true;
-      this.addMore1 = false;
-    } else if (this.higherEducationValue === '12th') {
-      this.addEducation4 = true;
+  highestEducation1(value0: string) {
+    this.base = value0;
+    for (const key in this.fieldStatus) {
+      if (this.fieldStatus.hasOwnProperty(key)) {
+        this.fieldStatus[key] = false;
+      }
+    }
+    this.fieldStatus[value0] = true;
+    if (value0 === 'Doctorate/Phd') {
+      this.doctorateInfo1 = true;
+      this.twelthInfo1 = false;
+      this.addMore1 = true;
+    } else if (value0 === 'Masters/Post-Graduation') {
+      this.doctorateInfo1 = true;
+      this.twelthInfo1 = false;
+      this.addMore1 = true;
+    } else if (value0 === 'Graduation/Diploma') {
+      this.doctorateInfo1 = true;
+      this.twelthInfo1 = false;
+      this.addMore1 = true;
+    } else if (value0 === '12th') {
+      this.doctorateInfo1 = false;
+      this.twelthInfo1 = true;
+      this.addMore1 = true;
+    } else if (value0 === '10th') {
+      this.doctorateInfo1 = false;
+      this.twelthInfo1 = true;
       this.addMore1 = false;
     }
   }
 
-  addMoreQualifications5(event: string) {
-    if (event === 'Masters/Post-Graduation') {
-      this.addEducation2 = true;
-
-    } else if (event === 'Graduation/Diploma') {
-      this.addEducation3 = true;
-
-    } else if (event === '12th') {
-      this.addEducation4 = true;
-
+  addMoreQualifications2() {
+    this.addMore1 = false;
+    // tslint:disable-next-line:no-unused-expression
+    this.qualifications.push(this.base);
+    if (this.base === 'Doctorate/Phd') {
+        this.degryIn.shift();
+    } else if (this.base === 'Masters/Post-Graduation') {
+      this.degryIn.shift();
+    } else if (this.base === 'Graduation/Diploma') {
+      this.degryIn.shift();
+    } else if (this.base === '12th') {
+      this.degryIn.shift();
+      this.degryIn.shift();
+      this.degryIn.shift();
+      this.degryIn.shift();
     }
+
   }
 
   onSubmit() {
