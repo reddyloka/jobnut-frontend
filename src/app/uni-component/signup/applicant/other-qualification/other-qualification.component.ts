@@ -8,6 +8,7 @@ import { AbstractControl, ValidatorFn, FormBuilder, FormGroup, FormControl, Vali
 
 })
 export class OtherQualificationComponent implements OnInit {
+  applicantForm: FormGroup;
   otherForm: FormGroup;
 
   higherEducationValue: string;
@@ -73,6 +74,17 @@ export class OtherQualificationComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.applicantForm = new FormGroup({
+    'higherDegreeValue': new FormControl(null, Validators.required),
+      'courseValue': new FormControl(null, Validators.required),
+      'specializationValue': new FormControl(null, Validators.required),
+      'universityName': new FormControl(null, Validators.required),
+      'passingYearValue': new FormControl(null, Validators.required),
+      'boardValue': new FormControl(null, Validators.required),
+      'passingValue': new FormControl(null, Validators.required),
+      'mediumValue': new FormControl(null, Validators.required),
+      'percentageValue': new FormControl(null, Validators.required),
+ });
 
     this.otherForm = new FormGroup({
       'higherDegreeValue': new FormControl(null, Validators.required),

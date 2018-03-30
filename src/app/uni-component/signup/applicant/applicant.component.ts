@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-// import { FormsModule} from '@angular/forms';
-import { AbstractControl, ValidatorFn, FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
+import { AbstractControl, ValidatorFn, FormBuilder, FormGroup, FormControl, Validators,FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-applicant',
   templateUrl: './applicant.component.html',
   styleUrls: ['./applicant.component.css']
 })
 export class ApplicantComponent implements OnInit {
+  skills: string[];
   applicantForm: FormGroup;
   higherEducationValue: string;
   qualificationArray1: any[];
@@ -61,8 +61,10 @@ export class ApplicantComponent implements OnInit {
     this.yearArray = ['2017', '2016', '2015', '2014', '2013', '2012', '2011', '2010', '2009', '2008', '2007', '2006', '2005', '2004'];
     this.boardArray = ['CBSE', 'ICSE', 'ISC'];
     this.mediumArray = ['Telugu', 'Hindi', 'English', 'Kannada', 'Sanskrit'];
-    this.buildFormGroup();
-    // this.nextInfo = true;
+    this.skills = ['Angular', 'CSS', 'Graphic Design', 'Ember', 'HTML',
+                    'Information Architecture', 'Javascript', 'Mechanical Engineering',
+                    'Meteor', 'NodeJS', 'UI Design', 'Python', 'Rails', 'React', 'Ruby', ];
+     this.buildFormGroup();
   }
   buildFormGroup(): void {
     const fg = {
@@ -89,7 +91,6 @@ export class ApplicantComponent implements OnInit {
   personalDetailClicked() {
     this.educationInfo = true;
     this.personalInfo = false;
-
   }
   adddataform(event: any) {
     console.log('event', event);
@@ -156,8 +157,8 @@ export class ApplicantComponent implements OnInit {
 
     }
   }
-  onSubmit(value: any) {
-  
-    console.log('form value is', value);
+
+  onSubmit() {
+    console.log('form value is', this.applicantForm);
   }
 }

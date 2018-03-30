@@ -1,0 +1,19 @@
+<div class="topnav">
+  <a class="active" href="#home">Home</a>
+  <a class="active" href="#home" (click)="adddetails()">Job Post</a>
+</div>
+<br>
+<div class="row">
+  <div class="col-md-3">
+    <ul>
+      <li>abc</li>
+      <li>abc</li>
+      <li>abc</li>
+      <li>abc</li>
+    </ul>
+  </div>
+  <div class="col-md-6" style="border: 2px solid lightgrey;height: 600px">
+    <br>
+   <app-hr-post-list-summary *ngFor="let hrpost of hrpost" [hrpost]=hrpost (userclick)="routeronclicked($event)"></app-hr-post-list-summary>
+  </div>
+</div>
