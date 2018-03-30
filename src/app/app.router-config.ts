@@ -9,10 +9,13 @@ import { ApplicantComponent } from './uni-component/signup/applicant/applicant.c
 // import { EdComponent } from './misc/try/ed/ed.component';
 // import { Routes } from "@angular/router";
 import { CallbackComponent } from './uni-component/misc/callback/callback.component';
+import { HrDashboardComponent } from './dashboard-component/hr-dashboard/hr-dashboard.component';
+import { LoggedInGuard } from './_guards/logged-in.guard';
 
 export const routerConfig: Routes = [
   // basic routes
   { path: 'login', component: LoginComponent },
+  {path: 'hr', component: HrDashboardComponent, canActivate: [LoggedInGuard]},
   { path: 'callback', component: CallbackComponent },
   {
     path: 'signin', component: SignupComponent, children: [

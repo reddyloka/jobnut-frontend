@@ -3,7 +3,6 @@
   "project": {
     "name": "jobnut"
   },
-<<<<<<< HEAD
   "apps": [
     {
       "root": "src",
@@ -20,47 +19,17 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-        "../node_modules/bootstrap/dist/css/bootstrap.min.css",
         "semantic.css",
         "animate.css",
         "styles.css"
       ],
-      "scripts": ["../node_modules/jquery/dist/jquery.min.js"],
+      "scripts": [],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",
         "prod": "environments/environment.prod.ts"
       }
-=======
-  "apps": [{
-    "root": "src",
-    "outDir": "dist",
-    "assets": [
-      "assets",
-      "favicon.ico"
-    ],
-    "index": "index.html",
-    "main": "main.ts",
-    "polyfills": "polyfills.ts",
-    "test": "test.ts",
-    "tsconfig": "tsconfig.app.json",
-    "testTsconfig": "tsconfig.spec.json",
-    "prefix": "app",
-    "styles": [
-      "semantic.css",
-      "animate.css",
-      "styles.css"
-    ],
-    "scripts": [
-      "../node_modules/auth0-js/build/auth0.min.js"
-    ],
-    "environmentSource": "environments/environment.ts",
-    "environments": {
-      "dev": "environments/environment.ts",
-      "prod": "environments/environment.prod.ts"
->>>>>>> 6eddc1ac651eab7237f9e76718112a931074183d
-    }
-  }],
+    }],
   "e2e": {
     "protractor": {
       "config": "./protractor.conf.js"
