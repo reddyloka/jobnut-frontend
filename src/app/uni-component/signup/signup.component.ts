@@ -64,6 +64,15 @@ export class SignupComponent implements OnInit {
 
   async signupComponentCall(caller: string) {
 
+<<<<<<< HEAD
+    await this.frontViewChange(); 
+        this.signupActive = false;
+      if (caller === 'hr') {
+        this.hrActive = true;
+      } else if (caller === 'applicant') {
+        this.applicantActive = true;
+      }
+=======
     await this.frontViewChange();
 
     // await new Promise((res,rej)=> setTimeout(res,1000));
@@ -79,6 +88,7 @@ export class SignupComponent implements OnInit {
       // this.applicantActive = true;
     }
     // }
+>>>>>>> 6eddc1ac651eab7237f9e76718112a931074183d
   }
 
 }

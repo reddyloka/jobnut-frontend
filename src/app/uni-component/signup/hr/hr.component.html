@@ -1,3 +1,11 @@
+<<<<<<< HEAD
+<div class="ui very padded container segment">
+  <form [formGroup]="signupForm" (ngSubmit)="onSubmit()" class="ui form">
+    <h4 class="ui dividing header">New H.R Registration</h4>
+    <div class="field">
+      <label>Name *</label>
+      <div class="two fields">
+=======
 <div class="registration-hr">
   <div class="ui" style="float: left;">
       <span class="arrow left"></span>
@@ -5,6 +13,7 @@
     <div class="ui very padded container segment">
       <form [formGroup]="signupForm" (ngSubmit)="onSubmit()" class="ui form">
         <h4 class="ui dividing header">New H.R Registration</h4>
+>>>>>>> 6eddc1ac651eab7237f9e76718112a931074183d
         <div class="field">
           <label>Name *</label>
           <div class="two fields">
@@ -18,6 +27,74 @@
           </div>
         </div>
         <div class="field">
+<<<<<<< HEAD
+          <input type="text" id="last" placeholder="Last Name" formControlName= "last">
+        </div>
+      </div>
+    </div>
+    <div class="field">
+      <label>Email *</label>
+      <div class="fields">
+        <div class="eight wide field">
+          <input type="text" id="email" placeholder="Email" formControlName= "email">
+        </div> 
+        <div class="eight wide field">
+          <input type="password" id="password" placeholder="Password" formControlName= "password">
+        </div>
+      </div>
+    </div>
+    <div class="two fields">
+      <div class="field">
+        <label>Industry type</label>
+        <select id="option" class="ui fluid dropdown" formControlName= "option">
+          <option>Select</option>
+            <option [value]="option" *ngFor = "let option of options">{{option}}</option>
+        </select>
+      </div>
+      <div class="field">
+          <label>Country</label>
+          <div class="field">
+              <select id="country" class="ui fluid dropdown" formControlName= "country">
+                <option>Select</option>
+                  <option>India</option>
+              </select>
+            </div>
+        </div>
+    </div>
+    <div class="two fields">
+      <div class="field">
+        <label>State</label>
+        <div class="field">
+            <select id="state" class="ui fluid dropdown" formControlName= "state">
+              <option>Select</option>
+                <option [value]="option" *ngFor = "let state of states">{{state}}</option>
+            </select>
+          </div>
+      </div>
+      <div class="field">
+        <label for="">City</label>
+          <input type="text" id="city" formControlName= "city">
+        </div>
+    </div>
+    <div class="eight wide field">
+      <label>Designation *</label>
+      <input type="text" id="designation" placeholder="Designation" formControlName= "designation">
+    </div>
+    <div class="sixteen wide padded field">
+      <label>Address *</label>
+        <input type="text" id="address" placeholder="Address" formControlName= "address">
+    </div>
+    <div class="eight wide field"> 
+      <label>Profile Photo:</label>
+      <input id="image" type="file" id="profile_photo" placeholder="Photo" required="" capture>
+    </div>
+    <div class="ui slider checkbox">
+      <input type="checkbox" name="newsletter">
+    <label>I Agree to the <a href="#">Terms and Conditions</a></label>                
+    </div>
+    <div class="field">
+      <button class="ui button" type="submit" tabindex="0">Register</button>
+=======
           <label>Email *</label>
           <div class="fields">
             <div class="eight wide field">
@@ -97,5 +174,6 @@
           <button [disabled]="signupForm.invalid || imageFile" class="ui button" type="submit" tabindex="0">Register</button>
         </div>
       </form>
+>>>>>>> 6eddc1ac651eab7237f9e76718112a931074183d
     </div>
   </div>
