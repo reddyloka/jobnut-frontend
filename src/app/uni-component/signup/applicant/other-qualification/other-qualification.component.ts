@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { AbstractControl, ValidatorFn, FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-other-qualification',
@@ -7,7 +8,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 })
 export class OtherQualificationComponent implements OnInit {
-
+  applicantForm: FormGroup;
   higherEducationValue: string;
   addMore1: boolean;
   twelthInfo1: boolean;
@@ -65,6 +66,17 @@ export class OtherQualificationComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.applicantForm = new FormGroup({
+    'higherDegreeValue': new FormControl(null, Validators.required),
+      'courseValue': new FormControl(null, Validators.required),
+      'specializationValue': new FormControl(null, Validators.required),
+      'universityName': new FormControl(null, Validators.required),
+      'passingYearValue': new FormControl(null, Validators.required),
+      'boardValue': new FormControl(null, Validators.required),
+      'passingValue': new FormControl(null, Validators.required),
+      'mediumValue': new FormControl(null, Validators.required),
+      'percentageValue': new FormControl(null, Validators.required),
+ });
 
   }
 

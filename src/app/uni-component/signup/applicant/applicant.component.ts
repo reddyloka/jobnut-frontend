@@ -6,6 +6,7 @@ import { AbstractControl, ValidatorFn, FormBuilder, FormGroup, FormControl, Vali
   styleUrls: ['./applicant.component.css']
 })
 export class ApplicantComponent implements OnInit {
+  skills: string[];
   applicantForm: FormGroup;
   higherEducationValue: string;
   qualificationArray1: any[];
@@ -60,31 +61,33 @@ export class ApplicantComponent implements OnInit {
     this.yearArray = ['2017', '2016', '2015', '2014', '2013', '2012', '2011', '2010', '2009', '2008', '2007', '2006', '2005', '2004'];
     this.boardArray = ['CBSE', 'ICSE', 'ISC'];
     this.mediumArray = ['Telugu', 'Hindi', 'English', 'Kannada', 'Sanskrit'];
+    this.skills = ['Angular', 'CSS', 'Graphic Design', 'Ember', 'HTML',
+                    'Information Architecture', 'Javascript', 'Mechanical Engineering',
+                    'Meteor', 'NodeJS', 'UI Design', 'Python', 'Rails', 'React', 'Ruby', ];
 
   }
   ngOnInit() {
-    // this.applicantForm = new FormGroup({
-    //   'name': new FormControl(null, Validators.required),
-    //   'email': new FormControl(null, [Validators.required, Validators.email]),
-    //   'password': new FormControl(null, Validators.required),
-    //   'number': new FormControl(null, Validators.required),
-    //   'higherDegreeValue': new FormControl(null, Validators.required),
-    //   'courseValue': new FormControl(null, Validators.required),
-    //   'specializationValue': new FormControl(null, Validators.required),
-    //   'universityName': new FormControl(null, Validators.required),
-    //   'passingYearValue': new FormControl(null, Validators.required),
-    //   'boardValue': new FormControl(null, Validators.required),
-    //   'passingValue': new FormControl(null, Validators.required),
-    //   'mediumValue': new FormControl(null, Validators.required),
-    //   'percentageValue': new FormControl(null, Validators.required),
-    //   'skillsValue': new FormControl(null, Validators.required),
+    this.applicantForm = new FormGroup({
+      'name': new FormControl(null, Validators.required),
+      'email': new FormControl(null, [Validators.required, Validators.email]),
+      'password': new FormControl(null, Validators.required),
+      'number': new FormControl(null, Validators.required),
+      'higherDegreeValue': new FormControl(null, Validators.required),
+      'courseValue': new FormControl(null, Validators.required),
+      'specializationValue': new FormControl(null, Validators.required),
+      'universityName': new FormControl(null, Validators.required),
+      'passingYearValue': new FormControl(null, Validators.required),
+      'boardValue': new FormControl(null, Validators.required),
+      'passingValue': new FormControl(null, Validators.required),
+      'mediumValue': new FormControl(null, Validators.required),
+      'percentageValue': new FormControl(null, Validators.required),
+      'skillsValue': new FormControl(null, Validators.required),
 
-    // });
+    });
   }
   personalDetailClicked() {
     this.educationInfo = true;
     this.personalInfo = false;
-
   }
   otherFunction() {
     console.log('other function');
@@ -148,6 +151,7 @@ export class ApplicantComponent implements OnInit {
 
     }
   }
+
   onSubmit() {
     console.log('form value is', this.applicantForm);
   }
