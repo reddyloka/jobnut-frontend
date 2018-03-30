@@ -66,8 +66,11 @@ export class HrComponent implements OnInit {
     // }, 2000);
   }
 
+<<<<<<< HEAD
   states = ['Andaman and Nicobar Islands', 'Andhra Pradesh', 'Arunachal Pradesh',   'Assam', 'Bihar', 'Chandigarh', 'Chhattisgarh', 'Dadra and Nagar Haveli', 'Daman and Diu', 'Delhi', 'Goa', 'Gujarat', 'Haryana', 'Himachal Pradesh', 'Jammu and Kashmir', 'Jharkhand', 'Karnataka', 'Kerala', 'Lakshadweep', 'Madhya Pradesh', 'Maharashtra', 'Manipur', 'Meghalaya', 'Mizoram', 'Nagaland', 'Orissa', 'Pondicherry', 'Punjab', 'Rajasthan', 'Sikkim', 'Tamil Nadu', 'Tripura', 'Uttar Pradesh', 'Uttaranchal', 'West Bengal'];
 
+=======
+>>>>>>> 43d5fe62d12d9ef85437eed5de6361c9d228dd3d
   fileTypeCheck(event): any {
     if (event.target.files && event.target.files[0]) {
       const file = event.target.files[0];

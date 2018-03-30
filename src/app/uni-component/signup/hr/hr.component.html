@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div class="ui very padded container segment">
   <form [formGroup]="signupForm" (ngSubmit)="onSubmit()" class="ui form">
     <h4 class="ui dividing header">New H.R Registration</h4>
@@ -7,10 +8,30 @@
         <div class="field registration-hr">
           <div class="ui" style="float: left;">
             <span class="arrow left"></span>
+=======
+<div class="registration-hr">
+  <div class="ui" style="float: left;">
+      <span class="arrow left"></span>
+  </div>
+    <div class="ui very padded container segment">
+      <form [formGroup]="signupForm" (ngSubmit)="onSubmit()" class="ui form">
+        <h4 class="ui dividing header">New H.R Registration</h4>
+        <div class="field">
+          <label>Name *</label>
+          <div class="two fields">
+            <div class="field">
+              <input type="text" id="first" placeholder="First Name" 
+              [(ngModel)]="user_details.fname"formControlName="fname">
+            </div>
+            <div class="field">
+              <input type="text" id="last" placeholder="Last Name" [(ngModel)]="user_details.lname" formControlName="lname">
+            </div>
+>>>>>>> 43d5fe62d12d9ef85437eed5de6361c9d228dd3d
           </div>
           <input type="text" id="first" placeholder="First Name" [(ngModel)]="user_details.fname" formControlName="fname">
         </div>
         <div class="field">
+<<<<<<< HEAD
           <input type="text" id="last" placeholder="Last Name" [(ngModel)]="user_details.lname" formControlName="lname">
         </div>
       </div>
@@ -85,6 +106,65 @@
       <button class="ui button" type="submit" tabindex="0">Register</button>
       <label>Email *</label>
       <div class="fields">
+=======
+          <label>Email *</label>
+          <div class="fields">
+            <div class="eight wide field">
+              <input type="text" id="email" placeholder="Email" [(ngModel)]="user_details.email" formControlName="email">
+            </div>
+            <div class="eight wide field">
+              <input type="password" id="password" placeholder="Password" [(ngModel)]="user_details.password" formControlName="password">
+            </div>
+          </div>
+        </div>
+        <div class="two fields">
+          <div class="field">
+            <label>Industry type</label>
+            <select id="option" class="ui fluid dropdown" formControlName="option">
+              <option>Select</option>
+              <option [value]="option" *ngFor="let option of options">{{option}}</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Country</label>
+            <div class="ui fluid search selection dropdown">
+              <input type="" id="country">
+              <i class="dropdown icon"></i>
+              <div class="default text">Select Country</div>
+              <div class="menu">
+                <div class="item" data-value="af">
+                  <i class="af flag"></i>Afghanistan</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="two fields">
+          <div class="field">
+            <label>State</label>
+            <div class="ui fluid search selection dropdown">
+              <input type="" id="states">
+              <i class="dropdown icon"></i>
+              <div class="default text">Select State</div>
+              <div class="menu">
+                <div class="item" data-value="af">
+                  <i class="af flag"></i>Punjab</div>
+              </div>
+            </div>
+          </div>
+          <div class="field">
+            <label>City</label>
+            <div class="ui fluid search selection dropdown">
+              <input type="" id="city">
+              <i class="dropdown icon"></i>
+              <div class="default text">Select City</div>
+              <div class="menu">
+                <div class="item" data-value="af">
+                  <i class="af flag"></i>Phagwara</div>
+              </div>
+            </div>
+          </div>
+        </div>
+>>>>>>> 43d5fe62d12d9ef85437eed5de6361c9d228dd3d
         <div class="eight wide field">
           <input type="text" id="email" placeholder="Email" [(ngModel)]="user_details.email" formControlName="email">
         </div>
@@ -138,6 +218,7 @@
               <i class="af flag"></i>Phagwara</div>
           </div>
         </div>
+<<<<<<< HEAD
       </div>
     </div>
     <div class="eight wide field">
@@ -160,6 +241,9 @@
     </div>
     <div class="field">
       <button [disabled]="signupForm.invalid || imageFile" class="ui button" type="submit" tabindex="0">Register</button>
+=======
+      </form>
+>>>>>>> 43d5fe62d12d9ef85437eed5de6361c9d228dd3d
     </div>
   </form>
 </div>

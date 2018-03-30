@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../../services/authentication/auth.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { JwtService } from '../../_helper/jwt.service';
 
 @Component({
   selector: 'app-login',
@@ -17,6 +18,7 @@ export class LoginComponent implements OnInit {
   variable: any;
 
   constructor(
+    private _jwtService: JwtService,
     private fb: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
@@ -25,11 +27,9 @@ export class LoginComponent implements OnInit {
     this.message = {
       username: {
         text: 'Username Required!',
-        class: 'hidden'
       },
       password: {
         text: 'Password Required!',
-        class: 'hidden'
       }
     };
 
@@ -41,6 +41,12 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
+    if (this._authService.isLoggedIn) {
+      if (this._jwtService.getToken()) {
+        this.router.navigateByUrl('signin');
+      }
+      this.router.navigateByUrl('');
+    }
   }
 
 

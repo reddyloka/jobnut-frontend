@@ -22,7 +22,6 @@ export class AuthService {
     console.log('inside', formData);
     return this.http.post(
       USER_SERVER + '/v1/hr', formData)
-      // .map((res: Response) => res.json())
       .do((res) => {
         return this.setSession;
       })
@@ -37,10 +36,10 @@ export class AuthService {
     // localStorage.setItem('expires_at', JSON.stringify(expiresAt.valueOf()));
   }
 
-  // logout() {
-  //   localStorage.removeItem('id_token');
-  //   localStorage.removeItem('expires_at');
-  // }
+  logout() {
+    localStorage.removeItem('id_token');
+    // localStorage.removeItem('expires_at');
+  }
 
   public isLoggedIn() {
     return moment().isBefore(this.getExpiration());

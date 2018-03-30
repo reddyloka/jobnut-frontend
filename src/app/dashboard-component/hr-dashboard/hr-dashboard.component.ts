@@ -7,32 +7,44 @@ import { Router } from '@angular/router';
   styleUrls: ['./hr-dashboard.component.css']
 })
 export class HrDashboardComponent implements OnInit {
- detailsOpen: boolean;
- jobOpen: boolean;
- skillsOpen: boolean;
+  detailsOpen: boolean;
+  jobOpen: boolean;
+  skillsOpen: boolean;
 
+<<<<<<< HEAD
   constructor(private router: Router) { 
    this.detailsOpen = false; 
    this.jobOpen = false;
    this.skillsOpen = false;
+=======
+
+  constructor(private router: Router) {
+    this.detailsOpen = false;
+    this.jobOpen = false;
+    this.skillsOpen = false;
+>>>>>>> 43d5fe62d12d9ef85437eed5de6361c9d228dd3d
   }
 
   ngOnInit() {
   }
+<<<<<<< HEAD
   
   getDetails(){
+=======
+  getDetails() {
+>>>>>>> 43d5fe62d12d9ef85437eed5de6361c9d228dd3d
     this.detailsOpen = true;
   }
   closeDetails() {
     this.detailsOpen = false;
   }
-  getJob(){
+  getJob() {
     this.jobOpen = true;
   }
   closeJob() {
     this.jobOpen = false;
   }
-  getSkills(){
+  getSkills() {
     this.skillsOpen = true;
   }
   closeSkills() {
