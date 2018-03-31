@@ -13,7 +13,6 @@ export class HrSkillComponent implements OnInit {
   items: any;
   levels: any;
   functional: any;
- 
   hrskillForm: FormGroup
 
   constructor() {
@@ -29,8 +28,8 @@ export class HrSkillComponent implements OnInit {
     const fg = {
       'industry': new FormControl(null, Validators.required),
       'functional': new FormControl(null, Validators.required),
-      'levels': new FormControl(null, [Validators.required]),
-      'hirefor': new FormControl(null, Validators.required),
+      'level': new FormControl(null, [Validators.required]),
+      'client': new FormControl(null, Validators.required),
       'skills': new FormControl(null, Validators.required),
     };
     this.hrskillForm = new FormGroup(fg);
