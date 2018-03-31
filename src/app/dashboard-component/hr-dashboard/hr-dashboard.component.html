@@ -1,38 +1,32 @@
 <div class="ui pointing menu">
-  <a class="item active">
-    Home
-  </a>
-  <a class="item">
-    Profile
-  </a>
-  <a class="item" (click)="logoutClicked()">
-    Jobs
-  </a>
-  <a class="item float right" (click)="logout()">Log out</a>
+  <a class="item active">Home </a>
+  <a class="item" (click)="getDetails()"> Profile </a>
+  <a class="item" (click)=" getJob()">New Job</a>
+  <a class="item float right" (click)="logoutClicked()">Log out</a>
 </div>
-<div class = "ui very padded container segment">
+<div class="ui very padded container segment">
   <div class="">
-      <h3 class="ui dividing header">H.R Dashboard</h3>
-      <hr> 
-      <div class="field">
-        <h4 class="inline">Personal Details</h4>
-        <a class="fr" (click)="getDetails()">Edit</a>
-      </div>
-      <app-hr-details (discardClick)="closeDetails()" *ngIf="detailsOpen"></app-hr-details>
-      <hr>
+    <h3 class="ui dividing header">H.R Dashboard</h3>
+    <hr>
+    <div class="field">
+      <h4 class="inline">Personal Details</h4>
+      <a class="fr" (click)="getDetails()">Edit</a>
+    </div>
+    <app-hr-details (discardClick)="closeDetails()" *ngIf="detailsOpen"></app-hr-details>
+    <hr>
 
-      <div class="field">
-        <h4 class="inline">New Job Post</h4>
-        <a class="fr" (click)="getJob()">Edit</a>
-      </div>
-      <app-hr-newjob (discardClick)="closeJob()" *ngIf="jobOpen"></app-hr-newjob>
-      
-      <hr>
-      <div class="field">
-        <h4 class="inline">Skills I Looking For</h4>
-        <a class="fr" (click)="getSkills()">Edit</a>
-      </div>
-      <app-hr-skill (discardClick)="closeSkills()" *ngIf="skillsOpen"></app-hr-skill>
-      <hr>
-      </div>
+    <div class="field">
+      <h4 class="inline">New Job Post</h4>
+      <a class="fr" (click)="getJob()">Edit</a>
+    </div>
+    <app-hr-newjob (discardClick)="closeJob()" *ngIf="jobOpen"></app-hr-newjob>
+
+    <hr>
+    <div class="field">
+      <h4 class="inline">Skills I Looking For</h4>
+      <a class="fr" (click)="getSkills()">Edit</a>
+    </div>
+    <app-hr-skill (discardClick)="closeSkills()" *ngIf="skillsOpen"></app-hr-skill>
+    <hr>
   </div>
+</div>
