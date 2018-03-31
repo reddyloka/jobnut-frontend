@@ -1,6 +1,5 @@
-
-
 export class HrPostDetail {
+    
     public id: number;
     public title: string;
     public companyname: string;
@@ -48,5 +47,4 @@ export class HrPostDetail {
 
         return new HrPostDetail(-1 , '', '',  '', null, null, '', '', null, '', null, '', null, '', '', '', '', '');
         }
-
 }

@@ -39,6 +39,7 @@ export const routerConfig: Routes = [
   //   redirectTo: 'signin-hr',
   //   pathMatch: 'full'
   // },
+  { path: 'hr', component: HrDashboardComponent },
   { path: 'login-user-view', component: LoginViewComponent },
   { path: 'login-user-view/:login-post.id', component: LoginViewPostDetailsComponent },
   { path: 'hr-post', component: HrPostComponent },

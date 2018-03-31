@@ -1,6 +1,6 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit,AfterViewInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-// import {SelectModule} from 'ng2-select';
+declare var $: any;
 
 @Component({
   selector: 'app-hr-skill',
@@ -10,72 +10,46 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 export class HrSkillComponent implements OnInit {
   @Output()
   discardClick = new EventEmitter<boolean>();
-  // hrskillForm: FormGroup
+  items: any;
+  levels: any;
+  functional: any;
+ 
+  hrskillForm: FormGroup
 
   constructor() {
-    // this.buildFormGroup();
+    this.buildFormGroup();
+    this.items = ['Textiles / Garments / Fashion / Accessories', 'Accounting / Finance', 'Advertising / PR / MR / Event Management', 'Agriculture / Dairy', 'Hotels / Restaurants / Airlines / Travel', 'Architecture / Interior Design', 'Automobile / Auto Anciliary / Auto Components', 'Pharma / Biotechnology / Clinical Research', 'Construction / Engineering / Cement / Metals', 'Chemicals / PetroChemical / Plastics / Rubber', 'FMCG / Foods / Beverage', 'Consumer Goods / Durables', 'Courier / Transportation / Freight/ Warehousing', 'BPO / Call Centre / ITES', 'Education / Teaching / Training', 'Recruitment', 'Media / Dotcom / Entertainment', 'Export / Import', 'Gems / Jewellery', 'IT Hardware / Networking', 'Medical / Healthcare / Hospital', 'Insurance', 'Legal', 'Industrial Products/ Heavy Machinery', 'NGO / Social Services', 'Office Equipment / Automation', 'Oil and Gas / Power / Infrastructure / Projects', 'Packaging / Printing', 'Real Estate / Property', 'Retail', 'Security / Law Enforcement', 'IT Software / Software Services', 'Semiconductors / Electronics', 'Telecom/ISP', 'Other', 'Shipping/Marine', 'Animation / Gaming', 'Banking/FinancialServices/Broking', 'Brewery/Distillery', 'Ceramics/Sanitaryware', 'Government/Defence', 'Electricals/Switchgears', 'FacilityManagement', 'fertilizers/Pesticides', 'FoodProcessing', 'HeatVentilation/AirConditioning', 'KPO/Research/Analytics', 'Mining', 'Publishing', 'Steel', 'Strategy/ManagementConsultingFirms', 'Tyres', 'WaterTreatment/WasteManagement', 'Wellness/Fitness/Sports'];
+
+    this.levels = ['Junior level', 'Mid level', 'High level', 'Top management level'];
+
+    this.functional = ['Accounts / Finance / Tax / CS / Audit', 'Architecture / Interior Design', 'Web / Graphic Design / Visualiser', 'Hotels / Restaurants', 'Content / Journalism', 'Banking / Insurance', 'Corporate Planning / Consulting', 'ITES / BPO / KPO / Customer Service / Operations', 'Self Employed / Consultants', 'Export / Import / Merchandising', 'Secretary / Front Office / Data Entry', 'HR / Administration / IR', 'Legal', 'Purchase / Logistics / Supply Chain', 'Marketing / Advertising / MR / PR', 'Pharma / Biotech / Healthcare / Medical / R&D', 'Packaging', 'Production / Maintenance / Quality', 'Site Engineering / Project Management', 'Engineering Design / R&D', 'Sales / BD', 'Teaching / Education', 'IT- Hardware / Telecom / Technical Staff / Support', 'Top Management', 'Other', 'Fashion / Garments / Merchandising', 'TV / Films / Production', 'Ticketing / Travel / Airlines', 'Guards / Security Services', 'Agent', 'IT Software - Application Programming / Maintenance', 'IT Software - Client Server', 'IT Software - DBA / Datawarehousing', 'IT Software - ERP / CRM', 'IT Software - Embedded /EDA /VLSI /ASIC /Chip Des.', 'IT Software - Network Administration / Security', 'IT Software - QA & Testing', 'IT Software - System Programming', 'IT Software - Telecom Software', 'IT Software - Systems / EDP / MIS', 'IT Software - E-Commerce / Internet Technologies', 'IT Software - Mainframe', 'IT Software - Mobile', 'IT Software - Middleware', 'IT Software - Other', 'Analytics & Business Intelligence', 'Shipping', 'CSR & Sustainability', 'Beauty / Fitness / Spa Services'];
    }
-  //  buildFormGroup(): void {
-  //   const fg = {
-  //     'industry': new FormControl(null, Validators.required),
-  //     'functional': new FormControl(null, Validators.required),
-  //     'levels': new FormControl(null, [Validators.required]),
-  //     'hirefor': new FormControl(null, Validators.required),
-  //     'skills': new FormControl(null, Validators.required),
-  //   };
-  //   this.hrskillForm = new FormGroup(fg);
-  // }
+   
+   buildFormGroup(): void {
+    const fg = {
+      'industry': new FormControl(null, Validators.required),
+      'functional': new FormControl(null, Validators.required),
+      'levels': new FormControl(null, [Validators.required]),
+      'hirefor': new FormControl(null, Validators.required),
+      'skills': new FormControl(null, Validators.required),
+    };
+    this.hrskillForm = new FormGroup(fg);
+  }
 
   ngOnInit() {
-  }
-  /////////////////////////////////////////////////////////////////
-  public items:Array<string> = ['Amsterdam', 'Antwerp', 'Athens', 'Barcelona',
-  'Berlin', 'Birmingham', 'Bradford', 'Bremen', 'Brussels', 'Bucharest',
-  'Budapest', 'Cologne', 'Copenhagen', 'Dortmund', 'Dresden', 'Dublin', 'Düsseldorf',
-  'Essen', 'Frankfurt', 'Genoa', 'Glasgow', 'Gothenburg', 'Hamburg', 'Hannover',
-  'Helsinki', 'Leeds', 'Leipzig', 'Lisbon', 'Łódź', 'London', 'Kraków', 'Madrid',
-  'Málaga', 'Manchester', 'Marseille', 'Milan', 'Munich', 'Naples', 'Palermo',
-  'Paris', 'Poznań', 'Prague', 'Riga', 'Rome', 'Rotterdam', 'Seville', 'Sheffield',
-  'Sofia', 'Stockholm', 'Stuttgart', 'The Hague', 'Turin', 'Valencia', 'Vienna',
-  'Vilnius', 'Warsaw', 'Wrocław', 'Zagreb', 'Zaragoza'];
-
-private value:any = ['Athens'];
-private _disabledV:string = '0';
-private disabled:boolean = false;
-
-private get disabledV():string {
-  return this._disabledV;
-}
-
-private set disabledV(value:string) {
-  this._disabledV = value;
-  this.disabled = this._disabledV === '1';
-}
-
-public selected(value:any):void {
-  console.log('Selected value is: ', value);
-}
-
-public removed(value:any):void {
-  console.log('Removed value is: ', value);
-}
-
-public refreshValue(value:any):void {
-  this.value = value;
-}
-
-  public itemsToString(value:Array<any> = []):string {
-    return value
-      .map((item:any) => {
-        return item.text;
-      }).join(',');
+    $('.dropdown').dropdown({
+      label: {
+        duration: 0,
+      },
+      debug: true,
+      performance: true,
+    });
   }
 
-  /////////////////////////////////////////////////////////////////
   discardClicked() {
     this.discardClick.emit(true);
   }
   onSubmit(){
-    // console.log(this.hrskillForm);
+    console.log(this.hrskillForm);
   }
 }

@@ -23,10 +23,10 @@ export class HrDashboardComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log('from hr: ', this._authService.isLoggedIn());
-    if (!this._authService.isLoggedIn()) {
-      this.router.navigateByUrl('login');
-    }
+    // console.log('from hr: ', this._authService.isLoggedIn());
+    // if (!this._authService.isLoggedIn()) {
+    //   this.router.navigateByUrl('login');
+    // }
   }
   getDetails() {
     this.detailsOpen = true;
