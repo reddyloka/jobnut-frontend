@@ -15,6 +15,7 @@ export class UserBaseService {
     return this.http.put(USER_SERVER + `/v1/hr`, userDetail)
       .toPromise()
       .then((response) => {
+        console.log(' 123 : ', response);
         return true;
         // const final_userDetail =
       });

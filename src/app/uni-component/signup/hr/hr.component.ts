@@ -18,6 +18,7 @@ export class HrComponent implements OnInit {
   // my variables Abhhishek Mittal
   user_details: Userbase;
   profile_photo: File;
+  userExist: boolean;
 
   ngOnInit() {
     this.imageFile = false;
@@ -31,6 +32,7 @@ export class HrComponent implements OnInit {
     this.user_details = Userbase.createBlankUser();
     this.buildFormGroup();
     this.profile_photo =  null;
+    this.userExist = false;
     this.user_details.isHr = true;
     this.user_details.status = true;
   }

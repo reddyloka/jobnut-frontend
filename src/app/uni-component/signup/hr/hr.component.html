@@ -94,8 +94,15 @@
           </label>
         </div>
         <div class="field">
-          <button [disabled]="signupForm.invalid || imageFile" class="ui button" type="submit" tabindex="0">Register</button>
+          <!-- <button [disabled]="signupForm.invalid || imageFile" class="ui button" type="submit" tabindex="0">Register</button> -->
+          <button class="ui button" type="submit" tabindex="0">Register</button>
         </div>
       </form>
     </div>
+    <div class="ui very padded container segment" *ngIf="userExist">
+      <div class="ui horizontal divider">
+          User Exists
+        </div>
+        <button class="ui fluid button" type="submit">Login</button>
+      </div>
   </div>

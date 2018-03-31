@@ -53,5 +53,6 @@ export class HrDashboardComponent implements OnInit {
   logoutClicked() {
     console.log('log out clicked');
     this._authService.logout();
+    this.router.navigateByUrl('login');
   }
 }

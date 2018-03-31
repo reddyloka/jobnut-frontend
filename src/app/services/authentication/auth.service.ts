@@ -41,7 +41,7 @@ export class AuthService {
 
   logout() {
     this.jwtservice.destroyToken();
-    localStorage.removeItem('expires_at');
+    // localStorage.removeItem('expires_at');
   }
 
   public isLoggedIn() {
