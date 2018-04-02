@@ -1,5 +1,3 @@
-
-
 export class HrPostDetail {
     public id: string;
     public title: string;
@@ -48,5 +46,4 @@ export class HrPostDetail {
 
         return new HrPostDetail(null , '', '',  '', null, null, '', '', null, '', null, '', null, '', '', '', '', '');
         }
-
 }

@@ -15,7 +15,7 @@ import { LoginViewPostDeatilssummaryComponent } from './dashboard-component/logi
 
 import { CallbackComponent } from './uni-component/misc/callback/callback.component';
 import { LoggedInGuard } from './_guards/logged-in.guard';
-
+import { HrDashboardDetailsComponent } from './dashboard-component/hr-dashboard/hr-dashboard-details/hr-dashboard-details.component';
 export const routerConfig: Routes = [
   // basic routes
   { path: 'login', component: LoginComponent },
@@ -39,6 +39,7 @@ export const routerConfig: Routes = [
   //   redirectTo: 'signin-hr',
   //   pathMatch: 'full'
   // },
+  { path: 'hr', component: HrDashboardDetailsComponent },
   { path: 'login-user-view', component: LoginViewComponent },
   { path: 'login-user-view/:login-post.id', component: LoginViewPostDetailsComponent },
   { path: 'hr-post', component: HrPostComponent },
