@@ -1,18 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, ValidatorFn, FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
+import { AbstractControl, ValidatorFn, FormBuilder, FormGroup, FormControl, Validators, FormsModule } from '@angular/forms';
+import { UserBaseService } from '../../../services/userbase/user-base.service';
+import { ApplicantBase } from '../../../model/applicantbase';
 @Component({
   selector: 'app-applicant',
   templateUrl: './applicant.component.html',
   styleUrls: ['./applicant.component.css']
 })
 export class ApplicantComponent implements OnInit {
-  doctorateInfo1: boolean;
-  twelthInfo1: boolean;
-  fieldStatus: any;
-  indexValue: number;
-  degryIn: string[];
-  qualifications: any[];
-  base: any;
   skills: string[];
   applicantForm: FormGroup;
   higherEducationValue: string;
@@ -40,10 +35,18 @@ export class ApplicantComponent implements OnInit {
   addMore3: boolean;
   addMore4: boolean;
   highestDegreeArray: string[];
+  nextInfo: boolean;
+
+  user_details: ApplicantBase;
+  profile_photo: File;
+  isApplicant: boolean;
+  isHr: boolean;
+  status: boolean;
 
 
-
-  constructor() {
+  constructor(private _userService: UserBaseService) {
+    this.user_details = ApplicantBase.createblank();
+    this.buildFormGroup();
     this.personalInfo = true;
     this.educationInfo = false;
     this.doctorateInfo = false;
@@ -69,50 +72,54 @@ export class ApplicantComponent implements OnInit {
     this.boardArray = ['CBSE', 'ICSE', 'ISC'];
     this.mediumArray = ['Telugu', 'Hindi', 'English', 'Kannada', 'Sanskrit'];
     this.skills = ['Angular', 'CSS', 'Graphic Design', 'Ember', 'HTML',
-                    'Information Architecture', 'Javascript', 'Mechanical Engineering',
-                    'Meteor', 'NodeJS', 'UI Design', 'Python', 'Rails', 'React', 'Ruby', ];
-    this.qualifications = [];
-    this.degryIn = ['Doctorate/Phd', 'Masters/Post-Graduation', 'Graduation/Diploma', '12th', '10th', 'Below 10th'];
-    this.fieldStatus = {
-      'Doctorate/Phd': false,
-      'Masters/Post-Graduation': false,
-      'Graduation/Diploma': false,
-      '12th': false,
-      '10th': false,
-      'Below 10th': false
+      'Information Architecture', 'Javascript', 'Mechanical Engineering',
+      'Meteor', 'NodeJS', 'UI Design', 'Python', 'Rails', 'React', 'Ruby'];
+    this.profile_photo = null;
+    this.isApplicant = true;
+    this.isHr = false;
+    this.status = true;
+  }
+  buildFormGroup(): void {
+    const fg = {
+      'fname': new FormControl(this.user_details.fname, [Validators.required]),
+      'lname': new FormControl(this.user_details.lname, [Validators.required]),
+      'email': new FormControl(this.user_details.email, [Validators.required, Validators.email]),
+      'dob': new FormControl(this.user_details.dob, [Validators.required]),
+      'password': new FormControl(this.user_details.password, Validators.required),
+      'phone': new FormControl(this.user_details.phone, [Validators.required, Validators.minLength(10), Validators.maxLength(10)]),
+      'higherDegreeValue': new FormControl(this.user_details.higherDegreeValue, ),
+      'courseValue': new FormControl(this.user_details.courseValue, ),
+      'specializationValue': new FormControl(this.user_details.specializationValue, ),
+      'universityName': new FormControl(this.user_details.universityName, ),
+      'passingYearValue': new FormControl(this.user_details.passingValue, ),
+      'boardValue': new FormControl(this.user_details.boardValue, ),
+      'passingValue': new FormControl(this.user_details.passingValue, ),
+      'mediumValue': new FormControl(this.user_details.mediumValue, ),
+      'percentageValue': new FormControl(this.user_details.percentageValue, ),
+      'skillValue': new FormControl(this.user_details.skillValue, Validators.required),
     };
+    this.user_details.isApplicant = this.isApplicant;
+    this.user_details.isHr = this.isHr;
+    this.user_details.status = this.status;
+    this.applicantForm = new FormGroup(fg);
   }
   ngOnInit() {
-    this.applicantForm = new FormGroup({
-      'name': new FormControl(null, Validators.required),
-      'email': new FormControl(null, [Validators.required, Validators.email]),
-      'password': new FormControl(null, Validators.required),
-      'number': new FormControl(null, Validators.required),
-      'higherDegreeValue': new FormControl(null, Validators.required),
-      'courseValue': new FormControl(null, Validators.required),
-      'specializationValue': new FormControl(null, Validators.required),
-      'universityName': new FormControl(null, Validators.required),
-      'passingYearValue': new FormControl(null, Validators.required),
-      'boardValue': new FormControl(null, Validators.required),
-      'passingValue': new FormControl(null, Validators.required),
-      'mediumValue': new FormControl(null, Validators.required),
-      'percentageValue': new FormControl(null, Validators.required),
-      'skillsValue': new FormControl(null, Validators.required),
-
-    });
   }
   personalDetailClicked() {
     this.educationInfo = true;
     this.personalInfo = false;
   }
-  // otherFunction() {
-  //   console.log('other function');
-  //   this.otherInfo = true;
-  // }
+  adddataform(event: any) {
+    console.log('event', event);
+  }
+  otherFunction() {
+    console.log('other function');
+    this.otherInfo = true;
+  }
 
 
   highestEducation(value0: string) {
-    this.base = value0;
+    this.higherEducationValue = value0;
     if (value0 === 'Doctorate/Phd') {
       this.doctorateInfo = true;
       this.twelthInfo = false;
@@ -139,57 +146,44 @@ export class ApplicantComponent implements OnInit {
     }
   }
 
-  highestEducation1(value0: string) {
-    this.base = value0;
-    for (const key in this.fieldStatus) {
-      if (this.fieldStatus.hasOwnProperty(key)) {
-        this.fieldStatus[key] = false;
-      }
-    }
-    this.fieldStatus[value0] = true;
-    if (value0 === 'Doctorate/Phd') {
-      this.doctorateInfo1 = true;
-      this.twelthInfo1 = false;
-      this.addMore1 = true;
-    } else if (value0 === 'Masters/Post-Graduation') {
-      this.doctorateInfo1 = true;
-      this.twelthInfo1 = false;
-      this.addMore1 = true;
-    } else if (value0 === 'Graduation/Diploma') {
-      this.doctorateInfo1 = true;
-      this.twelthInfo1 = false;
-      this.addMore1 = true;
-    } else if (value0 === '12th') {
-      this.doctorateInfo1 = false;
-      this.twelthInfo1 = true;
-      this.addMore1 = true;
-    } else if (value0 === '10th') {
-      this.doctorateInfo1 = false;
-      this.twelthInfo1 = true;
+  addMoreQualifications2() {
+    if (this.higherEducationValue === 'Doctorate/Phd') {
+      this.addEducation1 = true;
+      this.addMore1 = false;
+    } else if (this.higherEducationValue === 'Masters/Post-Graduation') {
+      this.addEducation2 = true;
+      this.addMore1 = false;
+    } else if (this.higherEducationValue === 'Graduation/Diploma') {
+      this.addEducation3 = true;
+      this.addMore1 = false;
+    } else if (this.higherEducationValue === '12th') {
+      this.addEducation4 = true;
       this.addMore1 = false;
     }
   }
 
-  addMoreQualifications2() {
-    this.addMore1 = false;
-    // tslint:disable-next-line:no-unused-expression
-    this.qualifications.push(this.base);
-    if (this.base === 'Doctorate/Phd') {
-        this.degryIn.shift();
-    } else if (this.base === 'Masters/Post-Graduation') {
-      this.degryIn.shift();
-    } else if (this.base === 'Graduation/Diploma') {
-      this.degryIn.shift();
-    } else if (this.base === '12th') {
-      this.degryIn.shift();
-      this.degryIn.shift();
-      this.degryIn.shift();
-      this.degryIn.shift();
-    }
+  addMoreQualifications5(event: string) {
+    if (event === 'Masters/Post-Graduation') {
+      this.addEducation2 = true;
 
+    } else if (event === 'Graduation/Diploma') {
+      this.addEducation3 = true;
+
+    } else if (event === '12th') {
+      this.addEducation4 = true;
+
+    }
   }
 
   onSubmit() {
-    console.log('form value is', this.applicantForm);
+    this.buildFormGroup();
+    console.log('user detaails for applicant', this.user_details);
+
+    this._userService.addNewUser(this.user_details, {
+      profile_photo: this.profile_photo
+    })
+      .then((result) => {
+        console.log(result);
+      });
   }
 }

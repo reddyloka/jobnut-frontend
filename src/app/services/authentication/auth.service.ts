@@ -23,7 +23,7 @@ export class AuthService {
   login(formData) {
     console.log('inside', formData);
     return this.http.post(
-      USER_SERVER + '/v1/hr', formData)
+      USER_SERVER + '/api/login', formData)
       .do(res => {
         // console.log('response is: ', res);
         this.setSession(res);

@@ -11,8 +11,8 @@ export class UserBaseService {
 
   constructor(private http: Http) { }
 
-  addNewUser(userDetail: Userbase, files: {}): Promise<boolean> {
-    return this.http.put(USER_SERVER + `/v1/hr`, userDetail)
+  addNewUser(userDetail: any, files: {}): Promise<boolean> {
+    return this.http.post(USER_SERVER + `/api/hr`, userDetail)
       .toPromise()
       .then((response) => {
         console.log(' 123 : ', response);

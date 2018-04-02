@@ -8,115 +8,31 @@
   <a class="item" (click)="logoutClicked()">
     Jobs
   </a>
+  <a class="item float right" (click)="logout()">Log out</a>
 </div>
 <div class = "ui very padded container segment">
   <div class="">
       <h3 class="ui dividing header">H.R Dashboard</h3>
       <hr> 
       <div class="field">
-        <h4 class="inline" >Personal Details</h4>
-        <a class="fr" routerLink="hr-details" (click)="getDetails()">Edit</a>
+        <h4 class="inline">Personal Details</h4>
+        <a class="fr" (click)="getDetails()">Edit</a>
       </div>
       <app-hr-details (discardClick)="closeDetails()" *ngIf="detailsOpen"></app-hr-details>
       <hr>
+
       <div class="field">
         <h4 class="inline">New Job Post</h4>
-        <a class="fr" routerLink="hr-jobpost" (click)="getJob()">Edit</a>
+        <a class="fr" (click)="getJob()">Edit</a>
       </div>
-
-      <div *ngIf="jobOpen" class = "ui very padded container segment">
-        <form [formGroup]="hrjobpostForm" (ngSubmit)="onSubmit()" class="ui form">
-          <div class="field">
-            <label>Job Title / Designation *</label>
-            <div class="field">
-              <input type="text" id="title" formControlName= "title">
-            </div>
-          </div>
-          <div class="field">
-            <label>Job Description *</label>
-            <div class="field">
-              <textarea type="text" id="description" formControlName= "description"></textarea>
-            </div>
-          </div>
-          <div class="field">
-            <label>Keywords *</label>
-            <div class="field">
-              <input type="text" id="keywords" formControlName= "keywords">
-            </div>
-          </div>
-          <div class="two fields">
-            <div class="field two wide">
-              <label>Work Experience (minimum) *</label>   
-              <input type="text" id="minexp" placeholder="min" formControlName= "minexp">  
-            </div>
-            <div class="field two wide">
-              <label>Work Experience (maximum) *</label>   
-              <input type="text" id="maxexp" placeholder="max" formControlName= "maxexp">  
-            </div>
-          </div>
-          
-          <div class="field">
-            <label>Location(s) hiring for *</label>   
-            <input type="text" id="location" formControlName= "location">  
-          </div>
-          <div class="field">
-            <label>Company hiring for *</label>   
-            <input type="text" id="hiringfor" formControlName= "hiringfor">  
-          </div>
-          <div class="field">
-              <label>Link to Job (optional)</label>
-              <div class="field">
-                <input type="text" id="joblink" formControlName= "joblink">
-              </div>
-            </div>
-          <button class="ui primary button" type="submit"> Save </button>
-          <button class="ui button" (click)="closeJob()"> Discard </button>
-        </form>
-      </div>
+      <app-hr-newjob (discardClick)="closeJob()" *ngIf="jobOpen"></app-hr-newjob>
       
-
       <hr>
       <div class="field">
         <h4 class="inline">Skills I Looking For</h4>
-        <a class="fr"  routerLink="hr-skills" (click)="getSkills()">Edit</a>
+        <a class="fr" (click)="getSkills()">Edit</a>
       </div>
-
-      <div *ngIf="skillsOpen" class="ui very padded container segment">
-        <form [formGroup]="hrskillForm" (ngSubmit)="onSubmit()" class="ui form">
-          <div class="field">
-            <label>Industries *</label>
-            <div class="field">
-              <input type="text" id="first" formControlName="first">
-            </div>
-          </div>
-          <div class="field">
-            <label>Functional Areas *</label>
-            <div class="field">
-              <input type="text" id="first" formControlName="first">
-            </div>
-          </div>
-          <div class="field">
-            <label>Levels I hire For *</label>
-            <div class="field">
-              <input type="text" id="first" formControlName="first">
-            </div>
-          </div>
-          <div class="field">
-            <label>Clients I hire for *</label>
-            <div class="field">
-              <input type="text" id="first" formControlName="first">
-            </div>
-          </div>
-          <div class="field">
-            <label>Skills/Roles I hire for *</label>
-            <div class="field">
-              <textarea rows="3" type="text" id="first" formControlName="first"></textarea>
-            </div>
-          </div>
-          <button class="ui primary button" type="submit"> Save </button>
-          <button class="ui button" (click)="closeSkills()"> Discard </button>
-        </form>
-      </div>
+      <app-hr-skill (discardClick)="closeSkills()" *ngIf="skillsOpen"></app-hr-skill>
       <hr>
-      </div> 
+      </div>
   </div>
