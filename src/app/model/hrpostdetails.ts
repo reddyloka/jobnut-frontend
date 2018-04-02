@@ -1,4 +1,5 @@
 export class HrPostDetail {
+<<<<<<< HEAD
     
     id: number;
     title: string;
@@ -19,6 +20,27 @@ export class HrPostDetail {
     ResourcePersonContact: any;
     selectionProcedure: string;
     constructor(id: number, title: string, companyname: string, description: string, startdate: Date, enddate: Date, skills: string, location: string , salary: number, experinece: string, dateOfJoining: Date, extraRequirement: string, noOfJobOpenings: number, CompanyUrl: string, bondDetails: any, ReportingVenue: any, ResourcePersonContact: any, selectionProcedure: string) {
+=======
+    public id: string;
+    public title: string;
+    public companyname: string;
+    public description: string;
+    public startdate: Date;
+    public enddate: Date;
+    public skills: string;
+    public location: string;
+    public salary: string;
+    public experinece: string;
+    public dateOfJoining: Date;
+    public extraRequirement: string;
+    public noOfJobOpenings: number;
+    public CompanyUrl: string;
+    public bondDetails: string;
+    public ReportingVenue: string;
+    public ResourcePersonContact: string;
+    public selectionProcedure: string;
+    constructor(id: string, title: string, companyname: string, description: string, startdate: Date, enddate: Date, skills: string, location: string , salary: string, experinece: string, dateOfJoining: Date, extraRequirement: string, noOfJobOpenings: number, CompanyUrl: string, bondDetails: string, ReportingVenue: string, ResourcePersonContact: string, selectionProcedure: string) {
+>>>>>>> 88da8d7fb86405997b2bd3066ff435f37c2d420f
         this.id = id;
         this.title = title;
         this.companyname = companyname;
@@ -45,6 +67,6 @@ export class HrPostDetail {
 
     public static createblank(): HrPostDetail {
 
-        return new HrPostDetail(-1 , '', '',  '', null, null, '', '', null, '', null, '', null, '', '', '', '', '');
+        return new HrPostDetail(null , '', '',  '', null, null, '', '', null, '', null, '', null, '', '', '', '', '');
         }
 }

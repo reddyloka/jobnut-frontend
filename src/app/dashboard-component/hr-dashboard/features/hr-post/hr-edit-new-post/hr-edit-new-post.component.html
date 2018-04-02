@@ -131,8 +131,7 @@
              <div class="alert alert-danger" *ngIf="!hrpostNewDataForm.controls['ReportingVenue'].valid && hrpostNewDataForm.controls['ReportingVenue'].touched">
               <p>Please fill required fields<span style="color:red">*</span></p>
              </div>
-
-
+             
              <div class="field">
                <label>Resource Person Contact<span style="color:red">*</span></label>
                <input type="text" formControlName="ResourcePersonContact" [(ngModel)]="hrpostNewData.ResourcePersonContact" class="form-control" placeholder="please enter Resource Person Contact">
@@ -144,7 +143,7 @@
 
              <div class="field">
               <label>No Of Job Openings</label>
-              <input type="text" formControlName="noOfJobOpenings" [(ngModel)]="hrpostNewData.noOfJobOpenings" class="form-control" placeholder="please enter Extra Requirement">
+              <input type="number" formControlName="noOfJobOpenings" [(ngModel)]="hrpostNewData.noOfJobOpenings" class="form-control" placeholder="please enter Extra Requirement">
             </div>
 
             <div class="alert alert-danger" *ngIf="!hrpostNewDataForm.controls['noOfJobOpenings'].valid && hrpostNewDataForm.controls['noOfJobOpenings'].touched">

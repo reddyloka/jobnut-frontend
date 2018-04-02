@@ -15,7 +15,7 @@ export class LoginViewPostDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.route.paramMap.subscribe((params: ParamMap) => {
-      const hrpost_id = parseInt(params.get('login-post.id'), 10);
+      const hrpost_id = params.get('login-post.id');
       this.hrbaseservice.getHrPostById(hrpost_id).
       then((hrpost) => {
         console.log(hrpost);

@@ -30,11 +30,22 @@ import { LoginViewPostDeatilssummaryComponent } from './dashboard-component/logi
 import { CallbackComponent } from './uni-component/misc/callback/callback.component';
 import { AuthService } from './services/authentication/auth.service';
 import { JwtService } from './_helper/jwt.service';
+<<<<<<< HEAD
 import {SelectModule} from 'ng2-select';
 import { LoggedInGuard } from './_guards/logged-in.guard';
 import { HrDetailsComponent } from './dashboard-component/hr-dashboard/hr-data/hr-details/hr-details.component';
 import { HrNewjobComponent } from './dashboard-component/hr-dashboard/hr-data/hr-newjob/hr-newjob.component';
 import { HrSkillComponent } from './dashboard-component/hr-dashboard/hr-data/hr-skill/hr-skill.component';
+=======
+import { HrDetailsComponent } from './dashboard-component/hr-dashboard/hr-dashboard-details/hr-details/hr-details.component';
+import { HrSkillComponent } from './dashboard-component/hr-dashboard/hr-dashboard-details/hr-skill/hr-skill.component';
+import {SelectModule} from 'ng2-select';
+import { LoggedInGuard } from './_guards/logged-in.guard';
+import { HrHeaderComponent } from './dashboard-component/hr-dashboard/hr-header/hr-header.component';
+import { HrDashboardDetailsComponent } from './dashboard-component/hr-dashboard/hr-dashboard-details/hr-dashboard-details.component';
+import { HrExperienceComponent } from './dashboard-component/hr-dashboard/hr-dashboard-details/hr-experience/hr-experience.component';
+import { HrContactComponent } from './dashboard-component/hr-dashboard/hr-dashboard-details/hr-contact/hr-contact.component';
+>>>>>>> 88da8d7fb86405997b2bd3066ff435f37c2d420f
 
 
 
@@ -51,9 +62,7 @@ import { HrSkillComponent } from './dashboard-component/hr-dashboard/hr-data/hr-
     OtherQualificationComponent,
     SearchComponent,
     CallbackComponent,
-    HrNewjobComponent,
     HrSkillComponent,
-
     HrDashboardComponent,
     HrPostdetailsComponent,
     HrPostComponent,
@@ -65,7 +74,11 @@ import { HrSkillComponent } from './dashboard-component/hr-dashboard/hr-data/hr-
     LoginViewComponent,
     LoginViewPostDetailsComponent,
     LoginViewPostDeatilssummaryComponent,
-    CallbackComponent
+    CallbackComponent,
+    HrHeaderComponent,
+    HrDashboardDetailsComponent,
+    HrExperienceComponent,
+    HrContactComponent
 
   ],
   imports: [

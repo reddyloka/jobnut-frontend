@@ -69,7 +69,7 @@ export class ApplicantComponent implements OnInit {
   buildFormGroup(): void {
     const fg = {
       'name': new FormControl(null, [Validators.required]),
-      'email': new FormControl(null, [Validators.required, Validators.email]),
+      'email': new FormControl(null, [Validators.required]),
       'dob': new FormControl(null, [Validators.required]),
       'password': new FormControl(null, Validators.required),
       'phone': new FormControl(null, [Validators.required, Validators.minLength(10), Validators.maxLength(10)]),
