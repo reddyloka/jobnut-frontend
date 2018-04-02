@@ -98,13 +98,9 @@ import { Http } from '@angular/http';
 
 // upar ka delete mat maarna abhi
 // upar ka delete mat maarna abhi
-
-
-
-
 import { Injectable } from '@angular/core';
 import { HrPostDetail } from '../model/hrpostdetails';
-import { environment } from '../environments/environment';
+import { environment } from '../../environments/environment';
 @Injectable()
 export class HrbaseService {
   hrpostdetails: any;

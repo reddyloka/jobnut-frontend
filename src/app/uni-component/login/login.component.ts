@@ -75,7 +75,7 @@ export class LoginComponent implements OnInit {
             }
             if (yo && yo.status && yo.isApplicant) {
               console.log('user logged in', yo);
-              this.router.navigateByUrl('hr');
+              this.router.navigateByUrl('applicant');
             }
           });
     }

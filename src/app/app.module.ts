@@ -15,7 +15,6 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { routerConfig } from './app.router-config';
 import { UserBaseService } from './services/userbase/user-base.service';
 import { SearchComponent } from './dashboard-component/login-dashboard/features/search/search.component';
-
 import { HrDashboardComponent } from './dashboard-component/hr-dashboard/hr-dashboard.component';
 import { HrPostdetailsComponent } from './dashboard-component/hr-dashboard/features/hr-postdetails/hr-postdetails.component';
 import { HrPostComponent } from './dashboard-component/hr-dashboard/features/hr-post/hr-post.component';
@@ -30,15 +29,19 @@ import { LoginViewPostDetailsComponent } from './dashboard-component/login-dashb
 import { LoginViewPostDeatilssummaryComponent } from './dashboard-component/login-dashboard/features/login-view-post/login-view-post-details/login-view-post-deatilssummary/login-view-post-deatilssummary.component';
 
 
+
 import { CallbackComponent } from './uni-component/misc/callback/callback.component';
 import { AuthService } from './services/authentication/auth.service';
 import { JwtService } from './_helper/jwt.service';
-import { HrDetailsComponent } from './dashboard-component/hr-dashboard/hr-details/hr-details.component';
-import { HrNewjobComponent } from './dashboard-component/hr-dashboard/hr-newjob/hr-newjob.component';
-import { HrSkillComponent } from './dashboard-component/hr-dashboard/hr-skill/hr-skill.component';
-import { NgSelectComponent } from './dashboard-component/hr-dashboard/ng-select/ng-select.component';
 import {SelectModule} from 'ng2-select';
 import { LoggedInGuard } from './_guards/logged-in.guard';
+import { HrDetailsComponent } from './dashboard-component/hr-dashboard/hr-data/hr-details/hr-details.component';
+import { HrNewjobComponent } from './dashboard-component/hr-dashboard/hr-data/hr-newjob/hr-newjob.component';
+import { HrHeaderComponent } from './dashboard-component/hr-dashboard/hr-header/hr-header.component';
+import { HrDashboardDetailsComponent } from './dashboard-component/hr-dashboard/hr-dashboard-details/hr-dashboard-details.component';
+import { HrExperienceComponent } from './dashboard-component/hr-dashboard/hr-dashboard-details/hr-experience/hr-experience.component';
+import { HrContactComponent } from './dashboard-component/hr-dashboard/hr-dashboard-details/hr-contact/hr-contact.component';
+import { HrSkillComponent } from './dashboard-component/hr-dashboard/hr-data/hr-skill/hr-skill.component';
 
 
 
@@ -55,10 +58,8 @@ import { LoggedInGuard } from './_guards/logged-in.guard';
     OtherQualificationComponent,
     SearchComponent,
     CallbackComponent,
-    HrNewjobComponent,
     HrSkillComponent,
-    NgSelectComponent,
-
+    // HrSkillComponent,
     HrDashboardComponent,
     HrPostdetailsComponent,
     HrPostComponent,
@@ -70,7 +71,11 @@ import { LoggedInGuard } from './_guards/logged-in.guard';
     LoginViewComponent,
     LoginViewPostDetailsComponent,
     LoginViewPostDeatilssummaryComponent,
-    CallbackComponent
+    CallbackComponent,
+    HrHeaderComponent,
+    HrDashboardDetailsComponent,
+    HrExperienceComponent,
+    HrContactComponent
 
   ],
   imports: [
@@ -87,8 +92,6 @@ import { LoggedInGuard } from './_guards/logged-in.guard';
     HrbaseService,
     AuthService,
     JwtService,
-    LoggedInGuard,
-    // TryService,
     { provide: LocationStrategy, useClass: HashLocationStrategy },
   ],
   bootstrap: [AppComponent]
