@@ -30,11 +30,11 @@ import { LoginViewPostDeatilssummaryComponent } from './dashboard-component/logi
 import { CallbackComponent } from './uni-component/misc/callback/callback.component';
 import { AuthService } from './services/authentication/auth.service';
 import { JwtService } from './_helper/jwt.service';
-import { HrDetailsComponent } from './dashboard-component/hr-dashboard/hr-details/hr-details.component';
-import { HrNewjobComponent } from './dashboard-component/hr-dashboard/hr-newjob/hr-newjob.component';
-import { HrSkillComponent } from './dashboard-component/hr-dashboard/hr-skill/hr-skill.component';
 import {SelectModule} from 'ng2-select';
 import { LoggedInGuard } from './_guards/logged-in.guard';
+import { HrDetailsComponent } from './dashboard-component/hr-dashboard/hr-data/hr-details/hr-details.component';
+import { HrNewjobComponent } from './dashboard-component/hr-dashboard/hr-data/hr-newjob/hr-newjob.component';
+import { HrSkillComponent } from './dashboard-component/hr-dashboard/hr-data/hr-skill/hr-skill.component';
 
 
 
