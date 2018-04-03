@@ -3,8 +3,8 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { JwtService } from '../_helper/jwt.service';
 import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
 import { Observable } from 'rxjs/Observable';
-import { environment } from '../../environments/environment';
 import { catchError } from 'rxjs/operators/catchError';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class ApiServiceService {

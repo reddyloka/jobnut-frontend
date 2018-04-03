@@ -8,21 +8,21 @@ import { HrbaseService } from '../../../../services/hrbase.service';
   styleUrls: ['./hr-post.component.css']
 })
 export class HrPostComponent implements OnInit {
- hrpost: HrPostDetail[];
+  hrpost: HrPostDetail[];
   constructor(private hrbaseservice: HrbaseService,
-              private router: Router) { }
+    private router: Router) { }
 
   ngOnInit() {
-     this.hrbaseservice.getAllHrPost().
-     then((hrpost) => {
-      this.hrpost = hrpost;
-      console.log(hrpost);
-     });
+    this.hrbaseservice.getAllHrPost().
+      then((hrpost) => {
+        this.hrpost = hrpost;
+        console.log(hrpost);
+      });
   }
 
   public routeronclicked(hrpost_id): void {
     this.router.navigateByUrl('/hr-post/' + hrpost_id);
-   }
+  }
   adddetails() {
     this.router.navigateByUrl('/hr-new-post');
   }

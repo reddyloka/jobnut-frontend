@@ -23,7 +23,7 @@ export class SearchComponent implements OnInit {
       },
       {
         id: 2, companyName: 'Microsoft', designation: 'software Engineer', location: 'Hyderabad',
-        skillRequired: ['Data Structure', 'Database', 'php', 'algorithms']
+        skillRequired: ['Data sStructure', 'Database', 'php', 'algorithms']
       },
       {
         id: 3, companyName: 'Wipro', designation: 'MEAN Stack Developer', location: 'Banglore',

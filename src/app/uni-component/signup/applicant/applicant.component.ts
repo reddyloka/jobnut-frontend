@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, ValidatorFn, FormBuilder, FormGroup, FormControl, Validators, FormsModule } from '@angular/forms';
+import { UserBaseService } from '../../../services/userbase/user-base.service';
+import { ApplicantBase } from '../../../model/applicantbase';
 @Component({
   selector: 'app-applicant',
   templateUrl: './applicant.component.html',
@@ -35,8 +37,16 @@ export class ApplicantComponent implements OnInit {
   highestDegreeArray: string[];
   nextInfo: boolean;
 
+  user_details: ApplicantBase;
+  profile_photo: File;
+  isApplicant: boolean;
+  isHr: boolean;
+  status: boolean;
 
-  constructor() {
+
+  constructor(private _userService: UserBaseService) {
+    this.user_details = ApplicantBase.createblank();
+    this.buildFormGroup();
     this.personalInfo = true;
     this.educationInfo = false;
     this.doctorateInfo = false;
@@ -63,27 +73,34 @@ export class ApplicantComponent implements OnInit {
     this.mediumArray = ['Telugu', 'Hindi', 'English', 'Kannada', 'Sanskrit'];
     this.skills = ['Angular', 'CSS', 'Graphic Design', 'Ember', 'HTML',
       'Information Architecture', 'Javascript', 'Mechanical Engineering',
-      'Meteor', 'NodeJS', 'UI Design', 'Python', 'Rails', 'React', 'Ruby',];
-    this.buildFormGroup();
+      'Meteor', 'NodeJS', 'UI Design', 'Python', 'Rails', 'React', 'Ruby'];
+    this.profile_photo = null;
+    this.isApplicant = true;
+    this.isHr = false;
+    this.status = true;
   }
   buildFormGroup(): void {
     const fg = {
-      'name': new FormControl(null, [Validators.required]),
-      'email': new FormControl(null, [Validators.required]),
-      'dob': new FormControl(null, [Validators.required]),
-      'password': new FormControl(null, Validators.required),
-      'phone': new FormControl(null, [Validators.required, Validators.minLength(10), Validators.maxLength(10)]),
-      'higherDegreeValue': new FormControl(null, ),
-      'courseValue': new FormControl(null, ),
-      'specializationValue': new FormControl(null, ),
-      'universityName': new FormControl(null, ),
-      'passingYearValue': new FormControl(null, ),
-      'boardValue': new FormControl(null, ),
-      'passingValue': new FormControl(null, ),
-      'mediumValue': new FormControl(null, ),
-      'percentageValue': new FormControl(null, ),
-      'skillValue': new FormControl(null, Validators.required),
+      'fname': new FormControl(this.user_details.fname, [Validators.required]),
+      'lname': new FormControl(this.user_details.lname, [Validators.required]),
+      'email': new FormControl(this.user_details.email, [Validators.required, Validators.email]),
+      'dob': new FormControl(this.user_details.dob, [Validators.required]),
+      'password': new FormControl(this.user_details.password, Validators.required),
+      'phone': new FormControl(this.user_details.phone, [Validators.required, Validators.minLength(10), Validators.maxLength(10)]),
+      'higherDegreeValue': new FormControl(this.user_details.higherDegreeValue, ),
+      'courseValue': new FormControl(this.user_details.courseValue, ),
+      'specializationValue': new FormControl(this.user_details.specializationValue, ),
+      'universityName': new FormControl(this.user_details.universityName, ),
+      'passingYearValue': new FormControl(this.user_details.passingValue, ),
+      'boardValue': new FormControl(this.user_details.boardValue, ),
+      'passingValue': new FormControl(this.user_details.passingValue, ),
+      'mediumValue': new FormControl(this.user_details.mediumValue, ),
+      'percentageValue': new FormControl(this.user_details.percentageValue, ),
+      'skillValue': new FormControl(this.user_details.skillValue, Validators.required),
     };
+    this.user_details.isApplicant = this.isApplicant;
+    this.user_details.isHr = this.isHr;
+    this.user_details.status = this.status;
     this.applicantForm = new FormGroup(fg);
   }
   ngOnInit() {
@@ -159,6 +176,14 @@ export class ApplicantComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log('form value is', this.applicantForm);
+    this.buildFormGroup();
+    console.log('user detaails for applicant', this.user_details);
+
+    this._userService.addNewUser(this.user_details, {
+      profile_photo: this.profile_photo
+    })
+      .then((result) => {
+        console.log(result);
+      });
   }
 }
