@@ -1,159 +1,154 @@
 <app-hr-header></app-hr-header>
 <div class="ui very padded container segment">
   <div class="">
-    <h3 class="ui dividing header">H.R Dashboard</h3>
+    <h2 class="ui dividing header">H.R Dashboard</h2>
     <hr>
     <div class="field">
-      <h4 class="inline">Personal Details</h4>
+      <h3 class="inline">Personal Details</h3>
       <a class="fr" (click)="EditPersonalDetails()">Edit</a>
     </div>
     <div *ngIf="detailsMain">
-     
-            <div class="row">
-              <div class="col-md-3">
-              <img src="" width="150px" height="150px">
-              </div>
-              <div class="col-md-6">
-                <h1>Dummy</h1> 
-                <h4>Company Recruiter</h4>
-                <p>Google</p>
-                <p><span class="glyphicon glyphicon-map-marker"></span> Jalandhar</p>
-              </div>
-            </div>
-       
+      <div class="row">
+        <div class="col-md-3">
+          <img src="" width="150px" height="150px">
+        </div>
+        <div class="col-md-6">
+          <h1>Ravi</h1>
+          <h3>Company Recruiter</h3>
+          <p>Google</p>
+          <p>
+            <span class="glyphicon glyphicon-map-marker"></span> Jalandhar</p>
+        </div>
+      </div>
     </div>
     <div *ngIf="detailsOpen">
       <app-hr-details (discardClick)="closeDetails()"></app-hr-details>
     </div>
-    
     <hr>
     <div class="field">
-      <h4 class="inline">Skills I Looking For to hire</h4>
+      <h3 class="inline">Skills I Looking For to hire</h3>
       <a class="fr" (click)="EditSkills()">Edit</a>
     </div>
     <div *ngIf="SkillsMain">
-        <div class="row">
-          <div class="col-md-3">
-            <h5>Industries</h5>
-          </div>
-          <div class="col-md-6">
-         sdd
-          </div>
-          </div>
-          <div class="row">
-          <div class="col-md-3">
-            <h5>Functional Areas</h5>
-          </div>
-          <div class="col-md-6">
-        gfhghg
-          </div>
-          </div>
-          <div class="row">
-          <div class="col-md-3">
-            <h5>Levels I Hire For</h5>
-          </div>
-          <div class="col-md-6">
-        fytyt
-          </div>
-          </div>
-          <div class="row">
-          <div class="col-md-3">
-            <h5>Skills/Roles I Hire For</h5>
-          </div>
-          <div class="col-md-6">
-        hghtyu
-          </div>
-          </div>
+      <div class="row">
+        <div class="col-md-3">
+          <h5>Industries</h5>
+        </div>
+        <div class="col-md-6">
+          sdd
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3">
+          <h5>Functional Areas</h5>
+        </div>
+        <div class="col-md-6">
+          gfhghg
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3">
+          <h5>Levels I Hire For</h5>
+        </div>
+        <div class="col-md-6">
+          fytyt
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3">
+          <h5>Skills/Roles I Hire For</h5>
+        </div>
+        <div class="col-md-6">
+          hghtyu
+        </div>
+      </div>
     </div>
     <div *ngIf="SkillsOpen">
-        <app-hr-skill (discardClick)="closeSkills()" ></app-hr-skill>
+      <app-hr-skill (discardClick)="closeSkills()"></app-hr-skill>
     </div>
-  
-
     <hr>
     <div class="field">
-      <h4 class="inline">My Contact Details</h4>
+      <h3 class="inline">My Contact Details</h3>
       <a class="fr" (click)="EditContactDetails()">Edit</a>
     </div>
     <div *ngIf="ContactMain">
-        <div class="row">
-          <div class="col-md-3">
-            <h5>Email</h5>
-          </div>
-          <div class="col-md-6">
-         sdd
-          </div>
-          </div>
-          <div class="row">
-          <div class="col-md-3">
-            <h5>Contact Number</h5>
-          </div>
-          <div class="col-md-6">
-        gfhghg
-          </div>
-          </div>
-          <div class="row">
-          <div class="col-md-3">
-            <h5>Facebook Link</h5>
-          </div>
-          <div class="col-md-6">
-        fytyt
-          </div>
-          </div>
-          <div class="row">
-          <div class="col-md-3">
-            <h5>Linked In </h5>
-          </div>
-          <div class="col-md-6">
-        hghtyu
-          </div>
-          </div>
+      <div class="row">
+        <div class="col-md-3">
+          <h5>Email</h5>
+        </div>
+        <div class="col-md-6">
+          sdd
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3">
+          <h5>Contact Number</h5>
+        </div>
+        <div class="col-md-6">
+          gfhghg
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3">
+          <h5>Facebook Link</h5>
+        </div>
+        <div class="col-md-6">
+          fytyt
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3">
+          <h5>Linked In </h5>
+        </div>
+        <div class="col-md-6">
+          hghtyu
+        </div>
+      </div>
     </div>
     <div *ngIf="ContactOpen">
-        <app-hr-contact (discardClick)="closecontact()" ></app-hr-contact>
+      <app-hr-contact (discardClick)="closecontact()"></app-hr-contact>
     </div>
-
     <hr>
     <div class="field">
-      <h4 class="inline">My Experience</h4>
+      <h3 class="inline">My Experience</h3>
       <a class="fr" (click)="EditExpDetails()">Edit</a>
     </div>
     <div *ngIf="ExpMain">
-        <div class="row">
-          <div class="col-md-3">
-            <h5>Current Designation</h5>
-          </div>
-          <div class="col-md-6">
-         sdd
-          </div>
-          </div>
-          <div class="row">
-          <div class="col-md-3">
-            <h5>Current Employer </h5>
-          </div>
-          <div class="col-md-6">
-        gfhghg
-          </div>
-          </div>
-          <div class="row">
-          <div class="col-md-3">
-            <h5>Job Profile</h5>
-          </div>
-          <div class="col-md-6">
-        fytyt
-          </div>
-          </div>
-          <div class="row">
-          <div class="col-md-3">
-            <h5>Joined in </h5>
-          </div>
-          <div class="col-md-6">
-        hghtyu
-          </div>
-          </div>
+      <div class="row">
+        <div class="col-md-3">
+          <h5>Current Designation</h5>
+        </div>
+        <div class="col-md-6">
+          sdd
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3">
+          <h5>Current Employer </h5>
+        </div>
+        <div class="col-md-6">
+          gfhghg
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3">
+          <h5>Job Profile</h5>
+        </div>
+        <div class="col-md-6">
+          fytyt
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3">
+          <h5>Joined in </h5>
+        </div>
+        <div class="col-md-6">
+          hghtyu
+        </div>
+      </div>
     </div>
     <div *ngIf="ExpOpen">
-        <app-hr-experience (discardClick)="closeexp()" ></app-hr-experience>
+      <app-hr-experience (discardClick)="closeexp()"></app-hr-experience>
     </div>
     <hr>
   </div>
