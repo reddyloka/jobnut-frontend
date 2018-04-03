@@ -35,22 +35,14 @@ import { AuthService } from './services/authentication/auth.service';
 import { JwtService } from './_helper/jwt.service';
 import {SelectModule} from 'ng2-select';
 import { LoggedInGuard } from './_guards/logged-in.guard';
-<<<<<<< HEAD
-=======
 import { HrDetailsComponent } from './dashboard-component/hr-dashboard/hr-dashboard-details/hr-details/hr-details.component';
 
->>>>>>> 09d97357b574111ad582dcb8c81f52d903f1b3bd
 import { HrHeaderComponent } from './dashboard-component/hr-dashboard/hr-header/hr-header.component';
 import { HrDashboardDetailsComponent } from './dashboard-component/hr-dashboard/hr-dashboard-details/hr-dashboard-details.component';
 import { HrExperienceComponent } from './dashboard-component/hr-dashboard/hr-dashboard-details/hr-experience/hr-experience.component';
 import { HrContactComponent } from './dashboard-component/hr-dashboard/hr-dashboard-details/hr-contact/hr-contact.component';
-<<<<<<< HEAD
-import { HrDetailsComponent } from './dashboard-component/hr-dashboard/hr-dashboard-details/hr-details/hr-details.component';
-import { HrSkillComponent } from './dashboard-component/hr-dashboard/hr-dashboard-details/hr-skill/hr-skill.component';
-=======
 import { HrSkillComponent } from './dashboard-component/hr-dashboard/hr-dashboard-details/hr-skill/hr-skill.component';
 
->>>>>>> 09d97357b574111ad582dcb8c81f52d903f1b3bd
 
 
 
