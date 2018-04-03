@@ -1,4 +1,7 @@
+
+
 export class HrPostDetail {
+<<<<<<< HEAD
     public id: string;
     public title: string;
     public companyname: string;
@@ -18,6 +21,28 @@ export class HrPostDetail {
     public ResourcePersonContact: string;
     public selectionProcedure: string;
     constructor(id: string, title: string, companyname: string, description: string, startdate: Date, enddate: Date, skills: string, location: string , salary: string, experinece: string, dateOfJoining: Date, extraRequirement: string, noOfJobOpenings: number, CompanyUrl: string, bondDetails: string, ReportingVenue: string, ResourcePersonContact: string, selectionProcedure: string) {
+=======
+    id: string;
+    title: string;
+    companyname: string;
+    description: string;
+    startdate: Date;
+    enddate: Date;
+    skills: string;
+    location: string;
+    salary: number;
+    experinece: string;
+    dateOfJoining: Date;
+    extraRequirement: string;
+    noOfJobOpenings: number;
+    CompanyUrl: string;
+    bondDetails: any;
+    ReportingVenue: any;
+    ResourcePersonContact: any;
+    selectionProcedure: string;
+
+    constructor(id: string, title: string, companyname: string, description: string, startdate: Date, enddate: Date, skills: string, location: string , salary: number, experinece: string, dateOfJoining: Date, extraRequirement: string, noOfJobOpenings: number, CompanyUrl: string, bondDetails: any, ReportingVenue: any, ResourcePersonContact: any, selectionProcedure: string) {
+>>>>>>> 25502e8377e76710f8ddd63a9841e9578a6b1d56
         this.id = id;
         this.title = title;
         this.companyname = companyname;
@@ -38,12 +63,14 @@ export class HrPostDetail {
         this.selectionProcedure =  selectionProcedure;
 
     }
-    public static PostDetailsFromJSON(obj: any): HrPostDetail {
-        return new HrPostDetail(obj.id , obj.title , obj.companyname, obj.description, obj.startdate, obj.enddate, obj.skills, obj.location, obj.salary, obj.experinece, obj.dateOfJoining, obj.extraRequirement, obj.noOfJobOpenings, obj.CompanyUrl, obj.bondDetails, obj.ReportingVenue, obj.ResourcePersonContact, obj.selectionProcedure);
-    }
+
+    // public static PostDetailsFromJSON(obj: any): HrPostDetail {
+    //     return new HrPostDetail(obj.id , obj.title , obj.companyname, obj.description, obj.startdate, obj.enddate, obj.skills, obj.location, obj.salary, obj.experinece, obj.dateOfJoining, obj.extraRequirement, obj.noOfJobOpenings, obj.CompanyUrl, obj.bondDetails, obj.ReportingVenue, obj.ResourcePersonContact, obj.selectionProcedure);
+    // }
 
     public static createblank(): HrPostDetail {
 
         return new HrPostDetail(null , '', '',  '', null, null, '', '', null, '', null, '', null, '', '', '', '', '');
         }
+
 }

@@ -19,23 +19,34 @@
       <div class="col-md-6">
 
         <div class="field">
-          <label>Name
+          <label>First Name:
             <span style="color:red">*</span>
           </label>
-          <input type="text" formControlName="name" class="form-control" placeholder="Full Name">
+          <input type="text" formControlName="fname" class="form-control" placeholder="john" [(ngModel)]="user_details.fname">
+          <div class="alert alert-danger" *ngIf="!applicantForm.controls['fname'].valid && applicantForm.controls['fname'].touched">
+            <p>Please fill required fields
+              <span style="color:red">*</span>
+            </p>
+          </div>
         </div>
-        <div class="alert alert-danger" *ngIf="!applicantForm.controls['name'].vaild && applicantForm.controls['name'].touched">
-          <p>Please fill required fields
+        <div class="field">
+          <label>Last Name:
             <span style="color:red">*</span>
-          </p>
+          </label>
+          <input type="text" formControlName="lname" class="form-control" placeholder="Carter" [(ngModel)]="user_details.lname">
+          <div class="alert alert-danger" *ngIf="!applicantForm.controls['lname'].valid && applicantForm.controls['lname'].touched">
+            <p>Please fill required fields
+              <span style="color:red">*</span>
+            </p>
+          </div>
         </div>
         <div class="field">
           <label>Email
             <span style="color:red">*</span>
           </label>
-          <input type="text" formControlName="email" class="form-control" placeholder="valid Email addresss">
+          <input type="text" formControlName="email" class="form-control" placeholder="valid Email addresss" [(ngModel)]="user_details.email">
         </div>
-        <div class="alert alert-danger" *ngIf="!applicantForm.controls['email'].vaild && applicantForm.controls['email'].touched">
+        <div class="alert alert-danger" *ngIf="!applicantForm.controls['email'].valid && applicantForm.controls['email'].touched">
           <p>Please fill required fields
             <span style="color:red">*</span>
           </p>
@@ -44,9 +55,9 @@
           <label>Date Of Birth
             <span style="color:red">*</span>
           </label>
-          <input type="date" formControlName="dob" class="form-control" placeholder="enter date of birth">
+          <input type="date" formControlName="dob" class="form-control" placeholder="enter date of birth" [(ngModel)]="user_details.dob">
         </div>
-        <div class="alert alert-danger" *ngIf="!applicantForm.controls['dob'].vaild && applicantForm.controls['dob'].touched">
+        <div class="alert alert-danger" *ngIf="!applicantForm.controls['dob'].valid && applicantForm.controls['dob'].touched">
           <p>Please fill required fields
             <span style="color:red">*</span>
           </p>
@@ -58,7 +69,7 @@
           </label>
           <input type="number" formControlName="phone" class="form-control" placeholder="enter number">
         </div>
-        <div class="alert alert-danger" *ngIf="!applicantForm.controls['phone'].vaild && applicantForm.controls['phone'].touched">
+        <div class="alert alert-danger" *ngIf="!applicantForm.controls['phone'].valid && applicantForm.controls['phone'].touched">
           <p>Please fill required fields
             <span style="color:red">*</span>
           </p>
@@ -68,9 +79,9 @@
           <label>Password
             <span style="color:red">*</span>
           </label>
-          <input type="text" name="Password" formControlName="password" class="form-control" placeholder="create password">
+          <input type="text" name="Password" formControlName="password" class="form-control" placeholder="create password" [(ngModel)]="user_details.password">
         </div>
-        <div class="alert alert-danger" *ngIf="!applicantForm.controls['password'].vaild && applicantForm.controls['password'].touched">
+        <div class="alert alert-danger" *ngIf="!applicantForm.controls['password'].valid && applicantForm.controls['password'].touched">
           <p>Please fill required fields
             <span style="color:red">*</span>
           </p>
@@ -130,7 +141,7 @@
               </label>
               <input type="text" formControlName="universityName" class="form-control" placeholder="Institute Name" />
             </div>
-            <div class="alert alert-danger" *ngIf="!applicantForm.controls['universityName'].vaild && applicantForm.controls['universityName'].touched">
+            <div class="alert alert-danger" *ngIf="!applicantForm.controls['universityName'].valid && applicantForm.controls['universityName'].touched">
               <p>Please fill required fields
                 <span style="color:red">*</span>
               </p>
@@ -180,7 +191,7 @@
               </label>
               <input type="text" formControlName="percentageValue" class="form-control" placeholder="Please enter your percentage" />
             </div>
-            <div class="alert alert-danger" *ngIf="!applicantForm.controls['percentageValue'].vaild && applicantForm.controls['percentageValue'].touched">
+            <div class="alert alert-danger" *ngIf="!applicantForm.controls['percentageValue'].valid && applicantForm.controls['percentageValue'].touched">
               <p>Please fill required fields
                 <span style="color:red">*</span>
               </p>
@@ -217,14 +228,14 @@
           </label>
           <input type="text" formControlName="skillValue" class="form-control" placeholder="Please enter your Skills" />
         </div>
-        <div class="alert alert-danger" *ngIf="!applicantForm.controls['skillValue'].vaild && applicantForm.controls['skillValue'].touched">
+        <div class="alert alert-danger" *ngIf="!applicantForm.controls['skillValue'].valid && applicantForm.controls['skillValue'].touched">
           <p>Please fill required fields
             <span style="color:red">*</span>
           </p>
         </div>
 
         <div class="field">
-          <input type="submit" class="btn btn-success" [disabled]="!applicantForm.invalid" value="Register" />
+          <input type="submit" class="btn btn-success"  value="Register" />
         </div>
 
       </div>

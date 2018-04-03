@@ -19,14 +19,27 @@ import { HrDashboardDetailsComponent } from './dashboard-component/hr-dashboard/
 export const routerConfig: Routes = [
   // basic routes
   { path: 'login', component: LoginComponent },
-  // {
-  //   path: 'signin',
-  //   component: SignupComponent,
-  //   children: [{
-  //   path: 'hr',
-  //   component: HrDashboardComponent,
-  //   canActivate: [LoggedInGuard]
-  // }]},
+  {path: 'applicant', redirectTo: 'login-view'},
+  {
+    path: 'login-view',
+    component: LoginViewComponent
+  },
+  {
+    path: 'signin',
+    component: SignupComponent,
+    children: [
+      {
+        path: 'hr',
+        component: HrDashboardComponent,
+        canActivate: [LoggedInGuard]
+      },
+      {
+        path: 'applicant',
+        component: LoginDashboardComponent,
+        canActivate: [LoggedInGuard]
+      }
+    ]
+  },
   { path: 'callback', component: CallbackComponent },
   {
     path: 'signin', component: SignupComponent, children: [

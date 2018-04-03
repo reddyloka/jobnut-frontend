@@ -1,6 +1,6 @@
 // import { Injectable } from '@angular/core';
 // import { HrPostDetail } from '../model/hrpostdetails';
-
+import { Http } from '@angular/http';
 // @Injectable()
 // export class HrbaseService {
 //   hrpostdetails: any;
@@ -98,10 +98,6 @@
 
 // upar ka delete mat maarna abhi
 // upar ka delete mat maarna abhi
-
-
-
-import { Http } from '@angular/http';
 import { Injectable } from '@angular/core';
 import { HrPostDetail } from '../model/hrpostdetails';
 import { environment } from '../../environments/environment';
@@ -116,7 +112,6 @@ export class HrbaseService {
 
 
   getAllHrPost(): Promise<HrPostDetail[]> {
-    console.log('yo', `${environment.USER_SERVER}/posts`);
     return this.http.get(`${environment.USER_SERVER}/posts`)
       .toPromise()
       .then((response) => {
@@ -138,7 +133,6 @@ export class HrbaseService {
 
   addNewPost(hrpostdetail: HrPostDetail): Promise<boolean> {
     // this.hrpostdetails.unshift(hrpostdetail);
-    console.log('yo', `${environment.USER_SERVER}/posts`);
     return this.http.put(`${environment.USER_SERVER}/posts`, hrpostdetail)
       .toPromise()
       .then((response) => {

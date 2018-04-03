@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../../services/authentication/auth.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -9,11 +11,19 @@ import { Component, OnInit } from '@angular/core';
 export class HrDashboardComponent implements OnInit {
 
 
-  constructor() {
+  constructor(
+    private _authService: AuthService,
+    private router: Router
+  ) {
   }
 
 ngOnInit() {
 
 }
 
+  logoutClicked() {
+    console.log('log out clicked');
+    this._authService.logout();
+    this.router.navigateByUrl('login');
+  }
 }
