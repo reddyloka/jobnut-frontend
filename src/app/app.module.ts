@@ -33,27 +33,15 @@ import { LoginViewPostDeatilssummaryComponent } from './dashboard-component/logi
 import { CallbackComponent } from './uni-component/misc/callback/callback.component';
 import { AuthService } from './services/authentication/auth.service';
 import { JwtService } from './_helper/jwt.service';
-<<<<<<< HEAD
-import { HrDetailsComponent } from './dashboard-component/hr-dashboard/hr-dashboard-details/hr-details/hr-details.component';
-import { HrSkillComponent } from './dashboard-component/hr-dashboard/hr-dashboard-details/hr-skill/hr-skill.component';
 import {SelectModule} from 'ng2-select';
 import { LoggedInGuard } from './_guards/logged-in.guard';
-=======
-import {SelectModule} from 'ng2-select';
-import { LoggedInGuard } from './_guards/logged-in.guard';
-import { HrDetailsComponent } from './dashboard-component/hr-dashboard/hr-data/hr-details/hr-details.component';
-import { HrNewjobComponent } from './dashboard-component/hr-dashboard/hr-data/hr-newjob/hr-newjob.component';
->>>>>>> 25502e8377e76710f8ddd63a9841e9578a6b1d56
 import { HrHeaderComponent } from './dashboard-component/hr-dashboard/hr-header/hr-header.component';
 import { HrDashboardDetailsComponent } from './dashboard-component/hr-dashboard/hr-dashboard-details/hr-dashboard-details.component';
 import { HrExperienceComponent } from './dashboard-component/hr-dashboard/hr-dashboard-details/hr-experience/hr-experience.component';
 import { HrContactComponent } from './dashboard-component/hr-dashboard/hr-dashboard-details/hr-contact/hr-contact.component';
-<<<<<<< HEAD
-=======
-import { HrSkillComponent } from './dashboard-component/hr-dashboard/hr-data/hr-skill/hr-skill.component';
+import { HrDetailsComponent } from './dashboard-component/hr-dashboard/hr-dashboard-details/hr-details/hr-details.component';
+import { HrSkillComponent } from './dashboard-component/hr-dashboard/hr-dashboard-details/hr-skill/hr-skill.component';
 
-
->>>>>>> 25502e8377e76710f8ddd63a9841e9578a6b1d56
 
 
 @NgModule({
@@ -61,16 +49,15 @@ import { HrSkillComponent } from './dashboard-component/hr-dashboard/hr-data/hr-
     AppComponent,
     LoginComponent,
     SignupComponent,
+    HrDetailsComponent,
     HrDashboardComponent,
     HrComponent,
-    HrDetailsComponent,
     ApplicantComponent,
     OtherQualificationComponent,
     SearchComponent,
     CallbackComponent,
-    HrSkillComponent,
-    // HrSkillComponent,
     HrDashboardComponent,
+    HrSkillComponent,
     HrPostdetailsComponent,
     HrPostComponent,
     HrPostListSummaryComponent,
