@@ -69,8 +69,8 @@ export class LoginComponent implements OnInit {
       this._authService.login(val)
         .subscribe(
           (yo:  any) => {
+            console.log('userkh logged in', yo);
             if (yo && yo.status && yo.isHr) {
-              console.log('user logged in', yo);
               this.router.navigateByUrl('hr');
             }
             if (yo && yo.status && yo.isApplicant) {

@@ -37,7 +37,7 @@ import {SelectModule} from 'ng2-select';
 import { LoggedInGuard } from './_guards/logged-in.guard';
 import { HrDetailsComponent } from './dashboard-component/hr-dashboard/hr-data/hr-details/hr-details.component';
 import { HrNewjobComponent } from './dashboard-component/hr-dashboard/hr-data/hr-newjob/hr-newjob.component';
-import { HrHeaderComponent } from './dashboard-component/hr-dashboard/hr-header/hr-header.component';
+// import { HrHeaderComponent } from './dashboard-component/hr-dashboard/hr-header/hr-header.component';
 import { HrDashboardDetailsComponent } from './dashboard-component/hr-dashboard/hr-dashboard-details/hr-dashboard-details.component';
 import { HrExperienceComponent } from './dashboard-component/hr-dashboard/hr-dashboard-details/hr-experience/hr-experience.component';
 import { HrContactComponent } from './dashboard-component/hr-dashboard/hr-dashboard-details/hr-contact/hr-contact.component';
@@ -72,7 +72,7 @@ import { HrSkillComponent } from './dashboard-component/hr-dashboard/hr-data/hr-
     LoginViewPostDetailsComponent,
     LoginViewPostDeatilssummaryComponent,
     CallbackComponent,
-    HrHeaderComponent,
+    // HrHeaderComponent,
     HrDashboardDetailsComponent,
     HrExperienceComponent,
     HrContactComponent
@@ -90,6 +90,7 @@ import { HrSkillComponent } from './dashboard-component/hr-dashboard/hr-data/hr-
   providers: [
     UserBaseService,
     HrbaseService,
+    LoggedInGuard,
     AuthService,
     JwtService,
     { provide: LocationStrategy, useClass: HashLocationStrategy },

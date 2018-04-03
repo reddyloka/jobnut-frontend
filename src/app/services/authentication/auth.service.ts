@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 
 import { shareReplay } from 'rxjs/operator/shareReplay';
 import { Userbase } from '../../model/userbase';
@@ -9,6 +9,7 @@ import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/shareReplay';
 import { JwtService } from '../../_helper/jwt.service';
+import { map, catchError } from 'rxjs/operators';
 
 
 const USER_SERVER = 'http://localhost:3000';
@@ -24,19 +25,27 @@ export class AuthService {
     console.log('inside', formData);
     return this.http.post(
       USER_SERVER + '/api/login', formData)
-      .do(res => {
+      .pipe( map(res => {
         // console.log('response is: ', res);
         return this.setSession(res);
-      })
+      }), catchError((err: any) => {
+        console.log(err);
+        return err ;
+      }))
       .shareReplay();
   }
+
 
   private setSession(authResult) {
     console.log(' authResult is : ');
     console.log(' authResult is : ', authResult.user);
     // const expiresAt = moment().add(authResult.expiresIn, 'second');
     this.jwtservice.saveToken(authResult.user.token);
-    return true;
+    return {
+      status: authResult.user.status,
+      isHr: authResult.user.isHr,
+      isApplicant: authResult.user.isApplicant
+    };
     // localStorage.setItem('expires_at', JSON.stringify(expiresAt.valueOf()));
   }
 

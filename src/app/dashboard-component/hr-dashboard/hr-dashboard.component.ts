@@ -10,16 +10,29 @@ import { Router } from '@angular/router';
 })
 export class HrDashboardComponent implements OnInit {
 
+  id: string;
 
   constructor(
     private _authService: AuthService,
     private router: Router
   ) {
+    // this.id =
+    if (!_authService.isLoggedIn) {
+      this.router.navigateByUrl('login');
+    }
   }
 
-ngOnInit() {
+  ngOnInit() {
 
-}
+  }
+
+  getDetails() {
+    if (!this._authService.isLoggedIn) {
+      this.router.navigateByUrl('/login');
+    }
+    this.router.navigateByUrl('hr/profile');
+    // console.log( this._authService. )
+  }
 
   logoutClicked() {
     console.log('log out clicked');

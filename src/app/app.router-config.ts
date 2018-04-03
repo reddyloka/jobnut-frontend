@@ -16,10 +16,15 @@ import { LoginViewPostDeatilssummaryComponent } from './dashboard-component/logi
 import { CallbackComponent } from './uni-component/misc/callback/callback.component';
 import { LoggedInGuard } from './_guards/logged-in.guard';
 import { HrDashboardDetailsComponent } from './dashboard-component/hr-dashboard/hr-dashboard-details/hr-dashboard-details.component';
+import { HrDetailsComponent } from './dashboard-component/hr-dashboard/hr-data/hr-details/hr-details.component';
+
 export const routerConfig: Routes = [
   // basic routes
-  { path: 'login', component: LoginComponent },
-  {path: 'applicant', redirectTo: 'login-view'},
+  {
+    path: 'login',
+    component: LoginComponent
+  },
+  { path: 'applicant', redirectTo: 'login-view' },
   {
     path: 'login-view',
     component: LoginViewComponent
@@ -41,18 +46,41 @@ export const routerConfig: Routes = [
     ]
   },
   { path: 'callback', component: CallbackComponent },
-  {
-    path: 'signin', component: SignupComponent, children: [
-      { path: 'signin-hr', component: HrComponent },
-      { path: 'signin-applicant', component: ApplicantComponent }
-    ]
-  },
+  // {
+  //   path: 'signin', component: SignupComponent, children: [
+  //     { path: 'signin-hr', component: HrComponent },
+  //     { path: 'signin-applicant', component: ApplicantComponent }
+  //   ]
+  // },
   // {
   //   path: 'signin',
   //   redirectTo: 'signin-hr',
   //   pathMatch: 'full'
   // },
-  { path: 'hr', component: HrDashboardDetailsComponent },
+  { path: 'hr', redirectTo: 'hr/profile' },
+  {
+    path: 'hr', component: HrDashboardComponent, canActivate: [LoggedInGuard], children: [
+    {
+      path: 'profile',
+      component: HrDashboardDetailsComponent
+    },
+    {
+      path: 'new-job',
+      component: HrEditNewPostComponent
+    },
+    {
+      path: 'jobs-posted',
+      component: HrPostComponent,
+      children: [
+        {
+          path: ':id',
+          component: HrPostdetailsComponent
+        }
+      ]
+    }
+  ]
+  },
+  // { path: 'hr', redirectTo: 'hr-details' },
   { path: 'login-user-view', component: LoginViewComponent },
   { path: 'login-user-view/:login-post.id', component: LoginViewPostDetailsComponent },
   { path: 'hr-post', component: HrPostComponent },

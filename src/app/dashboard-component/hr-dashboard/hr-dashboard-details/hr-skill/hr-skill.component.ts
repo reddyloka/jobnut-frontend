@@ -1,4 +1,4 @@
-import { Component, OnInit,AfterViewInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, AfterViewInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 declare var $: any;
 
@@ -22,9 +22,9 @@ export class HrSkillComponent implements OnInit {
     this.levels = ['Junior level', 'Mid level', 'High level', 'Top management level'];
 
     this.functional = ['Accounts / Finance / Tax / CS / Audit', 'Architecture / Interior Design', 'Web / Graphic Design / Visualiser', 'Hotels / Restaurants', 'Content / Journalism', 'Banking / Insurance', 'Corporate Planning / Consulting', 'ITES / BPO / KPO / Customer Service / Operations', 'Self Employed / Consultants', 'Export / Import / Merchandising', 'Secretary / Front Office / Data Entry', 'HR / Administration / IR', 'Legal', 'Purchase / Logistics / Supply Chain', 'Marketing / Advertising / MR / PR', 'Pharma / Biotech / Healthcare / Medical / R&D', 'Packaging', 'Production / Maintenance / Quality', 'Site Engineering / Project Management', 'Engineering Design / R&D', 'Sales / BD', 'Teaching / Education', 'IT- Hardware / Telecom / Technical Staff / Support', 'Top Management', 'Other', 'Fashion / Garments / Merchandising', 'TV / Films / Production', 'Ticketing / Travel / Airlines', 'Guards / Security Services', 'Agent', 'IT Software - Application Programming / Maintenance', 'IT Software - Client Server', 'IT Software - DBA / Datawarehousing', 'IT Software - ERP / CRM', 'IT Software - Embedded /EDA /VLSI /ASIC /Chip Des.', 'IT Software - Network Administration / Security', 'IT Software - QA & Testing', 'IT Software - System Programming', 'IT Software - Telecom Software', 'IT Software - Systems / EDP / MIS', 'IT Software - E-Commerce / Internet Technologies', 'IT Software - Mainframe', 'IT Software - Mobile', 'IT Software - Middleware', 'IT Software - Other', 'Analytics & Business Intelligence', 'Shipping', 'CSR & Sustainability', 'Beauty / Fitness / Spa Services'];
-   }
-   
-   buildFormGroup(): void {
+  }
+
+  buildFormGroup(): void {
     const fg = {
       'industry': new FormControl(null, Validators.required),
       'functional': new FormControl(null, Validators.required),
@@ -48,7 +48,7 @@ export class HrSkillComponent implements OnInit {
   discardClicked() {
     this.discardClick.emit(true);
   }
-  onSubmit(){
+  onSubmit() {
     console.log(this.hrskillForm);
   }
 }
