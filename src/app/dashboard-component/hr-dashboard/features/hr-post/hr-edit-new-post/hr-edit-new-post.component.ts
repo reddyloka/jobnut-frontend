@@ -13,6 +13,7 @@ export class HrEditNewPostComponent implements OnInit {
   hrpostNewDataForm: FormGroup;
 
 hrpostNewData: HrPostDetail;
+
   constructor(private hrbaseservice: HrbaseService,
               private router: Router) {
     this.hrpostNewData = HrPostDetail.createblank();

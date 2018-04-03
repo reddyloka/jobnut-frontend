@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { AbstractControl, ValidatorFn, FormBuilder, FormGroup, FormControl, Validators , FormsModule} from '@angular/forms';
+import { AbstractControl, ValidatorFn, FormBuilder, FormGroup, FormControl, Validators, FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-other-qualification',
@@ -34,7 +34,7 @@ export class OtherQualificationComponent implements OnInit {
   // tslint:disable-next-line:member-ordering
   @Output() adddata = new EventEmitter<any>();
   qualification() {
-    this.adddata.emit(this.otherForm);
+    this.adddata.emit(this.applicantForm);
   }
   constructor() {
     this.coursesArray = ['Ph.D/Doctorate', 'MPHIL'];
@@ -75,18 +75,6 @@ export class OtherQualificationComponent implements OnInit {
 
   ngOnInit() {
     this.applicantForm = new FormGroup({
-    'higherDegreeValue': new FormControl(null, Validators.required),
-      'courseValue': new FormControl(null, Validators.required),
-      'specializationValue': new FormControl(null, Validators.required),
-      'universityName': new FormControl(null, Validators.required),
-      'passingYearValue': new FormControl(null, Validators.required),
-      'boardValue': new FormControl(null, Validators.required),
-      'passingValue': new FormControl(null, Validators.required),
-      'mediumValue': new FormControl(null, Validators.required),
-      'percentageValue': new FormControl(null, Validators.required),
- });
-
-    this.otherForm = new FormGroup({
       'higherDegreeValue': new FormControl(null, Validators.required),
       'courseValue': new FormControl(null, Validators.required),
       'specializationValue': new FormControl(null, Validators.required),
@@ -96,11 +84,8 @@ export class OtherQualificationComponent implements OnInit {
       'passingValue': new FormControl(null, Validators.required),
       'mediumValue': new FormControl(null, Validators.required),
       'percentageValue': new FormControl(null, Validators.required),
-      'skillsValue': new FormControl(null, Validators.required),
-
     });
   }
-  
 
 
 

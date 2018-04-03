@@ -4,7 +4,6 @@ import { HrPostDetail } from '../model/hrpostdetails';
 export class HrbaseService {
   hrpostdetails: any;
   hrpostdetail: HrPostDetail;
-  hrdostdetails: HrPostDetail[];
   constructor() {
     this.hrpostdetails = [
             HrPostDetail.PostDetailsFromJSON({
@@ -92,4 +91,4 @@ export class HrbaseService {
     addNewPost(hrpostdetail: HrPostDetail) {
     this.hrpostdetails.unshift(hrpostdetail);
   }
-}
+} 
