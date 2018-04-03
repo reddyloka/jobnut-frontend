@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-hr-header',
   templateUrl: './hr-header.component.html',
@@ -7,9 +7,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HrHeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
-  }
 
+  }
+  getprofile() {
+    this.router.navigateByUrl('/hr');
+  }
+  getpost() {
+    this.router.navigateByUrl('/hr-post');
+  }
+  addnewpost() {
+    this.router.navigateByUrl('/hr-new-post');
+  }
 }
