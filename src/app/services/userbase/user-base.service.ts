@@ -13,6 +13,8 @@ export class UserBaseService {
   constructor(private http: Http) { }
 
   addNewUser(userDetail: any, files: {}): Promise<boolean> {
+    console.log('SSSSSSSSSSSS');
+    console.log(environment.USER_SERVER + `/api/hr`);
     return this.http.post(environment.USER_SERVER + `/api/hr`, userDetail)
       .toPromise()
       .then((response) => {
