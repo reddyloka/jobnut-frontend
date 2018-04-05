@@ -1,28 +1,28 @@
 <div class="ui very padded container segment">
-  <form [formGroup]="hrdetailForm" (ngSubmit)="onSubmit()" class="ui form">
+  <form [formGroup]="hrexperienceForm" (ngSubmit)="onSubmit()" class="ui form">
     <h4 class="ui dividing header"></h4>
     <div class="field">
       <label>Current Designation *</label>
       <div class="field">
-        <input type="text" id="name" placeholder="First Name" formControlName="name">
+        <input type="text" id="currdesig" placeholder="Current Designation" formControlName="currdesig">
       </div>
     </div>
     <div class="field">
       <label>Current Employer</label>
       <div class="field">
-        <input type="text" id="designation" placeholder="Designation" formControlName="designation">
+        <input type="text" id="curremp" placeholder="Current Employer" formControlName="curremp">
       </div>
     </div>
     <div class="field">
       <label>Job Profile</label>
       <div class="field">
-        <input type="text" id="curremployer" placeholder="Employer" formControlName="curremployer">
+        <input type="text" id="jobprofile" placeholder="Employer" formControlName="jobprofile">
       </div>
     </div>
     <div class="field">
       <label>Joined in</label>
       <div class="field">
-        <input type="text" id="currlocation" placeholder="Lcoation" formControlName="currlocation">
+        <input type="text" id="joinedin" placeholder="Lcoation" formControlName="joinedin">
       </div>
     </div>
 <button class="ui primary button" type="submit"> Save </button>
