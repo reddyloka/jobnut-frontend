@@ -14,16 +14,22 @@ export class LoginViewComponent implements OnInit {
   searchInfo: boolean;
   jobInfo: boolean;
   searchText: any;
-hrpost: HrPostDetail[];
- recomendedSkill: string[];
+  id: string;
+  hrpost: HrPostDetail[];
+  recomendedSkill: string[];
+
   constructor(private hrbaseservice: HrbaseService,
-              private router: Router) {
+    private router: Router) {
     this.jobInfo = true;
     this.recomendedSkill = ['c++'];
+    this.id = JSON.parse(localStorage.getItem('uuid') || 'null');
+
   }
 
   ngOnInit() {
-    this.hrbaseservice.getAllHrPost().
+  console.log('looper id:: ', this.id);
+  console.log('looper id:: ');
+    this.hrbaseservice.getAllHrPost('bnklnbkhbkklbvjhjk').
       then((hrpost) => {
         this.hrpost = hrpost;
         this.suggestedjob = this.hrpost.filter((ele) => {
@@ -57,7 +63,7 @@ hrpost: HrPostDetail[];
   }
 
   routeronclicked(hrpost_id) {
-     this.router.navigateByUrl('login-user-view/' + hrpost_id);
+    this.router.navigateByUrl('login-user-view/' + hrpost_id);
   }
 
 }

@@ -8,10 +8,17 @@ import { Component, OnInit, Input } from '@angular/core';
 export class HrPostdetailsSummaryComponent implements OnInit {
 
   @Input()
-  hrpost;
-  constructor() { }
+  hrpost: Object;
+
+  a: any;
+  constructor() {
+    this.a = this.hrpost;
+    console.log('nulls is hers', this.hrpost);
+  }
 
   ngOnInit() {
+    // if (this.hrpost == null) {
+    // }
   }
 
 }

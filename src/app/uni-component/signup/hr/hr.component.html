@@ -30,30 +30,30 @@
       <div class="two fields">
         <div class="field">
           <label>Industry type</label>
-          <select id="option" class="ui fluid dropdown" formControlName="option">
+          <select id="option" class="ui fluid dropdown" formControlName="industry">
             <option>Select</option>
-            <option [value]="option" *ngFor="let option of options">{{option}}</option>
+            <option [value]="industry" *ngFor="let industry of options">{{industry}}</option>
           </select>
         </div>
         <div class="field">
           <label>Country *</label>
-          <!-- <select id="country" class="ui fluid dropdown" formControlName="country">
+          <select id="country" class="ui fluid dropdown" formControlName="country">
             <option>Select</option>
             <option>India</option>
-          </select> -->
+          </select>
         </div>
       </div>
       <div class="two fields">
         <div class="field">
           <label>States *</label>
-          <!-- <select id="states" class="ui fluid dropdown" formControlName="states">
+          <select id="states" class="ui fluid dropdown" formControlName="states">
             <option>Select</option>
             <option [value]="state" *ngFor="let state of states">{{state}}</option>
-          </select> -->
+          </select>
         </div>
         <div class="field">
           <label>City</label>
-          <!-- <input type="text" id="city" placeholder="City" formControlName="city"> -->
+          <input type="text" id="city" placeholder="City" formControlName="city">
         </div>
       </div>
       <div class="eight wide field">

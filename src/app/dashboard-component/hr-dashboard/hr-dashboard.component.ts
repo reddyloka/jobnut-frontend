@@ -11,11 +11,13 @@ import { Router } from '@angular/router';
 export class HrDashboardComponent implements OnInit {
 
   id: string;
+  isActive: boolean[];
 
   constructor(
     private _authService: AuthService,
     private router: Router
   ) {
+    this.isActive = [true, false, false];
     // this.id =
     if (!_authService.isLoggedIn) {
       this.router.navigateByUrl('login');
@@ -24,6 +26,19 @@ export class HrDashboardComponent implements OnInit {
 
   ngOnInit() {
 
+  }
+
+  getprofile() {
+    this.isActive = [true, false, false];
+    this.router.navigateByUrl('hr/profile');
+  }
+  getpost() {
+    this.isActive = [false, true, false];
+    this.router.navigateByUrl('hr/jobs-posted');
+  }
+  addnewpost() {
+    this.isActive = [false, false, true];
+    this.router.navigateByUrl('hr/new-job');
   }
 
   getDetails() {

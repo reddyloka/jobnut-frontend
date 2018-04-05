@@ -9,12 +9,15 @@ import { HrbaseService } from '../../../../services/hrbase.service';
 })
 export class HrPostComponent implements OnInit {
   hrpost: HrPostDetail[];
+  id: String;
   constructor(private hrbaseservice: HrbaseService,
-    private router: Router) { }
+    private router: Router) {
+    this.id = localStorage['uuid'];
+  }
 
   ngOnInit() {
-    this.hrbaseservice.getAllHrPost().
-      then((hrpost) => {
+    this.hrbaseservice.getAllHrPost(this.id)
+      .then((hrpost) => {
         this.hrpost = hrpost;
         console.log(hrpost);
       });

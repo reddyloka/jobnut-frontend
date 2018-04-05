@@ -1,7 +1,8 @@
 <div class="ui pointing menu">
-  <a class="item active">Home </a>
-  <a class="item" (click)="getDetails()"> Profile </a>
-  <a class="item" (click)=" getJob()">New Job</a>
+  <a class="item">Home </a>
+  <a class="item" [ngClass]="{'active': isActive[0]}" (click)="getprofile($event.target)"> Profile </a>
+  <a class="item" [ngClass]="{'active': isActive[1]}" (click)= "getpost()">Job Post</a>
+  <a class="item" [ngClass]="{'active': isActive[2]}" (click)= "addnewpost()"> Add New Post</a>
   <a class="item float right" (click)="logoutClicked()">Log out</a>
 </div>
 <router-outlet></router-outlet>
