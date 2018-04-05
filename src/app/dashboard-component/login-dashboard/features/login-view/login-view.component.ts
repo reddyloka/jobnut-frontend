@@ -19,7 +19,7 @@ hrpost: HrPostDetail[];
   constructor(private hrbaseservice: HrbaseService,
               private router: Router) {
     this.jobInfo = true;
-    this.recomendedSkill = ['c', 'c++'];
+    this.recomendedSkill = ['c++'];
   }
 
   ngOnInit() {

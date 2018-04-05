@@ -14,7 +14,7 @@ userclick: EventEmitter<number> = new EventEmitter();
 
  public userclicked() {
 
-   this.userclick.emit(this.hrpost.id);
+   this.userclick.emit(this.hrpost._id);
  }
 
   constructor() { }

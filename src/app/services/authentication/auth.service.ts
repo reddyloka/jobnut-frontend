@@ -23,25 +23,27 @@ export class AuthService {
   login(formData) {
     console.log('inside', formData);
     return this.http.post(
-      USER_SERVER + '/v1/hr', formData)
+      USER_SERVER + '/api/login', formData)
       .do(res => {
         // console.log('response is: ', res);
-        this.setSession(res);
+        return this.setSession(res);
       })
       .shareReplay();
   }
 
   private setSession(authResult) {
     console.log(' authResult is : ');
-    console.log(' authResult is : ', authResult);
-    const expiresAt = moment().add(authResult.expiresIn, 'second');
-    this.jwtservice.saveToken(authResult.token);
-    localStorage.setItem('expires_at', JSON.stringify(expiresAt.valueOf()));
+    console.log(' authResult is : ', authResult.user);
+    // const expiresAt = moment().add(authResult.expiresIn, 'second');
+    this.jwtservice.saveToken(authResult.user.token);
+    localStorage['uuid'] = authResult.user.id;
+    return true;
+    // localStorage.setItem('expires_at', JSON.stringify(expiresAt.valueOf()));
   }
 
   logout() {
     this.jwtservice.destroyToken();
-    localStorage.removeItem('expires_at');
+    // localStorage.removeItem('expires_at');
   }
 
   public isLoggedIn() {

@@ -1,0 +1,183 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <ul class="nav navbar-nav" style="padding-left:35%">
+      <li [style.background-color]="personalInfo?'lightgrey':default">
+        <a>Personal Details</a>
+      </li>
+      <li [style.background-color]="educationInfo?'lightgrey':default">
+        <a>Education</a>
+      </li>
+    </ul>
+
+  </div>
+</nav>
+
+<div class="ui very padded container segment">
+
+  <form class="ui form" [formGroup]="applicantForm">
+    <div class="field" *ngIf="personalInfo">
+      <div class="field">
+        <label>First Name
+          <span style="color:red">*</span>
+        </label>
+        <input type="text" formControlName="firstName" placeholder="john" [(ngModel)]="user_details.firstName">
+        <div *ngIf="applicantForm.controls['firstName'].touched&&!applicantForm.controls['firstName'].valid" class="alert alert-danger">
+          <p>Name need to be AtLeast 4 characters</p>
+        </div>
+      </div>
+      <div class="field">
+        <label>Last Name
+        </label>
+        <input type="text" formControlName="lastName" placeholder="Carter" [(ngModel)]="user_details.lastName">
+      </div>
+      <div class="field">
+        <label>Date Of Birth
+          <span style="color:red">*</span>
+        </label>
+        <input type="date" formControlName="dob" placeholder="enter date of birth" [(ngModel)]="user_details.dob">
+        <div class="alert alert-danger" *ngIf="!applicantForm.controls['dob'].dirty && applicantForm.controls['dob'].touched">
+          <p>Please fill required fields
+            <span style="color:red">*</span>
+          </p>
+        </div>
+      </div>
+      <div class="field">
+        <label>Mobile Number
+          <span style="color:red">*</span>
+        </label>
+        <input type="number" formControlName="phone" placeholder="please enter your contact number" [(ngModel)]="user_details.phone">
+        <div class="alert alert-danger" *ngIf="applicantForm.controls['phone'].touched &&!applicantForm.controls['phone'].valid">
+          <p>enter a valid mobile number
+            <span style="color:red">*</span>
+          </p>
+        </div>
+      </div>
+      <div class="field">
+        <label>Email
+          <span style="color:red">*</span>
+        </label>
+        <input type="text" formControlName="email" placeholder="valid Email addresss" [(ngModel)]="user_details.email">
+        <div class="alert alert-danger" *ngIf="applicantForm.controls['email'].touched&&!applicantForm.controls['email'].valid">
+          <p>Enter a valid email address
+            <span style="color:red">*</span>
+          </p>
+        </div>
+      </div>
+      <div class="field">
+        <label>Password
+          <span style="color:red">*</span>
+        </label>
+        <input type="text" name="Password" formControlName="password" placeholder="create password" [(ngModel)]="user_details.password">
+        <div class="alert alert-danger" *ngIf="applicantForm.controls['password'].touched&&!applicantForm.controls['password'].valid">
+          <p>please create strong password
+            <span style="color:red">*</span>
+          </p>
+        </div>
+      </div>
+      <div class="field">
+        <label>Address
+          <span style="color:red">*</span>
+        </label>
+        <input type="text" formControlName="address" placeholder="enter your current Address" [(ngModel)]="user_details.address">
+        <div class="alert alert-danger" *ngIf="applicantForm.controls['address'].touched&&!applicantForm.controls['address'].valid">
+          <p>please fill required fields
+            <span style="color:red">*</span>
+          </p>
+        </div>
+      </div>
+      <div class="field">
+        <label>Location
+          <span style="color:red">*</span>
+        </label>
+        <input type="text" formControlName="location" placeholder="enter your current location" [(ngModel)]="user_details.location">
+        <div class="alert alert-danger" *ngIf="applicantForm.controls['location'].touched&&!applicantForm.controls['location'].valid">
+          <p>please fill required fields
+            <span style="color:red">*</span>
+          </p>
+        </div>
+      </div>
+      <div class="field">
+        <label>Gender</label>
+        <select class="ui dropdown" formControlName="gender" [(ngModel)]="user_details.gender">
+          <option value="">select your gender</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+        </select>
+        <div class="alert alert-danger" *ngIf="applicantForm.controls['gender'].touched&&!applicantForm.controls['gender'].valid">
+          <p>please fill required fields
+            <span style="color:red">*</span>
+          </p>
+        </div>
+      </div>
+      <!-- [disabled]="!(applicantForm.controls['email'].valid&&applicantForm.controls['password'].valid)" -->
+      <button class="btn btn-success"
+        (click)="personalDetailClicked()">Next</button>
+    </div>
+
+
+
+    <div *ngIf="educationInfo">
+      <div *ngFor="let user_detail of user_details.education; let j=index">
+      <div class="field">
+        <label>Highest Qualification
+          <span style="color:red">*</span>
+        </label>
+        <select formControlName="higherDegreeValue_{{j}}" [(ngModel)]="user_details.education[j].higherDegreeValue">
+          <option>Select your highest qualification</option>
+          <option *ngFor="let i of highestDegreeArray">{{i}}</option>
+      
+        </select>
+      </div>
+      <div class="field">
+        <label>University/College/school
+          <span style="color:red">*</span>
+        </label>
+        <input type="text" placeholder="Institute Name" formControlName="universityName_{{j}}"  [(ngModel)]="user_details.education[j].universityName"/>
+        <!-- <div class="alert alert-danger" *ngIf="!applicantForm.controls['universityName'].valid && applicantForm.controls['universityName'].touched">
+                  <p>Please fill required fields
+                    <span style="color:red">*</span>
+                  </p>
+                </div> -->
+      </div>
+
+      <div class="field">
+        <label>Passing Year
+          <span style="color:red">*</span>
+        </label>
+        <select formControlName="passingYearValue_{{j}}" [(ngModel)]="user_details.education[j].passingYearValue">
+          <option>Select</option>
+          <option *ngFor="let i of yearArray">{{i}}</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Percentage
+          <span style="color:red">*</span>
+        </label>
+        <input type="text" placeholder="enter you percentage" formControlName="percentageValue_{{j}}" [(ngModel)]="user_details.education[j].percentageValue"/>
+        <!-- <div class="alert alert-danger" *ngIf="!applicantForm.controls['percentage'].valid && applicantForm.controls['percentage'].touched">
+                    <p>Please fill required fields
+                      <span style="color:red">*</span>
+                    </p>
+                  </div> -->
+      </div>
+    </div>
+    </div>
+    <div class="field">
+      <label>Skills
+        <span style="color:red">*</span>
+      </label>
+      <select formControlName="skillValue" class="ui fluid search dropdown" multiple="" [(ngModel)]="user_details.skillValue">
+        <option value="">select your skills</option>
+        <option *ngFor="let i of skills">{{i}}</option>
+      </select>
+      <div class="alert alert-danger" *ngIf="!applicantForm.controls['skillValue'].valid && applicantForm.controls['skillValue'].touched">
+        <p>Please fill required fields
+          <span style="color:red">*</span>
+        </p>
+      </div>
+    </div>
+    <button class="btn btn-success" (click)="onSubmit()">Register</button>
+
+
+  </form>
+</div>

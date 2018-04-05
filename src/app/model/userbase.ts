@@ -9,6 +9,12 @@ export class Userbase {
     lname: string;
     email: string;
     password: string;
+    dob: Date;
+    phone: String;
+    address: string;
+    location: string;
+    gender: string;
+    skillValue: string;
     profilePhoto: string;
     dashboard: Dashboard;
     isHr: boolean;
@@ -16,10 +22,18 @@ export class Userbase {
     admin: boolean;
     status: boolean;
 
-    constructor(f: string, l: string, em: string, p: string, pp: string, dashB: Dashboard, ihr: boolean, iApl: boolean, ad: boolean, st: boolean) {
+    constructor(f: string, l: string, em: string, p: string, pp: string,
+        dob: Date, phone: string, skillValue: string, address: string, location: string, gender: string,
+        dashB: Dashboard, ihr: boolean, iApl: boolean, ad: boolean, st: boolean) {
         this.fname = f;
         this.lname = l;
         this.email = em;
+        this.dob = dob;
+        this.phone = phone;
+        this.address = address;
+        this.location = location;
+        this.gender = gender;
+        this.skillValue = skillValue;
         this.password = p;
         this.profilePhoto = pp;
         this.dashboard = dashB;
@@ -30,6 +44,6 @@ export class Userbase {
     }
 
     public static createBlankUser() {
-        return new Userbase(null, null, null, null, null, null, false, false, false, false);
+        return new Userbase(null, null, null, null, null, null, null, null, null, null, null, null, false, false, false, false);
     }
 }
