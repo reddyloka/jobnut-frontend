@@ -36,6 +36,7 @@ export class HrDashboardDetailsComponent implements OnInit {
     //   this.router.navigateByUrl('login');
     // }
   }
+
   EditPersonalDetails() {
     this.detailsOpen = true;
     this.detailsMain = false;

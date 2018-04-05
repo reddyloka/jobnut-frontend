@@ -7,9 +7,15 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   styleUrls: ['./hr-details.component.css']
 })
 export class HrDetailsComponent implements OnInit {
+  hrdetailForm: FormGroup;
   @Output()
   discardClick = new EventEmitter<boolean>();
-  hrdetailForm: FormGroup;
+
+  discardClicked() {
+    this.discardClick.emit(true);
+  }
+
+
 
   constructor() {
     this.buildFormGroup();
@@ -29,9 +35,7 @@ export class HrDetailsComponent implements OnInit {
   ngOnInit() {
   }
 
-  discardClicked() {
-    this.discardClick.emit(true);
-  }
+  
   onSubmit() {
     console.log(this.hrdetailForm);
   }

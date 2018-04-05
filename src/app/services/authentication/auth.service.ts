@@ -36,6 +36,7 @@ export class AuthService {
     console.log(' authResult is : ', authResult.user);
     // const expiresAt = moment().add(authResult.expiresIn, 'second');
     this.jwtservice.saveToken(authResult.user.token);
+    localStorage['uuid'] = authResult.user.id;
     return true;
     // localStorage.setItem('expires_at', JSON.stringify(expiresAt.valueOf()));
   }

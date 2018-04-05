@@ -41,10 +41,6 @@ export class HrPostDetail {
 
     }
 
-    // public static PostDetailsFromJSON(obj: any): HrPostDetail {
-    //     return new HrPostDetail(obj.id , obj.title , obj.companyname, obj.description, obj.startdate, obj.enddate, obj.skills, obj.location, obj.salary, obj.experinece, obj.dateOfJoining, obj.extraRequirement, obj.noOfJobOpenings, obj.CompanyUrl, obj.bondDetails, obj.ReportingVenue, obj.ResourcePersonContact, obj.selectionProcedure);
-    // }
-
     public static createblank(): HrPostDetail {
 
         return new HrPostDetail(null , '', '',  '', null, null, '', '', null, '', null, '', null, '', '', '', '', '');

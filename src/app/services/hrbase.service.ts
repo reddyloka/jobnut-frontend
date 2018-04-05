@@ -123,7 +123,7 @@ export class HrbaseService {
 
   getHrPostById(hrpost_id): Promise<HrPostDetail> {
     console.log(' :: ', hrpost_id);
-    return this.http.get(`${environment.USER_SERVER}/posts/${hrpost_id}`)
+    return this.http.get(`${environment.USER_SERVER}/api/posts/${hrpost_id}`)
       .toPromise()
       .then((response) => {
         console.log('id data:', response.json().data);
@@ -131,9 +131,14 @@ export class HrbaseService {
       });
   }
 
-  addNewPost(hrpostdetail: HrPostDetail): Promise<boolean> {
+  addNewPost(hrpostdetail: HrPostDetail, user: string): Promise<boolean> {
     // this.hrpostdetails.unshift(hrpostdetail);
-    return this.http.put(`${environment.USER_SERVER}/posts`, hrpostdetail)
+    console.log('data123', hrpostdetail);
+    return this.http.put(`${environment.USER_SERVER}/api/posts/new-post`, hrpostdetail, {
+      params: {
+        'id': user
+      }
+    })
       .toPromise()
       .then((response) => {
         console.log(' 123 : ', response);
@@ -141,3 +146,4 @@ export class HrbaseService {
       });
   }
 }
+

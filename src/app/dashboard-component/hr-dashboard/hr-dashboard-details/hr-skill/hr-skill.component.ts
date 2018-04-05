@@ -13,7 +13,7 @@ export class HrSkillComponent implements OnInit {
   items: any;
   levels: any;
   functional: any;
-  hrskillForm: FormGroup
+  hrskillForm: FormGroup;
 
   constructor() {
     this.buildFormGroup();

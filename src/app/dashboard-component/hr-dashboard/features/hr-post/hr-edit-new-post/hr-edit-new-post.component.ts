@@ -4,6 +4,7 @@ import { HrPostDetail } from '../../../../../model/hrpostdetails';
 import { HrbaseService } from '../../../../../services/hrbase.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AbstractControl, ValidatorFn, FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
+import { uuid } from '../../../../../model/uuid';
 @Component({
   selector: 'app-hr-edit-new-post',
   templateUrl: './hr-edit-new-post.component.html',
@@ -11,6 +12,7 @@ import { AbstractControl, ValidatorFn, FormBuilder, FormGroup, FormControl, Vali
 })
 export class HrEditNewPostComponent implements OnInit {
   hrpostNewDataForm: FormGroup;
+  id: string;
 
   hrpostNewData: HrPostDetail;
   constructor(private hrbaseservice: HrbaseService,
@@ -18,6 +20,7 @@ export class HrEditNewPostComponent implements OnInit {
     this.hrpostNewData = HrPostDetail.createblank();
     console.log(this.hrpostNewData);
     this.buildFormGroup();
+    this.id = uuid();
   }
 
   buildFormGroup(): void {
@@ -49,7 +52,7 @@ export class HrEditNewPostComponent implements OnInit {
 
 
   onSubmit() {
-    this.hrbaseservice.addNewPost(this.hrpostNewData);
+    this.hrbaseservice.addNewPost(this.hrpostNewData, this.id);
     this.router.navigate(['hr-post']);
   }
 }

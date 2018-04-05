@@ -1,0 +1,38 @@
+<app-user-header></app-user-header>
+<div class="search-container">
+    <div class="row">
+    <div class="col-md-6 col-md-offset-3" style="margin-top: 10px; margin-bottom: 10px">
+          <div class="form-group" style="float:left;width:90%" >
+          <input type="text"  [(ngModel)]="searchText" class="form-control" placeholder="Search...." >
+          </div>
+          <div class="form-group" style="float:right;width:10%">
+          <button type="" name="sec_submit"  class="form-control" value="submit" (click)="searchClicked()" ><span class="glyphicon glyphicon-search"></span></button>
+          </div>
+          <div class="clearfix"></div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-3" style="background-color: rgb(100, 99, 99); height:750px">
+    <div style="margin-top: 30px; background-color: lightbalck">
+      <a href="">
+        <h4 class="nav">Applied Job</h4>
+      </a>
+    </div>
+    <div style="margin-top: 30px; background-color: lightbalck">
+      <a href="">
+        <h4 class="nav">Saved JOb</h4>
+      </a>
+    </div>
+    </div>
+  <div class="col-md-6" style="border: 2px solid lightgrey;height: 600px">
+    <br>
+   <!-- <app-login-view-post *ngFor="let hrpost of hrpost" [hrpost]=hrpost (userclick)="routeronclicked($event)"></app-login-view-post> -->
+   <div *ngIf="jobInfo">
+    <app-user-view-post  *ngFor="let hrpost of suggestedjob" [hrpost]=hrpost (userclick)="routeronclicked($event)"></app-user-view-post>
+   </div>
+   <div *ngIf="searchInfo">
+    <app-user-view-post  *ngFor="let hrpost of searchData" [hrpost]=hrpost (userclick)="routeronclicked($event)"></app-user-view-post>
+   </div>
+  </div>
+</div>
