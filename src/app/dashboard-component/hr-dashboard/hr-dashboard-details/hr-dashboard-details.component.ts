@@ -18,10 +18,7 @@ export class HrDashboardDetailsComponent implements OnInit {
   detailsMain: boolean;
   SkillsMain: boolean;
 
-  constructor(
-    private router: Router,
-    private _authService: AuthService
-  ) {
+  constructor( private router: Router, private _authService: AuthService ) {
     this.ExpMain = true;
     this.ExpOpen = false;
     this.detailsMain = true;
@@ -39,6 +36,7 @@ export class HrDashboardDetailsComponent implements OnInit {
     //   this.router.navigateByUrl('login');
     // }
   }
+
   EditPersonalDetails() {
     this.detailsOpen = true;
     this.detailsMain = false;
