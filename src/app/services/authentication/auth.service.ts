@@ -22,8 +22,7 @@ export class AuthService {
 
   login(formData) {
     console.log('inside', formData);
-    return this.http.post(
-      USER_SERVER + '/api/login', formData)
+    return this.http.post(USER_SERVER + '/api/login', formData)
       .do(res => {
         // console.log('response is: ', res);
         return this.setSession(res);
@@ -32,7 +31,6 @@ export class AuthService {
   }
 
   private setSession(authResult) {
-    console.log(' authResult is : ');
     console.log(' authResult is : ', authResult.user);
     // const expiresAt = moment().add(authResult.expiresIn, 'second');
     this.jwtservice.saveToken(authResult.user.token);

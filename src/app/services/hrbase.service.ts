@@ -97,7 +97,7 @@ import { Http } from '@angular/http';
 
 
 // upar ka delete mat maarna abhi
-// upar ka delete mat maarna abhi
+
 import { Injectable } from '@angular/core';
 import { HrPostDetail } from '../model/hrpostdetails';
 import { environment } from '../../environments/environment';
@@ -110,13 +110,11 @@ export class HrbaseService {
     private http: Http
   ) { }
 
-
   getAllHrPost(): Promise<HrPostDetail[]> {
     return this.http.get(`${environment.USER_SERVER}/posts`)
       .toPromise()
       .then((response) => {
         console.log('data get: ', response.json());
-
         return response.json().data;
       });
   }
@@ -146,4 +144,3 @@ export class HrbaseService {
       });
   }
 }
-
