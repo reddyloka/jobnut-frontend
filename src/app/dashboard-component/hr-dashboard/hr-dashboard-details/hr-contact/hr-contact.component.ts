@@ -3,7 +3,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 @Component({
   selector: 'app-hr-contact',
   templateUrl: './hr-contact.component.html',
-  styleUrls: ['./hr-contact.component.css']
+  styleUrls: []
 })
 export class HrContactComponent implements OnInit {
 

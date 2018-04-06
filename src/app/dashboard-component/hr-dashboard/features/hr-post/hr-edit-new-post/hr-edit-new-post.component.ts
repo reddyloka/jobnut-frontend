@@ -8,7 +8,7 @@ import { uuid } from '../../../../../_helper/uuid';
 @Component({
   selector: 'app-hr-edit-new-post',
   templateUrl: './hr-edit-new-post.component.html',
-  styleUrls: ['./hr-edit-new-post.component.css']
+  styleUrls: []
 })
 export class HrEditNewPostComponent implements OnInit {
   hrpostNewDataForm: FormGroup;

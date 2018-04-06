@@ -4,7 +4,7 @@ import { AbstractControl, ValidatorFn, FormBuilder, FormGroup, FormControl, Vali
 @Component({
   selector: 'app-other-qualification',
   templateUrl: './other-qualification.component.html',
-  styleUrls: ['./other-qualification.component.css'],
+  styleUrls: [],
 
 })
 export class OtherQualificationComponent implements OnInit {
@@ -100,7 +100,6 @@ export class OtherQualificationComponent implements OnInit {
 
     });
   }
-  
 
 
 

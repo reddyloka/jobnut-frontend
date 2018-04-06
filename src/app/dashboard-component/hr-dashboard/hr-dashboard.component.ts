@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-hr-dashboard',
   templateUrl: './hr-dashboard.component.html',
-  styleUrls: ['./hr-dashboard.component.css']
+  styleUrls: []
 })
 export class HrDashboardComponent implements OnInit {
 

@@ -5,7 +5,7 @@ import { HrbaseService } from '../../../../services/hrbase.service';
 @Component({
   selector: 'app-hr-post',
   templateUrl: './hr-post.component.html',
-  styleUrls: ['./hr-post.component.css']
+  styleUrls: []
 })
 export class HrPostComponent implements OnInit {
   hrpost: HrPostDetail[];

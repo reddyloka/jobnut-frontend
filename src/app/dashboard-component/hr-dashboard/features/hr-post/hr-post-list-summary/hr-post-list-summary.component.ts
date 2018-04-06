@@ -3,7 +3,7 @@ import { Component, OnInit, Input , Output, EventEmitter} from '@angular/core';
 @Component({
   selector: 'app-hr-post-list-summary',
   templateUrl: './hr-post-list-summary.component.html',
-  styleUrls: ['./hr-post-list-summary.component.css']
+  styleUrls: []
 })
 export class HrPostListSummaryComponent implements OnInit {
 @Input()

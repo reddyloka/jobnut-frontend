@@ -5,7 +5,7 @@ declare var $: any;
 @Component({
   selector: 'app-hr-skill',
   templateUrl: './hr-skill.component.html',
-  styleUrls: ['./hr-skill.component.css'],
+  styleUrls: [],
 })
 export class HrSkillComponent implements OnInit {
   @Output()

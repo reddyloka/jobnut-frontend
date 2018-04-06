@@ -4,7 +4,7 @@ import { AuthService } from '../../../services/authentication/auth.service';
 @Component({
   selector: 'app-hr-dashboard-details',
   templateUrl: './hr-dashboard-details.component.html',
-  styleUrls: ['./hr-dashboard-details.component.css']
+  styleUrls: []
 })
 export class HrDashboardDetailsComponent implements OnInit {
   ExpOpen: boolean;
