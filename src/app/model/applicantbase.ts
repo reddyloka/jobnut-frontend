@@ -28,7 +28,7 @@ export class ApplicantBase {
     address: string;
     location: string;
     gender: string;
-    skillValue: string;
+    skillValue: string[];
     dashboard: Dashboard;
     isApplicant: boolean;
     isHr: boolean;
@@ -36,7 +36,7 @@ export class ApplicantBase {
     education: Education[];
     experience: Experience[];
 
-    constructor(firstName: string, lastName: string, email: string, dob: Date, password: string, phone: number, address: string, location: string, gender: string, skillValue: string, isA: boolean, dashB: Dashboard, isH: boolean, st: boolean, education: Education[], experience: Experience[]) {
+    constructor(firstName: string, lastName: string, email: string, dob: Date, password: string, phone: number, address: string, location: string, gender: string, skillValue: string[], isA: boolean, dashB: Dashboard, isH: boolean, st: boolean, education: Education[], experience: Experience[]) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -57,6 +57,6 @@ export class ApplicantBase {
     }
 
     public static createblank(): ApplicantBase {
-        return new ApplicantBase(null, null, null, null, null, null, null, null, null, null, null, null, null, null, [{higherDegreeValue: '', universityName: '', passingYearValue: '', percentageValue: ''}], [{ profileTitle: '', totalExperienceYear: '', Description: ''}]);
+        return new ApplicantBase(null, null, null, null, null, null, null, null, null, [], null, null, null, null, [{higherDegreeValue: '', universityName: '', passingYearValue: '', percentageValue: ''}], [{ profileTitle: '', totalExperienceYear: '', Description: ''}]);
     }
 }

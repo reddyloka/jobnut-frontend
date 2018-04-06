@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-user-header',
@@ -6,6 +6,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./user-header.component.css']
 })
 export class UserHeaderComponent implements OnInit {
+ @Input()
+userdata;
 
   constructor(private router: Router) { }
 

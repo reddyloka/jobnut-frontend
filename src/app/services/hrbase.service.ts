@@ -110,8 +110,18 @@ export class HrbaseService {
     private http: Http
   ) { }
 
+<<<<<<< HEAD
   getAllHrPost(): Promise<HrPostDetail[]> {
     return this.http.get(`${environment.USER_SERVER}/posts`)
+=======
+
+  getAllHrPost(user: string): Promise<HrPostDetail[]> {
+    return this.http.get(`${environment.USER_SERVER}/api/posts`, {
+      params: {
+        'id': user
+      }
+    })
+>>>>>>> 94aa44f89f7d0657c4f23af5c16d25513fed573d
       .toPromise()
       .then((response) => {
         console.log('data get: ', response.json());
@@ -143,4 +153,21 @@ export class HrbaseService {
         return true;
       });
   }
+<<<<<<< HEAD
 }
+=======
+
+
+
+  getAllUserViewPost(): Promise<HrPostDetail[]> {
+    return this.http.get(`${environment.USER_SERVER}/api/posts/all/post`)
+      .toPromise()
+      .then((response) => {
+        console.log('data get post: ', response.json());
+
+        return response.json().data;
+      });
+  }
+}
+
+>>>>>>> 94aa44f89f7d0657c4f23af5c16d25513fed573d
