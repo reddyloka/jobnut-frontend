@@ -1,5 +1,4 @@
 
-
 export class HrPostDetail {
     id: string;
     title: string;

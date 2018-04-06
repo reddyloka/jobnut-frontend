@@ -19,7 +19,7 @@ export class HrDetailsComponent implements OnInit {
 
   constructor() {
     this.buildFormGroup();
-   }
+  }
 
    buildFormGroup(): void {
     const fg = {

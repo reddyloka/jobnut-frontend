@@ -96,6 +96,7 @@ export class HrComponent implements OnInit {
 
 
   }
-
-
+  gethrDash() {
+    this.router.navigateByUrl('hr');
+  }
 }
