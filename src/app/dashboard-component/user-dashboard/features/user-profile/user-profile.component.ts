@@ -1,11 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-
+import { uuid } from '../../../../model/uuid';
+import { UserBaseService } from '../../../../services/userbase/user-base.service';
+import { ApplicantBase } from '../../../../model/applicantbase';
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.component.html',
   styleUrls: ['./user-profile.component.css']
 })
 export class UserProfileComponent implements OnInit {
+  id: any;
+  userdata: ApplicantBase;
   educationOpen: boolean;
   educationMain: boolean;
   skillOpen: boolean;
@@ -15,7 +19,7 @@ export class UserProfileComponent implements OnInit {
   detailsOpen: boolean;
   detailsMain: boolean;
 
-  constructor() {
+  constructor(private userbaseservice: UserBaseService) {
     this.detailsMain = true;
     this.detailsOpen = false;
     this.expMain = true;
@@ -24,9 +28,16 @@ export class UserProfileComponent implements OnInit {
     this.skillOpen = false;
     this.educationMain = true;
     this.educationOpen = false;
+    this.id = uuid();
    }
 
   ngOnInit() {
+
+    this.userbaseservice.getUserDetailsById(this.id).
+    then((userdata) => {
+      console.log('maindata', userdata);
+      this.userdata = userdata;
+    });
   }
 
   EditPersonalDetails() {

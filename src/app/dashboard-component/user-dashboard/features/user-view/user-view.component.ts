@@ -2,38 +2,57 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HrPostDetail } from '../../../../model/hrpostdetails';
 import { HrbaseService } from '../../../../services/hrbase.service';
+import { uuid } from '../../../../model/uuid';
+import { UserBaseService } from '../../../../services/userbase/user-base.service';
+import { ApplicantBase } from '../../../../model/applicantbase';
 @Component({
   selector: 'app-user-view',
   templateUrl: './user-view.component.html',
   styleUrls: ['./user-view.component.css']
 })
 export class UserViewComponent implements OnInit {
+  id: any;
   suggestedjob: HrPostDetail[];
   jobData: any;
   searchData: any;
   searchInfo: boolean;
   jobInfo: boolean;
   searchText: any;
-hrpost: HrPostDetail[];
- recomendedSkill: string[];
+  userdata: ApplicantBase;
+  hrpost: HrPostDetail[];
+  recomendedSkill: string[];
   constructor(private hrbaseservice: HrbaseService,
-              private router: Router) {
+    private userbaseservice: UserBaseService,
+    private router: Router) {
+    this.id = uuid();
     this.jobInfo = true;
-    this.recomendedSkill = ['c++'];
+    this.recomendedSkill = ['c++', 'ghhj'];
   }
 
   ngOnInit() {
-    this.hrbaseservice.getAllHrPost().
+    //  this.hrbaseservice.getAllUserViewPost().
+    // then((hrpost) => {
+    //   this.hrpost = hrpost;
+    //   this.suggestedjob = this.hrpost.filter((ele) => {
+    //     if (ele.skills.includes(this.recomendedSkill.toString())) {
+    //       return ele;
+    //     }
+    //   });
+
+    // });
+    this.hrbaseservice.getAllUserViewPost().
       then((hrpost) => {
         this.hrpost = hrpost;
-        this.suggestedjob = this.hrpost.filter((ele) => {
-          if (ele.skills.includes(this.recomendedSkill.toString())) {
-            return ele;
-          }
-        });
+        this.suggestedjob = this.hrpost;
 
       });
 
+    this.userbaseservice.getUserDetailsById(this.id).
+      then((userdata) => {
+        console.log('maindata', userdata);
+        this.userdata = userdata;
+
+      });
   }
 
 
@@ -57,7 +76,7 @@ hrpost: HrPostDetail[];
   }
 
   routeronclicked(hrpost_id) {
-     this.router.navigateByUrl('user-view-post/' + hrpost_id);
+    this.router.navigateByUrl('user-view-post/' + hrpost_id);
   }
 
 }
