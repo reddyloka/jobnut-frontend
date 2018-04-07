@@ -38,25 +38,30 @@ export class HrComponent implements OnInit {
 
     this.user_details = Userbase.createBlankUser();
     this.buildFormGroup();
-    this.profile_photo =  null;
-    this.userExist = false;
-    this.user_details.isHr = true;
-    this.user_details.status = true;
+    this.profile_photo = null;
+    // this.userExist = false;
+    // this.user_details.isHr = true;
+    // this.user_details.status = true;
   }
 
   buildFormGroup(): void {
     const fg = {
       'fname': new FormControl(this.user_details.fname, Validators.required),
       'lname': new FormControl(this.user_details.lname),
-      'email': new FormControl(this.user_details.email, [Validators.required, Validators.email]),
       'password': new FormControl(this.user_details.password, Validators.required),
-      'option': new FormControl(null, Validators.required),
-      // 'country': new FormControl(null, Validators.required),
-      // 'state': new FormControl(null, Validators.required),
-      // 'city': new FormControl(null, Validators.required),
-      'designation': new FormControl(null, Validators.required),
-      'address': new FormControl(null, Validators.required),
+      'email': new FormControl(this.user_details.email, [Validators.required, Validators.email]),
+      'industry': new FormControl(this.user_details.industry, Validators.required),
+      'designation': new FormControl(this.user_details.designation, Validators.required),
+      'address': new FormControl(this.user_details.address, Validators.required),
+      'country': new FormControl(this.user_details.country, Validators.required),
+      'states': new FormControl(this.user_details.state, Validators.required),
+      'city': new FormControl(this.user_details.city, Validators.required),
+      'profilePhoto': new FormControl(null),
+      // 'option': new FormControl(null, Validators.required),
+      // 'address': new FormControl(null, Validators.required),
     };
+    this.user_details.isHr = true;
+    this.user_details.status = true;
 
     this.signupForm = new FormGroup(fg);
   }
@@ -66,9 +71,9 @@ export class HrComponent implements OnInit {
     console.log(this.user_details);
     // send data
     // setTimeout(() => {
-      this._userService.addNewUser(this.user_details, {
-        profile_photo: this.profile_photo
-      })
+    this._userService.addNewUser(this.user_details, {
+      profile_photo: this.profile_photo
+    })
       .then((result) => {
         console.log(result);
       });

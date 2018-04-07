@@ -4,7 +4,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 @Component({
   selector: 'app-hr-contact',
   templateUrl: './hr-contact.component.html',
-  styleUrls: ['./hr-contact.component.css']
+  styleUrls: []
 })
 export class HrContactComponent implements OnInit {
 

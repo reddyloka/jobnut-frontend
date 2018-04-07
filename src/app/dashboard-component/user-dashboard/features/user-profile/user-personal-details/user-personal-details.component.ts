@@ -4,7 +4,7 @@ import { ApplicantBase } from '../../../../../model/applicantbase';
 @Component({
   selector: 'app-user-personal-details',
   templateUrl: './user-personal-details.component.html',
-  styleUrls: ['./user-personal-details.component.css']
+  styleUrls: []
 })
 export class UserPersonalDetailsComponent implements OnInit {
   personaldata: ApplicantBase;

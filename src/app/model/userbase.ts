@@ -4,46 +4,40 @@ export interface Dashboard {
 }
 
 export class Userbase {
-    // id: string;
     fname: string;
     lname: string;
-    email: string;
     password: string;
-    dob: Date;
-    phone: String;
+    email: string;
+    industry: string;
+    designation: string;
     address: string;
-    location: string;
-    gender: string;
-    skillValue: string;
+    country: string;
+    state: string;
+    city: string;
     profilePhoto: string;
-    dashboard: Dashboard;
+    admin: boolean;
     isHr: boolean;
     isApplicant: boolean;
-    admin: boolean;
     status: boolean;
 
-    constructor(f: string, l: string, em: string, p: string, pp: string,
-        dob: Date, phone: string, skillValue: string, address: string, location: string, gender: string,
-        dashB: Dashboard, ihr: boolean, iApl: boolean, ad: boolean, st: boolean) {
+    constructor(f: string, l: string, p: string, em: string, ind: string, des: string, cntr: string, st: string, c: string, pp: string, ad: boolean, ihr: boolean, iApl: boolean, sta: boolean) {
         this.fname = f;
         this.lname = l;
-        this.email = em;
-        this.dob = dob;
-        this.phone = phone;
-        this.address = address;
-        this.location = location;
-        this.gender = gender;
-        this.skillValue = skillValue;
         this.password = p;
+        this.email = em;
+        this.industry = ind;
+        this.designation = des;
+        this.country = cntr;
+        this.state = st;
+        this.city = c;
         this.profilePhoto = pp;
-        this.dashboard = dashB;
         this.isHr = ihr;
         this.isApplicant = iApl;
         this.admin = ad;
-        this.status = st;
+        this.status = sta;
     }
 
     public static createBlankUser() {
-        return new Userbase(null, null, null, null, null, null, null, null, null, null, null, null, false, false, false, false);
+        return new Userbase(null, null, null, null, null, null, null, null, null, null, false, false, false, false);
     }
 }

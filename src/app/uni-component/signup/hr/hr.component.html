@@ -30,9 +30,9 @@
       <div class="two fields">
         <div class="field">
           <label>Industry type</label>
-          <select id="option" class="ui fluid dropdown" formControlName="option">
+          <select id="option" class="ui fluid dropdown" formControlName="industry">
             <option>Select</option>
-            <option [value]="option" *ngFor="let option of options">{{option}}</option>
+            <option [value]="industry" *ngFor="let industry of options">{{industry}}</option>
           </select>
         </div>
         <div class="field">

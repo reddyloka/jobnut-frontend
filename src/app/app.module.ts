@@ -1,9 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
+
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {ToasterModule, ToasterService} from 'angular2-toaster';
+
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './uni-component/login/login.component';
@@ -35,7 +39,7 @@ import {SelectModule} from 'ng2-select';
 import { LoggedInGuard } from './_guards/logged-in.guard';
 import { HrDetailsComponent } from './dashboard-component/hr-dashboard/hr-dashboard-details/hr-details/hr-details.component';
 
-import { HrHeaderComponent } from './dashboard-component/hr-dashboard/hr-header/hr-header.component';
+// import { HrHeaderComponent } from './dashboard-component/hr-dashboard/hr-header/hr-header.component';
 import { HrDashboardDetailsComponent } from './dashboard-component/hr-dashboard/hr-dashboard-details/hr-dashboard-details.component';
 import { HrExperienceComponent } from './dashboard-component/hr-dashboard/hr-dashboard-details/hr-experience/hr-experience.component';
 import { HrContactComponent } from './dashboard-component/hr-dashboard/hr-dashboard-details/hr-contact/hr-contact.component';
@@ -46,6 +50,8 @@ import { UserPersonalDetailsComponent } from './dashboard-component/user-dashboa
 import { UserExperienceDetailsComponent } from './dashboard-component/user-dashboard/features/user-profile/user-experience-details/user-experience-details.component';
 import { UserSkillsDetailsComponent } from './dashboard-component/user-dashboard/features/user-profile/user-skills-details/user-skills-details.component';
 import { UserEducationDetailsComponent } from './dashboard-component/user-dashboard/features/user-profile/user-education-details/user-education-details.component';
+import { NotificationComponent } from './uni-component/misc/notification/notification.component';
+import { NotificationService } from './_shared/notification.service';
 
 
 
@@ -55,9 +61,11 @@ import { UserEducationDetailsComponent } from './dashboard-component/user-dashbo
     AppComponent,
     LoginComponent,
     SignupComponent,
-    HrDetailsComponent,
     HrDashboardComponent,
     HrComponent,
+    // HrDetailsComponent,
+    HrDetailsComponent,
+    HrSkillComponent,
     ApplicantComponent,
     CallbackComponent,
     HrSkillComponent,
@@ -73,7 +81,7 @@ import { UserEducationDetailsComponent } from './dashboard-component/user-dashbo
     UserViewPostDetailsComponent,
     UserViewPostDeatilssummaryComponent,
     CallbackComponent,
-    HrHeaderComponent,
+    // HrHeaderComponent,
     HrDashboardDetailsComponent,
     HrExperienceComponent,
     HrContactComponent,
@@ -82,10 +90,13 @@ import { UserEducationDetailsComponent } from './dashboard-component/user-dashbo
     UserPersonalDetailsComponent,
     UserExperienceDetailsComponent,
     UserSkillsDetailsComponent,
-    UserEducationDetailsComponent
+    UserEducationDetailsComponent,
+    NotificationComponent
 
   ],
   imports: [
+    BrowserAnimationsModule,
+    ToasterModule.forRoot(),
     BrowserModule,
     SelectModule,
     FormsModule,
@@ -97,6 +108,8 @@ import { UserEducationDetailsComponent } from './dashboard-component/user-dashbo
   providers: [
     UserBaseService,
     HrbaseService,
+    LoggedInGuard,
+    NotificationService,
     AuthService,
     JwtService,
     { provide: LocationStrategy, useClass: HashLocationStrategy },

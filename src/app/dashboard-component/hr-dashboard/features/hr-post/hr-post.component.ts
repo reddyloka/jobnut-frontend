@@ -6,11 +6,10 @@ import { uuid } from '../../../../model/uuid';
 @Component({
   selector: 'app-hr-post',
   templateUrl: './hr-post.component.html',
-  styleUrls: ['./hr-post.component.css']
+  styleUrls: []
 })
 export class HrPostComponent implements OnInit {
   id: string;
-
   hrpost: HrPostDetail[];
   constructor(private hrbaseservice: HrbaseService,
     private router: Router) {

@@ -3,7 +3,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 @Component({
   selector: 'app-user-education-details',
   templateUrl: './user-education-details.component.html',
-  styleUrls: ['./user-education-details.component.css']
+  styleUrls: []
 })
 export class UserEducationDetailsComponent implements OnInit {
 

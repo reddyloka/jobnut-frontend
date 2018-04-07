@@ -41,10 +41,10 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
-      if (this._authService.isLoggedIn) {
-        this.router.navigateByUrl('hr');
-      }
-      this.router.navigateByUrl('');
+    if (this._authService.isLoggedIn) {
+      this.router.navigateByUrl('hr');
+    }
+    this.router.navigateByUrl('');
   }
 
 
@@ -68,8 +68,8 @@ export class LoginComponent implements OnInit {
       // console.log(' :im here');
       this._authService.login(val)
         .subscribe(
-          (yo:  any) => {
-            console.log('user logged in', yo.user);
+          (yo: any) => {
+            console.log('userkh logged in', yo);
             if (yo.user && yo.user.status && yo.user.isHr) {
               this.router.navigateByUrl('hr');
             }
@@ -77,6 +77,9 @@ export class LoginComponent implements OnInit {
               console.log('user logged in', yo);
               this.router.navigateByUrl('user-view-post');
             }
+          }, (error) => {
+            alert(error.message);
+            console.log('fhfhfhfhfh', error);
           });
     }
   }
