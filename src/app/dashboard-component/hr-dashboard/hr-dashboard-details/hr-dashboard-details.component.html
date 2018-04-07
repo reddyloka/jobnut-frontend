@@ -8,19 +8,17 @@
       <a class="fr" (click)="EditPersonalDetails()">Edit</a>
     </div>
     <div *ngIf="detailsMain">
-     
-            <div class="row">
-              <div class="col-md-3">
-              <img src="" width="150px" height="150px">
-              </div>
-              <div class="col-md-6">
-                <h1>Dummy</h1> 
-                <h4>Company Recruiter</h4>
-                <p>Google</p>
-                <p><span class="glyphicon glyphicon-map-marker"></span> Jalandhar</p>
-              </div>
-            </div>
-       
+      <div class="row">
+        <div class="col-md-3">
+          <img src="" width="150px" height="150px">
+        </div>
+        <div class="col-md-6">
+          <h1>Ravi</h1>
+          <h3>Company Recruiter</h3>
+          <p>Google</p>
+          <p><span class="glyphicon glyphicon-map-marker"></span> Jalandhar</p>
+        </div>
+      </div>
     </div>
     <div *ngIf="detailsOpen">
       <app-hr-details (discardClick)="closeDetails()"></app-hr-details>

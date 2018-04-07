@@ -51,7 +51,13 @@ export class AuthService {
     console.log(' authResult is : ', authResult.user.id);
     // const expiresAt = moment().add(authResult.expiresIn, 'second');
     // if (authResult.user.id) {
-      window.localStorage['uuid'] = authResult.user.id;
+    window.localStorage['uuid'] = authResult.user.id;
+    if (authResult.user.isHr) {
+      window.localStorage['isHr'] = authResult.user.isHr;
+    }
+    if (authResult.user.isApplicant) {
+      window.localStorage['isApplicant'] = authResult.user.isApplicant;
+    }
     // }
     this.jwtservice.saveToken(authResult.user.token);
     return {

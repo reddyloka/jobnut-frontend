@@ -7,27 +7,32 @@ import { HrDashboardComponent } from './dashboard-component/hr-dashboard/hr-dash
 import { HrPostdetailsComponent } from './dashboard-component/hr-dashboard/features/hr-postdetails/hr-postdetails.component';
 import { HrPostComponent } from './dashboard-component/hr-dashboard/features/hr-post/hr-post.component';
 import { HrEditNewPostComponent } from './dashboard-component/hr-dashboard/features/hr-post/hr-edit-new-post/hr-edit-new-post.component';
-import { LoginDashboardComponent } from './dashboard-component/login-dashboard/login-dashboard.component';
-import { LoginViewPostComponent } from './dashboard-component/login-dashboard/features/login-view-post/login-view-post.component';
-import { LoginViewComponent } from './dashboard-component/login-dashboard/features/login-view/login-view.component';
-import { LoginViewPostDetailsComponent } from './dashboard-component/login-dashboard/features/login-view-post/login-view-post-details/login-view-post-details.component';
-import { LoginViewPostDeatilssummaryComponent } from './dashboard-component/login-dashboard/features/login-view-post/login-view-post-details/login-view-post-deatilssummary/login-view-post-deatilssummary.component';
+import { UserDashboardComponent } from './dashboard-component/user-dashboard/user-dashboard.component';
+import { UserViewPostComponent } from './dashboard-component/user-dashboard/features/user-view-post/user-view-post.component';
+import { UserViewComponent } from './dashboard-component/user-dashboard/features/user-view/user-view.component';
+import { UserViewPostDetailsComponent } from './dashboard-component/user-dashboard/features/user-view-post/user-view-post-details/user-view-post-details.component';
+import { UserViewPostDeatilssummaryComponent } from './dashboard-component/user-dashboard/features/user-view-post/user-view-post-details/user-view-post-deatilssummary/user-view-post-deatilssummary.component';
 
 import { CallbackComponent } from './uni-component/misc/callback/callback.component';
 import { LoggedInGuard } from './_guards/logged-in.guard';
 import { HrDashboardDetailsComponent } from './dashboard-component/hr-dashboard/hr-dashboard-details/hr-dashboard-details.component';
 // import { HrDetailsComponent } from './dashboard-component/hr-dashboard/hr-data/hr-details/hr-details.component';
+import { UserProfileComponent } from './dashboard-component/user-dashboard/features/user-profile/user-profile.component';
+import { NotificationComponent } from './uni-component/misc/notification/notification.component';
+
 
 export const routerConfig: Routes = [
   // basic routes
+  { path: 'notif', component: NotificationComponent },
+  { path: 'login', component: LoginComponent },
+  {path: 'applicant', canActivate: [LoggedInGuard && localStorage['isApplicant']], redirectTo: 'user-view'},
   {
-    path: 'login',
-    component: LoginComponent
+    path: 'user-view-post',
+    component: UserViewComponent
   },
-  { path: 'applicant', redirectTo: 'login-view' },
   {
-    path: 'login-view',
-    component: LoginViewComponent
+    path: 'user-profile',
+    component: UserProfileComponent
   },
   {
     path: 'signin',
@@ -59,7 +64,7 @@ export const routerConfig: Routes = [
   // },
   { path: 'hr', redirectTo: 'hr/profile' },
   {
-    path: 'hr', component: HrDashboardComponent, canActivate: [LoggedInGuard], children: [
+    path: 'hr', component: HrDashboardComponent, canActivate: [LoggedInGuard && localStorage['isHr']], children: [
     {
       path: 'profile',
       component: HrDashboardDetailsComponent
@@ -81,8 +86,10 @@ export const routerConfig: Routes = [
   ]
   },
   // { path: 'hr', redirectTo: 'hr-details' },
-  { path: 'login-user-view', component: LoginViewComponent },
-  { path: 'login-user-view/:login-post.id', component: LoginViewPostDetailsComponent },
+  { path: 'login-user-view', component: UserViewComponent },
+  { path: 'login-user-view/:login-post.id', component: UserViewPostDetailsComponent },
+  { path: 'hr', component: HrDashboardDetailsComponent },
+  { path: 'user-view-post/:user-post.id', component: UserViewPostDetailsComponent },
   { path: 'hr-post', component: HrPostComponent },
   { path: 'hr-post/:hr-post.id', component: HrPostdetailsComponent },
   { path: 'hr-new-post', component: HrEditNewPostComponent },

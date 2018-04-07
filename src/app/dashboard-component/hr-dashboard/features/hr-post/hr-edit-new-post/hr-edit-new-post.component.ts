@@ -4,7 +4,7 @@ import { HrPostDetail } from '../../../../../model/hrpostdetails';
 import { HrbaseService } from '../../../../../services/hrbase.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AbstractControl, ValidatorFn, FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
-import { uuid } from '../../../../../_helper/uuid';
+import { uuid } from '../../../../../model/uuid';
 @Component({
   selector: 'app-hr-edit-new-post',
   templateUrl: './hr-edit-new-post.component.html',

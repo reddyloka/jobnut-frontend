@@ -2,22 +2,23 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HrPostDetail } from '../../../../model/hrpostdetails';
 import { HrbaseService } from '../../../../services/hrbase.service';
+import { uuid } from '../../../../model/uuid';
 @Component({
   selector: 'app-hr-post',
   templateUrl: './hr-post.component.html',
   styleUrls: []
 })
 export class HrPostComponent implements OnInit {
+  id: string;
   hrpost: HrPostDetail[];
-  id: String;
   constructor(private hrbaseservice: HrbaseService,
     private router: Router) {
-    this.id = localStorage['uuid'];
-  }
+      this.id = uuid();
+    }
 
   ngOnInit() {
-    this.hrbaseservice.getAllHrPost(this.id)
-      .then((hrpost) => {
+    this.hrbaseservice.getAllHrPost(this.id).
+      then((hrpost) => {
         this.hrpost = hrpost;
         console.log(hrpost);
       });

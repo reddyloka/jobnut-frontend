@@ -1,5 +1,4 @@
 
-
 export class HrPostDetail {
     id: string;
     title: string;
@@ -41,10 +40,6 @@ export class HrPostDetail {
         this.selectionProcedure =  selectionProcedure;
 
     }
-
-    // public static PostDetailsFromJSON(obj: any): HrPostDetail {
-    //     return new HrPostDetail(obj.id , obj.title , obj.companyname, obj.description, obj.startdate, obj.enddate, obj.skills, obj.location, obj.salary, obj.experinece, obj.dateOfJoining, obj.extraRequirement, obj.noOfJobOpenings, obj.CompanyUrl, obj.bondDetails, obj.ReportingVenue, obj.ResourcePersonContact, obj.selectionProcedure);
-    // }
 
     public static createblank(): HrPostDetail {
 

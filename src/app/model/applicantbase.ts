@@ -1,57 +1,62 @@
 
-export class ApplicantBase {
-
+export interface Education {
     higherDegreeValue: string;
-    courseValue: string;
-    specializationValue: string;
     universityName: string;
     passingYearValue: string;
-    boardValue: string;
-    passingValue: string;
-    mediumValue: string;
     percentageValue: string;
-    skillValue: string;
-    fname: string;
-    lname: string;
+}
+
+export interface Experience {
+    profileTitle: string;
+    totalExperienceYear: string;
+    Description: string;
+
+}
+
+
+export interface Dashboard {
+    active: Boolean;
+}
+
+export class ApplicantBase {
+    firstName: string;
+    lastName: string;
     email: string;
     dob: Date;
     password: string;
     phone: number;
+    address: string;
+    location: string;
+    gender: string;
+    skillValue: string[];
+    dashboard: Dashboard;
     isApplicant: boolean;
     isHr: boolean;
     status: boolean;
+    education: Education[];
+    experience: Experience[];
 
-    constructor(fname: string, lname: string, email: string, dob: Date, password: string, phone: number, higherDegreeValue: string, courseValue: string, specializationValue: string,
-        universityName: string, passingYearValue: string, boardValue: string, passingValue: string, mediumValue: string, percentageValue: string, skillValue: string, isA: boolean, isH: boolean, st: boolean) {
-        this.fname = fname;
-        this.lname = lname;
-
+    constructor(firstName: string, lastName: string, email: string, dob: Date, password: string, phone: number, address: string, location: string, gender: string, skillValue: string[], isA: boolean, dashB: Dashboard, isH: boolean, st: boolean, education: Education[], experience: Experience[]) {
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.email = email;
         this.dob = dob;
         this.password = password;
         this.phone = phone;
-        this.higherDegreeValue = higherDegreeValue;
-        this.courseValue = courseValue;
-        this.specializationValue = specializationValue;
-        this.universityName = universityName;
-        this.passingYearValue = passingYearValue;
-        this.boardValue = boardValue;
-        this.passingValue = passingValue;
-        this.mediumValue = mediumValue;
-        this.percentageValue = percentageValue;
+        this.address = address;
+        this.location = location;
+        this.gender = gender;
         this.skillValue = skillValue;
+        this.dashboard = dashB;
         this.isApplicant = isA;
         this.isHr = isH;
         this.status = st;
+        this.education = education;
+        this.experience = experience;
 
     }
-    // public static SignupDetailsFromJSON(obj: any): ApplicantBase {
-    //     return new ApplicantBase(obj.fname, obj.email, obj.dob, obj.password, obj.phone, obj.higherDegreeValue, obj.courseValue,
-    //         obj.specializationValue, obj.universityName, obj.passingYearValue, obj.boardValue, obj.passingValue, obj.mediumValue,
-    //         obj.percentageValue, obj.skillValue);
-    // }
+
     public static createblank(): ApplicantBase {
-        // return new ApplicantBase('loka anvesh reddy', 'lokaanvesh2@gmail.com', '29/07/1997', 'sudhakar123', '9592038184');
-        return new ApplicantBase('', '', '', null, '', null, '', '', '', '', '', '', '', '', '', '', null, null, null);
+        return new ApplicantBase(null, null, null, null, null, null, null, null, null, [], null, null, null, null, [{higherDegreeValue: '', universityName: '', passingYearValue: '', percentageValue: ''}], [{ profileTitle: '', totalExperienceYear: '', Description: ''}]);
     }
 }

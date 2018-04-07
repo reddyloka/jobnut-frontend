@@ -1,35 +1,35 @@
 
 <div class="ui very padded container segment" >
-    <form [formGroup]="hrdetailForm" (ngSubmit)="onSubmit()" class="ui form">
+    <form [formGroup]="hrcontactForm" (ngSubmit)="onSubmit()" class="ui form">
       <h4 class="ui dividing header"></h4>
       <div class="field">
         <label>Primary Email *</label>
         <div class="field">
-          <input type="text" id="name" placeholder="First Name" formControlName="name">
+          <input type="text" id="email" placeholder="Email" formControlName="email">
         </div>
       </div>
       <div class="field">
         <label>Secondary Email</label>
         <div class="field">
-          <input type="text" id="designation" placeholder="Designation" formControlName="designation">
+          <input type="text" id="email2" placeholder="Secondary Email" formControlName="email2">
         </div>
       </div>
       <div class="field">
         <label>Phone</label>
         <div class="field">
-          <input type="text" id="curremployer" placeholder="Employer" formControlName="curremployer">
+          <input type="text" id="phone" placeholder="Employer" formControlName="phone">
         </div>
       </div>
       <div class="field">
         <label>Facebook Url</label>
         <div class="field">
-          <input type="text" id="currlocation" placeholder="Lcoation" formControlName="currlocation">
+          <input type="text" id="fburl" placeholder="Facebook Url" formControlName="fburl">
         </div>
       </div>
       <div class="field">
         <label>Linkedin Url</label>
         <div class="field">
-          <textarea rows="3" type="profile" id="profile" placeholder="profile heading" formControlName="profile"></textarea>
+          <input type="text" id="linkurl" placeholder="Linkedin Url" formControlName="linkurl">
         </div>
       </div>
       <button class="ui primary button" type="submit"> Save </button>
