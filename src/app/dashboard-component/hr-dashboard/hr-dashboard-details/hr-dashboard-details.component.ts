@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../services/authentication/auth.service';
+import { Userbase } from '../../../model/userbase';
+import { HrbaseService } from '../../../services/hrbase.service';
+
+
 @Component({
   selector: 'app-hr-dashboard-details',
   templateUrl: './hr-dashboard-details.component.html',
@@ -17,8 +21,10 @@ export class HrDashboardDetailsComponent implements OnInit {
   isAuthenticated: boolean;
   detailsMain: boolean;
   SkillsMain: boolean;
+  hrdata: Userbase;
 
-  constructor( private router: Router, private _authService: AuthService ) {
+
+  constructor( private router: Router, private _authService: AuthService, private hrBaseService: HrbaseService ) {
     this.ExpMain = true;
     this.ExpOpen = false;
     this.detailsMain = true;
@@ -35,6 +41,9 @@ export class HrDashboardDetailsComponent implements OnInit {
     // if (!this._authService.isLoggedIn()) {
     //   this.router.navigateByUrl('login');
     // }
+
+    // this.hrBaseService.
+
   }
 
   EditPersonalDetails() {
