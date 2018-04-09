@@ -48,7 +48,6 @@ export class HrComponent implements OnInit {
     const fg = {
       'fname': new FormControl(this.user_details.fname, Validators.required),
       'lname': new FormControl(this.user_details.lname),
-      'email': new FormControl(this.user_details.email, [Validators.required, Validators.email]),
       'password': new FormControl(this.user_details.password, Validators.required),
       'option': new FormControl(null, Validators.required),
       'country': new FormControl(null, Validators.required),
@@ -59,6 +58,8 @@ export class HrComponent implements OnInit {
       'phone': new FormControl(null, Validators.required),
       'jobProfile': new FormControl(null, Validators.required),
     };
+    this.user_details.isHr = true;
+    this.user_details.status = true;
 
     this.signupForm = new FormGroup(fg);
   }

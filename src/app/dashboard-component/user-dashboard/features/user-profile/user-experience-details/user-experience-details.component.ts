@@ -5,7 +5,7 @@ import { UserBaseService } from '../../../../../services/userbase/user-base.serv
 @Component({
   selector: 'app-user-experience-details',
   templateUrl: './user-experience-details.component.html',
-  styleUrls: ['./user-experience-details.component.css']
+  styleUrls: []
 })
 export class UserExperienceDetailsComponent implements OnInit {
 

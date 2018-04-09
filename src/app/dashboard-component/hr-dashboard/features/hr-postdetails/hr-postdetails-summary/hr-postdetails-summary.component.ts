@@ -3,15 +3,22 @@ import { Component, OnInit, Input } from '@angular/core';
 @Component({
   selector: 'app-hr-postdetails-summary',
   templateUrl: './hr-postdetails-summary.component.html',
-  styleUrls: ['./hr-postdetails-summary.component.css']
+  styleUrls: []
 })
 export class HrPostdetailsSummaryComponent implements OnInit {
 
   @Input()
-  hrpost;
-  constructor() { }
+  hrpost: Object;
+
+  a: any;
+  constructor() {
+    this.a = this.hrpost;
+    console.log('nulls is hers', this.hrpost);
+  }
 
   ngOnInit() {
+    // if (this.hrpost == null) {
+    // }
   }
 
 }

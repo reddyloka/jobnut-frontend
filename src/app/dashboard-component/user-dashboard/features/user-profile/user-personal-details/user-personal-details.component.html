@@ -5,10 +5,10 @@
               <span style="color:red">*</span>
             </label>
             <div class="field">
-                <input type="text" formControlName="fname" [(ngModel)]="userdata.firstName" placeholder="enter the first name">
+                <input type="text" formControlName="fname" [(ngModel)]="userdata.fname" placeholder="enter the first name">
             </div>
           
-            <div *ngIf="applicantForm.controls['fname'].touched&&!applicantForm.controls['fname'].valid" class="alert alert-danger">
+            <div *ngIf="applicantForm.controls['fname'].touched && !applicantForm.controls['fname'].valid" class="alert alert-danger">
               <p>Name need to be AtLeast 4 characters</p>
             </div>
           </div>
