@@ -26,11 +26,6 @@ export class AuthService {
 
   login(formData): Observable<any> {
     console.log('inside', formData);
-<<<<<<< HEAD
-    return this.http.post(USER_SERVER + '/api/login', formData)
-      .do(res => {
-        // console.log('response is: ', res);
-=======
     return this.http.post(
       USER_SERVER + '/api/login', formData)
       .catch(error => {
@@ -46,19 +41,14 @@ export class AuthService {
         if (res.status) {
           return res;
         }
->>>>>>> 0ea74ece3ad5bb2791741107f147c3c9f2ce59f3
         return this.setSession(res);
       })
       .shareReplay();
   }
 
   private setSession(authResult) {
-<<<<<<< HEAD
-    console.log(' authResult is : ', authResult.user);
-=======
     console.log(' authResult is : ');
     console.log(' authResult is : ', authResult.user.id);
->>>>>>> 0ea74ece3ad5bb2791741107f147c3c9f2ce59f3
     // const expiresAt = moment().add(authResult.expiresIn, 'second');
     // if (authResult.user.id) {
     window.localStorage['uuid'] = authResult.user.id;
