@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, HostBinding, Directive, HostListener, Input, OnChanges, SimpleChange, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, HostBinding, Directive, HostListener, Input, OnChanges, SimpleChange, EventEmitter, SimpleChanges } from '@angular/core';
 import { NotificationService } from '../../../_shared/notification.service';
 
 // @Directive({
@@ -23,18 +23,19 @@ export class NotificationComponent implements OnInit, OnChanges {
   constructor() {
   }
 
-  ngOnChanges(changes: SimpleChange) {
-    if (this.data) {
-      Object.assign(this, this.data);
-      this.cssClass = this.isActive ? 'active' : 'hidden';
-    }
-    console.log(this);
-  }
 
   ngOnInit() {
     setTimeout(() => {
       this.donePopup.emit(false);
     }, this.stay);
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (this.data) {
+      Object.assign(this, this.data);
+      this.cssClass = this.isActive ? 'active' : 'hidden';
+    }
+    console.log(this);
   }
 
   @HostListener('click') displayMessage(): void {

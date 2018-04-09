@@ -1,25 +1,25 @@
 <div class="ui very padded container segment" >
-    <form class="ui form">
+  <form class="ui form" [formGroup]="applicantForm">
       <h4 class="ui dividing header"></h4>
       <div class="field">
-        <label>Profile Title</label>
-        <div class="field">
-          <input type="text" id="name" placeholder="First Name" formControlName="name">
+        <label>Profile Title</label> 
+        <div class="field"> 
+          <input type="text"  placeholder="Designation" formControlName="designation" [(ngModel)]="userdata.experience.designation">
         </div>
       </div>
       <div class="field">
-        <label>Total Experience</label>
+        <label>Experience</label>
         <div class="field">
-          <input type="text" id="designation" placeholder="Designation" formControlName="designation">
+          <input type="text"  placeholder="Experience in years" formControlName="totalExperience" [(ngModel)]="userdata.experience.totalExperiences">
         </div>
       </div>
       <div class="field">
         <label>Description</label>
        <div class="field">
-          <input type="text" id="curremployer" placeholder="Employer" formControlName="curremployer">
+          <input type="text"  placeholder="About your project and your role" formControlName="description" [(ngModel)]="userdata.experience.description">
         </div>
       </div>
-      <button class="ui primary button" type="submit"> Save </button>
+      <button class="ui primary button" type="submit" (click)="onSubmit()"> Save </button>
       <button class="ui button" (click)="discardClicked()"> Discard </button>
     </form>
   </div>

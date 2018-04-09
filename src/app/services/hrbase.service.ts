@@ -2,6 +2,7 @@ import { Http } from '@angular/http';
 import { Injectable } from '@angular/core';
 import { HrPostDetail } from '../model/hrpostdetails';
 import { environment } from '../../environments/environment';
+import { Userbase } from '../model/userbase';
 @Injectable()
 export class HrbaseService {
   hrpostdetails: any;
@@ -21,7 +22,6 @@ export class HrbaseService {
       .toPromise()
       .then((response) => {
         console.log('data get: ', response.json());
-
         return response.json().data;
       });
   }
@@ -61,6 +61,22 @@ export class HrbaseService {
 
         return response.json().data;
       });
+  }
+
+
+  getHrDetailsById(user: string): Promise<Userbase> {
+    console.log('user_id', user);
+    return this.http.get(`${environment.USER_SERVER}/api/hrs`, {
+      params: {
+        'id': user
+      }
+    })
+      .toPromise()
+      .then((response) => {
+        console.log('data get of hrs: ', response.json());
+        return response.json();
+      });
+
   }
 }
 

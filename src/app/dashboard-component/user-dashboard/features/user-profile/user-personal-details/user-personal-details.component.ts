@@ -21,7 +21,7 @@ export class UserPersonalDetailsComponent implements OnInit {
   constructor() {
     this.buildFormGroup();
     this.personaldata = this.userdata;
-    console.log('AAAAAAAAAAAAASSSSSSSSSSSSSSSS', this.personaldata);
+    console.log('personalData', this.personaldata);
   }
 
   buildFormGroup(): void {

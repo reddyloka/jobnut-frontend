@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-
 import 'rxjs/operator/toPromise';
 import { Http } from '@angular/http';
 import { ApplicantBase } from '../../model/applicantbase';
 import { environment } from '../../../environments/environment';
+import { Userbase } from '../../model/userbase';
 
 // const USER_SERVER = 'http://localhost:3000';
 
@@ -22,7 +22,9 @@ export class UserBaseService {
         // const final_userDetail =
       });
   }
-
+  experiencedetailsUpdate(expdetails: any) {
+    return this.http.post(environment.USER_SERVER + `/api/hr`, expdetails);
+  }
 
   getUserDetailsById(user: string): Promise<ApplicantBase> {
     console.log('user_id', user);
@@ -36,7 +38,10 @@ export class UserBaseService {
         console.log('data get of user: ', response.json());
         return response.json();
       });
+
   }
+
+
 
 
 

@@ -72,7 +72,7 @@
           </div>
           <div class="row">
             <div class="col-md-3">
-              <h5>Locaion</h5>
+              <h5>Location</h5>
             </div>
             <div class="col-md-6">
               {{userdata.location}}
@@ -106,15 +106,15 @@
               <h5>Profile Title</h5>
             </div>
             <div class="col-md-6">
-              <!-- {{userdata.Experinces.profileTitle}} -->
+              {{userdata.experience.projectTitle}}
             </div>
           </div>
           <div class="row">
             <div class="col-md-3">
-              <h5>Total Experience</h5>
+              <h5>Experiences</h5>
             </div>
             <div class="col-md-6">
-              <!-- {{userdata.Experinces.totalExperienceYear}} -->
+              {{userdata.experience.totalExperience}}
             </div>
           </div>
           <div class="row">
@@ -122,13 +122,13 @@
               <h5>Description</h5>
             </div>
             <div class="col-md-6">
-              <!-- {{userdata.Experinces.Description}} -->
+              {{userdata.experience.description}}
             </div>
           </div>
 
         </div>
         <div *ngIf="expOpen">
-          <app-user-experience-details (discardClick)="closeExp()"></app-user-experience-details>
+          <app-user-experience-details (discardClick)="closeExp()" [userdata]="userdata" ></app-user-experience-details>
         </div>
       </div>
 
@@ -136,13 +136,16 @@
 
     <div class='panel panel-default'>
       <div class="panel-body">
-        <a class="fr">Add more Qualification</a>
+        <a class="fr" (click)="AddEducationMore()">Add more Qualification</a>
         <div class="flied">
           <h2>Education</h2>
-          <a class="fr" (click)="EditEducationDetails()">Edit</a>
+          
         </div>
-        <div *ngIf="educationMain">
+        
+            
           <div *ngFor="let education of userdata.education; let i = index">
+              <div *ngIf="educationMain">
+                  <a class="fr" (click)="EditEducationDetails()">Edit</a>
             <div class="row">
               <div class="col-md-3">
                 <h5>Highest Qualification</h5>
@@ -175,16 +178,21 @@
                   {{userdata.education[i].percentageValue}}
               </div>
             </div>
-
-          </div>
-
+            </div>
+            <div *ngIf="educationOpen">
+                <app-user-education-details   (discardClick)="closeEducation()"  [userdata]="userdata.education[i]"></app-user-education-details>
+             </div>
 
         </div>
-        <div *ngIf="educationOpen">
-          <app-user-education-details (discardClick)="closeEducation()"></app-user-education-details>
-        </div>
+
+       
+        
       </div>
-
+       <div *ngIf="educationAdd">
+         <div  *ngFor="let education of edituserdata.education">
+            <app-user-education-add-details (discardClick)="closeAddEducation()"></app-user-education-add-details>
+         </div>
+       </div>
     </div>
 
     <div class='panel panel-default'>
@@ -194,14 +202,12 @@
           <a class="fr" (click)="EditSkillsDetails()">Edit</a>
         </div>
         <div *ngIf="skillMain">
-          <!-- <div *ngFor="let skills of userdata.skillValue"> -->
-
-          <p >{{userdata.skillValue}}</p>
-        <!-- </div> -->
-        <div *ngIf="skillOpen">
-          <app-user-skills-details (discardClick)="closeSkill()"></app-user-skills-details>
-        </div>
+       <p >{{userdata.skillValue}}</p>
       </div>
+        <div *ngIf="skillOpen">
+          <app-user-skills-details (discardClick)="closeSkill()" [userdata]="userdata"></app-user-skills-details>
+        </div>
+      
 
     </div>
   </div>

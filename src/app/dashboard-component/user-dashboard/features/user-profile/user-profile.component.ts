@@ -8,7 +8,9 @@ import { ApplicantBase } from '../../../../model/applicantbase';
   styleUrls: ['./user-profile.component.css']
 })
 export class UserProfileComponent implements OnInit {
+  educationAdd: boolean;
   id: any;
+  edituserdata: ApplicantBase;
   userdata: ApplicantBase;
   educationOpen: boolean;
   educationMain: boolean;
@@ -20,6 +22,7 @@ export class UserProfileComponent implements OnInit {
   detailsMain: boolean;
 
   constructor(private userbaseservice: UserBaseService) {
+    this.edituserdata = ApplicantBase.createblank();
     this.detailsMain = true;
     this.detailsOpen = false;
     this.expMain = true;
@@ -28,6 +31,7 @@ export class UserProfileComponent implements OnInit {
     this.skillOpen = false;
     this.educationMain = true;
     this.educationOpen = false;
+    this.educationAdd = false;
     this.id = uuid();
    }
 
@@ -66,6 +70,15 @@ export class UserProfileComponent implements OnInit {
     this.skillMain = true;
     this.skillOpen = false;
   }
+
+  AddEducationMore(): void {
+
+    this.educationAdd = true;
+    // if (this.userdata.education) {
+    //   this.userdata.education.push({higherDegreeValue: '', universityName: '', passingYearValue: '', percentageValue: ''});
+    // }
+
+  }
   EditEducationDetails() {
     this.educationMain = false;
     this.educationOpen = true;
@@ -73,5 +86,9 @@ export class UserProfileComponent implements OnInit {
   closeEducation() {
     this.educationMain = true;
     this.educationOpen = false;
+  }
+
+  closeAddEducation() {
+    this.educationAdd = false;
   }
 }

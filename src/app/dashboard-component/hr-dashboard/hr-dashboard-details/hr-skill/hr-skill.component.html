@@ -1,39 +1,15 @@
-<div class="ui very padded container segment">
-  <form [formGroup]="hrskillForm" (ngSubmit)="onSubmit()" class="ui form">
-    <div class="field">
-      <label>Select Industries type: (max 3)</label>
-      <select id="industry" class="ui fluid search dropdown" multiple=""  formControlName= "industry">
-        <option value="">Select</option>
-        <option *ngFor="let option of items">{{option}}</option>
-      </select>
-    </div>
-    <div class="field">
-      <label>Select Functional Areas (max 3)</label>
-      <select id="functional" class="ui fluid search dropdown" multiple="" formControlName= "functional">
-          <option value="">Select</option>
-          <option *ngFor="let option of functional">{{option}}</option>
-        </select>
-    </div>
-    <div class="field">
-      <label>Levels for hiring (max 3)</label>
-      <select id="level" class="ui fluid search dropdown" multiple="" formControlName= "level">
-          <option value="">Select</option>
-          <option *ngFor="let option of levels">{{option}}</option>
-        </select>
-    </div>
-    <div class="field">
-      <label>Clients I hire for *</label>
-      <div class="field">
-        <input id="client" type="text" id="hirefor" formControlName= "client">
-      </div>
-    </div>
-    <div class="field">
-      <label>Skills/Roles I hire for *</label>
-      <div class="field">
-        <textarea rows="3" type="text" id="skills" formControlName= "skills"></textarea>
-      </div>
-    </div>
-    <button class="ui primary button" type="submit"> Save </button>
-    <button class="ui button" (click)="discardClicked()"> Discard </button>
-  </form>
+<div class="ui very padded container segment" >
+    <form class="ui form">
+      <h4 class="ui dividing header"></h4>
+        <div class="field">
+          <label>Skills</label>
+          <select  class="ui fluid search dropdown"  multiple="" >
+            <option value="">Select</option>
+            <option *ngFor="let option of skillsArray">{{option}}</option>
+          </select>
+        </div>
+     
+      <button class="ui primary button" type="submit"> Save </button>
+      <button class="ui button" (click)="discardClicked()"> Discard </button>
+    </form>
 </div>

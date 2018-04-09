@@ -13,15 +13,21 @@
           <img src="" width="150px" height="150px">
         </div>
         <div class="col-md-6">
-          <h1>Ravi</h1>
-          <h3>Company Recruiter</h3>
-          <p>Google</p>
+          <h1>{{hrdata.fname}} {{hrdata.lname}}</h1>
+<<<<<<< HEAD
+          <h3>{{hrdata. designation}}</h3>
+          <p>{{hrdata. jobProfile}}</p>
+          <p><span class="glyphicon glyphicon-map-marker"></span>{{hrdata. city}}</p>
+=======
+          <h3>{{hrdata.currdesignation}}</h3>
+          <p>{{hrdata.company}}</p>
           <p><span class="glyphicon glyphicon-map-marker"></span> Jalandhar</p>
+>>>>>>> b7b665ad962e06c814fec504baf72f0dce6ed95a
         </div>
       </div>
     </div>
     <div *ngIf="detailsOpen">
-      <app-hr-details (discardClick)="closeDetails()"></app-hr-details>
+      <app-hr-details (discardClick)="closeDetails()" [hrpost]="hrpost"></app-hr-details>
     </div>
     
     <hr>
@@ -30,6 +36,16 @@
       <a class="fr" (click)="EditSkills()">Edit</a>
     </div>
     <div *ngIf="SkillsMain">
+<<<<<<< HEAD
+      <div class="row">
+        <div class="col-md-3">
+          <h5>Skill Required</h5>
+        </div>
+        <div class="col-md-6">
+         <p>{{hrpost. skillValue}}</p> 
+        </div>
+      </div>
+=======
         <div class="row">
           <div class="col-md-3">
             <h5>Industries</h5>
@@ -62,6 +78,7 @@
         hghtyu
           </div>
           </div>
+>>>>>>> b7b665ad962e06c814fec504baf72f0dce6ed95a
     </div>
     <div *ngIf="SkillsOpen">
         <app-hr-skill (discardClick)="closeSkills()" ></app-hr-skill>
@@ -74,6 +91,64 @@
       <a class="fr" (click)="EditContactDetails()">Edit</a>
     </div>
     <div *ngIf="ContactMain">
+<<<<<<< HEAD
+      <div class="row">
+        <div class="col-md-3">
+          <h5>Email</h5>
+        </div>
+        <div class="col-md-6">
+            {{hrdata. email}}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3">
+          <h5>Contact Number</h5>
+        </div>
+        <div class="col-md-6">
+            {{hrdata. phone}}
+        </div>
+      </div>
+      <div class="row">
+          <div class="col-md-3">
+            <h5>Country</h5>
+          </div>
+          <div class="col-md-6">
+              {{hrdata. country}}
+          </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+              <h5>State</h5>
+            </div>
+            <div class="col-md-6">
+                {{hrdata. state}}
+            </div>
+          </div>
+      <div class="row">
+          <div class="col-md-3">
+            <h5>Address</h5>
+          </div>
+          <div class="col-md-6">
+              {{hrdata. address}}
+          </div>
+        </div>
+      <div class="row">
+        <div class="col-md-3">
+          <h5>Facebook Link</h5>
+        </div>
+        <div class="col-md-6">
+         
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3">
+          <h5>Linked In </h5>
+        </div>
+        <div class="col-md-6">
+    
+        </div>
+      </div>
+=======
         <div class="row">
           <div class="col-md-3">
             <h5>Email</h5>
@@ -106,6 +181,7 @@
         hghtyu
           </div>
           </div>
+>>>>>>> b7b665ad962e06c814fec504baf72f0dce6ed95a
     </div>
     <div *ngIf="ContactOpen">
         <app-hr-contact (discardClick)="closecontact()" ></app-hr-contact>
@@ -117,6 +193,40 @@
       <a class="fr" (click)="EditExpDetails()">Edit</a>
     </div>
     <div *ngIf="ExpMain">
+<<<<<<< HEAD
+      <div class="row">
+        <div class="col-md-3">
+          <h5>Current Designation</h5>
+        </div>
+        <div class="col-md-6">
+          sdd
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3">
+          <h5>Current Employer </h5>
+        </div>
+        <div class="col-md-6">
+         
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3">
+          <h5>Job Profile</h5>
+        </div>
+        <div class="col-md-6">
+     
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3">
+          <h5>Joined in </h5>
+        </div>
+        <div class="col-md-6">
+         
+        </div>
+      </div>
+=======
         <div class="row">
           <div class="col-md-3">
             <h5>Current Designation</h5>
@@ -149,6 +259,7 @@
         hghtyu
           </div>
           </div>
+>>>>>>> b7b665ad962e06c814fec504baf72f0dce6ed95a
     </div>
     <div *ngIf="ExpOpen">
         <app-hr-experience (discardClick)="closeexp()" ></app-hr-experience>

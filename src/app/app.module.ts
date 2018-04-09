@@ -6,7 +6,7 @@ import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {ToasterModule, ToasterService} from 'angular2-toaster';
+// import {ToasterModule, ToasterService} from '@angular2-toaster';
 
 
 import { AppComponent } from './app.component';
@@ -50,6 +50,7 @@ import { UserPersonalDetailsComponent } from './dashboard-component/user-dashboa
 import { UserExperienceDetailsComponent } from './dashboard-component/user-dashboard/features/user-profile/user-experience-details/user-experience-details.component';
 import { UserSkillsDetailsComponent } from './dashboard-component/user-dashboard/features/user-profile/user-skills-details/user-skills-details.component';
 import { UserEducationDetailsComponent } from './dashboard-component/user-dashboard/features/user-profile/user-education-details/user-education-details.component';
+import { UserEducationAddDetailsComponent } from './dashboard-component/user-dashboard/features/user-profile/user-education-details/user-education-add-details/user-education-add-details.component';
 import { NotificationComponent } from './uni-component/misc/notification/notification.component';
 import { NotificationService } from './_shared/notification.service';
 
@@ -91,12 +92,13 @@ import { NotificationService } from './_shared/notification.service';
     UserExperienceDetailsComponent,
     UserSkillsDetailsComponent,
     UserEducationDetailsComponent,
+    UserEducationAddDetailsComponent,
     NotificationComponent
 
   ],
   imports: [
     BrowserAnimationsModule,
-    ToasterModule.forRoot(),
+    // ToasterModule.forRoot(),
     BrowserModule,
     SelectModule,
     FormsModule,
