@@ -35,7 +35,6 @@
       </div>
     </div>
 
-<<<<<<< HEAD
       <div class="two fields">
         <div class="field">
           <label>Industry type</label>
@@ -51,22 +50,6 @@
             <option>Select</option>
             </select> -->
       </div>
-=======
-    <div class="two fields">
-      <div class="field">
-        <label>Industry type</label>
-        <select id="option" class="ui fluid dropdown" [(ngModel)]="user_details.industry" formControlName="option">
-          <option>Select</option>
-          <option [value]="industry" *ngFor="let industry of options">{{industry}}</option>
-        </select>
-      </div>
-      <div class="field">
-        <label>Country *</label>
-        <input type="text" id="country" placeholder="country" [(ngModel)]="user_details.country" formControlName="country">
-        <!--  <select id="country" class="ui fluid dropdown" formControlName="country">
-            <option>Select</option>
-            </select>-->
->>>>>>> 24fcb42ce01eab6ea2276c1cbdd9d086d9bdd4ba
       </div>
       <div class="two fields">
         <div class="field">
@@ -107,10 +90,10 @@
         <label>I Agree to the
           <a href="#">Terms and Conditions</a>
         </label>
-      </div>-
+      </div>
       <div class="field">
         <button [disabled]="signupForm.invalid || imageFile" (click)="onSubmit()" class="ui button" type="submit" tabindex="0" (click)="gethrDash()">Register</button>
       </div>
+    </form>
     </div>
-  </form>
-</div>
+

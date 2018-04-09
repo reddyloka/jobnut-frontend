@@ -10,7 +10,8 @@ import { uuid } from '../../../../../../_helper/uuid';
 export class UserEducationAddDetailsComponent implements OnInit {
   id: string;
   personaldata: ApplicantBase;
-  @Input() ('userdata') userdata: ApplicantBase;
+  @Input()
+userdata: ApplicantBase;
 
   yearArray: string[];
   highestDegreeArray1: string[];
