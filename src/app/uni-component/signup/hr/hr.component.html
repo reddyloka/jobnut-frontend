@@ -30,14 +30,14 @@
       <div class="two fields">
         <div class="field">
           <label>Industry type</label>
-          <select id="option" class="ui fluid dropdown" formControlName="industry">
+          <select id="option" class="ui fluid dropdown" formControlName="industry" [(ngModel)]="user_details.industry">
             <option>Select</option>
             <option [value]="industry" *ngFor="let industry of options">{{industry}}</option>
           </select>
         </div>
         <div class="field">
           <label>Country *</label>
-          <select id="country" class="ui fluid dropdown" formControlName="country">
+          <select id="country" class="ui fluid dropdown" formControlName="country" [(ngModel)]="user_details.country">
             <option>Select</option>
             <option>India</option>
           </select>
@@ -46,27 +46,27 @@
       <div class="two fields">
         <div class="field">
           <label>States *</label>
-          <select id="states" class="ui fluid dropdown" formControlName="states">
+          <select id="states" class="ui fluid dropdown" formControlName="states" [(ngModel)]="user_details.state">
             <option>Select</option>
             <option [value]="state" *ngFor="let state of states">{{state}}</option>
           </select>
         </div>
         <div class="field">
           <label>City</label>
-          <input type="text" id="city" placeholder="City" formControlName="city">
+          <input type="text" id="city" placeholder="City" formControlName="city" [(ngModel)]="user_details.city">
         </div>
       </div>
       <div class="eight wide field">
         <label>Designation *</label>
-        <input type="text" id="designation" placeholder="Designation" formControlName="designation">
+        <input type="text" id="designation" placeholder="Designation" formControlName="designation" [(ngModel)]="user_details.designation">
       </div>
       <div class="sixteen wide padded field">
         <label>Address *</label>
-        <input type="text" id="address" placeholder="Address" formControlName="address">
+        <input type="text" id="address" placeholder="Address" formControlName="address" [(ngModel)]="user_details.address">
       </div>
       <div class="eight wide field">
         <label>Profile Photo:</label>
-        <input id="image" type="file" id="profile_photo" placeholder="Photo" required="" capture (change)="fileTypeCheck($event)">
+        <input id="image" type="file" id="profile_photo" placeholder="Photo" required="" capture (change)="fileTypeCheck($event)" >
       </div>
       <div class="ui toggle checkbox">
         <input type="checkbox" name="public">
