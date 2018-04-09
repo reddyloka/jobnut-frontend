@@ -27,7 +27,7 @@ export const routerConfig: Routes = [
   // hr routes
   { path: 'hr', redirectTo: 'hr/profile' }, // hr home page
   {
-    path: 'hr', component: HrDashboardComponent, canActivate: [LoggedInGuard && localStorage['isHr']], children: [
+    path: 'hr', component: HrDashboardComponent, children: [
       {
         path: 'profile',
         component: HrDashboardDetailsComponent

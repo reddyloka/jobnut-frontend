@@ -14,9 +14,10 @@ export class HrbaseService {
 
 
   getAllHrPost(user: string): Promise<HrPostDetail[]> {
-    return this.http.get(`${environment.USER_SERVER}/api/posts`, {
+    user = localStorage['id_token'];
+    return this.http.get(`${environment.USER_SERVER}/authenticate/posts`, {
       params: {
-        'id': user
+        'token': user
       }
     })
       .toPromise()
