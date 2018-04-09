@@ -44,8 +44,11 @@
         </div>
         <div class="field">
           <label>Country *</label>
-          <!-- <select id="country" class="ui fluid dropdown" formControlName="country">
+          <input type="text" id="country" placeholder="country"  [(ngModel)]="user_details.country" formControlName="country">
+         <!-- <select id="country" class="ui fluid dropdown" formControlName="country">
             <option>Select</option>
+            </select> -->
+      </div>
       </div>
       <div class="two fields">
         <div class="field">
@@ -54,7 +57,7 @@
           <!-- <select id="states" class="ui fluid dropdown" formControlName="states">
             <option>Select</option>
             <option [value]="state" *ngFor="let state of states">{{state}}</option>
-          </select>
+          </select>-->
         </div>
         <div class="field">
           <label>City</label>

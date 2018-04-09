@@ -1,5 +1,4 @@
 import { Http } from '@angular/http';
-<<<<<<< HEAD
 // @Injectable()
 // export class HrbaseService {
 //   hrpostdetails: any;
@@ -97,8 +96,6 @@ import { Http } from '@angular/http';
 
 // upar ka delete mat maarna abhi
 
-=======
->>>>>>> 0ea74ece3ad5bb2791741107f147c3c9f2ce59f3
 import { Injectable } from '@angular/core';
 import { HrPostDetail } from '../model/hrpostdetails';
 import { environment } from '../../environments/environment';

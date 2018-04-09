@@ -72,12 +72,11 @@ export class UserProfileComponent implements OnInit {
   }
 
   AddEducationMore(): void {
-
+  //  this.edituserdata = this.userdata;
     this.educationAdd = true;
     // if (this.userdata.education) {
     //   this.userdata.education.push({higherDegreeValue: '', universityName: '', passingYearValue: '', percentageValue: ''});
     // }
-
   }
   EditEducationDetails() {
     this.educationMain = false;

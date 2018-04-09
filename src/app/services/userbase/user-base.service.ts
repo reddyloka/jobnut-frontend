@@ -41,6 +41,22 @@ export class UserBaseService {
 
   }
 
+  updateUserDetailsById(updateDetails: any, user: string): Promise<ApplicantBase> {
+    console.log('user_id', user);
+    console.log('user update details', updateDetails);
+    return this.http.put(`${environment.USER_SERVER}/api/users/update`, updateDetails, {
+      params: {
+        'id': user
+      }
+    })
+      .toPromise()
+      .then((response) => {
+        console.log('data get of user: ', response.json());
+        return response.json();
+      });
+
+  }
+
 
 
 
