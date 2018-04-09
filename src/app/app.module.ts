@@ -46,6 +46,7 @@ import { UserPersonalDetailsComponent } from './dashboard-component/user-dashboa
 import { UserExperienceDetailsComponent } from './dashboard-component/user-dashboard/features/user-profile/user-experience-details/user-experience-details.component';
 import { UserSkillsDetailsComponent } from './dashboard-component/user-dashboard/features/user-profile/user-skills-details/user-skills-details.component';
 import { UserEducationDetailsComponent } from './dashboard-component/user-dashboard/features/user-profile/user-education-details/user-education-details.component';
+import { UserEducationAddDetailsComponent } from './dashboard-component/user-dashboard/features/user-profile/user-education-details/user-education-add-details/user-education-add-details.component';
 
 
 
@@ -82,7 +83,8 @@ import { UserEducationDetailsComponent } from './dashboard-component/user-dashbo
     UserPersonalDetailsComponent,
     UserExperienceDetailsComponent,
     UserSkillsDetailsComponent,
-    UserEducationDetailsComponent
+    UserEducationDetailsComponent,
+    UserEducationAddDetailsComponent
 
   ],
   imports: [

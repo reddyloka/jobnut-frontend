@@ -7,9 +7,9 @@ export interface Education {
 }
 
 export interface Experience {
-    profileTitle: string;
-    totalExperienceYear: string;
-    Description: string;
+    designation: string;
+    totalExperiences: string;
+    description: string;
 
 }
 
@@ -57,6 +57,6 @@ export class ApplicantBase {
     }
 
     public static createblank(): ApplicantBase {
-        return new ApplicantBase(null, null, null, null, null, null, null, null, null, [], null, null, null, null, [{higherDegreeValue: '', universityName: '', passingYearValue: '', percentageValue: ''}], [{ profileTitle: '', totalExperienceYear: '', Description: ''}]);
+        return new ApplicantBase(null, null, null, null, null, null, null, null, null, [], null, null, null, null, [{higherDegreeValue: '', universityName: '', passingYearValue: '', percentageValue: ''}], [null]);
     }
 }

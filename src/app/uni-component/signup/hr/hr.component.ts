@@ -38,7 +38,7 @@ export class HrComponent implements OnInit {
 
     this.user_details = Userbase.createBlankUser();
     this.buildFormGroup();
-    this.profile_photo =  null;
+    this.profile_photo = null;
     this.userExist = false;
     this.user_details.isHr = true;
     this.user_details.status = true;
@@ -51,11 +51,13 @@ export class HrComponent implements OnInit {
       'email': new FormControl(this.user_details.email, [Validators.required, Validators.email]),
       'password': new FormControl(this.user_details.password, Validators.required),
       'option': new FormControl(null, Validators.required),
-      // 'country': new FormControl(null, Validators.required),
-      // 'state': new FormControl(null, Validators.required),
-      // 'city': new FormControl(null, Validators.required),
+      'country': new FormControl(null, Validators.required),
+      'state': new FormControl(null, Validators.required),
+      'city': new FormControl(null, Validators.required),
       'designation': new FormControl(null, Validators.required),
       'address': new FormControl(null, Validators.required),
+      'phone': new FormControl(null, Validators.required),
+      'jobProfile': new FormControl(null, Validators.required),
     };
 
     this.signupForm = new FormGroup(fg);
@@ -66,11 +68,12 @@ export class HrComponent implements OnInit {
     console.log(this.user_details);
     // send data
     // setTimeout(() => {
-      this._userService.addNewUser(this.user_details, {
-        profile_photo: this.profile_photo
-      })
+    this._userService.addNewUser(this.user_details, {
+      profile_photo: this.profile_photo
+    })
       .then((result) => {
         console.log(result);
+        this.router.navigateByUrl('login');
       });
     // }, 2000);
   }
@@ -97,6 +100,6 @@ export class HrComponent implements OnInit {
 
   }
   gethrDash() {
-    this.router.navigateByUrl('hr');
+
   }
 }

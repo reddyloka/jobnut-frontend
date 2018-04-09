@@ -1,4 +1,4 @@
-import { EventEmitter, Component, OnInit, Output } from '@angular/core';
+import { EventEmitter, Component, OnInit, Output, Input } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
@@ -8,6 +8,9 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class HrDetailsComponent implements OnInit {
   hrdetailForm: FormGroup;
+@Input()
+hrpost;
+
   @Output()
   discardClick = new EventEmitter<boolean>();
 

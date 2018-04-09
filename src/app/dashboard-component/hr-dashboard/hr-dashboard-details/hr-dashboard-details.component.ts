@@ -1,12 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../services/authentication/auth.service';
+import { uuid } from '../../../model/uuid';
+import { HrbaseService } from '../../../services/hrbase.service';
+import { Userbase } from '../../../model/userbase';
 @Component({
   selector: 'app-hr-dashboard-details',
   templateUrl: './hr-dashboard-details.component.html',
   styleUrls: ['./hr-dashboard-details.component.css']
 })
 export class HrDashboardDetailsComponent implements OnInit {
+  hrdata: Userbase;
+  id: string;
   ExpOpen: boolean;
   ExpMain: boolean;
   ContactMain: boolean;
@@ -18,7 +23,9 @@ export class HrDashboardDetailsComponent implements OnInit {
   detailsMain: boolean;
   SkillsMain: boolean;
 
-  constructor( private router: Router, private _authService: AuthService ) {
+  constructor(private router: Router,
+    private _authService: AuthService,
+    private hrbaseservice: HrbaseService) {
     this.ExpMain = true;
     this.ExpOpen = false;
     this.detailsMain = true;
@@ -28,6 +35,7 @@ export class HrDashboardDetailsComponent implements OnInit {
     this.SkillsMain = true;
     this.ContactMain = true;
     this.ContactOpen = false;
+    this.id = uuid();
   }
 
   ngOnInit() {
@@ -35,6 +43,11 @@ export class HrDashboardDetailsComponent implements OnInit {
     // if (!this._authService.isLoggedIn()) {
     //   this.router.navigateByUrl('login');
     // }
+    this.hrbaseservice.getHrDetailsById(this.id).
+      then((hrdata) => {
+        console.log('maindata', hrdata);
+        this.hrdata = hrdata;
+      });
   }
 
   EditPersonalDetails() {
@@ -46,7 +59,7 @@ export class HrDashboardDetailsComponent implements OnInit {
     this.detailsMain = true;
   }
   EditSkills() {
-    this.SkillsMain = false;
+    this.SkillsMain = true;
     this.SkillsOpen = true;
   }
   closeSkills() {
@@ -62,8 +75,8 @@ export class HrDashboardDetailsComponent implements OnInit {
     this.ContactOpen = false;
   }
   EditExpDetails() {
-   this.ExpMain = false;
-   this.ExpOpen = true;
+    this.ExpMain = false;
+    this.ExpOpen = true;
   }
   closeexp() {
     this.ExpMain = true;
