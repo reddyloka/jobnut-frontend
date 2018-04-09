@@ -2,38 +2,40 @@
   <div class="ui" style="float: left;">
     <span class="arrow left"></span>
   </div>
-  <div class="ui very padded container segment">
-    <form [formGroup]="signupForm"  class="ui form">
-      <h4 class="ui dividing header">New H.R Registration</h4>
-      <div class="field">
-        <label>Name *</label>
-        <div class="two fields">
-          <div class="field">
-            <input type="text" id="first" placeholder="First Name" [(ngModel)]="user_details.fname" formControlName="fname">
-          </div>
-          <div class="field">
-            <input type="text" id="last" placeholder="Last Name" [(ngModel)]="user_details.lname" formControlName="lname">
-          </div>
+</div>
+<div class="ui very padded container segment">
+  <form [formGroup]="signupForm" class="ui form">
+    <h4 class="ui dividing header">New H.R Registration</h4>
+    <div class="field">
+      <label>Name *</label>
+      <div class="two fields">
+        <div class="field">
+          <input type="text" id="first" placeholder="First Name" [(ngModel)]="user_details.fname" formControlName="fname">
+        </div>
+        <div class="field">
+          <input type="text" id="last" placeholder="Last Name" [(ngModel)]="user_details.lname" formControlName="lname">
         </div>
       </div>
-      <div class="field">
-        <label>Email *</label>
-        <div class="fields">
-          <div class="eight wide field">
-            <input type="text" id="email" placeholder="Email" [(ngModel)]="user_details.email" formControlName="email">
-          </div>
-          <div class="eight wide field">
-            <input type="password" id="password" placeholder="Password" [(ngModel)]="user_details.password" formControlName="password">
-          </div>
+    </div>
+    <div class="field">
+      <label>Email *</label>
+      <div class="fields">
+        <div class="eight wide field">
+          <input type="text" id="email" placeholder="Email" [(ngModel)]="user_details.email" formControlName="email">
+        </div>
+        <div class="eight wide field">
+          <input type="password" id="password" placeholder="Password" [(ngModel)]="user_details.password" formControlName="password">
         </div>
       </div>
+    </div>
+    <div class="field">
+      <label>Phone *</label>
       <div class="field">
-          <label>Phone *</label>
-            <div class="field">
-              <input type="text" id="phone" placeholder="phone" [(ngModel)]="user_details.phone" formControlName="phone">
-            </div>
-        </div>
+        <input type="text" id="phone" placeholder="phone" [(ngModel)]="user_details.phone" formControlName="phone">
+      </div>
+    </div>
 
+<<<<<<< HEAD
       <div class="two fields">
         <div class="field">
           <label>Industry type</label>
@@ -49,11 +51,27 @@
             <option>Select</option>
             </select> -->
       </div>
+=======
+    <div class="two fields">
+      <div class="field">
+        <label>Industry type</label>
+        <select id="option" class="ui fluid dropdown" [(ngModel)]="user_details.industry" formControlName="option">
+          <option>Select</option>
+          <option [value]="industry" *ngFor="let industry of options">{{industry}}</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Country *</label>
+        <input type="text" id="country" placeholder="country" [(ngModel)]="user_details.country" formControlName="country">
+        <!--  <select id="country" class="ui fluid dropdown" formControlName="country">
+            <option>Select</option>
+            </select>-->
+>>>>>>> 24fcb42ce01eab6ea2276c1cbdd9d086d9bdd4ba
       </div>
       <div class="two fields">
         <div class="field">
           <label>States *</label>
-          <input type="text" id="state" placeholder="State"  [(ngModel)]="user_details.state" formControlName="state">
+          <input type="text" id="state" placeholder="State" [(ngModel)]="user_details.state" formControlName="state">
           <!-- <select id="states" class="ui fluid dropdown" formControlName="states">
             <option>Select</option>
             <option [value]="state" *ngFor="let state of states">{{state}}</option>
@@ -61,12 +79,12 @@
         </div>
         <div class="field">
           <label>City</label>
-          <input type="text" id="city" placeholder="City"  [(ngModel)]="user_details.city" formControlName="city">
+          <input type="text" id="city" placeholder="City" [(ngModel)]="user_details.city" formControlName="city">
         </div>
       </div>
       <div class="eight wide field">
         <label>Designation *</label>
-        <input type="text" id="designation" placeholder="Designation"  [(ngModel)]="user_details.designation" formControlName="designation">
+        <input type="text" id="designation" placeholder="Designation" [(ngModel)]="user_details.designation" formControlName="designation">
       </div>
       <div class="sixteen wide padded field">
         <label>Address *</label>
@@ -74,12 +92,12 @@
       </div>
 
       <div class="field">
-          <label>Job Profile *</label>
-            <div class="eight wide field">
-              <textarea type="text" id="jobProfile" placeholder="jobProfile" [(ngModel)]="user_details.jobProfile" formControlName="jobProfile"></textarea>
-            </div>
+        <label>Job Profile *</label>
+        <div class="eight wide field">
+          <textarea type="text" id="jobProfile" placeholder="jobProfile" [(ngModel)]="user_details.jobProfile" formControlName="jobProfile"></textarea>
+        </div>
       </div>
-        
+
       <div class="field">
         <label>Profile Photo:</label>
         <input id="image" type="file" id="profile_photo" placeholder="Photo" required="" capture (change)="fileTypeCheck($event)">
@@ -91,8 +109,8 @@
         </label>
       </div>-
       <div class="field">
-        <button [disabled]="signupForm.invalid || imageFile"  (click)="onSubmit()" class="ui button" type="submit" tabindex="0" (click)="gethrDash()">Register</button>
+        <button [disabled]="signupForm.invalid || imageFile" (click)="onSubmit()" class="ui button" type="submit" tabindex="0" (click)="gethrDash()">Register</button>
       </div>
-    </form>
-  </div>
+    </div>
+  </form>
 </div>

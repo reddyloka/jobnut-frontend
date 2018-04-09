@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, OnInit, AfterViewInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 declare var $: any;
 
@@ -15,9 +15,8 @@ export class HrSkillComponent implements OnInit {
   @Output()
   discardClick = new EventEmitter<boolean>();
 
-  discardClicked() {
-    this.discardClick.emit(true);
-  }
+  hrskillForm: FormGroup;
+  functional: string[];
 
 
   constructor() {
