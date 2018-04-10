@@ -10,10 +10,10 @@
       <label>Name *</label>
       <div class="two fields">
         <div class="field">
-          <input type="text" id="first" placeholder="First Name" [(ngModel)]="user_details.fname" formControlName="fname">
+          <input type="text" id="firstName" placeholder="First Name" [(ngModel)]="user_details.fname" formControlName="fname">
         </div>
         <div class="field">
-          <input type="text" id="last" placeholder="Last Name" [(ngModel)]="user_details.lname" formControlName="lname">
+          <input type="text" id="lastName" placeholder="Last Name" [(ngModel)]="user_details.lname" formControlName="lname">
         </div>
       </div>
     </div>
@@ -46,53 +46,53 @@
       <div class="field">
         <label>Country *</label>
         <input type="text" id="country" placeholder="country" [(ngModel)]="user_details.country" formControlName="country">
-        <!--  <select id="country" class="ui fluid dropdown" formControlName="country">
+        <!-- <select id="country" class="ui fluid dropdown" formControlName="country">
             <option>Select</option>
-            </select>-->
+            </select> -->
       </div>
-      <div class="two fields">
-        <div class="field">
-          <label>States *</label>
-          <input type="text" id="state" placeholder="State" [(ngModel)]="user_details.state" formControlName="state">
-          <!-- <select id="states" class="ui fluid dropdown" formControlName="states">
+    </div>
+    <div class="two fields">
+      <div class="field">
+        <label>States *</label>
+        <input type="text" id="state" placeholder="State" [(ngModel)]="user_details.state" formControlName="state">
+        <!-- <select id="states" class="ui fluid dropdown" formControlName="states">
             <option>Select</option>
             <option [value]="state" *ngFor="let state of states">{{state}}</option>
           </select>-->
-        </div>
-        <div class="field">
-          <label>City</label>
-          <input type="text" id="city" placeholder="City" [(ngModel)]="user_details.city" formControlName="city">
-        </div>
       </div>
+      <div class="field">
+        <label>City</label>
+        <input type="text" id="city" placeholder="City" [(ngModel)]="user_details.city" formControlName="city">
+      </div>
+    </div>
+    <div class="eight wide field">
+      <label>Designation *</label>
+      <input type="text" id="designation" placeholder="Designation" [(ngModel)]="user_details.designation" formControlName="designation">
+    </div>
+    <div class="sixteen wide padded field">
+      <label>Address *</label>
+      <input type="text" id="address" placeholder="Address" [(ngModel)]="user_details.address" formControlName="address">
+    </div>
+
+    <div class="field">
+      <label>Job Profile *</label>
       <div class="eight wide field">
-        <label>Designation *</label>
-        <input type="text" id="designation" placeholder="Designation" [(ngModel)]="user_details.designation" formControlName="designation">
+        <textarea type="text" id="jobProfile" placeholder="jobProfile" [(ngModel)]="user_details.jobProfile" formControlName="jobProfile"></textarea>
       </div>
-      <div class="sixteen wide padded field">
-        <label>Address *</label>
-        <input type="text" id="address" placeholder="Address" [(ngModel)]="user_details.address" formControlName="address">
-      </div>
+    </div>
 
-      <div class="field">
-        <label>Job Profile *</label>
-        <div class="eight wide field">
-          <textarea type="text" id="jobProfile" placeholder="jobProfile" [(ngModel)]="user_details.jobProfile" formControlName="jobProfile"></textarea>
-        </div>
-      </div>
-
-      <div class="field">
-        <label>Profile Photo:</label>
-        <input id="image" type="file" id="profile_photo" placeholder="Photo" required="" capture (change)="fileTypeCheck($event)">
-      </div>
-      <div class="ui toggle checkbox">
-        <input type="checkbox" name="public">
-        <label>I Agree to the
-          <a href="#">Terms and Conditions</a>
-        </label>
-      </div>-
-      <div class="field">
-        <button [disabled]="signupForm.invalid || imageFile" (click)="onSubmit()" class="ui button" type="submit" tabindex="0" (click)="gethrDash()">Register</button>
-      </div>
+    <div class="field">
+      <label>Profile Photo:</label>
+      <input id="image" type="file" id="profile_photo" placeholder="Photo" required="" capture (change)="fileTypeCheck($event)">
+    </div>
+    <div class="ui toggle checkbox">
+      <input type="checkbox" name="public">
+      <label>I Agree to the
+        <a href="#">Terms and Conditions</a>
+      </label>
+    </div>
+    <div class="field">
+      <button class="ui button" type="submit" tabindex="0" (click)="onSubmit()">Register</button>
     </div>
   </form>
 </div>

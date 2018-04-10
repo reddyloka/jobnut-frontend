@@ -15,7 +15,7 @@ export class HrbaseService {
 
   getAllHrPost(user: string): Promise<HrPostDetail[]> {
     user = localStorage['id_token'];
-    return this.http.get(`${environment.USER_SERVER}/authenticate/posts`, {
+    return this.http.get(`${environment.USER_SERVER}/api/posts`, {
       params: {
         'token': user
       }
@@ -40,9 +40,10 @@ export class HrbaseService {
   addNewPost(hrpostdetail: HrPostDetail, user: string): Promise<boolean> {
     // this.hrpostdetails.unshift(hrpostdetail);
     console.log('data123', hrpostdetail);
+    user = localStorage['id_token'];
     return this.http.put(`${environment.USER_SERVER}/api/posts/new-post`, hrpostdetail, {
       params: {
-        'id': user
+        'token': user
       }
     })
       .toPromise()
