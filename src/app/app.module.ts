@@ -42,7 +42,6 @@ import { HrDetailsComponent } from './dashboard-component/hr-dashboard/hr-dashbo
 // import { HrHeaderComponent } from './dashboard-component/hr-dashboard/hr-header/hr-header.component';
 import { HrDashboardDetailsComponent } from './dashboard-component/hr-dashboard/hr-dashboard-details/hr-dashboard-details.component';
 import { HrExperienceComponent } from './dashboard-component/hr-dashboard/hr-dashboard-details/hr-experience/hr-experience.component';
-import { HrContactComponent } from './dashboard-component/hr-dashboard/hr-dashboard-details/hr-contact/hr-contact.component';
 import { HrSkillComponent } from './dashboard-component/hr-dashboard/hr-dashboard-details/hr-skill/hr-skill.component';
 import { UserHeaderComponent } from './dashboard-component/user-dashboard/user-header/user-header.component';
 import { UserProfileComponent } from './dashboard-component/user-dashboard/features/user-profile/user-profile.component';
@@ -53,6 +52,10 @@ import { UserEducationDetailsComponent } from './dashboard-component/user-dashbo
 import { UserEducationAddDetailsComponent } from './dashboard-component/user-dashboard/features/user-profile/user-education-details/user-education-add-details/user-education-add-details.component';
 import { NotificationComponent } from './uni-component/misc/notification/notification.component';
 import { NotificationService } from './_shared/notification.service';
+import { UserExperienceAddDetailsComponent } from './dashboard-component/user-dashboard/features/user-profile/user-experience-add-details/user-experience-add-details.component';
+import { HrExperienceAddDetailsComponent } from './dashboard-component/hr-dashboard/hr-dashboard-details/hr-experience-add-details/hr-experience-add-details.component';
+import { HrManageApplicantComponent } from './dashboard-component/hr-dashboard/features/hr-postdetails/hr-manage-applicant/hr-manage-applicant.component';
+import { DataService } from './_shared/data.service';
 
 
 
@@ -85,7 +88,6 @@ import { NotificationService } from './_shared/notification.service';
     // HrHeaderComponent,
     HrDashboardDetailsComponent,
     HrExperienceComponent,
-    HrContactComponent,
     UserHeaderComponent,
     UserProfileComponent,
     UserPersonalDetailsComponent,
@@ -93,7 +95,10 @@ import { NotificationService } from './_shared/notification.service';
     UserSkillsDetailsComponent,
     UserEducationDetailsComponent,
     UserEducationAddDetailsComponent,
-    NotificationComponent
+    NotificationComponent,
+    UserExperienceAddDetailsComponent,
+    HrExperienceAddDetailsComponent,
+    HrManageApplicantComponent
 
   ],
   imports: [
@@ -112,6 +117,7 @@ import { NotificationService } from './_shared/notification.service';
     HrbaseService,
     LoggedInGuard,
     NotificationService,
+    DataService,
     AuthService,
     JwtService,
     { provide: LocationStrategy, useClass: HashLocationStrategy },

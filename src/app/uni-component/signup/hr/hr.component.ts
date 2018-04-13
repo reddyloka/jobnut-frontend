@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { UserBaseService } from '../../../services/userbase/user-base.service';
 import { Router } from '@angular/router';
-import { Userbase } from '../../../model/userbase';
+import { Hrbase } from '../../../model/hrbase';
 
 @Component({
   selector: 'app-hr',
@@ -17,7 +17,7 @@ export class HrComponent implements OnInit {
   hrsignupActive: boolean;
 
   // my variables Abhhishek Mittal
-  user_details: Userbase;
+  hrDetails: Hrbase;
   profile_photo: File;
   userExist: boolean;
 
@@ -35,48 +35,43 @@ export class HrComponent implements OnInit {
     ];
 
 
-
-    this.user_details = Userbase.createBlankUser();
+    this.hrDetails = Hrbase.createBlankUser();
     this.buildFormGroup();
-    this.profile_photo = null;
+    this.profile_photo =  null;
     this.userExist = false;
-    this.user_details.isHr = true;
-    this.user_details.status = true;
+    this.hrDetails.isHr = true;
+    this.hrDetails.status = true;
   }
 
   buildFormGroup(): void {
     const fg = {
-      'fname': new FormControl(this.user_details.fname, Validators.required),
-      'lname': new FormControl(this.user_details.lname),
-      'password': new FormControl(this.user_details.password, Validators.required),
-      'option': new FormControl(null, Validators.required),
+      'firstName': new FormControl(null, Validators.required),
+      'lastName': new FormControl(null),
+      'email': new FormControl(null, [Validators.required, Validators.email]),
+      'password': new FormControl(null, Validators.required),
+      'dob':  new FormControl(null, Validators.required),
+      'phone':  new FormControl(null, Validators.required),
+      'industry':  new FormControl(null, Validators.required),
       'country': new FormControl(null, Validators.required),
       'state': new FormControl(null, Validators.required),
       'city': new FormControl(null, Validators.required),
       'designation': new FormControl(null, Validators.required),
       'address': new FormControl(null, Validators.required),
-      'phone': new FormControl(null, Validators.required),
-      'jobProfile': new FormControl(null, Validators.required),
+      'jobProfile': new FormControl(null, Validators.required)
     };
-    this.user_details.isHr = true;
-    this.user_details.status = true;
 
     this.signupForm = new FormGroup(fg);
   }
 
   onSubmit(): void {
-    // this.buildFormGroup();
-    console.log(this.user_details);
-    // send data
-    // setTimeout(() => {
-    this._userService.addNewUser(this.user_details, {
-      profile_photo: this.profile_photo
-    })
+    console.log('hr details', this.hrDetails);
+      this._userService.addNewUser(this.hrDetails, {
+        profile_photo: this.profile_photo
+      })
       .then((result) => {
         console.log(result);
         this.router.navigateByUrl('login');
       });
-    // }, 2000);
   }
 
   fileTypeCheck(event): any {
@@ -97,7 +92,6 @@ export class HrComponent implements OnInit {
         // this.fileTypeCheck(event);
       }
     }
-
 
   }
   gethrDash() {

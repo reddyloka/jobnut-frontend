@@ -17,7 +17,9 @@ userclick: EventEmitter<number> = new EventEmitter();
    this.userclick.emit(this.hrpost._id);
  }
 
-  constructor() { }
+  constructor() {
+
+  }
 
   ngOnInit() {
   }

@@ -11,7 +11,7 @@ hrpost;
 @Output()
 userclick = new EventEmitter<number>();
 
-userclicked(hrpost_id) {
+userclicked() {
   this.userclick.emit(this.hrpost._id);
 }
   constructor() { }

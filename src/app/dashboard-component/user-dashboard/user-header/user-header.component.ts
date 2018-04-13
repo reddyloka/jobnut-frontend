@@ -18,6 +18,7 @@ userdata;
     this.router.navigateByUrl('/user-profile');
   }
   getpost() {
+
     this.router.navigateByUrl('/user-view-post');
   }
 }

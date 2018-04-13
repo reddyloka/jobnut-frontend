@@ -27,6 +27,18 @@ export const routerConfig: Routes = [
   // hr routes
   { path: 'hr', redirectTo: 'hr/profile' }, // hr home page
   {
+    path: 'jobs-posted/:id',
+    component: HrPostdetailsComponent
+  },
+  {
+    path: 'callback',
+    component: CallbackComponent
+  },
+  {
+    path: 'jobs-posted/:id',
+    component: HrPostdetailsComponent
+  },
+  {
     path: 'hr', component: HrDashboardComponent, children: [
       {
         path: 'profile',
@@ -42,7 +54,7 @@ export const routerConfig: Routes = [
         children: [
           {
             path: ':id',
-            component: HrPostdetailsComponent
+            component: HrPostdetailsComponent,
           }
         ]
       }
@@ -51,7 +63,10 @@ export const routerConfig: Routes = [
   // hr routes
 
 
-
+  {
+    path: 'user-view-post/:user-post.id',
+    component: UserViewPostDetailsComponent,
+  },
 
   // applicant routes
   { path: 'applicant', canActivate: [LoggedInGuard && localStorage['isApplicant']], redirectTo: 'user-view-post' },
@@ -60,8 +75,8 @@ export const routerConfig: Routes = [
     component: UserViewComponent,
     children: [
       {
-        path: 'user-post.id',
-        component: UserViewPostDetailsComponent
+        path: ':user-post.id',
+        component: UserViewPostDetailsComponent,
       }
     ]
   },

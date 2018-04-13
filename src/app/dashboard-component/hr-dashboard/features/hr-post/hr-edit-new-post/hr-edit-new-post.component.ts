@@ -5,12 +5,14 @@ import { HrbaseService } from '../../../../../services/hrbase.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AbstractControl, ValidatorFn, FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { uuid } from '../../../../../model/uuid';
+declare var $: any;
 @Component({
   selector: 'app-hr-edit-new-post',
   templateUrl: './hr-edit-new-post.component.html',
   styleUrls: []
 })
 export class HrEditNewPostComponent implements OnInit {
+  skillsArray: string[];
   hrpostNewDataForm: FormGroup;
   id: string;
 
@@ -21,6 +23,8 @@ export class HrEditNewPostComponent implements OnInit {
     console.log(this.hrpostNewData);
     this.buildFormGroup();
     this.id = uuid();
+    this.skillsArray = ['Angular', 'CSS', 'Graphic Design', 'Ember', 'HTML', 'Javascript',
+      'NodeJS', 'UI Design', 'Python', 'Rails', 'React', 'Ruby', 'c', 'c++', 'java', 'Database', 'Mean stack', 'Full stack'];
   }
 
   buildFormGroup(): void {
@@ -48,11 +52,17 @@ export class HrEditNewPostComponent implements OnInit {
 
   }
   ngOnInit() {
+    $('.dropdown').dropdown({
+      label: {
+        duration: 0,
+      },
+      debug: true,
+      performance: true,
+    });
   }
-
 
   onSubmit() {
     this.hrbaseservice.addNewPost(this.hrpostNewData, this.id);
-    this.router.navigate(['hr-post']);
+    this.router.navigate(['jobs-posted']);
   }
 }

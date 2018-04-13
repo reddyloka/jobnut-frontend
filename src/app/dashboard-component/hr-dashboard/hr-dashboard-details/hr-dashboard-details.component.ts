@@ -3,17 +3,18 @@ import { Router } from '@angular/router';
 import { AuthService } from '../../../services/authentication/auth.service';
 import { uuid } from '../../../model/uuid';
 import { HrbaseService } from '../../../services/hrbase.service';
-import { Userbase } from '../../../model/userbase';
+import { Hrbase } from '../../../model/hrbase';
 @Component({
   selector: 'app-hr-dashboard-details',
   templateUrl: './hr-dashboard-details.component.html',
-  styleUrls: []
+  styleUrls: ['./hr-dashboard-details.component.css']
 })
 export class HrDashboardDetailsComponent implements OnInit {
-  hrdata: Userbase;
+  expAdd: boolean;
+  hrdata: Hrbase;
   id: string;
   ExpOpen: boolean;
-  ExpMain: boolean;
+  expMain: boolean;
   ContactMain: boolean;
   ContactOpen: boolean;
   detailsOpen: boolean;
@@ -27,7 +28,7 @@ export class HrDashboardDetailsComponent implements OnInit {
   constructor(private router: Router,
     private _authService: AuthService,
     private hrbaseservice: HrbaseService) {
-    this.ExpMain = true;
+    this.expMain = true;
     this.ExpOpen = false;
     this.detailsMain = true;
     this.detailsOpen = false;
@@ -36,6 +37,7 @@ export class HrDashboardDetailsComponent implements OnInit {
     this.SkillsMain = true;
     this.ContactMain = true;
     this.ContactOpen = false;
+    this.expAdd = false;
     this.id = uuid();
   }
 
@@ -59,6 +61,7 @@ export class HrDashboardDetailsComponent implements OnInit {
     this.detailsOpen = false;
     this.detailsMain = true;
   }
+
   EditSkills() {
     this.SkillsMain = true;
     this.SkillsOpen = true;
@@ -75,13 +78,19 @@ export class HrDashboardDetailsComponent implements OnInit {
     this.ContactMain = true;
     this.ContactOpen = false;
   }
+  AddExperienceMore() {
+    this.expAdd = true;
+  }
   EditExpDetails() {
-    this.ExpMain = false;
+    this.expMain = false;
     this.ExpOpen = true;
   }
   closeexp() {
-    this.ExpMain = true;
+    this.expMain = true;
     this.ExpOpen = false;
+  }
+  closeAddExp() {
+    this.expAdd = false;
   }
   // abhishek code
 

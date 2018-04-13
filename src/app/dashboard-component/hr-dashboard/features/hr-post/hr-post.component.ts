@@ -25,7 +25,7 @@ export class HrPostComponent implements OnInit {
   }
 
   public routeronclicked(hrpost_id): void {
-    this.router.navigateByUrl('/hr-post/' + hrpost_id);
+    this.router.navigateByUrl('/jobs-posted/' + hrpost_id);
   }
   adddetails() {
     this.router.navigateByUrl('/hr-new-post');

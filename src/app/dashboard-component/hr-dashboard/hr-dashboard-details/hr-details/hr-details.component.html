@@ -1,37 +1,86 @@
 <div class="ui very padded container segment">
-  <form [formGroup]="hrdetailForm" (ngSubmit)="onSubmit()" class="ui form">
-    <h4 class="ui dividing header"></h4>
+  <form [formGroup]="hrdetailForm" class="ui form">
+    <h4 class="ui dividing header">New H.R Registration</h4>
     <div class="field">
       <label>Name *</label>
-      <div class="field">
-        <input type="text" id="name" placeholder="First Name"  formControlName="name">
+      <div class="two fields">
+        <div class="field">
+          <input type="text"  placeholder="First Name" [(ngModel)]="hrdata.firstName" formControlName="firstName">
+        </div>
+        <div class="field">
+          <input type="text"  placeholder="Last Name" [(ngModel)]="hrdata.lastName" formControlName="lastName">
+        </div>
       </div>
     </div>
     <div class="field">
-      <label>Current Designation *</label>
+      <label>Email *</label>
       <div class="field">
-        <input type="text" id="designation" placeholder="Designation" formControlName="designation">
-      </div>
+          <input type="text"  placeholder="Email" [(ngModel)]="hrdata.email" formControlName="email">
+    </div>
     </div>
     <div class="field">
-      <label>Current Employer *</label>
-      <div class="field">
-        <input type="text" id="curremployer" placeholder="Employer" formControlName="curremployer">
-      </div>
+      <label>Date Of Birth
+        <span style="color:red">*</span>
+      </label>
+      <input type="date" formControlName="dob" placeholder="enter date of birth" [(ngModel)]="hrdata.dob">
+      <!-- <div class="alert alert-danger" *ngIf="!applicantForm.controls['dob'].dirty && applicantForm.controls['dob'].touched">
+        <p>Please fill required fields
+          <span style="color:red">*</span>
+        </p>
+      </div> -->
     </div>
     <div class="field">
-      <label>Current Location *</label>
+      <label>Phone *</label>
       <div class="field">
-        <input type="text" id="currlocation" placeholder="Lcoation" formControlName="currlocation">
+        <input type="text"  placeholder="phone" [(ngModel)]="hrdata.phone" formControlName="phone">
       </div>
     </div>
-    <div class="field">
-      <label>Profile Heading *</label>
-      <div class="field">
-        <textarea rows="3" type="profile" id="profile" placeholder="profile heading" formControlName="profile"></textarea>
+
+        <div class="field">
+          <label>Country *</label>
+          <input type="text"  placeholder="country"  [(ngModel)]="hrdata.country" formControlName="country">
+         <!-- <select  class="ui fluid dropdown" formControlName="country">
+            <option>Select</option>
+            </select> -->
       </div>
+    
+      <div class="two fields">
+        <div class="field">
+          <label>States *</label>
+          <input type="text"  placeholder="State" [(ngModel)]="hrdata.state" formControlName="state">
+          <!-- <select  class="ui fluid dropdown" formControlName="states">
+            <option>Select</option>
+            <option [value]="state" *ngFor="let state of states">{{state}}</option>
+          </select>-->
+        </div>
+        <div class="field">
+          <label>City</label>
+          <input type="text"  placeholder="City" [(ngModel)]="hrdata.city" formControlName="city">
+        </div>
+      </div>
+      <div class="field">
+        <label>Designation *</label>
+        <input type="text"  placeholder="Designation" [(ngModel)]="hrdata.designation" formControlName="designation">
+      </div>
+      <div class="sixteen wide padded field">
+        <label>Address *</label>
+        <input type="text"  placeholder="Address" [(ngModel)]="hrdata.address" formControlName="address">
+      </div>
+
+      <div class="field">
+        <label>Job Profile *</label>
+        <div class="eight wide field">
+          <textarea type="text"  placeholder="jobProfile" [(ngModel)]="hrdata.jobProfile" formControlName="jobProfile"></textarea>
+        </div>
+      </div>
+
+      <!-- <div class="field">
+        <label>Profile Photo:</label>
+        <input  type="file"  placeholder="Photo" required="" capture (change)="fileTypeCheck($event)">
+      </div> -->
+      <div class="field">
+        <button class="ui primary button"  type="submit" (click)="onSubmit()"> Save </button>
+      <button class="ui button"  (click)="discardClicked()"> Discard </button>
+     </div>
+    </form>
     </div>
-    <button class="ui primary button" type="submit"> Save </button>
-    <button class="ui button" (click)="discardClicked()"> Discard </button>
-  </form>
-</div>

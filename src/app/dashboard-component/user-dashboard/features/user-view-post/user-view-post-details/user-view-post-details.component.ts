@@ -5,6 +5,7 @@ import { HrbaseService } from '../../../../../services/hrbase.service';
 import { uuid } from '../../../../../model/uuid';
 import { UserBaseService } from '../../../../../services/userbase/user-base.service';
 import { ApplicantBase } from '../../../../../model/applicantbase';
+import { Router } from '@angular/router';
 declare const $: any;
 
 @Component({
@@ -20,7 +21,8 @@ export class UserViewPostDetailsComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
     private hrbaseservice: HrbaseService,
-    private userbaseservice: UserBaseService) {
+    private userbaseservice: UserBaseService,
+    private router: Router) {
     this.uploadNewCv = false;
     this.id = uuid();
   }
@@ -29,20 +31,18 @@ export class UserViewPostDetailsComponent implements OnInit {
   ngOnInit() {
 
     this.route.paramMap.subscribe((params: ParamMap) => {
+      // console.log('NNNNNNNNNNNNNNNNNnn');
       const hrpost_id = params.get('user-post.id');
       this.hrbaseservice.getHrPostById(hrpost_id).
         then((hrpost) => {
-          console.log('AAAAAAAAAAAAAAAAAAA', hrpost);
           this.hrpost = hrpost;
         });
     });
 
     this.userbaseservice.getUserDetailsById(this.id).
-    then((userdata) => {
-      console.log('maindata', userdata);
-      this.userdata = userdata;
-
-    });
+      then((userdata) => {
+        this.userdata = userdata;
+      });
   }
   uploadNew() {
     this.uploadNewCv = true;
@@ -51,6 +51,16 @@ export class UserViewPostDetailsComponent implements OnInit {
 
   uploadOld() {
     this.uploadNewCv = false;
+  }
+  applyToPost() {
+    console.log(this.hrpost._id);
+    console.log(this.id);
+    this.userbaseservice.updateUserApplyPost(this.hrpost._id, this.id).
+      then(() => {
+                 console.log('successfully applied');
+                 this.router.navigateByUrl('user-view-post');
+      });
+
   }
 
 }
