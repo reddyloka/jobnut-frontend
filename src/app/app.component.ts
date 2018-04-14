@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { ToasterService } from 'angular2-toaster';
+// import { ToasterService } from 'angular2-toaster';
 import { NotificationService } from './_shared/notification.service';
 
 @Component({
@@ -10,24 +10,19 @@ import { NotificationService } from './_shared/notification.service';
   // styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  popup = {
-    isActive: false,
-    message: 'this is popup',
-    title: 'My Popup',
-    stay: 3000
-  };
-  private _notificationService: NotificationService;
+  private _notif: NotificationService;
   constructor(
     private router: Router,
-    _notificationService: NotificationService
+    _notif: NotificationService
   ) {
-    this._notificationService = _notificationService;
+    this._notif = _notif;
   }
   title = 'app';
 
   popupClicked(event) {
-    this.popup.isActive = event;
-    // this._notificationService.pop('message1', 'message2', 3000);
+    console.log('poppup clicking');
+    this._notif.activatePopup = event;
+    // this._notif.pop('message1', 'message2', 3000);
   }
 
 }

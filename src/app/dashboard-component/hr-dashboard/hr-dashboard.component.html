@@ -3,7 +3,7 @@
   <a class="item" [ngClass]="{'active': isActive[0]}" (click)="getprofile($event.target)"> Profile </a>
   <a class="item" [ngClass]="{'active': isActive[1]}" (click)= "getpost()">Job Post</a>
   <a class="item" [ngClass]="{'active': isActive[2]}" (click)= "addnewpost()"> Add New Post</a>
-  <p class="item float right">{{hrdata.fname}} {{hrdata.lname }}</p>
+  <p class="item float right">{{hrdata?.fname}} {{hrdata?.lname }}</p>
   <a class="item float right" (click)="logoutClicked()">Log out</a>
 </div>
 <router-outlet></router-outlet>

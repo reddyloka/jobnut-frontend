@@ -17,7 +17,7 @@ export class Userbase {
     phone: string;
     skillValue: string[];
     jobProfile: string;
-    profilePhoto: string;
+    profile_photo: string;
     admin: boolean;
     isHr: boolean;
     isApplicant: boolean;
@@ -36,7 +36,7 @@ export class Userbase {
         this.phone = phone;
         this.skillValue = skillValue;
         this.jobProfile = jobProfile;
-        this.profilePhoto = pp;
+        this.profile_photo = pp;
         this.isHr = ihr;
         this.isApplicant = iApl;
         this.admin = ad;

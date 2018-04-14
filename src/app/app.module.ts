@@ -5,6 +5,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 
+import { Ng2ImgMaxModule } from 'ng2-img-max';
+
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 // import {ToasterModule, ToasterService} from '@angular2-toaster';
 
@@ -53,6 +55,8 @@ import { UserEducationDetailsComponent } from './dashboard-component/user-dashbo
 import { UserEducationAddDetailsComponent } from './dashboard-component/user-dashboard/features/user-profile/user-education-details/user-education-add-details/user-education-add-details.component';
 import { NotificationComponent } from './uni-component/misc/notification/notification.component';
 import { NotificationService } from './_shared/notification.service';
+import { ApplicantPreviewComponent } from './dashboard-component/applicant-preview/applicant-preview.component';
+import { UploadImageComponent } from './dashboard-component/utilities/upload-image/upload-image.component';
 
 
 
@@ -64,8 +68,8 @@ import { NotificationService } from './_shared/notification.service';
     SignupComponent,
     HrDashboardComponent,
     HrComponent,
-    // HrDetailsComponent,
     HrDetailsComponent,
+    // HrHeaderComponent,
     HrSkillComponent,
     ApplicantComponent,
     CallbackComponent,
@@ -93,7 +97,9 @@ import { NotificationService } from './_shared/notification.service';
     UserSkillsDetailsComponent,
     UserEducationDetailsComponent,
     UserEducationAddDetailsComponent,
-    NotificationComponent
+    NotificationComponent,
+    ApplicantPreviewComponent,
+    UploadImageComponent
 
   ],
   imports: [
@@ -104,6 +110,7 @@ import { NotificationService } from './_shared/notification.service';
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
+    Ng2ImgMaxModule,
     HttpClientModule,
     RouterModule.forRoot(routerConfig)
   ],

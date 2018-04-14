@@ -11,8 +11,7 @@ import { Router } from '@angular/router';
 export class HrDashboardComponent implements OnInit {
 
   @Input()
-  hrdata;
-
+hrdata;
   id: string;
   isActive: boolean[];
 

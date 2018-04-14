@@ -1,5 +1,5 @@
 <router-outlet></router-outlet>
-<app-notification [data]="popup" *ngIf="popup.isActive" (donePopup)="popupClicked($event)"></app-notification>
-<button type="submit" (click)="popup.isActive='true'">
+<app-notification *ngIf="_notif.activatePopup" (donePopup)="popupClicked($event)"></app-notification>
+<!-- <button type="submit" (click)="popup.isActive='true'">
     click for popup
-</button>
+</button> -->

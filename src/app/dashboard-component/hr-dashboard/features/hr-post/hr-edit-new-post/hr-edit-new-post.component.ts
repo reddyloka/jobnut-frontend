@@ -5,6 +5,7 @@ import { HrbaseService } from '../../../../../services/hrbase.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AbstractControl, ValidatorFn, FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { uuid } from '../../../../../model/uuid';
+import { NotificationService } from '../../../../../_shared/notification.service';
 @Component({
   selector: 'app-hr-edit-new-post',
   templateUrl: './hr-edit-new-post.component.html',
@@ -13,10 +14,18 @@ import { uuid } from '../../../../../model/uuid';
 export class HrEditNewPostComponent implements OnInit {
   hrpostNewDataForm: FormGroup;
   id: string;
+  popup = {
+    isActive: false,
+    message: 'this is popup',
+    title: 'My Popup',
+    stay: 3000
+  };
 
   hrpostNewData: HrPostDetail;
   constructor(private hrbaseservice: HrbaseService,
-    private router: Router) {
+    private router: Router,
+    private _notif: NotificationService
+  ) {
     this.hrpostNewData = HrPostDetail.createblank();
     console.log(this.hrpostNewData);
     this.buildFormGroup();
@@ -52,7 +61,14 @@ export class HrEditNewPostComponent implements OnInit {
 
 
   onSubmit() {
-    this.hrbaseservice.addNewPost(this.hrpostNewData, this.id);
-    this.router.navigate(['hr-post']);
+    this.hrbaseservice.addNewPost(this.hrpostNewData, this.id)
+      .then((res: any) => {
+        this._notif.pop(res.body.message, 'Successfull', 3000);
+        if (res.success) {
+          console.log( res.message, res.data );
+        }
+      }).catch();
+    // this.router.navigate(['hr-post']);
   }
+
 }

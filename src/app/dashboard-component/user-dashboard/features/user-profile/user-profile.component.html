@@ -88,7 +88,7 @@
           </div>
         </div>
         <div *ngIf="detailsOpen">
-          <app-user-personal-details (discardClick)="closeDetails()" [userdata]="userdata"></app-user-personal-details>
+          <app-user-personal-details (discardClick)="closeDetails()" (saveClick)="closeDetails()" [userdata]="userdata"></app-user-personal-details>
         </div>
       </div>
 
@@ -97,41 +97,46 @@
     <div class='panel panel-default'>
       <div class="panel-body">
         <div class="flied">
+            <a class="fr" (click)="AddExperienceMore()">Add more Experiences</a>
           <h2>Experinces</h2>
-          <a class="fr" (click)="EditExpDetails()">Edit</a>
+         
         </div>
-        <div *ngIf="expMain">
-          <div class="row">
-            <div class="col-md-3">
-              <h5>Profile Title</h5>
-            </div>
-            <div class="col-md-6">
-              {{userdata.experience.projectTitle}}
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-3">
-              <h5>Experiences</h5>
-            </div>
-            <div class="col-md-6">
-              {{userdata.experience.totalExperience}}
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-3">
-              <h5>Description</h5>
-            </div>
-            <div class="col-md-6">
-              {{userdata.experience.description}}
-            </div>
-          </div>
 
-        </div>
-        <div *ngIf="expOpen">
-          <app-user-experience-details (discardClick)="closeExp()" [userdata]="userdata" ></app-user-experience-details>
-        </div>
+        <div *ngFor="let experience of userdata.experience; let i = index">
+            <a class="fr" (click)="EditExpDetails()">Edit</a>
+            <div *ngIf="expMain">
+                <div class="row">
+                  <div class="col-md-3">
+                    <h5>Profile Title</h5>
+                  </div>
+                  <div class="col-md-6">
+                    {{userdata.experience.projectTitle}}
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-3">
+                    <h5>Experiences</h5>
+                  </div>
+                  <div class="col-md-6">
+                    {{userdata.experience.totalExperience}}
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-3">
+                    <h5>Description</h5>
+                  </div>
+                  <div class="col-md-6">
+                    {{userdata.experience.description}}
+                  </div>
+                </div>
+      
+              </div>
+              <div *ngIf="expOpen">
+                  <app-user-experience-details (discardClick)="closeExp()" [userdata]="userdata" ></app-user-experience-details>
+                </div>
+ <hr>
       </div>
-
+      </div>
     </div>
 
     <div class='panel panel-default'>
@@ -182,7 +187,7 @@
             <div *ngIf="educationOpen">
                 <app-user-education-details   (discardClick)="closeEducation()"  [userdata]="userdata.education[i]"></app-user-education-details>
              </div>
-
+   <hr>
         </div>
 
        
@@ -190,7 +195,7 @@
       </div>
        <div *ngIf="educationAdd">
          <div  *ngFor="let education of edituserdata.education">
-            <app-user-education-add-details (discardClick)="closeAddEducation()"></app-user-education-add-details>
+            <app-user-education-add-details (discardClick)="closeAddEducation()" [userdata]="userdata"></app-user-education-add-details>
          </div>
        </div>
     </div>
