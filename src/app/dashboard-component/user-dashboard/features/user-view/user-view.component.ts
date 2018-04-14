@@ -12,9 +12,8 @@ import { ApplicantBase } from '../../../../model/applicantbase';
 })
 
 export class UserViewComponent implements OnInit {
-
+  p: Number;
   jobtext: String;
-
   appliedJob: boolean;
   searchBarInfo: boolean;
   searchBarInfo1: boolean;
@@ -38,6 +37,7 @@ export class UserViewComponent implements OnInit {
     this.searchBarInfo1 = false;
     this.appliedJob = false;
     this.jobtext = 'Applied Jobs';
+    this.p = 1;
   }
 
   ngOnInit() {
@@ -61,17 +61,18 @@ export class UserViewComponent implements OnInit {
           // this.appliedJob = true;
           this.searchInfo = false;
         });
+      this.p = 1;
     } else {
       this.suggestedjobs();
       this.jobtext = 'Applied Jobs';
       this.appliedJob = false;
       this.jobInfo = true;
+      this.p = 1;
     }
   }
 
- suggestedjobs() {
-
-  this.hrbaseservice.getAllUserViewPost().
+  suggestedjobs() {
+    this.hrbaseservice.getAllUserViewPost().
       then((hrpost) => {
         this.hrpost = hrpost;
         this.suggestedjob = this.hrpost.filter((ele) => {
@@ -87,7 +88,7 @@ export class UserViewComponent implements OnInit {
           }
         });
       });
- }
+  }
 
   onfocus() {
     this.searchBarInfo = false;
@@ -99,23 +100,37 @@ export class UserViewComponent implements OnInit {
       this.jobInfo = true;
       this.searchInfo = false;
     }
-
-    this.searchData = this.hrpost.filter((ele) => {
-      if ((this.searchText != null && this.searchText !== undefined) && (this.searchLocation != null && this.searchLocation !== undefined)) {
-        if (ele.location.toLowerCase().includes(this.searchLocation.toLowerCase()) ||
-          ele.title.toLowerCase().includes(this.searchText.toLowerCase()) || ele.companyname.toLowerCase().includes(this.searchText.toLowerCase())) {
-          return ele;
+    if ((this.searchText === null || this.searchText === undefined) && (this.searchLocation !== null && this.searchLocation !== undefined)) {
+      this.searchLocation = this.searchLocation.trim();
+      this.searchData = this.hrpost.filter((el) => {
+        return el.location.toLowerCase().indexOf(this.searchLocation.toLowerCase()) > -1;
+      });
+    }
+    if ((this.searchText !== null && this.searchText !== undefined) && (this.searchLocation === null || this.searchLocation === undefined)) {
+      this.searchText = this.searchText.trim();
+      console.log(this.searchText);
+      this.searchData = this.hrpost.filter((el) => {
+        return ((el.title.toLowerCase().indexOf(this.searchText.toLowerCase()) > -1) || (el.skills.toString().toLowerCase().indexOf(this.searchText.toLowerCase()) > -1) || (el.companyname.toLowerCase().indexOf(this.searchText.toLowerCase()) > -1));
+      });
+    }
+    if ((this.searchText !== null && this.searchText !== undefined) && (this.searchLocation !== null && this.searchLocation !== undefined)) {
+      this.searchText = this.searchText.trim();
+      this.searchLocation = this.searchLocation.trim();
+      this.searchData = this.hrpost.filter((el) => {
+        if ((el.location.toLowerCase().indexOf(this.searchLocation.toLowerCase()) > -1) && ((el.title.toLowerCase().indexOf(this.searchText.toLowerCase()) > -1) || (el.skills.toString().toLowerCase().indexOf(this.searchText.toLowerCase()) > -1) || (el.companyname.toLowerCase().indexOf(this.searchText.toLowerCase()) > -1))) {
+          return el;
         }
-      }
-    });
-    if (this.searchData != null && this.searchData !== undefined && this.searchData.length > 0) {
+      });
+    }
+
+
+    if (this.searchData !== null && this.searchData !== undefined && this.searchData.length > 0) {
       this.jobInfo = false;
       this.searchInfo = true;
       this.appliedJob = false;
+      this.p = 1;
     }
-    console.log(this.searchData);
   }
-
   routeronclicked(hrpost_id) {
     this.router.navigateByUrl('user-view-post/' + hrpost_id);
     // console.log(hrpost_id);

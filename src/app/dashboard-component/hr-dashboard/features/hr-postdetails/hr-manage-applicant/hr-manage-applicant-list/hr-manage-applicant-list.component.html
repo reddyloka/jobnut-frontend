@@ -1,0 +1,27 @@
+<div class="ui grid">
+    <div class="sixteen wide column">
+  <div class="ui container segment">
+    <div class="ui cards">
+      <div class="card">
+        <div class="content">
+          <img class="right floated mini ui image" src="/images/avatar/large/elliot.jpg">
+          <div class="header">
+            {{applicants.firstName + ' ' + applicants.lastName}}
+          </div>
+          <div class="meta">
+            {{applicants.email}}
+          </div>
+          <div class="description">
+            {{applicants.skills}}
+          </div>
+        </div>
+        <div class="extra content">
+          <div class="ui two buttons">
+            <div class="ui basic green button" (click)="viewProfile()">View Profile</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>

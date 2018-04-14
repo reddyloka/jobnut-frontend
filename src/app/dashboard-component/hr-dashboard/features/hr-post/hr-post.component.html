@@ -1,14 +1,10 @@
+<app-hr-header></app-hr-header>
 <br>
-<div class="row">
-  <div class="col-md-3">
-    <ul>
-      <li>abc</li>
-      <li>abc</li>
-      <li>abc</li>
-      <li>abc</li>
-    </ul>
+<div class="ui grid">
+  <div class="three wide column">
+
   </div>
-  <div class="col-md-6" style="border: 2px solid lightgrey;height: 600px">
+  <div class="ten wide column" style="border: 2px solid lightgrey;height: 600px">
     <br>
    <app-hr-post-list-summary *ngFor="let hrpost of hrpost" [hrpost]=hrpost (userclick)="routeronclicked($event)"></app-hr-post-list-summary>
   </div>
