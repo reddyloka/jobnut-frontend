@@ -1,23 +1,34 @@
-<div class="row">
-  <div class="col-md-2" style="background-color: rgb(100, 99, 99); height:750px">
+<div class="ui grid">
+  <div class="four wide column" style="background-color: rgb(100, 99, 99); height:750px">
     <div style="margin-top: 30px; background-color: lightbalck">
-      <a href="">
-        <h4 class="nav">Manage Applicant</h4>
+      <a (click)='manageApplicant()'>
+        <h4 class="nav"  >{{textInfo}}</h4>
       </a>
     </div>
-    <div style="margin-top: 30px; background-color: lightbalck">
+    <!-- <div style="margin-top: 30px; background-color: lightbalck">
       <a href="">
         <h4 class="nav">Chating</h4>
       </a>
-    </div>
+    </div> -->
   </div>
-  <div class="col-md-6" style="border: 2px solid lightgrey">
-    <div style="margin-top:20px">
-      <app-hr-postdetails-summary [hrpost]=hrpost> </app-hr-postdetails-summary>
-    </div>
+<div class="eight wide column">
+    <div *ngIf="postDetailsInfo">
+        <div class="" style="border: 2px solid lightgrey">
+          <div style="margin-top:20px">
+            <app-hr-postdetails-summary [hrpost]='hrpost'> </app-hr-postdetails-summary>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="manageApplicantInfo">
+        <div class="">
+          <app-hr-manage-applicant *ngFor="let applicant of hrpost.applicants" [applicant]="applicant"></app-hr-manage-applicant>
+        </div>
+      </div>
+</div>
 
-  </div>
-  <div class="col-md-3" style="">
+
+
+  <div class="four wide column" style="">
     <div style="border: solid 2px lightblue; margin-top:10px">
       <div class="row">
         <div class="col-md-7">
@@ -27,8 +38,8 @@
           </h4>
         </div>
         <div class="col-md-5" style="margin-top:15px">
-          <span class="glyphicon glyphicon-thumbs-up"></span>
-          <h2>20</h2>
+           <span class="glyphicon glyphicon-thumbs-up"></span>
+           <h2>{{hrpost?.applicants.length}}</h2>
         </div>
       </div>
     </div>

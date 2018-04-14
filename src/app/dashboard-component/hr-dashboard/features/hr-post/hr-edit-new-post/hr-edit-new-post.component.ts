@@ -6,12 +6,14 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AbstractControl, ValidatorFn, FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { uuid } from '../../../../../model/uuid';
 import { NotificationService } from '../../../../../_shared/notification.service';
+declare var $: any;
 @Component({
   selector: 'app-hr-edit-new-post',
   templateUrl: './hr-edit-new-post.component.html',
   styleUrls: []
 })
 export class HrEditNewPostComponent implements OnInit {
+  skillsArray: string[];
   hrpostNewDataForm: FormGroup;
   id: string;
   popup = {
@@ -30,6 +32,8 @@ export class HrEditNewPostComponent implements OnInit {
     console.log(this.hrpostNewData);
     this.buildFormGroup();
     this.id = uuid();
+    this.skillsArray = ['Angular', 'CSS', 'Graphic Design', 'Ember', 'HTML', 'Javascript',
+      'NodeJS', 'UI Design', 'Python', 'Rails', 'React', 'Ruby', 'c', 'c++', 'java', 'Database', 'Mean stack', 'Full stack'];
   }
 
   buildFormGroup(): void {
@@ -57,13 +61,20 @@ export class HrEditNewPostComponent implements OnInit {
 
   }
   ngOnInit() {
+    $('.dropdown').dropdown({
+      label: {
+        duration: 0,
+      },
+      debug: true,
+      performance: true,
+    });
   }
 
-
+  // accept incoming change new notification feature added
   onSubmit() {
     this.hrbaseservice.addNewPost(this.hrpostNewData, this.id)
-      .then((res: any) => {
-        this._notif.pop(res.body.message, 'Successfull', 3000);
+      .then((res) => {
+        this._notif.pop(res.message, 'Successfull', 3000);
         if (res.success) {
           console.log( res.message, res.data );
         }

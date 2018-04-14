@@ -1,24 +1,25 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { AbstractControl, ValidatorFn, FormBuilder, FormGroup, FormControl, Validators, FormsModule } from '@angular/forms';
 import { UserBaseService } from '../../../../../services/userbase/user-base.service';
+import { uuid } from '../../../../../_helper/uuid';
 @Component({
-  selector: 'app-user-experience-details',
-  templateUrl: './user-experience-details.component.html',
-  styleUrls: []
+  selector: 'app-user-experience-add-details',
+  templateUrl: './user-experience-add-details.component.html',
+  styleUrls: ['./user-experience-add-details.component.css']
 })
-export class UserExperienceDetailsComponent implements OnInit {
+export class UserExperienceAddDetailsComponent implements OnInit {
 
+  id: string;
   applicantForm: FormGroup;
-@Input()
-userdata;
 @Output()
 discardClick = new EventEmitter<boolean>();
 
   discardClicked() {
     this.discardClick.emit(true);
   }
-  constructor(private _userService: UserBaseService) {
+  constructor(private userbaservice: UserBaseService) {
     this.buildFormGroup();
+    this.id = uuid();
    }
 
    buildFormGroup(): void {
@@ -33,8 +34,11 @@ discardClick = new EventEmitter<boolean>();
   ngOnInit() {
   }
   onSubmit() {
-    // this._userService.detailsUpdate(this.applicantForm, {
-    // })
+  console.log('experience', this.applicantForm);
+  this.userbaservice.updateUserExpDetailsById(this.applicantForm.value, this.id).
+  then(() => {
+  console.log('success');
+  });
   }
 
 }

@@ -175,15 +175,6 @@ a {
     /* transition-duration: 100ms; */
     /* transition-timing-function: ease-in-out; */
 }
-
-.ab.below {
-}
-
-.ab.over:hover {
-    /* transform: scaleY(2); */
-    filter: opacity(0);
-}
-
 /* profile picture */
 
 .ab.button.wrapper input[type=file] {
@@ -201,8 +192,8 @@ a {
 }
 .avatar-upload .avatar-edit {
   position: absolute;
-  right: 12px;
   z-index: 1;
+  float: right;
   top: 10px;
 }
 .avatar-upload .avatar-edit input {

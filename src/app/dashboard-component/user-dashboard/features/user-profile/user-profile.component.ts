@@ -8,6 +8,7 @@ import { ApplicantBase } from '../../../../model/applicantbase';
   styleUrls: ['./user-profile.component.css']
 })
 export class UserProfileComponent implements OnInit {
+  expAdd: boolean;
   educationAdd: boolean;
   id: any;
   edituserdata: ApplicantBase;
@@ -27,6 +28,7 @@ export class UserProfileComponent implements OnInit {
     this.detailsOpen = false;
     this.expMain = true;
     this.expOpen = false;
+    this.expAdd = false;
     this.skillMain = true;
     this.skillOpen = false;
     this.educationMain = true;
@@ -52,6 +54,9 @@ export class UserProfileComponent implements OnInit {
     this.detailsOpen = false;
     this.detailsMain = true;
   }
+  AddExperienceMore(): void {
+    this.expAdd = true;
+    }
   EditExpDetails() {
     this.expMain = false;
     this.expOpen = true;
@@ -61,6 +66,9 @@ export class UserProfileComponent implements OnInit {
     this.expMain = true;
     this.expOpen = false;
 
+  }
+  closeAddExp() {
+    this.expAdd = false;
   }
   EditSkillsDetails() {
     this.skillMain = false;

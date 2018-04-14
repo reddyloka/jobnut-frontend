@@ -44,7 +44,6 @@ export class UserPersonalDetailsComponent implements OnInit {
       'gender': new FormControl(null, Validators.required),
     };
     this.applicantForm = new FormGroup(fg);
-
   }
   ngOnInit() {
   }

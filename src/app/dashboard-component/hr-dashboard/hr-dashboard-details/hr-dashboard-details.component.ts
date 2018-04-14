@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '../../../services/authentication/auth.service';
 import { uuid } from '../../../model/uuid';
 import { HrbaseService } from '../../../services/hrbase.service';
-import { Userbase } from '../../../model/userbase';
+import { Hrbase } from '../../../model/hrbase';
 import { NotificationService } from '../../../_shared/notification.service';
 import { UserBaseService } from '../../../services/userbase/user-base.service';
 import { Ng2ImgMaxService } from 'ng2-img-max';
@@ -12,13 +12,14 @@ import { async } from '@angular/core/testing';
 @Component({
   selector: 'app-hr-dashboard-details',
   templateUrl: './hr-dashboard-details.component.html',
-  styleUrls: []
+  styleUrls: ['./hr-dashboard-details.component.css']
 })
-export class HrDashboardDetailsComponent implements OnInit, OnChanges {
-  hrdata: Userbase;
+export class HrDashboardDetailsComponent implements OnInit {
+  expAdd: boolean;
+  hrdata: Hrbase;
   id: string;
   ExpOpen: boolean;
-  ExpMain: boolean;
+  expMain: boolean;
   ContactMain: boolean;
   ContactOpen: boolean;
   detailsOpen: boolean;
@@ -32,12 +33,12 @@ export class HrDashboardDetailsComponent implements OnInit, OnChanges {
 
   constructor(private router: Router,
     private _authService: AuthService,
-    private hrbaseservice: HrbaseService,
     private _userService: UserBaseService,
     private _notif: NotificationService,
-    private ng2ImgMax: Ng2ImgMaxService
+    private ng2ImgMax: Ng2ImgMaxService,
+    private hrbaseservice: HrbaseService
   ) {
-    this.ExpMain = true;
+    this.expMain = true;
     this.ExpOpen = false;
     this.detailsMain = true;
     this.detailsOpen = false;
@@ -47,6 +48,7 @@ export class HrDashboardDetailsComponent implements OnInit, OnChanges {
     this.ContactMain = true;
     this.ContactOpen = false;
     this.uploadImageActive = false;
+    this.expAdd = false;
     this.id = uuid();
   }
 
@@ -58,15 +60,14 @@ export class HrDashboardDetailsComponent implements OnInit, OnChanges {
     if (!this._authService.isLoggedIn) {
       this.router.navigateByUrl('login');
     }
-    this.hrdata = await this.hrbaseservice.getHrDetailsById(this.id);
+    const result = await this.hrbaseservice.getHrDetailsById(this.id);
+    console.log('::data::', result.data);
+    this.hrdata = result.data;
 
       await console.log('sjbjn', this.hrdata);
 
       this.profile_photo_for_viewing = this.getUrl();
 
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
   }
 
   EditPersonalDetails() {
@@ -77,6 +78,7 @@ export class HrDashboardDetailsComponent implements OnInit, OnChanges {
     this.detailsOpen = false;
     this.detailsMain = true;
   }
+
   EditSkills() {
     this.SkillsMain = true;
     this.SkillsOpen = true;
@@ -93,13 +95,19 @@ export class HrDashboardDetailsComponent implements OnInit, OnChanges {
     this.ContactMain = true;
     this.ContactOpen = false;
   }
+  AddExperienceMore() {
+    this.expAdd = true;
+  }
   EditExpDetails() {
-    this.ExpMain = false;
+    this.expMain = false;
     this.ExpOpen = true;
   }
   closeexp() {
-    this.ExpMain = true;
+    this.expMain = true;
     this.ExpOpen = false;
+  }
+  closeAddExp() {
+    this.expAdd = false;
   }
   // abhishek code
 
@@ -129,8 +137,7 @@ export class HrDashboardDetailsComponent implements OnInit, OnChanges {
     }
     this.ng2ImgMax.resizeImage(file, 250, 250).subscribe( resImg => {
       this.ng2ImgMax.compressImage(resImg, 1.00).subscribe( async ( finalImg ) => {
-        const result = JSON.parse( await this._userService.updateProfilePicture(this.hrdata, {'profile_photo': finalImg}));
-        console.log(finalImg);
+        const result = await this._userService.updateProfilePicture(this.hrdata, {'profile_photo': finalImg});
         this.hrdata.profile_photo = result.data;
         this.profile_photo_for_viewing = this.getUrl();
         this._notif.pop(result.message, 'New Profile Pic', 3000);

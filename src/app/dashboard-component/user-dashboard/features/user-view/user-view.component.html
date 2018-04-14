@@ -1,22 +1,42 @@
 <app-user-header [userdata]=userdata></app-user-header>
+<div *ngIf="searchBarInfo">
 <div class="search-container">
     <div class="row">
     <div class="col-md-6 col-md-offset-3" style="margin-top: 10px; margin-bottom: 10px">
           <div class="form-group" style="float:left;width:90%" >
-          <input type="text"  [(ngModel)]="searchText" class="form-control" placeholder="Search...." >
+          <input type="text" (click)="onfocus()" class="form-control" placeholder="Search...." >
           </div>
           <div class="form-group" style="float:right;width:10%">
-          <button type="" name="sec_submit"  class="form-control" value="submit" (click)="searchClicked()" ><span class="glyphicon glyphicon-search"></span></button>
+          <button  class="form-control" value="submit"><span class="glyphicon glyphicon-search"></span></button>
           </div>
           <div class="clearfix"></div>
     </div>
   </div>
 </div>
+</div>
+<div *ngIf="searchBarInfo1">
+    <div class="search-container">
+        <div class="row">
+        <div class="col-md-6 col-md-offset-3" style="margin-top: 10px; margin-bottom: 10px">
+              <div class="form-group" style="float:left;width:90%" >
+              <input type="text"  [(ngModel)]="searchText" class="form-control" placeholder="Search.." >
+              </div>
+              <div class="form-group" style="float:left;width:90%" >
+                  <input type="text"  [(ngModel)]="searchLocation" class="form-control" placeholder="Location" >
+                  </div>
+              <div class="form-group" style="float:right;width:10%">
+              <button type="" name="sec_submit"  class="form-control" value="submit" (click)="searchClicked()" ><span class="glyphicon glyphicon-search"></span></button>
+              </div>
+              <div class="clearfix"></div>
+        </div>
+      </div>
+    </div>
+  </div>
 <div class="row">
   <div class="col-md-3" style="background-color: rgb(100, 99, 99); height:750px">
     <div style="margin-top: 30px; background-color: lightbalck">
-      <a href="">
-        <h4 class="nav">Applied Job</h4>
+      <a (click)="userAppliedJob()">
+        <h4 class="nav">{{jobtext}}</h4>
       </a>
     </div>
     <div style="margin-top: 30px; background-color: lightbalck">
@@ -27,12 +47,17 @@
     </div>
   <div class="col-md-6" style="border: 2px solid lightgrey;height: 600px">
     <br>
-   <!-- <app-login-view-post *ngFor="let hrpost of hrpost" [hrpost]=hrpost (userclick)="routeronclicked($event)"></app-login-view-post> -->
    <div *ngIf="jobInfo">
+      <h2>Recommended jobs for you</h2>
     <app-user-view-post  *ngFor="let hrpost of suggestedjob" [hrpost]=hrpost (userclick)="routeronclicked($event)"></app-user-view-post>
    </div>
    <div *ngIf="searchInfo">
-    <app-user-view-post  *ngFor="let hrpost of searchData" [hrpost]=hrpost (userclick)="routeronclicked($event)"></app-user-view-post>
+      <h2>Search results</h2>
+    <app-user-view-post  *ngFor="let hrpost of searchData" [hrpost]="hrpost" (userclick)="routeronclicked($event)"></app-user-view-post>
+   </div>
+   <div *ngIf="appliedJob">
+      <h2>Applied jobs of you</h2>
+    <app-user-view-post  *ngFor="let hrpost of suggestedjob" [hrpost]="hrpost" (userclick)="routeronclicked($event)"></app-user-view-post>
    </div>
   </div>
 </div>

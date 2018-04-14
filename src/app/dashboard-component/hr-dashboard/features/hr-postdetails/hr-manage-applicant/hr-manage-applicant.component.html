@@ -1,0 +1,24 @@
+<div class="ui container segment">
+  <div class="ui cards fluid">
+    <div class="card fluid">
+      <div class="content">
+        <img class="right floated mini ui image" src="/images/avatar/large/elliot.jpg">
+        <div class="header">
+          {{applicant.firstName + ' ' + applicant.lastName}}
+        </div>
+        <div class="meta">
+          {{applicant.email}}
+        </div>
+        <div class="description">
+          {{applicant.skills}}
+        </div>
+      </div>
+      <div class="extra content">
+        <div class="ui two buttons">
+          <div class="ui basic green button" (click)="viewDetails()">Approve</div>
+          <div class="ui basic red button">Decline</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

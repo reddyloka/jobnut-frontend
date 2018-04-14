@@ -33,6 +33,7 @@ export class ApplicantBase {
     isApplicant: boolean;
     isHr: boolean;
     status: boolean;
+    newEducation: Education;
     education: Education[];
     experience: Experience[];
 
@@ -57,6 +58,10 @@ export class ApplicantBase {
     }
 
     public static createblank(): ApplicantBase {
-        return new ApplicantBase(null, null, null, null, null, null, null, null, null, [], null, null, null, null, [{higherDegreeValue: '', universityName: '', passingYearValue: '', percentageValue: ''}], [null]);
+        return new ApplicantBase(null, null, null, null, null, null, null, null, null, [], null, null, null, null, [{ higherDegreeValue: '', universityName: '', passingYearValue: '', percentageValue: '' }], []);
     }
+
+    // public static createblankeducation(): Education {
+    //     return this.newEducation;
+    // }
 }
