@@ -1,8 +1,18 @@
+<app-hr-header></app-hr-header>
+<br>
 <div class="ui grid">
   <div class="four wide column" style="background-color: rgb(100, 99, 99); height:750px">
+    <div>
+        <div style="margin-top: 30px; background-color: lightbalck">
+            <a (click)='backpage()'>
+              <h4 class="nav">Back</h4>
+             </a>
+       </div>
+    </div>
+    
     <div style="margin-top: 30px; background-color: lightbalck">
       <a (click)='manageApplicant()'>
-        <h4 class="nav"  >{{textInfo}}</h4>
+        <h4 class="nav">{{textInfo}}</h4>
       </a>
     </div>
     <!-- <div style="margin-top: 30px; background-color: lightbalck">
@@ -17,11 +27,6 @@
           <div style="margin-top:20px">
             <app-hr-postdetails-summary [hrpost]='hrpost'> </app-hr-postdetails-summary>
           </div>
-        </div>
-      </div>
-      <div *ngIf="manageApplicantInfo">
-        <div class="">
-          <app-hr-manage-applicant *ngFor="let applicant of hrpost.applicants" [applicant]="applicant"></app-hr-manage-applicant>
         </div>
       </div>
 </div>
