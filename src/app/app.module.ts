@@ -98,7 +98,7 @@ import { DataService } from './_shared/data.service';
     NotificationComponent,
     UserExperienceAddDetailsComponent,
     HrExperienceAddDetailsComponent,
-    HrManageApplicantComponent
+    HrManageApplicantComponent,
 
   ],
   imports: [
