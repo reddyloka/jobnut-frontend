@@ -5,13 +5,18 @@
       <div class="ui middle aligned very relaxed stackable grid">
         <div class="column">
           <form class="ui form" [formGroup]="loginForm" >
+            <!-- <div class="field" >
+                <img  [src]='cover_photo' style="width:120px;height:120px" />
+              </div> -->
             <div class="field">
               <label>Username</label>
               <div class="ui left icon input">
                 <input type="text" placeholder="Username" formControlName="username" (change)="checkValid()">
                 <i class="user icon"></i>
               </div>
-              <div *ngIf="!this.loginForm.value.username && loginForm.touched" class="ui red message">{{message.username.text}}</div>
+              <div *ngIf="loginForm.controls['username'].touched&&!loginForm.controls['username'].valid" class="alert alert-danger">
+                  <p>{{message.username.text}}</p>
+                </div>
             </div>
             <div class="field">
               <label>Password</label>
@@ -19,7 +24,9 @@
                 <input type="password" placeholder="Password" formControlName="password" (change)="checkValid()">
                 <i class="lock icon"></i>
               </div>
-              <div *ngIf="!this.loginForm.value.password && loginForm.touched" class="ui red message">{{message.password.text}}</div>
+              <div *ngIf="loginForm.controls['password'].touched&&!loginForm.controls['password'].valid" class="alert alert-danger">
+                  <p>{{message.password.text}}</p>
+                </div>
             </div>
             <div class="field">
               <input class="ui tomato fluid submit button" type="button" value="Login" [disabled]="!loginForm.valid" (click)="login()">
