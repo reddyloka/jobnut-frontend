@@ -19,6 +19,7 @@ import { HrDashboardDetailsComponent } from './dashboard-component/hr-dashboard/
 // import { HrDetailsComponent } from './dashboard-component/hr-dashboard/hr-data/hr-details/hr-details.component';
 import { UserProfileComponent } from './dashboard-component/user-dashboard/features/user-profile/user-profile.component';
 import { NotificationComponent } from './uni-component/misc/notification/notification.component';
+import { HrManageApplicantComponent } from './dashboard-component/hr-dashboard/features/hr-postdetails/hr-manage-applicant/hr-manage-applicant.component';
 
 
 export const routerConfig: Routes = [
@@ -31,13 +32,17 @@ export const routerConfig: Routes = [
     component: HrPostdetailsComponent
   },
   {
+    path: 'jobs-posted/:id/manageApplicant',
+    component: HrManageApplicantComponent
+  },
+  {
     path: 'callback',
     component: CallbackComponent
   },
-  {
-    path: 'jobs-posted/:id',
-    component: HrPostdetailsComponent
-  },
+  // {
+  //   path: 'jobs-posted/:id',
+  //   component: HrPostdetailsComponent
+  // },
   {
     path: 'hr', component: HrDashboardComponent, children: [
       {
