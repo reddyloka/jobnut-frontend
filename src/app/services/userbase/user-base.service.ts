@@ -20,7 +20,7 @@ export class UserBaseService {
         const final_data = response.json().data as any;
         console.log(final_data);
         this.updateProfilePicture(final_data, files);
-        return false;
+        return final_data;
         // const profile_details = response;
         // console.log('respoonse is : ', final_data);
         // const formData: FormData = new FormData();

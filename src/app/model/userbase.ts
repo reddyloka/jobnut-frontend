@@ -4,8 +4,8 @@ export interface Dashboard {
 }
 
 export class Userbase {
-    fname: string;
-    lname: string;
+    firstname: string;
+    lastname: string;
     password: string;
     email: string;
     industry: string;
@@ -24,8 +24,8 @@ export class Userbase {
     status: boolean;
 
     constructor(f: string, l: string, p: string, em: string, ind: string, des: string, cntr: string, st: string, c: string, phone: string, skillValue: string[], jobProfile: string, pp: string, ad: boolean, ihr: boolean, iApl: boolean, sta: boolean) {
-        this.fname = f;
-        this.lname = l;
+        this.firstname = f;
+        this.lastname = l;
         this.password = p;
         this.email = em;
         this.industry = ind;

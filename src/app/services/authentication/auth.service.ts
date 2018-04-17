@@ -71,6 +71,7 @@ export class AuthService {
   logout() {
     console.log(window.localStorage['uuid']);
     this.jwtservice.destroyToken();
+    localStorage.clear();
     localStorage.removeItem('uuid');
     // localStorage.removeItem('expires_at');
   }

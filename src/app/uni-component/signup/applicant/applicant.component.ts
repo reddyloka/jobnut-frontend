@@ -18,6 +18,7 @@ export class ApplicantComponent implements OnInit {
   applicantForm: FormGroup;
   user_details: ApplicantBase;
   skills: string[];
+  imageFile: any;
   profile_photo: File;
   isApplicant: boolean;
   isHr: boolean;
@@ -25,7 +26,7 @@ export class ApplicantComponent implements OnInit {
 
 
   constructor(private _userService: UserBaseService,
-              private router: Router) {
+    private router: Router) {
     this.user_details = ApplicantBase.createblank();
     this.buildFormGroup();
     this.highestDegreeArray = ['B.Tech', 'B.Sc', '12th', '10th'];
@@ -94,5 +95,25 @@ export class ApplicantComponent implements OnInit {
         this.router.navigateByUrl('login');
         console.log(result);
       });
+  }
+
+  fileTypeCheck(event): any {
+    if (event.target.files && event.target.files[0]) {
+      const file = event.target.files[0];
+      if (file.type.split('/')[0] === 'image') {
+        const reader = new FileReader();
+        reader.onload = (rdr) => {
+          console.log('image: ', file.type.split('/')[0]);
+          this.imageFile = false;
+        };
+        // reader reads the image uploaded
+        reader.readAsDataURL(event.target.files[0]);
+        this.profile_photo = event.target.files[0];
+      } else {
+        alert('Filetype Not Supported.');
+        this.imageFile = true;
+        // this.fileTypeCheck(event);
+      }
+    }
   }
 }

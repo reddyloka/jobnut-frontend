@@ -37,7 +37,7 @@ export class HrComponent implements OnInit {
 
     this.hrDetails = Hrbase.createBlankUser();
     this.buildFormGroup();
-    this.profile_photo =  null;
+    this.profile_photo = null;
     this.userExist = false;
     this.hrDetails.isHr = true;
     this.hrDetails.status = true;
@@ -49,9 +49,9 @@ export class HrComponent implements OnInit {
       'lastName': new FormControl(null),
       'email': new FormControl(null, [Validators.required, Validators.email]),
       'password': new FormControl(null, Validators.required),
-      'dob':  new FormControl(null, Validators.required),
-      'phone':  new FormControl(null, Validators.required),
-      'industry':  new FormControl(null, Validators.required),
+      'dob': new FormControl(null, Validators.required),
+      'phone': new FormControl(null, Validators.required),
+      'industry': new FormControl(null, Validators.required),
       'country': new FormControl(null, Validators.required),
       'state': new FormControl(null, Validators.required),
       'city': new FormControl(null, Validators.required),
@@ -65,9 +65,9 @@ export class HrComponent implements OnInit {
 
   onSubmit(): void {
     console.log('hr details', this.hrDetails);
-      this._userService.addNewUser(this.hrDetails, {
-        profile_photo: this.profile_photo
-      })
+    this._userService.addNewUser(this.hrDetails, {
+      profile_photo: this.profile_photo
+    })
       .then((result) => {
         console.log(result);
         this.router.navigateByUrl('login');
