@@ -1,0 +1,17 @@
+<app-user-header [userdata]=userdata></app-user-header>
+<div class="row">
+  <div class="col-md-3" style="background-color: rgb(100, 99, 99); height:750px">
+    <div style="margin-top: 30px; background-color: lightbalck">
+      <!-- <a href="">
+        <h4 class="nav">Saved JOb</h4>
+      </a> -->
+    </div>
+  </div>
+  <div class="col-md-6" style="border: 2px solid lightgrey;height: 600px">
+    <h2>Applied jobs of you</h2>
+    <app-user-view-post *ngFor="let hrpost of hrpost | paginate: { itemsPerPage: 2, currentPage: p }" [hrpost]="hrpost"
+      (userclick)="routeronclicked($event)"></app-user-view-post>
+      <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  </div>
+  
+</div>

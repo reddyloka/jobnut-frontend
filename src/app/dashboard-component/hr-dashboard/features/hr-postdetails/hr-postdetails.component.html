@@ -2,9 +2,16 @@
 <br>
 <div class="ui grid">
   <div class="four wide column" style="background-color: rgb(100, 99, 99); height:750px">
-    <div>
+      <div *ngIf="postviewback">
+          <div style="margin-top: 30px; background-color: lightbalck">
+              <a (click)='postbackpage()'>
+                <h4 class="nav">Back</h4>
+               </a>
+          </div>
+      </div>
+    <div *ngIf="editviewback">
         <div style="margin-top: 30px; background-color: lightbalck">
-            <a (click)='backpage()'>
+            <a (click)='editbackpage()'>
               <h4 class="nav">Back</h4>
              </a>
        </div>
@@ -28,7 +35,14 @@
             <app-hr-postdetails-summary [hrpost]='hrpost'> </app-hr-postdetails-summary>
           </div>
         </div>
+    </div>
+    <div *ngIf="editpostDetailsInfo">
+      <div class="" style="border: 2px solid lightgrey">
+        <div style="margin-top:20px">
+          <app-hr-postdetails-edit-list [hrpost]="hrpost" (saveClick)="editbackpage()"></app-hr-postdetails-edit-list>
+        </div>
       </div>
+  </div>
 </div>
 
 
@@ -47,6 +61,13 @@
            <h2>{{hrpost?.applicants.length}}</h2>
         </div>
       </div>
+     
     </div>
+    <div style="margin-top:10px">
+        <div class="row" >
+            <button class="btn btn-success" (click)="editpost()">Edit</button>
+          </div>
+    </div>
+    
   </div>
 </div>

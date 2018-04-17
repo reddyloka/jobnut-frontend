@@ -63,7 +63,7 @@ export class HrManageApplicantComponent implements OnInit {
         });
     });
   }
-  backpage(){
+  backpage() {
     this.location.back();
   }
 }

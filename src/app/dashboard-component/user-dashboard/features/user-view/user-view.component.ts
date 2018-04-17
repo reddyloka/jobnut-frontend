@@ -14,7 +14,6 @@ import { ApplicantBase } from '../../../../model/applicantbase';
 export class UserViewComponent implements OnInit {
   p: Number;
   jobtext: String;
-  appliedJob: boolean;
   searchBarInfo: boolean;
   searchBarInfo1: boolean;
   id: any;
@@ -35,42 +34,16 @@ export class UserViewComponent implements OnInit {
     this.jobInfo = true;
     this.searchBarInfo = true;
     this.searchBarInfo1 = false;
-    this.appliedJob = false;
-    this.jobtext = 'Applied Jobs';
     this.p = 1;
   }
-
   ngOnInit() {
     this.userbaseservice.getUserDetailsById(this.id).
       then((userdata) => {
         console.log('maindata', userdata);
         this.userdata = userdata;
-
+        this.suggestedjobs();
       });
-
-    this.suggestedjobs();
   }
-  userAppliedJob() {
-    if (!this.appliedJob) {
-      this.jobtext = 'Suggested Jobs';
-      this.appliedJob = true;
-      this.jobInfo = false;
-      this.userbaseservice.getUserApplyPost(this.id).
-        then((hrpost) => {
-          this.suggestedjob = hrpost;
-          // this.appliedJob = true;
-          this.searchInfo = false;
-        });
-      this.p = 1;
-    } else {
-      this.suggestedjobs();
-      this.jobtext = 'Applied Jobs';
-      this.appliedJob = false;
-      this.jobInfo = true;
-      this.p = 1;
-    }
-  }
-
   suggestedjobs() {
     this.hrbaseservice.getAllUserViewPost().
       then((hrpost) => {
@@ -87,6 +60,7 @@ export class UserViewComponent implements OnInit {
             return ele;
           }
         });
+        console.log('post', this.suggestedjob);
       });
   }
 
@@ -94,7 +68,6 @@ export class UserViewComponent implements OnInit {
     this.searchBarInfo = false;
     this.searchBarInfo1 = true;
   }
-
   searchClicked() {
     if (this.searchText === null || this.searchText === undefined) {
       this.jobInfo = true;
@@ -102,9 +75,13 @@ export class UserViewComponent implements OnInit {
     }
     if ((this.searchText === null || this.searchText === undefined) && (this.searchLocation !== null && this.searchLocation !== undefined)) {
       this.searchLocation = this.searchLocation.trim();
+      console.log('location', this.searchLocation);
+      console.log('hrpost', this.hrpost);
       this.searchData = this.hrpost.filter((el) => {
+        console.log('ele', el);
         return el.location.toLowerCase().indexOf(this.searchLocation.toLowerCase()) > -1;
       });
+      console.log('arrayvalue', this.searchData);
     }
     if ((this.searchText !== null && this.searchText !== undefined) && (this.searchLocation === null || this.searchLocation === undefined)) {
       this.searchText = this.searchText.trim();
@@ -127,7 +104,6 @@ export class UserViewComponent implements OnInit {
     if (this.searchData !== null && this.searchData !== undefined && this.searchData.length > 0) {
       this.jobInfo = false;
       this.searchInfo = true;
-      this.appliedJob = false;
       this.p = 1;
     }
   }
