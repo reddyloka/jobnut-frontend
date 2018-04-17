@@ -5,6 +5,7 @@ import { Injectable } from '@angular/core';
 import { HrPostDetail } from '../model/hrpostdetails';
 import { environment } from '../../environments/environment';
 import { Hrbase } from '../model/hrbase';
+import { promise } from 'protractor';
 @Injectable()
 export class HrbaseService {
   hrpostdetails: any;
@@ -24,6 +25,21 @@ export class HrbaseService {
       .then((response) => {
         console.log('data get: ', response.json());
         return response.json().data;
+      });
+  }
+
+  HrPostUpdate(updateDetails: any, user: string): Promise<HrPostDetail> {
+    console.log('hr_id', user);
+    console.log('hr update details', updateDetails);
+    return this.http.put(`${environment.USER_SERVER}/api/posts/update`, updateDetails, {
+      params: {
+        'id': user
+      }
+    })
+      .toPromise()
+      .then((response) => {
+        console.log('data get of user: ', response.json());
+        return response.json();
       });
   }
 
@@ -111,5 +127,20 @@ export class HrbaseService {
       });
 
   }
+  hrShortlist(data: any, postid: string, userid: string): Promise<Boolean> {
+    console.log('post_id', postid);
+    return this.http.put(`${environment.USER_SERVER}/api/posts/shortlist`, data, {
+        params: {
+          'id': postid,
+          'hrRef': userid
+        }
+      })
+      .toPromise()
+      .then((response) => {
+        console.log('data get of user: ', response.json());
+        return response.json();
+      });
+  }
+
 }
 

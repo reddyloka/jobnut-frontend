@@ -17,8 +17,12 @@ userdata;
   getprofile() {
     this.router.navigateByUrl('/user-profile');
   }
-  getpost() {
+  getJob() {
 
     this.router.navigateByUrl('/user-view-post');
+  }
+  getAppliedJob() {
+
+    this.router.navigateByUrl('/applied-job');
   }
 }
