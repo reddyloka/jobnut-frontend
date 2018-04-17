@@ -11,6 +11,7 @@ declare var $: any;
   // styleUrls: ['./applicant.component.css']
 })
 export class ApplicantComponent implements OnInit {
+  inputType: string;
   highestDegreeArray: string[];
   yearArray: string[];
   personalInfo: boolean;
@@ -25,7 +26,7 @@ export class ApplicantComponent implements OnInit {
 
 
   constructor(private _userService: UserBaseService,
-              private router: Router) {
+    private router: Router) {
     this.user_details = ApplicantBase.createblank();
     this.buildFormGroup();
     this.highestDegreeArray = ['B.Tech', 'B.Sc', '12th', '10th'];
@@ -33,13 +34,13 @@ export class ApplicantComponent implements OnInit {
     this.skills = ['Angular', 'CSS', 'Graphic Design', 'Ember', 'HTML',
       'Information Architecture', 'Javascript', 'Mechanical Engineering',
       'Meteor', 'NodeJS', 'UI Design', 'Python', 'Rails', 'React', 'Ruby'];
-    this.profile_photo = null;
+   this.profile_photo = null;
     this.isApplicant = true;
     this.isHr = false;
     this.status = true;
     this.educationInfo = false;
     this.personalInfo = true;
-
+    this.inputType = 'password';
   }
   buildFormGroup(): void {
     const fg = {
@@ -77,6 +78,13 @@ export class ApplicantComponent implements OnInit {
       debug: true,
       performance: true,
     });
+  }
+  tooglepwd() {
+    if (this.inputType === 'password') {
+      this.inputType = 'text';
+    } else if (this.inputType === 'text') {
+      this.inputType = 'password';
+    }
   }
   personalDetailClicked() {
     this.educationInfo = true;

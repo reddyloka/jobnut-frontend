@@ -20,7 +20,6 @@ export class UserBaseService {
       .then((response) => {
         console.log(' 123 : ', response);
         return true;
-        // const final_userDetail =
       });
   }
   experiencedetailsUpdate(expdetails: any) {
@@ -28,7 +27,7 @@ export class UserBaseService {
   }
 
   getUserDetailsById(user: string): Promise<ApplicantBase> {
-    console.log('user_id', user);
+    // console.log('user_id', user);
     return this.http.get(`${environment.USER_SERVER}/api/users`, {
       params: {
         'id': user
@@ -36,7 +35,7 @@ export class UserBaseService {
     })
       .toPromise()
       .then((response) => {
-        console.log('data get of user: ', response.json());
+        // console.log('data get of user: ', response.json());
         return response.json();
       });
 
@@ -106,25 +105,19 @@ export class UserBaseService {
 
   updateUserApplyPost(postid: string, userid: string): Promise<Boolean> {
     console.log('post_id', postid);
-    return this.http.put(`${environment.USER_SERVER}/api/users/apply`, {
-      params: {
-      }
-    }, {
+    console.log('user_id', userid);
+    return this.http.put(`${environment.USER_SERVER}/api/users/apply`, {}, {
       params: {
         'id': postid,
         'hrRef': userid
-        }
-      })
+      }
+    })
       .toPromise()
       .then((response) => {
         console.log('data get of user: ', response.json());
         return response.json();
       });
   }
-
-
-
-
 
 
 }

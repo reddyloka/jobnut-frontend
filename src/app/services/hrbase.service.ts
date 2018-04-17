@@ -10,9 +10,7 @@ export class HrbaseService {
   hrpostdetails: any;
   hrpostdetail: HrPostDetail;
   hrdostdetails: HrPostDetail[];
-  constructor(
-    private http: Http
-  ) { }
+  constructor(private http: Http) { }
 
 
   getAllHrPost(user: string): Promise<HrPostDetail[]> {

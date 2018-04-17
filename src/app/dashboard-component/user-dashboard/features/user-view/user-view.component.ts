@@ -45,10 +45,10 @@ export class UserViewComponent implements OnInit {
       then((userdata) => {
         console.log('maindata', userdata);
         this.userdata = userdata;
-
+        this.suggestedjobs();
       });
 
-    this.suggestedjobs();
+
   }
   userAppliedJob() {
     if (!this.appliedJob) {
@@ -78,8 +78,8 @@ export class UserViewComponent implements OnInit {
         this.suggestedjob = this.hrpost.filter((ele) => {
           const data = ele.skills.filter((ele1) => {
             if (this.userdata.skillValue.includes(ele1)) {
-              console.log(ele1);
-              console.log(this.userdata.skillValue);
+              // console.log(ele1);
+              // console.log(this.userdata.skillValue);
               return ele1;
             }
           });

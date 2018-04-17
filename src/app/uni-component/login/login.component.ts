@@ -80,12 +80,6 @@ export class LoginComponent implements OnInit {
   // abhishek's changes for routing data token jwt
   checkValid() {
     console.log(this.loginForm.value.username.length);
-    // if (this.loginForm.value.username.length > 3 && this.loginForm.value.username.length < 6) {
-    //   this.cover_photo = '../../assets/images/pics/3.png';
-    // }
-    // if (this.loginForm.value.username.length > 6 && this.loginForm.value.username.length < 9) {
-    //   this.cover_photo = '../../assets/images/pics/4.png';
-    // }
   }
 
 }
