@@ -9,11 +9,11 @@ import { Router } from '@angular/router';
 declare const $: any;
 
 @Component({
-  selector: 'app-user-view-post-details',
-  templateUrl: './user-view-post-details.component.html',
-  styleUrls: ['./user-view-post-details.component.css']
+  selector: 'app-user-view-applied-post-details',
+  templateUrl: './user-view-applied-post-details.component.html',
+  styleUrls: ['./user-view-applied-post-details.component.css']
 })
-export class UserViewPostDetailsComponent implements OnInit {
+export class UserViewAppliedPostDetailsComponent implements OnInit {
   userdata: ApplicantBase;
   id: string;
   uploadNewCv: boolean;
@@ -26,39 +26,25 @@ export class UserViewPostDetailsComponent implements OnInit {
     this.uploadNewCv = false;
     this.id = uuid();
   }
-
-
   ngOnInit() {
-
     this.route.paramMap.subscribe((params: ParamMap) => {
+      // console.log('NNNNNNNNNNNNNNNNNnn');
       const hrpost_id = params.get('user-post.id');
       this.hrbaseservice.getHrPostById(hrpost_id).
         then((hrpost) => {
           this.hrpost = hrpost;
+         this.shortlisted();
         });
     });
-
     this.userbaseservice.getUserDetailsById(this.id).
       then((userdata) => {
         this.userdata = userdata;
       });
-  }
-  uploadNew() {
-    this.uploadNewCv = true;
 
   }
+   shortlisted() {
 
-  uploadOld() {
-    this.uploadNewCv = false;
-  }
-  applyToPost() {
-    console.log('post_id', this.hrpost._id);
-    console.log('id', this.id);
-    this.userbaseservice.updateUserApplyPost(this.hrpost._id, this.id).
-      then(() => {
-        console.log('successfully applied and notified');
-        this.router.navigateByUrl('user-view-post');
-      });
-  }
-
+   }
 }
+
+

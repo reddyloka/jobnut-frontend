@@ -64,6 +64,9 @@ import { DataService } from './_shared/data.service';
 import { HrManageApplicantListComponent } from './dashboard-component/hr-dashboard/features/hr-postdetails/hr-manage-applicant/hr-manage-applicant-list/hr-manage-applicant-list.component';
 import { HrHeaderComponent } from './dashboard-component/hr-dashboard/hr-header/hr-header.component';
 import { HrManageApplicantListDetailsComponent } from './dashboard-component/hr-dashboard/features/hr-postdetails/hr-manage-applicant/hr-manage-applicant-list-details/hr-manage-applicant-list-details.component';
+import { HrPostdetailsEditListComponent } from './dashboard-component/hr-dashboard/features/hr-postdetails/hr-postdetails-edit-list/hr-postdetails-edit-list.component';
+import { UserViewAppliedPostComponent } from './dashboard-component/user-dashboard/features/user-view-applied-post/user-view-applied-post.component';
+import { UserViewAppliedPostDetailsComponent } from './dashboard-component/user-dashboard/features/user-view-applied-post/user-view-applied-post-details/user-view-applied-post-details.component';
 
 
 
@@ -111,7 +114,10 @@ import { HrManageApplicantListDetailsComponent } from './dashboard-component/hr-
     HrManageApplicantComponent,
     HrManageApplicantListComponent,
     HrHeaderComponent,
-    HrManageApplicantListDetailsComponent
+    HrManageApplicantListDetailsComponent,
+    HrPostdetailsEditListComponent,
+    UserViewAppliedPostComponent,
+    UserViewAppliedPostDetailsComponent
 
   ],
   imports: [

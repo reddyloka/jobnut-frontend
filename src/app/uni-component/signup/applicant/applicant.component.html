@@ -67,7 +67,8 @@
         <label>Password
           <span style="color:red">*</span>
         </label>
-        <input type="text" name="Password" formControlName="password" placeholder="create password" [(ngModel)]="user_details.password">
+        <input type={{inputType}} name="Password" formControlName="password" placeholder="create strong password" [(ngModel)]="user_details.password">
+        <a (click)="tooglepwd()">show/hide</a>
         <div class="alert alert-danger" *ngIf="applicantForm.controls['password'].touched&&!applicantForm.controls['password'].valid">
           <p>please create strong password
             <span style="color:red">*</span>
@@ -109,12 +110,8 @@
           </p>
         </div>
       </div>
-      <!-- [disabled]="!(applicantForm.controls['email'].valid&&applicantForm.controls['password'].valid)" -->
-      <div class="field">
-        <label>Profile Photo:</label>
-        <input type="file" placeholder="Photo" required="" capture (change)="fileTypeCheck($event)">
-      </div>
-      <button class="btn btn-success" (click)="personalDetailClicked()">Next</button>
+
+      <button class="btn btn-success" (click)="personalDetailClicked()" [disabled]="!(applicantForm.controls['email'].valid&&applicantForm.controls['password'].valid)">Next</button>
     </div>
 
 
@@ -137,11 +134,6 @@
           </label>
           <input type="text" placeholder="Institute Name" formControlName="universityName_{{j}}" [(ngModel)]="user_details.education[j].universityName"
           />
-          <!-- <div class="alert alert-danger" *ngIf="!applicantForm.controls['universityName'].valid && applicantForm.controls['universityName'].touched">
-                  <p>Please fill required fields
-                    <span style="color:red">*</span>
-                  </p>
-                </div> -->
         </div>
 
         <div class="field">
@@ -154,16 +146,11 @@
           </select>
         </div>
         <div class="field">
-          <label>Percentage
+          <label>Percentage/CGPA
             <span style="color:red">*</span>
           </label>
           <input type="text" placeholder="enter you percentage" formControlName="percentageValue_{{j}}" [(ngModel)]="user_details.education[j].percentageValue"
           />
-          <!-- <div class="alert alert-danger" *ngIf="!applicantForm.controls['percentage'].valid && applicantForm.controls['percentage'].touched">
-                    <p>Please fill required fields
-                      <span style="color:red">*</span>
-                    </p>
-                  </div> -->
         </div>
       </div>
     </div>
@@ -181,8 +168,7 @@
         </p>
       </div>
     </div>
-    <button class="btn btn-success" (click)="onSubmit()">Register</button>
-
-
+    <button class="btn btn-success" (click)="onSubmit()" [disabled]="!((applicantForm.controls['email'].valid&&applicantForm.controls['password'].valid)&&(applicantForm.controls['skillValue'].valid))">Register</button>
   </form>
 </div>
+

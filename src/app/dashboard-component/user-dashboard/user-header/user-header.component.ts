@@ -19,7 +19,7 @@ userdata;
   getprofile() {
     this.router.navigateByUrl('/user-profile');
   }
-  getpost() {
+  getJob() {
 
     this.router.navigateByUrl('/user-view-post');
   }
@@ -27,5 +27,9 @@ userdata;
   logoutClicked() {
     this._authService.logout();
     this.router.navigateByUrl('login');
+  }
+  getAppliedJob() {
+
+    this.router.navigateByUrl('/applied-job');
   }
 }

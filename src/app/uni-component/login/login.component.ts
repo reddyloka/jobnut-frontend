@@ -10,7 +10,7 @@ import { JwtService } from '../../_helper/jwt.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
+  cover_photo: string;
   password: string;
   username: string;
   loginForm: FormGroup;
@@ -38,6 +38,7 @@ export class LoginComponent implements OnInit {
       password: ['', Validators.required],
       isHr: [false, Validators.required]
     });
+    this.cover_photo = '../../assets/images/pics/1.png';
   }
 
   ngOnInit() {
@@ -47,13 +48,6 @@ export class LoginComponent implements OnInit {
     this.router.navigateByUrl('');
   }
 
-
-  // usernameEntered(val) {
-  // console.log('value of username : ', val);
-  // }
-  // passwordEntered() {
-  // console.log('value of username : ', this.password);
-  // }
 
   public signupButtonClicked() {
     this.router.navigateByUrl('signin');
@@ -85,7 +79,7 @@ export class LoginComponent implements OnInit {
   }
   // abhishek's changes for routing data token jwt
   checkValid() {
-    console.log(this.loginForm.value);
+    console.log(this.loginForm.value.username.length);
   }
 
 }

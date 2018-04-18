@@ -11,6 +11,9 @@ import { Location } from '@angular/common';
 })
 export class HrPostdetailsComponent implements OnInit {
 
+  editviewback: boolean;
+  postviewback: boolean;
+  editpostDetailsInfo: boolean;
   textInfo: string;
 
   postDetailsInfo: boolean;
@@ -21,7 +24,10 @@ export class HrPostdetailsComponent implements OnInit {
     private router: Router,
     private location: Location) {
     this.postDetailsInfo = true;
+    this.editpostDetailsInfo = false;
     this.textInfo = 'Manage Applicant';
+    this.postviewback = true;
+    this.editviewback = false;
   }
 
   ngOnInit() {
@@ -31,6 +37,12 @@ export class HrPostdetailsComponent implements OnInit {
   manageApplicant() {
     this.data.changeMessage(this.hrpost);
     this.router.navigate(['jobs-posted/' + this.hrpost._id + '/manageApplicant']);
+  }
+  editpost() {
+      this.postviewback = false;
+      this.editviewback = true;
+      this.postDetailsInfo = false;
+      this.editpostDetailsInfo = true;
   }
   postdetails() {
     this.route.paramMap.subscribe((params: ParamMap) => {
@@ -43,8 +55,13 @@ export class HrPostdetailsComponent implements OnInit {
     });
   }
 
- backpage() {
-   this.location.back();
+ postbackpage() {
+  this.location.back();
  }
-
+ editbackpage() {
+  this.postviewback = true;
+  this.editviewback = false;
+  this.postDetailsInfo = true;
+ this.editpostDetailsInfo = false;
+}
 }
