@@ -63,6 +63,6 @@ export class HrEditNewPostComponent implements OnInit {
 
   onSubmit() {
     this.hrbaseservice.addNewPost(this.hrpostNewData, this.id);
-    this.router.navigate(['jobs-posted']);
+    this.router.navigateByUrl('jobs-posted');
   }
 }
