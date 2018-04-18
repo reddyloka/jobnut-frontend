@@ -33,7 +33,6 @@ export class UserViewPostDetailsComponent implements OnInit {
   ngOnInit() {
 
     this.route.paramMap.subscribe((params: ParamMap) => {
-      // console.log('NNNNNNNNNNNNNNNNNnn');
       const hrpost_id = params.get('user-post.id');
       this.hrbaseservice.getHrPostById(hrpost_id).
         then((hrpost) => {
@@ -69,14 +68,13 @@ export class UserViewPostDetailsComponent implements OnInit {
     this.uploadNewCv = false;
   }
   applyToPost() {
-    console.log(this.hrpost._id);
-    console.log(this.id);
+    console.log('post_id', this.hrpost._id);
+    console.log('id', this.id);
     this.userbaseservice.updateUserApplyPost(this.hrpost._id, this.id).
       then(() => {
-                 console.log('successfully applied');
-                 this.router.navigateByUrl('user-view-post');
+        console.log('successfully applied and notified');
+        this.router.navigateByUrl('user-view-post');
       });
-
   }
 
 }
