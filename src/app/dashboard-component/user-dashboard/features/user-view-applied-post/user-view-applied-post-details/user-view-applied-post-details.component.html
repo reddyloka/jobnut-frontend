@@ -1,7 +1,7 @@
 <app-user-header [userdata]="userdata"></app-user-header>
 <br>
-<div class="row">
-  <div class="col-md-3" style="background-color: rgb(100, 99, 99); height:700px">
+<div class="ui grid">
+  <div class="four wide column" style="background-color: rgb(100, 99, 99); height:750px">
     <!-- <div style="margin-top: 30px; background-color: lightbalck">
       <a href="">
         <h4 class="nav">Hr Profile View</h4>
@@ -12,17 +12,24 @@
         <h4 class="nav">Chating</h4>
       </a>
     </div> -->
-    </div>
-  <div class="col-md-6" style="border: 2px solid lightgrey">
-      <app-user-view-post-deatilssummary [hrpost]=hrpost> </app-user-view-post-deatilssummary>
   </div>
-  <div class="col-md-3" >
-    <div class="row">
-      <div class="col-md-3">
-          <button class="btn btn-info">Not shortlisted</button>
+  <div class="eight wide column">
+    <app-user-view-post-deatilssummary [hrpost]=hrpost> </app-user-view-post-deatilssummary>
+  </div>
+  <div class="four wide column">
+
+    <div class="ui grid">
+        <div class="eight wide column">
+           <h2>Shortlisted</h2>
+          </div>
+      <div class="eight wide column">
+        <input type="button" class="ui button success"  [value]="isshortlist ? 'Shortlisted' : 'pending...'">
       </div>
+    </div>
+    <br>
+    <div class="ui grid">
       <div class="col-md-3">
-          <button class="btn btn-info">Chating</button>
+        <button [disabled]="!isshortlist" class="btn btn-info">Chating</button>
       </div>
     </div>
   </div>
