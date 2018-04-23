@@ -45,19 +45,19 @@
     </div>
 
     <div class="field">
-        <label>Skills
+      <label>Skills
+        <span style="color:red">*</span>
+      </label>
+      <select class="ui fluid search dropdown" multiple="" formControlName="skills" [(ngModel)]="hrpostNewData.skills">
+        <option value="">select your skills</option>
+        <option *ngFor="let i of skillsArray">{{i}}</option>
+      </select>
+      <div class="alert alert-danger" *ngIf="!hrpostNewDataForm.controls['skills'].valid && hrpostNewDataForm.controls['skills'].touched">
+        <p>Please fill required fields
           <span style="color:red">*</span>
-        </label>
-        <select class="ui fluid search dropdown" multiple="" formControlName="skills" [(ngModel)]="hrpostNewData.skills">
-          <option value="">select your skills</option>
-          <option *ngFor="let i of skillsArray">{{i}}</option>
-        </select>
-        <div class="alert alert-danger" *ngIf="!hrpostNewDataForm.controls['skills'].valid && hrpostNewDataForm.controls['skills'].touched">
-          <p>Please fill required fields
-            <span style="color:red">*</span>
-          </p>
-        </div>
+        </p>
       </div>
+    </div>
 
     <div class="field">
       <label>Selection Procedure
@@ -124,8 +124,6 @@
         </p>
       </div>
     </div>
-
-
 
     <div class="field">
       <label>Experinece

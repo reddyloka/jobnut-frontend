@@ -20,6 +20,7 @@ import { HrDashboardDetailsComponent } from './dashboard-component/hr-dashboard/
 import { UserProfileComponent } from './dashboard-component/user-dashboard/features/user-profile/user-profile.component';
 import { NotificationComponent } from './uni-component/misc/notification/notification.component';
 import { HrManageApplicantComponent } from './dashboard-component/hr-dashboard/features/hr-postdetails/hr-manage-applicant/hr-manage-applicant.component';
+<<<<<<< HEAD
 // resume editor routes
 // import { IndexPageComponent } from './resume/index-page/index-page.component';
 import { HomeComponent } from './resume/home/home.component';
@@ -36,6 +37,10 @@ import { ResumePreviewComponent } from './resume/resume-preview/resume-preview.c
 import { ResumePreview1Component } from './resume/resume-preview-1/resume-preview-1.component';
 import { ResumePreview2Component } from './resume/resume-preview-2/resume-preview-2.component';
 import { ResumePreview3Component } from './resume/resume-preview-3/resume-preview-3.component';
+=======
+import { UserViewAppliedPostComponent } from './dashboard-component/user-dashboard/features/user-view-applied-post/user-view-applied-post.component';
+import { UserViewAppliedPostDetailsComponent } from './dashboard-component/user-dashboard/features/user-view-applied-post/user-view-applied-post-details/user-view-applied-post-details.component';
+>>>>>>> 57017e5d88a863982c5094582405987bc4378350
 
 
 export const routerConfig: Routes = [
@@ -90,7 +95,14 @@ export const routerConfig: Routes = [
     path: 'user-view-post/:user-post.id',
     component: UserViewPostDetailsComponent,
   },
-
+  {
+    path: 'applied-job',
+    component: UserViewAppliedPostComponent,
+  },
+  {
+    path: 'applied-job/:user-post.id',
+    component: UserViewAppliedPostDetailsComponent,
+  },
   // applicant routes
   { path: 'applicant', canActivate: [LoggedInGuard && localStorage['isApplicant']], redirectTo: 'user-view-post' },
   { // applocant dash board home page

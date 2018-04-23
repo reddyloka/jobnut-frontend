@@ -4,8 +4,7 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-hr-header',
-  templateUrl: './hr-header.component.html',
-  styleUrls: ['./hr-header.component.css']
+  templateUrl: './hr-header.component.html'
 })
 export class HrHeaderComponent implements OnInit {
 
@@ -43,5 +42,11 @@ export class HrHeaderComponent implements OnInit {
     }
     this.router.navigateByUrl('hr/profile');
     // console.log( this._authService. )
+  }
+
+  logoutClicked() {
+    console.log('log out clicked');
+    this._authService.logout();
+    this.router.navigateByUrl('login');
   }
 }

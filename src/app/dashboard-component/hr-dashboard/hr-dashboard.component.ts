@@ -51,9 +51,9 @@ hrdata;
     // console.log( this._authService. )
   }
 
-  logoutClicked() {
-    console.log('log out clicked');
-    this._authService.logout();
-    this.router.navigateByUrl('login');
-  }
+  // logoutClicked() {
+  //   console.log('log out clicked');
+  //   this._authService.logout();
+  //   this.router.navigateByUrl('login');
+  // }
 }

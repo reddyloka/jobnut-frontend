@@ -3,21 +3,20 @@ import { Injectable } from '@angular/core';
 import { HrPostDetail } from '../model/hrpostdetails';
 import { environment } from '../../environments/environment';
 import { Hrbase } from '../model/hrbase';
+import { promise } from 'protractor';
 @Injectable()
 export class HrbaseService {
   hrpostdetails: any;
   hrpostdetail: HrPostDetail;
   hrdostdetails: HrPostDetail[];
-  constructor(
-    private http: Http
-  ) { }
+  constructor(private http: Http) { }
 
 
   getAllHrPost(user: string): Promise<HrPostDetail[]> {
-    // user = localStorage['id_token'];
+    user = localStorage['id_token'];
     return this.http.get(`${environment.USER_SERVER}/api/posts`, {
       params: {
-        'hrRef': user
+        'token': user
       }
     })
       .toPromise()
@@ -27,9 +26,26 @@ export class HrbaseService {
       });
   }
 
+  HrPostUpdate(updateDetails: any, user: string): Promise<HrPostDetail> {
+    console.log('hr_id', user);
+    console.log('hr update details', updateDetails);
+    return this.http.put(`${environment.USER_SERVER}/api/posts/update`, updateDetails, {
+      params: {
+        'id': user
+      }
+    })
+      .toPromise()
+      .then((response) => {
+        console.log('data get of user: ', response.json());
+        return response.json();
+      });
+  }
+
   getHrPostById(hrpost_id): Promise<HrPostDetail> {
     console.log(' :: ', hrpost_id);
-    return this.http.get(`${environment.USER_SERVER}/api/posts/${hrpost_id}`)
+    return this.http.get(`${environment.USER_SERVER}/api/posts/${hrpost_id}`, {
+      params: { token : localStorage['id_token']}
+    })
       .toPromise()
       .then((response) => {
         console.log('id data:', response.json().data);
@@ -37,18 +53,19 @@ export class HrbaseService {
       });
   }
 
-  addNewPost(hrpostdetail: HrPostDetail, user: string): Promise<boolean> {
+  addNewPost(hrpostdetail: HrPostDetail, user: string): Promise<any> {
     // this.hrpostdetails.unshift(hrpostdetail);
     console.log('data123', hrpostdetail);
+    user = localStorage['id_token'];
     return this.http.put(`${environment.USER_SERVER}/api/posts/new-post`, hrpostdetail, {
       params: {
-        'id': user
+        'token': user
       }
     })
       .toPromise()
       .then((response) => {
-        console.log(' 123 : ', response);
-        return false;
+        console.log(' 123 : ', response.json());
+        return response.json();
       });
   }
 
@@ -65,7 +82,7 @@ export class HrbaseService {
   }
 
 
-  getHrDetailsById(user: string): Promise<Hrbase> {
+  getHrDetailsById(user: string): Promise<any> {
     console.log('user_id', user);
     return this.http.get(`${environment.USER_SERVER}/api/hrs`, {
       params: {
@@ -111,5 +128,20 @@ export class HrbaseService {
       });
 
   }
+  hrShortlist(data: any, postid: string, userid: string): Promise<Boolean> {
+    console.log('post_id', postid);
+    return this.http.put(`${environment.USER_SERVER}/api/posts/shortlist`, data, {
+        params: {
+          'id': postid,
+          'hrRef': userid
+        }
+      })
+      .toPromise()
+      .then((response) => {
+        console.log('data get of user: ', response.json());
+        return response.json();
+      });
+  }
+
 }
 

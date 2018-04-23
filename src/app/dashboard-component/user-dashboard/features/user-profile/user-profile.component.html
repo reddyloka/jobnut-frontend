@@ -8,13 +8,34 @@
 
         </div>
         <div class="row">
-          <div class="col-md-3">
-            <img src="" width="150px" height="150px">
+            <div class="col-md-3 wrapper">
+              <div class="avatar-upload">
+                <div class="avatar-edit">
+                  <input type="file" id="imageUpload" accept=".png, .jpg, .jpeg" (change)="updateProfilePicture($event.target.files)" />
+                  <label for="imageUpload"></label>
+                </div>
+                <div class="avatar-preview">
+                  <!-- <div  [ngStyle]="{background: 'url(http://localhost:3000/images/' + ')'}"></div> -->
+                  <div id="imagePreview" [ngStyle]="{'background-image': profile_photo_for_viewing}"></div>
+                  <!-- <div id="imagePreview" [ngStyle]="{background: 'url(http://localhost:3000/images/' + hrdata.profile_photo + ')'"></div>
+                         -->
+                  <!-- {{"url(http://localhost:3000/images/" + {{hrdata.profile_photo}} + ")"}}> -->
+
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <h1>{{userdata?.firstName + ' ' + userdata?.lastName}}</h1>
+              <h3>{{userdata?.designation}}</h3>
+              <p>{{userdata?.jobProfile}}</p>
+              <p>
+                <span class="glyphicon glyphicon-map-marker"></span>{{userdata?.city}}</p>
+            </div>
           </div>
           <div class="col-md-6">
-            <h1>{{userdata.firstName}} {{userdata.lastName }}</h1>
-            <p>{{userdata.email}} </p>
-            <p>{{userdata.phone}} </p>
+            <h1>{{userdata?.firstName}} {{userdata?.lastName }}</h1>
+            <p>{{userdata?.email}} </p>
+            <p>{{userdata?.phone}} </p>
           </div>
         </div>
 
@@ -35,7 +56,7 @@
               <h5>Full Name</h5>
             </div>
             <div class="col-md-6">
-              {{userdata.firstName}} {{userdata.lastName }}
+              {{userdata?.firstName}} {{userdata?.lastName }}
             </div>
           </div>
           <div class="row">
@@ -43,7 +64,7 @@
               <h5>Email</h5>
             </div>
             <div class="col-md-6">
-              {{userdata.email}}
+              {{userdata?.email}}
             </div>
           </div>
           <div class="row">
@@ -51,7 +72,7 @@
               <h5>Mobile Number</h5>
             </div>
             <div class="col-md-6">
-              {{userdata.phone}}
+              {{userdata?.phone}}
             </div>
           </div>
           <div class="row">
@@ -59,7 +80,7 @@
               <h5>Date of birth</h5>
             </div>
             <div class="col-md-6">
-              {{userdata.dob | date: 'dd/MM/yyyy'}}
+              {{userdata?.dob | date: 'dd/MM/yyyy'}}
             </div>
           </div>
           <div class="row">
@@ -67,7 +88,7 @@
               <h5>Address</h5>
             </div>
             <div class="col-md-6">
-              {{userdata.address}}
+              {{userdata?.address}}
             </div>
           </div>
           <div class="row">
@@ -75,7 +96,7 @@
               <h5>Location</h5>
             </div>
             <div class="col-md-6">
-              {{userdata.location}}
+              {{userdata?.location}}
             </div>
           </div>
           <div class="row">
@@ -83,7 +104,7 @@
               <h5>Gender</h5>
             </div>
             <div class="col-md-6">
-              {{userdata.gender}}
+              {{userdata?.gender}}
             </div>
           </div>
         </div>
@@ -102,14 +123,23 @@
 
         </div>
 
+<<<<<<< HEAD
         <div *ngFor="let experience of userdata.experience; let i = index">
+=======
+        <div *ngFor="let experience of userdata?.experience; let i = index">
+          <!-- <a class="fr" (click)="EditExpDetails()">Edit</a> -->
+>>>>>>> 57017e5d88a863982c5094582405987bc4378350
           <div *ngIf="expMain">
             <div class="row">
               <div class="col-md-3">
                 <h5>Profile Title</h5>
               </div>
               <div class="col-md-6">
+<<<<<<< HEAD
                 {{userdata.experience[i]?.designation}}
+=======
+                {{userdata?.experience[i].designation}}
+>>>>>>> 57017e5d88a863982c5094582405987bc4378350
               </div>
             </div>
             <div class="row">
@@ -117,7 +147,11 @@
                 <h5>Experiences</h5>
               </div>
               <div class="col-md-6">
+<<<<<<< HEAD
                 {{userdata.experience[i]?.totalExperience}}
+=======
+                {{userdata?.experience[i].totalExperience}}
+>>>>>>> 57017e5d88a863982c5094582405987bc4378350
               </div>
             </div>
             <div class="row">
@@ -125,7 +159,7 @@
                 <h5>Description</h5>
               </div>
               <div class="col-md-6">
-                {{userdata.experience[i].description}}
+                {{userdata?.experience[i].description}}
               </div>
             </div>
 
@@ -150,7 +184,7 @@
         </div>
 
 
-        <div *ngFor="let education of userdata.education; let i = index">
+        <div *ngFor="let education of userdata?.education; let i = index">
           <div *ngIf="educationMain">
             <!-- <a class="fr" (click)="EditEducationDetails()">Edit</a> -->
             <div class="row">
@@ -158,7 +192,7 @@
                 <h5>Highest Qualification</h5>
               </div>
               <div class="col-md-6">
-                {{userdata.education[i].higherDegreeValue}}
+                {{userdata?.education[i].higherDegreeValue}}
               </div>
             </div>
             <div class="row">
@@ -166,7 +200,7 @@
                 <h5>University/College/School</h5>
               </div>
               <div class="col-md-6">
-                {{userdata.education[i].universityName}}
+                {{userdata?.education[i].universityName}}
               </div>
             </div>
             <div class="row">
@@ -174,7 +208,7 @@
                 <h5>Passing Year</h5>
               </div>
               <div class="col-md-6">
-                {{userdata.education[i].passingYearValue}}
+                {{userdata?.education[i].passingYearValue}}
               </div>
             </div>
             <div class="row">
@@ -182,12 +216,12 @@
                 <h5>Percentage</h5>
               </div>
               <div class="col-md-6">
-                {{userdata.education[i].percentageValue}}
+                {{userdata?.education[i].percentageValue}}
               </div>
             </div>
           </div>
           <div *ngIf="educationOpen">
-            <app-user-education-details (discardClick)="closeEducation()" [userdata]="userdata.education[i]"></app-user-education-details>
+            <app-user-education-details (discardClick)="closeEducation()" [userdata]="userdata?.education[i]"></app-user-education-details>
           </div>
           <hr>
         </div>
@@ -207,7 +241,7 @@
           <a class="fr" (click)="EditSkillsDetails()">Edit</a>
         </div>
         <div *ngIf="skillMain">
-          <p>{{userdata.skillValue}}</p>
+          <p>{{userdata?.skillValue}}</p>
         </div>
         <div *ngIf="skillOpen">
           <app-user-skills-details (discardClick)="closeSkill()" [userdata]="userdata"></app-user-skills-details>

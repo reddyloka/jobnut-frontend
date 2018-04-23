@@ -14,12 +14,38 @@ export class UserBaseService {
   constructor(private http: Http) { }
 
   addNewUser(userDetail: any, files: {}): Promise<boolean> {
-    console.log('SSSSSSSSSSSS', userDetail);
     return this.http.post(environment.USER_SERVER + `/api/hr`, userDetail)
       .toPromise()
-      .then((response) => {
-        console.log(' 123 : ', response);
-        return true;
+      .then(async (response) => {
+        const final_data = response.json().data as any;
+        console.log(final_data);
+        this.updateProfilePicture(final_data, files);
+        return final_data;
+        // const profile_details = response;
+        // console.log('respoonse is : ', final_data);
+        // const formData: FormData = new FormData();
+        // // console.log(' 123 : ', response);
+        // // if (files['profile_photo']) {
+        // const file: File = files['profile_photo'];
+        //   // formData.append('profile_photo', file, file.name);
+        // // }
+        // console.log('AAAAA', file);
+        // const d = formData.append('profile_photo', file, file.name);
+        // // return Http.call('POST', `${environment.USER_SERVER}/api/user/upload-profile`, {formData});
+        //   return this.http.post(`${environment.USER_SERVER}/api/user/upload-profile`, formData, {
+        //     params: {
+        //       id: final_data._id,
+        //       isHr: final_data.isHr,
+        //       isApplicant: final_data.isApplicant
+        //     }
+        //   })
+        //     .toPromise()
+        //     .then(image_response => {
+        //       console.log(image_response);
+        //       return false;
+        //     })
+        //     .catch();
+
         // const final_userDetail =
       });
   }
@@ -28,7 +54,7 @@ export class UserBaseService {
   }
 
   getUserDetailsById(user: string): Promise<ApplicantBase> {
-    console.log('user_id', user);
+    // console.log('user_id', user);
     return this.http.get(`${environment.USER_SERVER}/api/users`, {
       params: {
         'id': user
@@ -36,7 +62,7 @@ export class UserBaseService {
     })
       .toPromise()
       .then((response) => {
-        console.log('data get of user: ', response.json());
+        // console.log('data get of user: ', response.json());
         return response.json();
       });
 
@@ -106,15 +132,13 @@ export class UserBaseService {
 
   updateUserApplyPost(postid: string, userid: string): Promise<Boolean> {
     console.log('post_id', postid);
-    return this.http.put(`${environment.USER_SERVER}/api/users/apply`, {
-      params: {
-      }
-    }, {
+    console.log('user_id', userid);
+    return this.http.put(`${environment.USER_SERVER}/api/users/apply`, {}, {
       params: {
         'id': postid,
         'hrRef': userid
-        }
-      })
+      }
+    })
       .toPromise()
       .then((response) => {
         console.log('data get of user: ', response.json());
@@ -122,9 +146,29 @@ export class UserBaseService {
       });
   }
 
+  async updateProfilePicture(final_data: any, files: any) {
+    console.log('respoonse is : ', final_data, files);
+    const formData: FormData = new FormData();
+    // console.log(' 123 : ', response);
+    // if (files['profile_photo']) {
+    const file: File = files['profile_photo'];
+    // formData.append('profile_photo', file, file.name);
+    // }
+    console.log('AAAAA', file);
+    const d = formData.append('profile_photo', file, file.name);
+    // return Http.call('POST', `${environment.USER_SERVER}/api/user/upload-profile`, {formData});
+    const image_response = await this.http.post(`${environment.USER_SERVER}/api/user/upload-profile`, formData, {
+      params: {
+        id: final_data._id,
+        isHr: final_data.isHr,
+        isApplicant: final_data.isApplicant
+      }
+    }).toPromise();
+    console.log('lml: ', image_response.json());
+    return image_response.json();
 
-
-
-
+    // const final_userDetail =
+    // });
+  }
 
 }

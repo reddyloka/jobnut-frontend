@@ -24,13 +24,18 @@
     "angular-font-awesome": "^3.1.2",
     "angular-froala-wysiwyg": "^2.8.0",
     "angular2-toaster": "^5.0.1",
+<<<<<<< HEAD
     "angular4-datepicker": "^1.0.1",
+=======
+    "blueimp-canvas-to-blob": "^3.14.0",
+>>>>>>> 57017e5d88a863982c5094582405987bc4378350
     "bootstrap": "^4.0.0",
     "core-js": "^2.4.1",
     "jquery": "^3.3.1",
     "font-awesome": "^4.7.0",
     "html2canvas": "^1.0.0-alpha.10",
     "moment": "^2.21.0",
+    "ng2-img-max": "^2.1.15",
     "ng2-select": "^2.0.0",
     "ngx-pagination": "^3.1.0",
     "npm": "^5.8.0",

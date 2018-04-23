@@ -6,13 +6,13 @@
         <div class="content">
           <img class="right floated mini ui image" src="/images/avatar/large/elliot.jpg">
           <div class="header">
-            {{applicants.firstName + ' ' + applicants.lastName}}
+            {{applicants?._id?.firstName + ' ' + applicants?._id?.lastName}}
           </div>
           <div class="meta">
-            {{applicants.email}}
+            {{applicants?._id?.email}}
           </div>
           <div class="description">
-            {{applicants.skills}}
+            {{applicants?._id?.skills}}
           </div>
         </div>
         <div class="extra content">

@@ -38,7 +38,7 @@
 </div>
 <div class="row">
   <div class="col-md-3" style="background-color: rgb(100, 99, 99); height:750px">
-    <div style="margin-top: 30px; background-color: lightbalck">
+    <!-- <div style="margin-top: 30px; background-color: lightbalck">
       <a (click)="userAppliedJob()">
         <h4 class="nav">{{jobtext}}</h4>
       </a>
@@ -47,7 +47,7 @@
       <a href="">
         <h4 class="nav">Saved JOb</h4>
       </a>
-    </div>
+    </div> -->
   </div>
   <div class="col-md-6" style="border: 2px solid lightgrey;height: 600px">
     <br>
@@ -59,10 +59,7 @@
       <h2>Search results</h2>
       <app-user-view-post *ngFor="let hrpost of searchData | paginate: { itemsPerPage: 2, currentPage: p }" [hrpost]="hrpost" (userclick)="routeronclicked($event)"></app-user-view-post>
     </div>
-    <div *ngIf="appliedJob">
-      <h2>Applied jobs of you</h2>
-      <app-user-view-post *ngFor="let hrpost of suggestedjob | paginate: { itemsPerPage: 2, currentPage: p }" [hrpost]="hrpost" (userclick)="routeronclicked($event)"></app-user-view-post>
-    </div>
+
     <pagination-controls (pageChange)="p = $event"></pagination-controls>
   </div>
 </div>

@@ -1,6 +1,10 @@
 <router-outlet></router-outlet>
-<app-notification [data]="popup" *ngIf="popup.isActive" (donePopup)="popupClicked($event)"></app-notification>
-<button type="submit" (click)="popup.isActive='true'">
+<app-notification *ngIf="_notif.activatePopup" (donePopup)="popupClicked($event)"></app-notification>
+<!-- <button type="submit" (click)="popup.isActive='true'">
     click for popup
+<<<<<<< HEAD
 </button>
 <!-- <app-applicant-preview></app-applicant-preview> -->
+=======
+</button> -->
+>>>>>>> 57017e5d88a863982c5094582405987bc4378350
