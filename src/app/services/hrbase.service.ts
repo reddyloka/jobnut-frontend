@@ -1,6 +1,4 @@
 import { Http } from '@angular/http';
-
-
 import { Injectable } from '@angular/core';
 import { HrPostDetail } from '../model/hrpostdetails';
 import { environment } from '../../environments/environment';

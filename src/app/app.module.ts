@@ -5,11 +5,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import {NgxPaginationModule} from 'ngx-pagination';
-
+import { CommonModule } from '@angular/common';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 // import {ToasterModule, ToasterService} from '@angular2-toaster';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 
 
+import * as $ from 'jquery'
 import { AppComponent } from './app.component';
 import { LoginComponent } from './uni-component/login/login.component';
 import { SignupComponent } from './uni-component/signup/signup.component';
@@ -60,7 +63,34 @@ import { DataService } from './_shared/data.service';
 import { HrManageApplicantListComponent } from './dashboard-component/hr-dashboard/features/hr-postdetails/hr-manage-applicant/hr-manage-applicant-list/hr-manage-applicant-list.component';
 import { HrHeaderComponent } from './dashboard-component/hr-dashboard/hr-header/hr-header.component';
 import { HrManageApplicantListDetailsComponent } from './dashboard-component/hr-dashboard/features/hr-postdetails/hr-manage-applicant/hr-manage-applicant-list-details/hr-manage-applicant-list-details.component';
+// import { AppRoutingModule } from './resume/app-routing/app-routing.module';
+import { HomeComponent } from './resume/home/home.component';
+import { ResumeBuilderComponent } from './resume/resume-builder/resume-builder.component';
+import { PersonalDetailsComponent } from './resume/resume-builder/personal-details/personal-details.component';
+import { EducationComponent } from './resume/resume-builder/education/education.component';
+import { SkillsComponent } from './resume/resume-builder/skills/skills.component';
+import { ExperienceComponent } from './resume/resume-builder/experience/experience.component';
+import { HobbiesComponent } from './resume/resume-builder/hobbies/hobbies.component';
+import { InterestsComponent } from './resume/resume-builder/interests/interests.component';
+import { CertificatesComponent } from './resume/resume-builder/certificates/certificates.component';
+import { LanguagesComponent } from './resume/resume-builder/languages/languages.component';
+import { IndexPageComponent } from './resume/index-page/index-page.component';
+import { ResumePreviewComponent } from './resume/resume-preview/resume-preview.component';
+import { ResumePreview1Component } from './resume/resume-preview-1/resume-preview-1.component';
+import { ResumePreview2Component } from './resume/resume-preview-2/resume-preview-2.component';
+import { ResumePreview3Component } from './resume/resume-preview-3/resume-preview-3.component';
 
+import { DataStoreService } from './resume/services/data-store.service';
+import { FroalaEditorService } from './resume/services/froala-editor.service';
+import { PersonalDetailsDataService } from './resume/services/personal-details-data.service';
+import { EducationDetailsDataService } from './resume/services/education-details-data.service';
+import { SkillsDataService } from './resume/services/skills-data.service';
+import { ExperienceDataService } from './resume/services/experience-data.service';
+import { HobbiesDataService } from './resume/services/hobbies-data.service';
+import { InterestsDataService } from './resume/services/interests-data.service';
+import { CertificatesDataService } from './resume/services/certificates-data.service';
+import { LanguagesDataService } from './resume/services/languages-data.service';
+import { DownloadService } from './resume/services/download.service';
 
 
 
@@ -103,12 +133,24 @@ import { HrManageApplicantListDetailsComponent } from './dashboard-component/hr-
     UserExperienceAddDetailsComponent,
     HrExperienceAddDetailsComponent,
     HrManageApplicantComponent,
-<<<<<<< HEAD
-=======
     HrManageApplicantListComponent,
     HrHeaderComponent,
-    HrManageApplicantListDetailsComponent
->>>>>>> bbec3494dc0f8e3cd0d381ff3c767727f0d364c3
+    HrManageApplicantListDetailsComponent,
+    ResumeBuilderComponent,
+    PersonalDetailsComponent,
+    EducationComponent,
+    HomeComponent,
+    ResumePreviewComponent,
+    ResumePreview1Component,
+    ResumePreview2Component,
+    ResumePreview3Component,
+    SkillsComponent,
+    ExperienceComponent,
+    HobbiesComponent,
+    InterestsComponent,
+    CertificatesComponent,
+    LanguagesComponent,
+    IndexPageComponent,
 
   ],
   imports: [
@@ -121,7 +163,8 @@ import { HrManageApplicantListDetailsComponent } from './dashboard-component/hr-
     HttpModule,
     HttpClientModule,
     NgxPaginationModule,
-    RouterModule.forRoot(routerConfig)
+    RouterModule.forRoot(routerConfig),
+    BrowserModule,FormsModule,AngularFontAwesomeModule ,FroalaEditorModule.forRoot(), FroalaViewModule.forRoot()
   ],
   providers: [
     UserBaseService,
@@ -131,6 +174,18 @@ import { HrManageApplicantListDetailsComponent } from './dashboard-component/hr-
     DataService,
     AuthService,
     JwtService,
+    ResumeBuilderComponent,
+    FroalaEditorService,
+    DataStoreService,
+    PersonalDetailsDataService,
+    EducationDetailsDataService,
+    SkillsDataService,
+    ExperienceDataService,
+    HobbiesDataService,
+    InterestsDataService,
+    CertificatesDataService,
+    LanguagesDataService,
+    DownloadService,
     { provide: LocationStrategy, useClass: HashLocationStrategy },
   ],
   bootstrap: [AppComponent]

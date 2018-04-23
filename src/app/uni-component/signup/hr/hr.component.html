@@ -10,10 +10,10 @@
       <label>Name *</label>
       <div class="two fields">
         <div class="field">
-          <input type="text"  placeholder="First Name" [(ngModel)]="hrDetails.firstName" formControlName="firstName">
+          <input type="text" placeholder="First Name" [(ngModel)]="hrDetails.firstName" formControlName="firstName">
         </div>
         <div class="field">
-          <input type="text"  placeholder="Last Name" [(ngModel)]="hrDetails.lastName" formControlName="lastName">
+          <input type="text" placeholder="Last Name" [(ngModel)]="hrDetails.lastName" formControlName="lastName">
         </div>
       </div>
     </div>
@@ -21,10 +21,10 @@
       <label>Email *</label>
       <div class="fields">
         <div class="eight wide field">
-          <input type="text"  placeholder="Email" [(ngModel)]="hrDetails.email" formControlName="email">
+          <input type="text" placeholder="Email" [(ngModel)]="hrDetails.email" formControlName="email">
         </div>
         <div class="eight wide field">
-          <input type="password"  placeholder="Password" [(ngModel)]="hrDetails.password" formControlName="password">
+          <input type="password" placeholder="Password" [(ngModel)]="hrDetails.password" formControlName="password">
         </div>
       </div>
     </div>
@@ -42,69 +42,65 @@
     <div class="field">
       <label>Phone *</label>
       <div class="field">
-        <input type="text"  placeholder="phone" [(ngModel)]="hrDetails.phone" formControlName="phone">
+        <input type="text" placeholder="phone" [(ngModel)]="hrDetails.phone" formControlName="phone">
       </div>
     </div>
-
-      <div class="two fields">
-        <div class="field">
-          <label>Industry type</label>
-          <select  class="ui fluid dropdown" [(ngModel)]="hrDetails.industry" formControlName="industry">
-            <option>Select</option>
-            <option [value]="industry" *ngFor="let industry of options">{{industry}}</option>
-          </select>
-        </div>
-        <div class="field">
-          <label>Country *</label>
-          <input type="text"  placeholder="country"  [(ngModel)]="hrDetails.country" formControlName="country">
-         <!-- <select  class="ui fluid dropdown" formControlName="country">
+    <div class="two fields">
+      <div class="field">
+        <label>Industry type</label>
+        <select class="ui fluid dropdown" [(ngModel)]="hrDetails.industry" formControlName="industry">
+          <option>Select</option>
+          <option [value]="industry" *ngFor="let industry of options">{{industry}}</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Country *</label>
+        <input type="text" placeholder="country" [(ngModel)]="hrDetails.country" formControlName="country">
+        <!-- <select  class="ui fluid dropdown" formControlName="country">
             <option>Select</option>
             </select> -->
       </div>
-      </div>
-      <div class="two fields">
-        <div class="field">
-          <label>States *</label>
-          <input type="text"  placeholder="State" [(ngModel)]="hrDetails.state" formControlName="state">
-          <!-- <select  class="ui fluid dropdown" formControlName="states">
+    </div>
+    <div class="two fields">
+      <div class="field">
+        <label>States *</label>
+        <input type="text" placeholder="State" [(ngModel)]="hrDetails.state" formControlName="state">
+        <!-- <select  class="ui fluid dropdown" formControlName="states">
             <option>Select</option>
             <option [value]="state" *ngFor="let state of states">{{state}}</option>
           </select>-->
-        </div>
-        <div class="field">
-          <label>City</label>
-          <input type="text"  placeholder="City" [(ngModel)]="hrDetails.city" formControlName="city">
-        </div>
       </div>
       <div class="field">
-        <label>Designation *</label>
-        <input type="text"  placeholder="Designation" [(ngModel)]="hrDetails.designation" formControlName="designation">
+        <label>City</label>
+        <input type="text" placeholder="City" [(ngModel)]="hrDetails.city" formControlName="city">
       </div>
-      <div class="sixteen wide padded field">
-        <label>Address *</label>
-        <input type="text"  placeholder="Address" [(ngModel)]="hrDetails.address" formControlName="address">
-      </div>
-
-      <div class="field">
-        <label>Job Profile *</label>
-        <div class="eight wide field">
-          <textarea type="text"  placeholder="jobProfile" [(ngModel)]="hrDetails.jobProfile" formControlName="jobProfile"></textarea>
-        </div>
-      </div>
-
-      <div class="field">
-        <label>Profile Photo:</label>
-        <input  type="file"  placeholder="Photo" required="" capture (change)="fileTypeCheck($event)">
-      </div>
-      <div class="ui toggle checkbox">
-        <input type="checkbox" name="public">
-        <label>I Agree to the
-          <a href="#">Terms and Conditions</a>
-        </label>
-      </div>
-      <div class="field">
-        <button [disabled]="signupForm.invalid || imageFile" (click)="onSubmit()" class="ui button" type="submit" tabindex="0" (click)="gethrDash()">Register</button>
-      </div>
-    </form>
     </div>
-
+    <div class="field">
+      <label>Designation *</label>
+      <input type="text" placeholder="Designation" [(ngModel)]="hrDetails.designation" formControlName="designation">
+    </div>
+    <div class="sixteen wide padded field">
+      <label>Address *</label>
+      <input type="text" placeholder="Address" [(ngModel)]="hrDetails.address" formControlName="address">
+    </div>
+    <div class="field">
+      <label>Job Profile *</label>
+      <div class="eight wide field">
+        <textarea type="text" placeholder="jobProfile" [(ngModel)]="hrDetails.jobProfile" formControlName="jobProfile"></textarea>
+      </div>
+    </div>
+    <div class="field">
+      <label>Profile Photo:</label>
+      <input type="file" placeholder="Photo" required="" capture (change)="fileTypeCheck($event)">
+    </div>
+    <div class="ui toggle checkbox">
+      <input type="checkbox" name="public">
+      <label>I Agree to the
+        <a href="#">Terms and Conditions</a>
+      </label>
+    </div>
+    <div class="field">
+      <button [disabled]="signupForm.invalid || imageFile" (click)="onSubmit()" class="ui button" type="submit" tabindex="0" (click)="gethrDash()">Register</button>
+    </div>
+  </form>
+</div>
