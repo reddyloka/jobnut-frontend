@@ -4,21 +4,18 @@ import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
-import {NgxPaginationModule} from 'ngx-pagination';
-<<<<<<< HEAD
+import { NgxPaginationModule } from 'ngx-pagination';
 import { CommonModule } from '@angular/common';
-=======
 
 import { Ng2ImgMaxModule } from 'ng2-img-max';
 
->>>>>>> 57017e5d88a863982c5094582405987bc4378350
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // import {ToasterModule, ToasterService} from '@angular2-toaster';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 
 
-import * as $ from 'jquery'
+import * as $ from 'jquery';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './uni-component/login/login.component';
 import { SignupComponent } from './uni-component/signup/signup.component';
@@ -45,7 +42,7 @@ import { UserViewPostDeatilssummaryComponent } from './dashboard-component/user-
 import { CallbackComponent } from './uni-component/misc/callback/callback.component';
 import { AuthService } from './services/authentication/auth.service';
 import { JwtService } from './_helper/jwt.service';
-import {SelectModule} from 'ng2-select';
+import { SelectModule } from 'ng2-select';
 import { LoggedInGuard } from './_guards/logged-in.guard';
 import { HrDetailsComponent } from './dashboard-component/hr-dashboard/hr-dashboard-details/hr-details/hr-details.component';
 
@@ -71,7 +68,6 @@ import { DataService } from './_shared/data.service';
 import { HrManageApplicantListComponent } from './dashboard-component/hr-dashboard/features/hr-postdetails/hr-manage-applicant/hr-manage-applicant-list/hr-manage-applicant-list.component';
 import { HrHeaderComponent } from './dashboard-component/hr-dashboard/hr-header/hr-header.component';
 import { HrManageApplicantListDetailsComponent } from './dashboard-component/hr-dashboard/features/hr-postdetails/hr-manage-applicant/hr-manage-applicant-list-details/hr-manage-applicant-list-details.component';
-<<<<<<< HEAD
 // import { AppRoutingModule } from './resume/app-routing/app-routing.module';
 import { HomeComponent } from './resume/home/home.component';
 import { ResumeBuilderComponent } from './resume/resume-builder/resume-builder.component';
@@ -88,11 +84,9 @@ import { ResumePreviewComponent } from './resume/resume-preview/resume-preview.c
 import { ResumePreview1Component } from './resume/resume-preview-1/resume-preview-1.component';
 import { ResumePreview2Component } from './resume/resume-preview-2/resume-preview-2.component';
 import { ResumePreview3Component } from './resume/resume-preview-3/resume-preview-3.component';
-=======
 import { HrPostdetailsEditListComponent } from './dashboard-component/hr-dashboard/features/hr-postdetails/hr-postdetails-edit-list/hr-postdetails-edit-list.component';
 import { UserViewAppliedPostComponent } from './dashboard-component/user-dashboard/features/user-view-applied-post/user-view-applied-post.component';
 import { UserViewAppliedPostDetailsComponent } from './dashboard-component/user-dashboard/features/user-view-applied-post/user-view-applied-post-details/user-view-applied-post-details.component';
->>>>>>> 57017e5d88a863982c5094582405987bc4378350
 
 import { DataStoreService } from './resume/services/data-store.service';
 import { FroalaEditorService } from './resume/services/froala-editor.service';
@@ -152,7 +146,6 @@ import { DownloadService } from './resume/services/download.service';
     HrManageApplicantListComponent,
     HrHeaderComponent,
     HrManageApplicantListDetailsComponent,
-<<<<<<< HEAD
     ResumeBuilderComponent,
     PersonalDetailsComponent,
     EducationComponent,
@@ -168,11 +161,9 @@ import { DownloadService } from './resume/services/download.service';
     CertificatesComponent,
     LanguagesComponent,
     IndexPageComponent,
-=======
     HrPostdetailsEditListComponent,
     UserViewAppliedPostComponent,
     UserViewAppliedPostDetailsComponent
->>>>>>> 57017e5d88a863982c5094582405987bc4378350
 
   ],
   imports: [
@@ -187,7 +178,7 @@ import { DownloadService } from './resume/services/download.service';
     HttpClientModule,
     NgxPaginationModule,
     RouterModule.forRoot(routerConfig),
-    BrowserModule,FormsModule,AngularFontAwesomeModule ,FroalaEditorModule.forRoot(), FroalaViewModule.forRoot()
+    BrowserModule, FormsModule, AngularFontAwesomeModule, FroalaEditorModule.forRoot(), FroalaViewModule.forRoot()
   ],
   providers: [
     UserBaseService,
