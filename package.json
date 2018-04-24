@@ -24,11 +24,8 @@
     "angular-font-awesome": "^3.1.2",
     "angular-froala-wysiwyg": "^2.8.0",
     "angular2-toaster": "^5.0.1",
-<<<<<<< HEAD
     "angular4-datepicker": "^1.0.1",
-=======
     "blueimp-canvas-to-blob": "^3.14.0",
->>>>>>> 57017e5d88a863982c5094582405987bc4378350
     "bootstrap": "^4.0.0",
     "core-js": "^2.4.1",
     "jquery": "^3.3.1",
