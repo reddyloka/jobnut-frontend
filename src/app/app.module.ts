@@ -4,18 +4,26 @@ import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
+<<<<<<< HEAD
 import {NgxPaginationModule} from 'ngx-pagination';
+=======
+import { NgxPaginationModule } from 'ngx-pagination';
+>>>>>>> 84a2d18d9a775b930fc3171a68514a1504127d3e
 import { CommonModule } from '@angular/common';
 
 import { Ng2ImgMaxModule } from 'ng2-img-max';
 
+<<<<<<< HEAD
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+=======
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+>>>>>>> 84a2d18d9a775b930fc3171a68514a1504127d3e
 // import {ToasterModule, ToasterService} from '@angular2-toaster';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 
 
-import * as $ from 'jquery'
+import * as $ from 'jquery';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './uni-component/login/login.component';
 import { SignupComponent } from './uni-component/signup/signup.component';
@@ -42,7 +50,7 @@ import { UserViewPostDeatilssummaryComponent } from './dashboard-component/user-
 import { CallbackComponent } from './uni-component/misc/callback/callback.component';
 import { AuthService } from './services/authentication/auth.service';
 import { JwtService } from './_helper/jwt.service';
-import {SelectModule} from 'ng2-select';
+import { SelectModule } from 'ng2-select';
 import { LoggedInGuard } from './_guards/logged-in.guard';
 import { HrDetailsComponent } from './dashboard-component/hr-dashboard/hr-dashboard-details/hr-details/hr-details.component';
 
@@ -68,6 +76,10 @@ import { DataService } from './_shared/data.service';
 import { HrManageApplicantListComponent } from './dashboard-component/hr-dashboard/features/hr-postdetails/hr-manage-applicant/hr-manage-applicant-list/hr-manage-applicant-list.component';
 import { HrHeaderComponent } from './dashboard-component/hr-dashboard/hr-header/hr-header.component';
 import { HrManageApplicantListDetailsComponent } from './dashboard-component/hr-dashboard/features/hr-postdetails/hr-manage-applicant/hr-manage-applicant-list-details/hr-manage-applicant-list-details.component';
+<<<<<<< HEAD
+=======
+// import { AppRoutingModule } from './resume/app-routing/app-routing.module';
+>>>>>>> 84a2d18d9a775b930fc3171a68514a1504127d3e
 import { HomeComponent } from './resume/home/home.component';
 import { ResumeBuilderComponent } from './resume/resume-builder/resume-builder.component';
 import { PersonalDetailsComponent } from './resume/resume-builder/personal-details/personal-details.component';
@@ -177,7 +189,7 @@ import { DownloadService } from './resume/services/download.service';
     HttpClientModule,
     NgxPaginationModule,
     RouterModule.forRoot(routerConfig),
-    BrowserModule,FormsModule,AngularFontAwesomeModule ,FroalaEditorModule.forRoot(), FroalaViewModule.forRoot()
+    BrowserModule, FormsModule, AngularFontAwesomeModule, FroalaEditorModule.forRoot(), FroalaViewModule.forRoot()
   ],
   providers: [
     UserBaseService,

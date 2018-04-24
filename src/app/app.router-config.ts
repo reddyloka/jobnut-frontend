@@ -41,8 +41,8 @@ import { UserViewAppliedPostDetailsComponent } from './dashboard-component/user-
 
 export const routerConfig: Routes = [
   // basic routes
-   // login routes during
-   { path: 'login', component: LoginComponent },
+  // login routes during
+  { path: 'login', component: LoginComponent },
 
   // hr routes
   { path: 'hr', redirectTo: 'hr/profile' }, // hr home page
@@ -115,7 +115,7 @@ export const routerConfig: Routes = [
     path: 'user-profile',
     component: UserProfileComponent
   },
-  // applicant routes 
+  // applicant routes
 
   // signup routes during
   {
@@ -146,21 +146,23 @@ export const routerConfig: Routes = [
   // remume builder routes
 
   // {path:'resume-builder',component:IndexPageComponent},
-  {path:'resume-home',component:HomeComponent},
-  {path:'resumeDetails/:id',component:ResumeBuilderComponent,children:[
-    { path: '', redirectTo: 'personalDetails', pathMatch: 'full' },
-    {path:'personalDetails',component:PersonalDetailsComponent},
-    {path:'education',component:EducationComponent},
-    {path:'skills',component:SkillsComponent},
-    {path:'experiences',component:ExperienceComponent},
-    {path:'hobbies',component:HobbiesComponent},
-    {path:'interests',component:InterestsComponent},
-    {path:'certificates',component:CertificatesComponent},
-    {path:'languages',component:LanguagesComponent}
-  ]},
-  {path:'1',component:ResumePreviewComponent},
-  {path:'2',component:ResumePreview1Component},
-  {path:'3',component:ResumePreview2Component},
-  {path:'4',component:ResumePreview3Component},
+  { path: 'resume-home', component: HomeComponent },
+  {
+    path: 'resumeDetails/:id', component: ResumeBuilderComponent, children: [
+      { path: '', redirectTo: 'personalDetails', pathMatch: 'full' },
+      { path: 'personalDetails', component: PersonalDetailsComponent },
+      { path: 'education', component: EducationComponent },
+      { path: 'skills', component: SkillsComponent },
+      { path: 'experiences', component: ExperienceComponent },
+      { path: 'hobbies', component: HobbiesComponent },
+      { path: 'interests', component: InterestsComponent },
+      { path: 'certificates', component: CertificatesComponent },
+      { path: 'languages', component: LanguagesComponent }
+    ]
+  },
+  { path: '1', component: ResumePreviewComponent },
+  { path: '2', component: ResumePreview1Component },
+  { path: '3', component: ResumePreview2Component },
+  { path: '4', component: ResumePreview3Component },
 
 ];

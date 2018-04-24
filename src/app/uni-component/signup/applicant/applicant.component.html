@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default">
+<!-- <nav class="ui secondary pointing menu">
   <div class="container-fluid">
     <ul class="nav navbar-nav" style="padding-left:35%">
       <li [style.background-color]="personalInfo?'lightgrey':default">
@@ -8,10 +8,20 @@
         <a>Education</a>
       </li>
     </ul>
-
   </div>
-</nav>
-
+</nav> -->
+<div class="ui two centered grid">
+  <div class="row">
+    <div class="ui secondary pointing menu">
+      <a class="item" [style.border-bottom]="personalInfo?'green solid':default" >
+        Personal Details
+      </a>
+      <a class="item" [style.border-bottom]="educationInfo?'green solid':default">
+        Education
+      </a>
+    </div>
+  </div>
+</div>
 <div class="ui very padded container segment">
 
   <form class="ui form" [formGroup]="applicantForm">
@@ -171,4 +181,3 @@
     <button class="btn btn-success" (click)="onSubmit()" [disabled]="!((applicantForm.controls['email'].valid&&applicantForm.controls['password'].valid)&&(applicantForm.controls['skillValue'].valid))">Register</button>
   </form>
 </div>
-
