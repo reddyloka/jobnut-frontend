@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ResumeBuilderComponent } from '../resume-builder.component';
 import { FroalaEditorService } from '../../services/froala-editor.service';
 import { HobbiesDataService } from '../../services/hobbies-data.service';
@@ -8,50 +8,50 @@ import { HobbiesDataService } from '../../services/hobbies-data.service';
   templateUrl: './hobbies.component.html',
   styleUrls: ['./hobbies.component.css']
 })
-export class HobbiesComponent implements OnInit {
+export class HobbiesComponent implements OnInit, OnDestroy {
 
-  templateId:number;
-   options: Object;
-   hobbies:string[];
-   id:number;
-   froalaId:number=0; 
+  templateId: number;
+  options: Object;
+  hobbies: string[];
+  id: number;
+  froalaId = 0;
 
   constructor(
-    private resumeBuilder:ResumeBuilderComponent,
-    private froalaEditor:FroalaEditorService,
-    private hobbiesService:HobbiesDataService
+    private resumeBuilder: ResumeBuilderComponent,
+    private froalaEditor: FroalaEditorService,
+    private hobbiesService: HobbiesDataService
   ) { }
 
   ngOnInit() {
-    this.templateId=this.resumeBuilder.templateId;
-    this.options=this.froalaEditor.options;
-    this.hobbies=this.hobbiesService.hobbies;
-    this.id=this.hobbiesService.hobbieId;
+    this.templateId = this.resumeBuilder.templateId;
+    this.options = this.froalaEditor.options;
+    this.hobbies = this.hobbiesService.hobbies;
+    this.id = this.hobbiesService.hobbieId;
   }
 
-  onAddDetails(){
+  onAddDetails() {
     this.hobbiesService.onAddHobbies();
     this.id++;
     this.froalaId++;
   }
 
-  onRemoveDetails(){
-    if(this.id>=1){
+  onRemoveDetails() {
+    if (this.id >= 1) {
       this.hobbiesService.onRemoveHobbies();
       this.id--;
     }
-    if(this.froalaId>0){
+    if (this.froalaId > 0) {
       this.froalaId--;
     }
   }
 
-  onUpdateButton(buttonId){
-    this.froalaId=buttonId.id;
+  onUpdateButton(buttonId) {
+    this.froalaId = buttonId.id;
   }
 
-ngOnDestroy(){
-  this.hobbiesService.onSetHobbies(this.hobbies)
-  this.hobbiesService.onSetHobbiesId(this.id)
-}
+  ngOnDestroy() {
+    this.hobbiesService.onSetHobbies(this.hobbies);
+    this.hobbiesService.onSetHobbiesId(this.id);
+  }
 
 }

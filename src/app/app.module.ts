@@ -99,6 +99,8 @@ import { InterestsDataService } from './resume/services/interests-data.service';
 import { CertificatesDataService } from './resume/services/certificates-data.service';
 import { LanguagesDataService } from './resume/services/languages-data.service';
 import { DownloadService } from './resume/services/download.service';
+import { SignupHomeComponent } from './uni-component/signup/signup-home/signup-home.component';
+import { QuotesService } from './_shared/quotes.service';
 
 
 
@@ -163,7 +165,8 @@ import { DownloadService } from './resume/services/download.service';
     IndexPageComponent,
     HrPostdetailsEditListComponent,
     UserViewAppliedPostComponent,
-    UserViewAppliedPostDetailsComponent
+    UserViewAppliedPostDetailsComponent,
+    SignupHomeComponent
 
   ],
   imports: [
@@ -188,6 +191,7 @@ import { DownloadService } from './resume/services/download.service';
     DataService,
     AuthService,
     JwtService,
+    QuotesService,
     ResumeBuilderComponent,
     FroalaEditorService,
     DataStoreService,

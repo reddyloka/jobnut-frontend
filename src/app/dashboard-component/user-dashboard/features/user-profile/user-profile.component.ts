@@ -4,6 +4,9 @@ import { UserBaseService } from '../../../../services/userbase/user-base.service
 import { ApplicantBase } from '../../../../model/applicantbase';
 import { NotificationService } from '../../../../_shared/notification.service';
 import { Ng2ImgMaxService } from 'ng2-img-max';
+import { QuotesService } from '../../../../_shared/quotes.service';
+
+declare var $: any;
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.component.html',
@@ -17,16 +20,22 @@ export class UserProfileComponent implements OnInit {
   educationOpen: boolean;
   educationMain: boolean;
   skillOpen: boolean;
+  skillActive = false;
   skillMain: boolean;
   expOpen: boolean;
   expMain: boolean;
   detailsOpen: boolean;
   detailsMain: boolean;
   profile_photo_for_viewing: string;
+  isMale = false;
+  isFemale = false;
+  otherGender = false;
+  qod = 'quote of the day.';
 
   constructor(private userbaseservice: UserBaseService,
     private _notif: NotificationService,
     private ng2ImgMax: Ng2ImgMaxService,
+    private _qod: QuotesService
   ) {
     this.detailsMain = true;
     this.detailsOpen = false;
@@ -39,29 +48,52 @@ export class UserProfileComponent implements OnInit {
     this.educationOpen = false;
     this.educationAdd = false;
     this.id = uuid();
-   }
+  }
 
   ngOnInit() {
-
     this.userbaseservice.getUserDetailsById(this.id).
-    then((userdata) => {
-      console.log('maindata', userdata);
-      this.userdata = userdata;
-      this.profile_photo_for_viewing = this.getUrl();
+      then((userdata) => {
+        console.log('maindata', userdata);
+        this.userdata = userdata;
+        this.profile_photo_for_viewing = this.getUrl();
+        this.isMale = this.userdata.gender.toLowerCase() === 'male';
+        this.isFemale = this.userdata.gender.toLowerCase() === 'female';
+        this.otherGender = this.userdata.gender.toLowerCase() === 'other';
+      });
+    this.accordionClicked();
+    this._qod.getQOD().then(q => {
+      this.qod = q;
     });
+    $('.ui.modal')
+      .modal()
+      ;
+
+  }
+
+  accordionClicked() {
+    $('.ui.accordion')
+      .accordion({
+        collapsible: false
+      });
   }
 
   EditPersonalDetails() {
+    alert('dsjssbck');
     this.detailsOpen = true;
-    this.detailsMain = false;
   }
-  closeDetails() {
+  closeDetails(event) {
+    this.userdata = event;
+    console.log('in discard', JSON.stringify(event));
+    this.isMale = this.userdata.gender.toLowerCase() === 'male';
+    this.isFemale = this.userdata.gender.toLowerCase() === 'female';
+    this.otherGender = this.userdata.gender.toLowerCase() === 'other';
+
     this.detailsOpen = false;
     this.detailsMain = true;
   }
   AddExperienceMore(): void {
     this.expAdd = true;
-    }
+  }
   EditExpDetails() {
     this.expMain = false;
     this.expOpen = true;
@@ -79,13 +111,13 @@ export class UserProfileComponent implements OnInit {
     this.skillMain = false;
     this.skillOpen = true;
   }
-   closeSkill() {
+  closeSkill() {
     this.skillMain = true;
     this.skillOpen = false;
   }
 
   AddEducationMore(): void {
-  //  this.edituserdata = this.userdata;
+    //  this.edituserdata = this.userdata;
     this.educationAdd = true;
     // if (this.userdata.education) {
     //   this.userdata.education.push({higherDegreeValue: '', universityName: '', passingYearValue: '', percentageValue: ''});
@@ -117,9 +149,9 @@ export class UserProfileComponent implements OnInit {
     if (!file || file.size > 202400000) {
       this._notif.pop('Please Select an Image\n or file size is greater then 2mb', 'Wrong Input!', 3000);
     }
-    this.ng2ImgMax.resizeImage(file, 250, 250).subscribe( resImg => {
-      this.ng2ImgMax.compressImage(resImg, 1.00).subscribe( async ( finalImg ) => {
-        const result = await this.userbaseservice.updateProfilePicture(this.userdata, {'profile_photo': finalImg});
+    this.ng2ImgMax.resizeImage(file, 250, 250).subscribe(resImg => {
+      this.ng2ImgMax.compressImage(resImg, 1.00).subscribe(async (finalImg) => {
+        const result = await this.userbaseservice.updateProfilePicture(this.userdata, { 'profile_photo': finalImg });
         this.userdata.profile_photo = result.data;
         this.profile_photo_for_viewing = this.getUrl();
         this._notif.pop(result.message, 'New Profile Pic', 3000);

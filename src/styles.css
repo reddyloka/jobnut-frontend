@@ -3,6 +3,8 @@
 @import url('https://fonts.googleapis.com/css?family=Alfa+Slab+One|Amatic+SC|Anton|Lobster|Pacifico|Pragati+Narrow|Rammetto+One|Saira+Extra+Condensed');
 * {
   color: #222222;
+  margin: 0;
+  padding: 0
 }
 
 body {
@@ -148,7 +150,7 @@ a {
 /* profile picture */
 
 .wrapper {
-  padding: 100px;
+  padding: 5px;
 }
 
 .image--cover {
@@ -188,7 +190,7 @@ a {
 .avatar-upload {
   position: relative;
   max-width: 205px;
-  margin: 50px auto;
+  margin: 10px 10px;
 }
 .avatar-upload .avatar-edit {
   position: absolute;
