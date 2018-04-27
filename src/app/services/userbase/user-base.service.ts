@@ -26,12 +26,13 @@ return this.http.post(environment.USER_SERVER + `/api/forgetPassword`,personalDe
   }
 
   addNewUser(userDetail: any, files: {}): Promise<boolean> {
-    console.log('SSSSSSSSSSSS', userDetail);
     return this.http.post(environment.USER_SERVER + `/api/hr`, userDetail)
       .toPromise()
-      .then((response) => {
-        console.log(' 123 : ', response);
-        return true;
+      .then(async (response) => {
+        const final_data = response.json().data as any;
+        console.log(final_data);
+        this.updateProfilePicture(final_data, files);
+        return final_data;
       });
   }
   experiencedetailsUpdate(expdetails: any) {
@@ -131,5 +132,29 @@ return this.http.post(environment.USER_SERVER + `/api/forgetPassword`,personalDe
       });
   }
 
+  async updateProfilePicture(final_data: any, files: any) {
+    console.log('respoonse is : ', final_data, files);
+    const formData: FormData = new FormData();
+    // console.log(' 123 : ', response);
+    // if (files['profile_photo']) {
+    const file: File = files['profile_photo'];
+    // formData.append('profile_photo', file, file.name);
+    // }
+    console.log('AAAAA', file);
+    const d = formData.append('profile_photo', file, file.name);
+    // return Http.call('POST', `${environment.USER_SERVER}/api/user/upload-profile`, {formData});
+    const image_response = await this.http.post(`${environment.USER_SERVER}/api/user/upload-profile`, formData, {
+      params: {
+        id: final_data._id,
+        isHr: final_data.isHr,
+        isApplicant: final_data.isApplicant
+      }
+    }).toPromise();
+    console.log('lml: ', image_response.json());
+    return image_response.json();
+
+    // const final_userDetail =
+    // });
+  }
 
 }

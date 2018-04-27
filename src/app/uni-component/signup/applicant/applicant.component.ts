@@ -19,6 +19,7 @@ export class ApplicantComponent implements OnInit {
   applicantForm: FormGroup;
   user_details: ApplicantBase;
   skills: string[];
+  imageFile: any;
   profile_photo: File;
   isApplicant: boolean;
   isHr: boolean;
@@ -30,7 +31,7 @@ export class ApplicantComponent implements OnInit {
     this.user_details = ApplicantBase.createblank();
     this.buildFormGroup();
     this.highestDegreeArray = ['B.Tech', 'B.Sc', '12th', '10th'];
-    this.yearArray = ['2017', '2016', '2015', '2014', '2013', '2012', '2011', '2010', '2009', '2008', '2007', '2006', '2005', '2004'];
+    this.yearArray = this.years();
     this.skills = ['Angular', 'CSS', 'Graphic Design', 'Ember', 'HTML',
       'Information Architecture', 'Javascript', 'Mechanical Engineering',
       'Meteor', 'NodeJS', 'UI Design', 'Python', 'Rails', 'React', 'Ruby'];
@@ -42,6 +43,16 @@ export class ApplicantComponent implements OnInit {
     this.personalInfo = true;
     this.inputType = 'password';
   }
+
+
+  years(): string[] {
+    const year = [];
+    for (let i = 1990; i <= 2030; i++) {
+      year.push(i);
+    }
+    return year;
+  }
+
   buildFormGroup(): void {
     const fg = {
       'firstName': new FormControl(null, [Validators.required, Validators.minLength(4)]),
@@ -78,6 +89,7 @@ export class ApplicantComponent implements OnInit {
       debug: true,
       performance: true,
     });
+    // console.log('form password', this.applicantForm);
   }
   tooglepwd() {
     if (this.inputType === 'password') {
@@ -102,5 +114,25 @@ export class ApplicantComponent implements OnInit {
         this.router.navigateByUrl('login');
         console.log(result);
       });
+  }
+
+  fileTypeCheck(event): any {
+    if (event.target.files && event.target.files[0]) {
+      const file = event.target.files[0];
+      if (file.type.split('/')[0] === 'image') {
+        const reader = new FileReader();
+        reader.onload = (rdr) => {
+          console.log('image: ', file.type.split('/')[0]);
+          this.imageFile = false;
+        };
+        // reader reads the image uploaded
+        reader.readAsDataURL(event.target.files[0]);
+        this.profile_photo = event.target.files[0];
+      } else {
+        alert('Filetype Not Supported.');
+        this.imageFile = true;
+        // this.fileTypeCheck(event);
+      }
+    }
   }
 }

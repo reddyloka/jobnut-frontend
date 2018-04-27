@@ -10,23 +10,28 @@ import { uuid } from '../../../../../_helper/uuid';
 })
 export class UserPersonalDetailsComponent implements OnInit {
   id: string;
+  temp: any;
   personaldata: ApplicantBase;
   applicantForm: FormGroup;
   @Input()
   userdata;
 
   @Output()
-  discardClick = new EventEmitter<boolean>();
+  discardClick = new EventEmitter();
   @Output()
-  saveClick = new EventEmitter<boolean>();
+  saveClick = new EventEmitter();
 
   discardClicked() {
-    this.discardClick.emit(true);
+    // Object.assign(this.userdata, this.temp);
+    // this.userdata = this.temp;
+    console.log('Discarderd', this.temp);
+    this.discardClick.emit(JSON.parse(this.temp));
   }
   constructor(private userbaseservice: UserBaseService) {
     this.buildFormGroup();
-    this.personaldata = this.userdata;
-    console.log('personalData', this.personaldata);
+    // this.personaldata = this.userdata;
+    // this.temp = this.userdata;
+    console.log('personalDatadwkfnn kdjsnkjwnjk', JSON.stringify(this.userdata));
     this.id = uuid();
   }
 
@@ -46,15 +51,16 @@ export class UserPersonalDetailsComponent implements OnInit {
     this.applicantForm = new FormGroup(fg);
   }
   ngOnInit() {
+    this.temp = JSON.stringify(this.userdata);
+    console.log('personalDatadwkfnn kdjsnkjwnjk', JSON.stringify(this.temp));
   }
 
   onsubmit() {
     console.log('update values', this.applicantForm);
     this.userbaseservice.updateUserDetailsById(this.applicantForm.value, this.id).
-      then((res) => {
-        this.personaldata = res;
+      then((res: any) => {
+        this.saveClick.emit(this.userdata);
         console.log('success');
       });
-      this.saveClick.emit(true);
   }
 }

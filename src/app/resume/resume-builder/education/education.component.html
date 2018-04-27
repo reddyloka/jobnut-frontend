@@ -1,0 +1,76 @@
+<div class="parent-container">
+  <div class="col-lg-6">
+    <div class="container text-center" id="layout">
+      <h3>
+        <b>EDUCATION DETAILS</b>
+      </h3>
+      <hr>
+    </div>
+    <div id="contact-info" class="vcard">
+      <div class="container" *ngFor="let education of educationDetails;let i=index">
+        <div class="row">
+          <div class="col-lg-10">
+            <b>Qualification{{i+1}}:</b>
+            <span class="tel" [froalaView]="educationDetails[i].Qualification">{{educationDetails[i].Qualification}}</span>
+          </div>
+          <div class="col-lg-2">
+            <button class="btn btn-primary" id="{{i}}" #buttonId (click)="onUpdateButton(buttonId)">Update</button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-10">
+            <b>School{{i+1}}:</b>
+            <span class="tel" [froalaView]="educationDetails[i].schoolName">{{educationDetails[i].schoolName}}</span>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-10">
+            <b>Marks{{i+1}}:</b>
+            <span class="tel" [froalaView]="educationDetails[i].Marks">{{educationDetails[i].Marks}}</span>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-10">
+            <b>Passout Year{{i+1}}:</b>
+            <span class="tel" [froalaView]="educationDetails[i].yearOfPassing">{{educationDetails[i].yearOfPassing}}</span>
+          </div>
+        </div>
+        <br>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-6" id="editor">
+    <div class="container text-center">
+      <h3>
+        <b>EDITOR</b>
+      </h3>
+    </div>
+    <hr>
+    <div class="container text-center">
+      <div class="row">
+        <div class="container text-center">Qualification</div>
+        <p [froalaEditor]='options' [(froalaModel)]="educationDetails[froalaId].Qualification" style="width:80%"></p>
+      </div>
+      <div class="row">
+          <div class="container text-center">School</div>
+        <p [froalaEditor]="options" [(froalaModel)]="educationDetails[froalaId].schoolName" style="width:80%"></p>
+      </div>
+      <div class="row">
+          <div class="container text-center">Marks</div>
+        <p [froalaEditor]="options" [(froalaModel)]="educationDetails[froalaId].Marks" style="width:80%"></p>
+      </div>
+      <div class="row">
+          <div class="container text-center">Year of Passing</div>
+        <p [froalaEditor]="options" [(froalaModel)]="educationDetails[froalaId].yearOfPassing" style="width:80%"></p>
+      </div>
+      <div class="row">
+        <div class="col-lg-6">
+          <button class="btn btn-primary" (click)="onAddDetails()">Add</button>
+        </div>
+        <div class="col-lg-6">
+          <button class="btn btn-primary" (click)="onRemoveDetails()">Remove</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

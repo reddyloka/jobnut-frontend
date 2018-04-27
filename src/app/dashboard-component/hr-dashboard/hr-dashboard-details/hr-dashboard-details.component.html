@@ -7,20 +7,34 @@
     <div class="col-md-10">
       <div class='panel panel-default'>
         <div class="panel-body">
-          <div class="flied">
-            
+          <div class="field">
+
           </div>
-            <div class="row">
-              <div class="col-md-3">
-                <img src="" width="150px" height="150px">
-              </div>
-              <div class="col-md-6">
-                <h1>{{hrdata.firstName}}</h1>
-                <h3>{{hrdata.designation}}</h3>
-                <p>{{hrdata.jobProfile}}</p>
-                <p> <span class="glyphicon glyphicon-map-marker"></span>{{hrdata.city}}</p>
+          <div class="row">
+            <div class="col-md-3 wrapper">
+              <div class="avatar-upload">
+                <div class="avatar-edit">
+                  <input type="file" id="imageUpload" accept=".png, .jpg, .jpeg" (change)="updateProfilePicture($event.target.files)" />
+                  <label for="imageUpload"></label>
+                </div>
+                <div class="avatar-preview">
+                  <!-- <div  [ngStyle]="{background: 'url(http://localhost:3000/images/' + ')'}"></div> -->
+                  <div id="imagePreview" [ngStyle]="{'background-image': profile_photo_for_viewing}"></div>
+                  <!-- <div id="imagePreview" [ngStyle]="{background: 'url(http://localhost:3000/images/' + hrdata.profile_photo + ')'"></div>
+                         -->
+                  <!-- {{"url(http://localhost:3000/images/" + {{hrdata.profile_photo}} + ")"}}> -->
+
+                </div>
               </div>
             </div>
+            <div class="col-md-6">
+              <h1>{{hrdata?.firstName + ' ' + hrdata?.lastName}}</h1>
+              <h3>{{hrdata?.designation}}</h3>
+              <p>{{hrdata?.jobProfile}}</p>
+              <p>
+                <span class="glyphicon glyphicon-map-marker"></span>{{hrdata?.city}}</p>
+            </div>
+          </div>
 
         </div>
       </div>
@@ -28,7 +42,7 @@
 
       <div class='panel panel-default'>
         <div class="panel-body">
-          <div class="flied">
+          <div class="field">
             <h2>Personal Information</h2>
             <a class="fr" (click)="EditPersonalDetails()">Edit</a>
           </div>
@@ -38,7 +52,7 @@
                 <h5>Full Name</h5>
               </div>
               <div class="col-md-6">
-                {{hrdata.firstName}} {{hrdata.lastName }}
+                {{hrdata?.firstName + ' ' + hrdata?.lastName }}
               </div>
             </div>
             <div class="row">
@@ -46,7 +60,7 @@
                 <h5>Email</h5>
               </div>
               <div class="col-md-6">
-                {{hrdata.email}}
+                {{hrdata?.email}}
               </div>
             </div>
             <div class="row">
@@ -54,7 +68,7 @@
                 <h5>Mobile Number</h5>
               </div>
               <div class="col-md-6">
-                {{hrdata.phone}}
+                {{hrdata?.phone}}
               </div>
             </div>
             <div class="row">
@@ -62,7 +76,7 @@
                 <h5>Date of birth</h5>
               </div>
               <div class="col-md-6">
-                {{hrdata.dob | date: 'dd/MM/yyyy'}}
+                {{hrdata?.dob | date: 'dd/MM/yyyy'}}
               </div>
             </div>
             <div class="row">
@@ -70,7 +84,7 @@
                 <h5>Address</h5>
               </div>
               <div class="col-md-6">
-                {{hrdata.address}}
+                {{hrdata?.address}}
               </div>
             </div>
             <div class="row">
@@ -78,7 +92,7 @@
                 <h5>country</h5>
               </div>
               <div class="col-md-6">
-                {{hrdata.country}}
+                {{hrdata?.country}}
               </div>
             </div>
             <div class="row">
@@ -86,7 +100,7 @@
                 <h5>State</h5>
               </div>
               <div class="col-md-6">
-                {{hrdata.state}}
+                {{hrdata?.state}}
               </div>
             </div>
             <div class="row">
@@ -94,16 +108,16 @@
                 <h5>Location</h5>
               </div>
               <div class="col-md-6">
-                {{hrdata.city}}
+                {{hrdata?.city}}
               </div>
             </div>
-          
+
             <div class="row">
               <div class="col-md-3">
                 <h5>designation</h5>
               </div>
               <div class="col-md-6">
-                {{hrdata.designation}}
+                {{hrdata?.designation}}
               </div>
             </div>
             <div class="row">
@@ -111,7 +125,7 @@
                 <h5>current</h5>
               </div>
               <div class="col-md-6">
-                {{hrdata.designation}}
+                {{hrdata?.designation}}
               </div>
             </div>
             <div class="row">
@@ -119,7 +133,7 @@
                 <h5>jobProfile</h5>
               </div>
               <div class="col-md-6">
-                {{hrdata.jobProfile}}
+                {{hrdata?.jobProfile}}
               </div>
             </div>
           </div>
@@ -132,12 +146,12 @@
 
       <div class='panel panel-default'>
         <div class="panel-body">
-          <div class="flied">
+          <div class="field">
             <a class="fr" (click)="AddExperienceMore()">Add more Experiences</a>
             <h2>Experinces</h2>
           </div>
 
-          <div *ngFor="let experience of hrdata.experience; let i = index">
+          <div *ngFor="let experience of hrdata?.experience; let i = index">
             <!-- <a class="fr" (click)="EditExpDetails()">Edit</a> -->
             <div *ngIf="expMain">
               <div class="row">
@@ -145,7 +159,7 @@
                   <h5>Profile Title</h5>
                 </div>
                 <div class="col-md-6">
-                  {{hrdata.experience[i].designation}}
+                  {{hrdata?.experience[i].designation}}
                 </div>
               </div>
               <div class="row">
@@ -153,7 +167,7 @@
                   <h5>Experiences</h5>
                 </div>
                 <div class="col-md-6">
-                  {{hrdata.experience[i].totalExperience}}
+                  {{hrdata?.experience[i].totalExperience}}
                 </div>
               </div>
               <div class="row">
@@ -161,7 +175,7 @@
                   <h5>Description</h5>
                 </div>
                 <div class="col-md-6">
-                  {{hrdata.experience[i].description}}
+                  {{hrdata?.experience[i].description}}
                 </div>
               </div>
 
