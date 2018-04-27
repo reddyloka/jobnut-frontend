@@ -23,7 +23,7 @@
            <h2>Shortlisted</h2>
           </div>
       <div class="eight wide column">
-        <input type="button" class="ui button success"  [value]="isshortlist ? 'Shortlisted' : 'pending...'">
+        <input type="button" [ngClass]="{green: isshortlist, red: !isshortlist}" class="ui button basic"  [value]="isshortlist ? 'Shortlisted' : 'pending...'">
       </div>
     </div>
     <br>

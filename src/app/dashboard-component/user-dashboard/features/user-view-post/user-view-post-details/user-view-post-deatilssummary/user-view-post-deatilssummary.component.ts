@@ -9,7 +9,7 @@ export class UserViewPostDeatilssummaryComponent implements OnInit {
 @Input()
 hrpost;
   constructor() {
-    console.log('SSSSSSSSSSSSS', this.hrpost);
+    // console.log('SSSSSSSSSSSSS', this.hrpost);
    }
 
   ngOnInit() {

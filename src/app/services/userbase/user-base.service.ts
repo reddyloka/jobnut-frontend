@@ -13,6 +13,18 @@ export class UserBaseService {
 
   constructor(private http: Http) { }
 
+  passwordUpdate(email:any,password:any):Promise<boolean>{
+    let personalDetails={
+      email:email,
+      password:password
+    }
+return this.http.post(environment.USER_SERVER + `/api/forgetPassword`,personalDetails)
+    .toPromise()
+    .then(()=>{
+      return true;
+    })
+  }
+
   addNewUser(userDetail: any, files: {}): Promise<boolean> {
     console.log('SSSSSSSSSSSS', userDetail);
     return this.http.post(environment.USER_SERVER + `/api/hr`, userDetail)

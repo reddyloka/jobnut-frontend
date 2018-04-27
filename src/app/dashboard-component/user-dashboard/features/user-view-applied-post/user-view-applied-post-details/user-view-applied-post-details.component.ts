@@ -29,23 +29,25 @@ export class UserViewAppliedPostDetailsComponent implements OnInit {
     // this.isshortlist = false;
   }
   ngOnInit() {
-    this.route.paramMap.subscribe((params: ParamMap) => {
+    this.route.paramMap.subscribe(async (params: ParamMap) => {
       // console.log('NNNNNNNNNNNNNNNNNnn');
       const hrpost_id = params.get('user-post.id');
-      this.hrbaseservice.getHrPostById(hrpost_id).
-        then((hrpost) => {
-          this.hrpost = hrpost;
-          console.log('shhhhhhh');
-        });
-    });
-    this.userbaseservice.getUserDetailsById(this.id).
-      then((userdata) => {
-        this.userdata = userdata;
+      this.hrpost = await this.hrbaseservice.getHrPostById(hrpost_id);
+      // .
+      // then((hrpost) => {
+        // this.hrpost = hrpost;
+        // console.log('shhhhhhh', this.hrpost);
+        // });
+        this.userdata = await this.userbaseservice.getUserDetailsById(this.id);
+      // .
+      // then((userdata) => {
+        //  = userdata;
+        // console.log("UUUUUUUUUUUUUUUU");
         this.shortlisted();
       });
   }
   shortlisted() {
-    // console.log('shhhhhhhooooooooo', this.hrpost.applicants);
+    console.log('shhhhhhhooooooooo', this.hrpost.applicants);
     this.hrpost.applicants.map((ele) => {
       console.log('shhhhhhhooooooooorrrrrrr', ele.isShortlisted
     );
@@ -54,7 +56,6 @@ export class UserViewAppliedPostDetailsComponent implements OnInit {
        console.log(this.isshortlist);
       }
     });
-
    }
 }
 

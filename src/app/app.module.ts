@@ -63,6 +63,7 @@ import { HrManageApplicantListDetailsComponent } from './dashboard-component/hr-
 import { HrPostdetailsEditListComponent } from './dashboard-component/hr-dashboard/features/hr-postdetails/hr-postdetails-edit-list/hr-postdetails-edit-list.component';
 import { UserViewAppliedPostComponent } from './dashboard-component/user-dashboard/features/user-view-applied-post/user-view-applied-post.component';
 import { UserViewAppliedPostDetailsComponent } from './dashboard-component/user-dashboard/features/user-view-applied-post/user-view-applied-post-details/user-view-applied-post-details.component';
+import { ForgetpasswordComponent } from './uni-component/forgetpassword/forgetpassword.component';
 
 
 
@@ -111,7 +112,8 @@ import { UserViewAppliedPostDetailsComponent } from './dashboard-component/user-
     HrManageApplicantListDetailsComponent,
     HrPostdetailsEditListComponent,
     UserViewAppliedPostComponent,
-    UserViewAppliedPostDetailsComponent
+    UserViewAppliedPostDetailsComponent,
+    ForgetpasswordComponent
 
   ],
   imports: [

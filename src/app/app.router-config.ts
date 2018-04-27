@@ -22,7 +22,7 @@ import { NotificationComponent } from './uni-component/misc/notification/notific
 import { HrManageApplicantComponent } from './dashboard-component/hr-dashboard/features/hr-postdetails/hr-manage-applicant/hr-manage-applicant.component';
 import { UserViewAppliedPostComponent } from './dashboard-component/user-dashboard/features/user-view-applied-post/user-view-applied-post.component';
 import { UserViewAppliedPostDetailsComponent } from './dashboard-component/user-dashboard/features/user-view-applied-post/user-view-applied-post-details/user-view-applied-post-details.component';
-
+import { ForgetpasswordComponent } from './uni-component/forgetpassword/forgetpassword.component';
 
 export const routerConfig: Routes = [
   // basic routes
@@ -130,8 +130,8 @@ export const routerConfig: Routes = [
 
   { path: 'notif', component: NotificationComponent },
   { path: 'callback', component: CallbackComponent },
-
-
+  { path: 'forgetPassword', component: ForgetpasswordComponent },
+  
   { path: '', redirectTo: 'login', pathMatch: 'full' },
-
+  
 ];

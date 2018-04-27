@@ -13,7 +13,7 @@ import { JwtService } from '../../_helper/jwt.service';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/throw';
-
+ 
 
 const USER_SERVER = 'http://localhost:3000';
 @Injectable()
@@ -87,7 +87,6 @@ export class AuthService {
   // getExpiration() {
   //   const expiration = localStorage.getItem('expires_at');
   //   const expiresAt = JSON.parse(expiration);
-
   //   return moment(expiresAt);
   // }
 }
