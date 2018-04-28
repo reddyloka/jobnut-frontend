@@ -26,7 +26,7 @@ export class Hrbase {
     currDesignation: string;
     jobProfile: string;
     experience: Experience[];
-    profilePhoto: string;
+    profile_photo: string;
     dashboard: Dashboard;
     isHr: boolean;
     isApplicant: boolean;
@@ -52,7 +52,7 @@ export class Hrbase {
         this.jobProfile = jobProfile;
         this.experience = experience;
         this.password = p;
-        this.profilePhoto = pp;
+        this.profile_photo = pp;
         this.dashboard = dashB;
         this.isHr = ihr;
         this.isApplicant = iApl;

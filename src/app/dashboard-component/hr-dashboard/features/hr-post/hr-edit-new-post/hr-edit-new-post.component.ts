@@ -5,6 +5,7 @@ import { HrbaseService } from '../../../../../services/hrbase.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AbstractControl, ValidatorFn, FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { uuid } from '../../../../../model/uuid';
+import { NotificationService } from '../../../../../_shared/notification.service';
 declare var $: any;
 @Component({
   selector: 'app-hr-edit-new-post',
@@ -15,10 +16,18 @@ export class HrEditNewPostComponent implements OnInit {
   skillsArray: string[];
   hrpostNewDataForm: FormGroup;
   id: string;
+  popup = {
+    isActive: false,
+    message: 'this is popup',
+    title: 'My Popup',
+    stay: 3000
+  };
 
   hrpostNewData: HrPostDetail;
   constructor(private hrbaseservice: HrbaseService,
-    private router: Router) {
+    private router: Router,
+    private _notif: NotificationService
+  ) {
     this.hrpostNewData = HrPostDetail.createblank();
     console.log(this.hrpostNewData);
     this.buildFormGroup();
@@ -61,8 +70,17 @@ export class HrEditNewPostComponent implements OnInit {
     });
   }
 
+  // accept incoming change new notification feature added
   onSubmit() {
-    this.hrbaseservice.addNewPost(this.hrpostNewData, this.id);
     this.router.navigateByUrl('jobs-posted');
+    this.hrbaseservice.addNewPost(this.hrpostNewData, this.id)
+      .then((res) => {
+        this._notif.pop(res.message, 'Successfull', 3000);
+        if (res.success) {
+          console.log( res.message, res.data );
+        }
+      }).catch();
+    // this.router.navigate(['hr-post']);
   }
+
 }

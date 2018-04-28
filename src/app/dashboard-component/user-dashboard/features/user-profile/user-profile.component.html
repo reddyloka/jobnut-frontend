@@ -1,222 +1,227 @@
 <app-user-header [userdata]=userdata></app-user-header>
 
-<div class="row" style="margin:30px">
-  <div class="col-md-8">
-    <div class='panel panel-default'>
-      <div class="panel-body">
-        <div class="flied">
+<div class="ui grid centered" style="margin-top: 2%;">
+  <div class="four wide ui segment column grid" style="padding-left: 0%; padding-right: 20px;">
+    <div class="row centered">
+      <div class="avatar-upload">
+        <div class="avatar-edit">
+          <input type="file" id="imageUpload" accept=".png, .jpg, .jpeg" (change)="updateProfilePicture($event.target.files)" />
+          <label for="imageUpload"></label>
+        </div>
+        <div class="avatar-preview">
+          <!-- <div  [ngStyle]="{background: 'url(http://localhost:3000/images/' + ')'}"></div> -->
+          <div id="imagePreview" [ngStyle]="{'background-image': profile_photo_for_viewing}"></div>
+          <!-- <div id="imagePreview" [ngStyle]="{background: 'url(http://localhost:3000/images/' + hrdata.profile_photo + ')'"></div>
+                       -->
+          <!-- {{"url(http://localhost:3000/images/" + {{hrdata.profile_photo}} + ")"}}> -->
 
         </div>
-        <div class="row">
-          <div class="col-md-3">
-            <img src="" width="150px" height="150px">
-          </div>
-          <div class="col-md-6">
-            <h1>{{userdata.firstName}} {{userdata.lastName }}</h1>
-            <p>{{userdata.email}} </p>
-            <p>{{userdata.phone}} </p>
-          </div>
-        </div>
-
-      </div>
-
-    </div>
-    <br>
-
-    <div class='panel panel-default'>
-      <div class="panel-body">
-        <div class="flied">
-          <h2>Personal Information</h2>
-          <a class="fr" (click)="EditPersonalDetails()">Edit</a>
-        </div>
-        <div *ngIf="detailsMain">
-          <div class="row">
-            <div class="col-md-3">
-              <h5>Full Name</h5>
-            </div>
-            <div class="col-md-6">
-              {{userdata.firstName}} {{userdata.lastName }}
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-3">
-              <h5>Email</h5>
-            </div>
-            <div class="col-md-6">
-              {{userdata.email}}
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-3">
-              <h5>Mobile Number</h5>
-            </div>
-            <div class="col-md-6">
-              {{userdata.phone}}
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-3">
-              <h5>Date of birth</h5>
-            </div>
-            <div class="col-md-6">
-              {{userdata.dob | date: 'dd/MM/yyyy'}}
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-3">
-              <h5>Address</h5>
-            </div>
-            <div class="col-md-6">
-              {{userdata.address}}
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-3">
-              <h5>Location</h5>
-            </div>
-            <div class="col-md-6">
-              {{userdata.location}}
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-3">
-              <h5>Gender</h5>
-            </div>
-            <div class="col-md-6">
-              {{userdata.gender}}
-            </div>
-          </div>
-        </div>
-        <div *ngIf="detailsOpen">
-          <app-user-personal-details (discardClick)="closeDetails()" (saveClick)="closeDetails()" [userdata]="userdata"></app-user-personal-details>
-        </div>
-      </div>
-
-    </div>
-
-    <div class='panel panel-default'>
-      <div class="panel-body">
-        <div class="flied">
-          <a class="fr" (click)="AddExperienceMore()">Add more Experiences</a>
-          <h2>Experinces</h2>
-
-        </div>
-
-        <div *ngFor="let experience of userdata.experience; let i = index">
-          <!-- <a class="fr" (click)="EditExpDetails()">Edit</a> -->
-          <div *ngIf="expMain">
-            <div class="row">
-              <div class="col-md-3">
-                <h5>Profile Title</h5>
-              </div>
-              <div class="col-md-6">
-                {{userdata.experience[i].designation}}
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-3">
-                <h5>Experiences</h5>
-              </div>
-              <div class="col-md-6">
-                {{userdata.experience[i].totalExperience}}
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-3">
-                <h5>Description</h5>
-              </div>
-              <div class="col-md-6">
-                {{userdata.experience[i].description}}
-              </div>
-            </div>
-
-          </div>
-          <div *ngIf="expOpen">
-            <app-user-experience-details (discardClick)="closeExp()" [userdata]="userdata"></app-user-experience-details>
-          </div>
-          <hr>
-        </div>
-        <div *ngIf="expAdd">
-          <app-user-experience-add-details (discardClick)="closeAddExp()" ></app-user-experience-add-details>
+        <div class="container ui">
+          <a class="fr" (click)="EditPersonalDetails()" style="float: right;">Edit</a>
         </div>
       </div>
     </div>
-
-    <div class='panel panel-default'>
-      <div class="panel-body">
-        <a class="fr" (click)="AddEducationMore()">Add more Qualification</a>
-        <div class="flied">
-          <h2>Education</h2>
-
-        </div>
-
-
-        <div *ngFor="let education of userdata.education; let i = index">
-          <div *ngIf="educationMain">
-            <!-- <a class="fr" (click)="EditEducationDetails()">Edit</a> -->
-            <div class="row">
-              <div class="col-md-3">
-                <h5>Highest Qualification</h5>
-              </div>
-              <div class="col-md-6">
-                {{userdata.education[i].higherDegreeValue}}
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-3">
-                <h5>University/College/School</h5>
-              </div>
-              <div class="col-md-6">
-                {{userdata.education[i].universityName}}
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-3">
-                <h5>Passing Year</h5>
-              </div>
-              <div class="col-md-6">
-                {{userdata.education[i].passingYearValue}}
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-3">
-                <h5>Percentage</h5>
-              </div>
-              <div class="col-md-6">
-                {{userdata.education[i].percentageValue}}
-              </div>
-            </div>
+    <div class="row centered">
+      <div class="segment fluid ui" style="width: 100%; border-color: tomato">
+        {{userdata?.firstName}} {{userdata?.lastName }}
+      </div>
+      <div class="ui container fluid">
+        <a class="ui teal image label">
+          <i class="at icon"></i>
+          <div class="detail">{{userdata?.email}}</div>
+        </a>
+      </div>
+      <div class="ui container compact" style="width: fit-content; margin-top: 1em;">
+        <div class="ui celled list">
+          <div class="item">
+            <i class="mobile icon"></i>
+            {{userdata?.phone}}
           </div>
-          <div *ngIf="educationOpen">
-            <app-user-education-details (discardClick)="closeEducation()" [userdata]="userdata.education[i]"></app-user-education-details>
+          <div class="item">
+            <i class="birthday cake icon"></i>
+            {{userdata?.dob | date: 'dd/MM/yyyy'}}
           </div>
-          <hr>
+          <div class="item">
+            <i class="home icon"></i>
+            {{userdata?.address}}
+          </div>
+          <div class="item">
+            <i class="location arrow icon"></i>
+            {{userdata?.location}}
+          </div>
+          <div class="item">
+            <i [ngClass]="{mars: isMale, venus: isFemale, icon: true}"></i>
+            {{userdata?.gender}}
+          </div>
         </div>
-
-
-
       </div>
-      <div *ngIf="educationAdd">
-        <app-user-education-add-details (discardClick)="closeAddEducation()" [userdata]="userdata"></app-user-education-add-details>
-      </div>
+
+
+      <!-- <div *ngIf="detailsMain">
+      </div> -->
+      <!-- <div  class="long modal" > -->
+      <!-- <app-user-personal-details (discardClick)="closeDetails()" (saveClick)="closeDetails()" [userdata]="userdata"></app-user-personal-details> -->
+      <!-- <div *ngIf="detailsOpen"></div> -->
+      <!-- </div> -->
+
+
     </div>
-
-    <div class='panel panel-default'>
-      <div class="panel-body">
-        <div class="flied">
-          <h2>Skills</h2>
-          <a class="fr" (click)="EditSkillsDetails()">Edit</a>
-        </div>
-        <div *ngIf="skillMain">
-          <p>{{userdata.skillValue}}</p>
-        </div>
-        <div *ngIf="skillOpen">
-          <app-user-skills-details (discardClick)="closeSkill()" [userdata]="userdata"></app-user-skills-details>
-        </div>
-
-
-      </div>
+    <div class="row centered">
     </div>
-
-
   </div>
+
+  <!-- '/../src/assets/images/shared/cartoon.png' -->
+  <!-- <div class="eleven wide ui segment centered column grid" [ngStyle]="{'background-size': !skillActive?'0vh' :'25vh'}" style="margin: 0 0 1em 1em;float: right;background-image: url('assets/images/shared/cartoon.png');background-repeat:  no-repeat;background-position: 26em 28em;background-blend-mode: darken;transition-duration: 800ms;"> -->
+  <div class="eleven wide ui segment centered column grid" style="margin: 0 0 1em 1em;overflow: hidden;scroll-behavior: unset">
+    <div class="ui styled fluid accordion">
+      <!-- Experiences -->
+      <div class="active title" (click)="skillActive = false;">
+        <a class="fr float right" (click)="AddExperienceMore()">Add more Experiences</a>
+        <i class="dropdown icon"></i>
+        Experinces
+      </div>
+      <div class="active content">
+        <div class='panel panel-default'>
+          <div class="panel-body">
+            <div class="field">
+
+            </div>
+
+            <div *ngFor="let experience of userdata?.experience; let i = index">
+              <div *ngIf="expMain">
+                <div class="row">
+                  <div class="col-md-3">
+                    <h5>Profile Title</h5>
+                  </div>
+                  <div class="col-md-6">
+                    {{userdata.experience[i]?.designation}}
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-3">
+                    <h5>Experiences</h5>
+                  </div>
+                  <div class="col-md-6">
+                    {{userdata.experience[i]?.totalExperience}}
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-3">
+                    <h5>Description</h5>
+                  </div>
+                  <div class="col-md-6">
+                    {{userdata?.experience[i].description}}
+                  </div>
+                </div>
+
+              </div>
+              <div *ngIf="expOpen">
+                <app-user-experience-details (discardClick)="closeExp()" [userdata]="userdata"></app-user-experience-details>
+              </div>
+              <hr>
+            </div>
+            <div *ngIf="expAdd">
+              <app-user-experience-add-details (discardClick)="closeAddExp()"></app-user-experience-add-details>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Experiences -->
+      <!-- Educations -->
+      <div class="title" (click)="skillActive = false;">
+        <a class="fr" (click)="AddEducationMore()">Add more Qualification</a>
+        <i class="dropdown icon"></i>
+        Education
+      </div>
+      <div class="content">
+        <div class='panel panel-default'>
+          <div class="panel-body">
+            <div *ngFor="let education of userdata?.education; let i = index">
+              <div *ngIf="educationMain">
+                <!-- <a class="fr" (click)="EditEducationDetails()">Edit</a> -->
+                <div class="row">
+                  <div class="col-md-3">
+                    <h5>Highest Qualification</h5>
+                  </div>
+                  <div class="col-md-6">
+                    {{userdata?.education[i].higherDegreeValue}}
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-3">
+                    <h5>University/College/School</h5>
+                  </div>
+                  <div class="col-md-6">
+                    {{userdata?.education[i].universityName}}
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-3">
+                    <h5>Passing Year</h5>
+                  </div>
+                  <div class="col-md-6">
+                    {{userdata?.education[i].passingYearValue}}
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-3">
+                    <h5>Percentage</h5>
+                  </div>
+                  <div class="col-md-6">
+                    {{userdata?.education[i].percentageValue}}
+                  </div>
+                </div>
+              </div>
+              <div *ngIf="educationOpen">
+                <app-user-education-details (discardClick)="closeEducation()" [userdata]="userdata?.education[i]"></app-user-education-details>
+              </div>
+              <hr>
+            </div>
+
+
+
+          </div>
+          <div *ngIf="educationAdd">
+            <app-user-education-add-details (discardClick)="closeAddEducation()" [userdata]="userdata"></app-user-education-add-details>
+          </div>
+        </div>
+      </div>
+      <!-- Educations -->
+      <!-- Skills -->
+      <div class="title" (click)="skillActive = true;">
+        <a class="fr" (click)="EditSkillsDetails()">Edit</a>
+        <i class="dropdown icon"></i>
+        Skills
+      </div>
+      <div class="content">
+        <div class='panel panel-default'>
+          <div class="panel-body">
+            <div class="field">
+            </div>
+            <div *ngIf="skillMain">
+              <p>{{userdata?.skillValue}}</p>
+            </div>
+            <div *ngIf="skillOpen">
+              <app-user-skills-details (discardClick)="closeSkill()" [userdata]="userdata"></app-user-skills-details>
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+      <!-- Skills -->
+    </div>
+    <div *ngIf="skillActive" [ngClass]="{'animated': true,'fadeInDown': skillActive }" class="ui info fluid message grid centered"
+      style="margin:8em 14em;position: absolute;">
+      {{qod}}
+    </div>
+  </div>
+</div>
+
+
+<hr>
+
+<div *ngIf="detailsOpen" [ngClass]="{'ui': true, 'dimmer': true, 'modals': true, 'page': true, 'top': true, 'aligned': true, 'transition': true, 'visible': detailsOpen, 'active': detailsOpen}" style="display: flex !important;">
+  
+  <app-user-personal-details (discardClick)="closeDetails($event)" (saveClick)="closeDetails($event)" [userdata]="userdata"></app-user-personal-details>
+</div>

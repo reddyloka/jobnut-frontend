@@ -33,11 +33,12 @@ export class ApplicantBase {
     isApplicant: boolean;
     isHr: boolean;
     status: boolean;
+    profile_photo: string;
     newEducation: Education;
     education: Education[];
     experience: Experience[];
 
-    constructor(firstName: string, lastName: string, email: string, dob: Date, password: string, phone: number, address: string, location: string, gender: string, skillValue: string[], isA: boolean, dashB: Dashboard, isH: boolean, st: boolean, education: Education[], experience: Experience[]) {
+    constructor(firstName: string, lastName: string, email: string, dob: Date, password: string, phone: number, address: string, location: string, gender: string, skillValue: string[], isA: boolean, dashB: Dashboard, isH: boolean, st: boolean, pp: string, education: Education[], experience: Experience[]) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -52,13 +53,14 @@ export class ApplicantBase {
         this.isApplicant = isA;
         this.isHr = isH;
         this.status = st;
+        this.profile_photo = pp;
         this.education = education;
         this.experience = experience;
 
     }
 
     public static createblank(): ApplicantBase {
-        return new ApplicantBase(null, null, null, null, null, null, null, null, null, [], null, null, null, null, [{ higherDegreeValue: '', universityName: '', passingYearValue: '', percentageValue: '' }], []);
+        return new ApplicantBase(null, null, null, null, null, null, null, null, null, [], null, null, null, null, null, [{ higherDegreeValue: '', universityName: '', passingYearValue: '', percentageValue: '' }], []);
     }
 
 }

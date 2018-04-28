@@ -11,35 +11,46 @@ import { NotificationService } from '../../../_shared/notification.service';
 })
 export class NotificationComponent implements OnInit, OnChanges {
 
-  @HostBinding('attr.class') cssClass = 'hidden';
+  @HostBinding('attr.class') cssClass = 'active';
   @Output()
   donePopup = new EventEmitter<boolean>();
-  @Input() data: any;
+  // @Input() data: any;
   message: string;
   title: string;
   isActive: boolean;
   stay: number;
 
-  constructor() {
-  }
+  constructor(public _notif: NotificationService) {
 
-
-  ngOnInit() {
+    this.message = _notif.message;
+    this.title = _notif.title;
+    this.stay = _notif.stay;
+    this.isActive = _notif.activatePopup;
+    // this.cssClass = this.isActive ? 'active' : 'hidden';
+    console.log('_notif- ', _notif);
     setTimeout(() => {
       this.donePopup.emit(false);
     }, this.stay);
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    if (this.data) {
-      Object.assign(this, this.data);
-      this.cssClass = this.isActive ? 'active' : 'hidden';
-    }
-    console.log(this);
+
+  ngOnInit() {
   }
 
+  // ngOnChanges(changes: SimpleChanges): void {
+  //   if (this.data) {
+  // Object.assign(this, this.data);
+  //   }
+  //   console.log(this);
+  // }
+  ngOnChanges() {
+    this.message = this._notif.message;
+    this.title = this._notif.title;
+    this.stay = this._notif.stay;
+    this.isActive = this._notif.activatePopup;
+  }
   @HostListener('click') displayMessage(): void {
+    console.log('messa: ', this.message);
     this.donePopup.emit(false);
   }
-
 }

@@ -1,6 +1,4 @@
 import { Http } from '@angular/http';
-
-
 import { Injectable } from '@angular/core';
 import { HrPostDetail } from '../model/hrpostdetails';
 import { environment } from '../../environments/environment';
@@ -15,10 +13,10 @@ export class HrbaseService {
 
 
   getAllHrPost(user: string): Promise<HrPostDetail[]> {
-    // user = localStorage['id_token'];
+    user = localStorage['id_token'];
     return this.http.get(`${environment.USER_SERVER}/api/posts`, {
       params: {
-        'hrRef': user
+        'token': user
       }
     })
       .toPromise()
@@ -45,7 +43,9 @@ export class HrbaseService {
 
   getHrPostById(hrpost_id): Promise<HrPostDetail> {
     console.log(' :: ', hrpost_id);
-    return this.http.get(`${environment.USER_SERVER}/api/posts/${hrpost_id}`)
+    return this.http.get(`${environment.USER_SERVER}/api/posts/${hrpost_id}`, {
+      params: { token : localStorage['id_token']}
+    })
       .toPromise()
       .then((response) => {
         console.log('id data:', response.json().data);
@@ -53,18 +53,19 @@ export class HrbaseService {
       });
   }
 
-  addNewPost(hrpostdetail: HrPostDetail, user: string): Promise<boolean> {
+  addNewPost(hrpostdetail: HrPostDetail, user: string): Promise<any> {
     // this.hrpostdetails.unshift(hrpostdetail);
     console.log('data123', hrpostdetail);
+    user = localStorage['id_token'];
     return this.http.put(`${environment.USER_SERVER}/api/posts/new-post`, hrpostdetail, {
       params: {
-        'id': user
+        'token': user
       }
     })
       .toPromise()
       .then((response) => {
-        console.log(' 123 : ', response);
-        return false;
+        console.log(' 123 : ', response.json());
+        return response.json();
       });
   }
 
@@ -81,7 +82,7 @@ export class HrbaseService {
   }
 
 
-  getHrDetailsById(user: string): Promise<Hrbase> {
+  getHrDetailsById(user: string): Promise<any> {
     console.log('user_id', user);
     return this.http.get(`${environment.USER_SERVER}/api/hrs`, {
       params: {
