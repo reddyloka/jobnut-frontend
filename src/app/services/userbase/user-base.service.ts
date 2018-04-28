@@ -22,7 +22,7 @@ return this.http.post(environment.USER_SERVER + `/api/checkMailId`,emailDetails)
 .toPromise()
     .then((data)=>{
      data=data.json();
-     console.log('returned data',data.status)
+     console.log('returned data ',data.status)
       return data.status;
     })
   }

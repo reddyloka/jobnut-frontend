@@ -52,7 +52,7 @@ export class HrDashboardDetailsComponent implements OnInit {
     this.id = uuid();
   }
 
-  async ngOnInit() {
+   ngOnInit() {
     // console.log('from hr: ', this._authService.isLoggedIn());
     // if (!this._authService.isLoggedIn()) {
     //   this.router.navigateByUrl('login');
@@ -60,14 +60,12 @@ export class HrDashboardDetailsComponent implements OnInit {
     if (!this._authService.isLoggedIn) {
       this.router.navigateByUrl('login');
     }
-    const result = await this.hrbaseservice.getHrDetailsById(this.id);
-    console.log('::data::', result.data);
-    this.hrdata = result.data;
-
-      await console.log('sjbjn', this.hrdata);
-
-      this.profile_photo_for_viewing = this.getUrl();
-
+   this.hrbaseservice.getHrDetailsById(this.id).then((data)=>{
+           this.hrdata = data;
+         console.log('hr data', this.hrdata);
+        this.profile_photo_for_viewing = this.getUrl();
+    })
+  
   }
 
   EditPersonalDetails() {
