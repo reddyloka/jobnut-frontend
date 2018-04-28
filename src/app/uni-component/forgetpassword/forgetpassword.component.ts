@@ -19,11 +19,12 @@ export class ForgetpasswordComponent implements OnInit {
   resetInfo:Boolean=false;
   inputType: string='password';
   user_details:ApplicantBase;
-
+ 
   constructor(private fb: FormBuilder,private _userbase:UserBaseService,private router: Router) {
     this.user_details = ApplicantBase.createblank();
     this.loginEmailForm = fb.group({
-      userEmail: new FormControl(null, [Validators.required, Validators.pattern('[A-Za-z\.0-9]+@[A-Za-z]+(.)[A-Za-z]+')])
+      userEmail: new FormControl(null, [Validators.required, Validators.pattern('[A-Za-z\.0-9]+@[A-Za-z]+(.)[A-Za-z]+')]),
+      isHr: new FormControl(false, Validators.required)
     });
     this.resetForm = fb.group({
      password: new FormControl(null, [Validators.required, Validators.pattern('(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z]).{5,}$')]),
@@ -42,12 +43,19 @@ export class ForgetpasswordComponent implements OnInit {
   }
   resetPassword(){
     this.forgetInfo=false;
-    this.resetInfo=true;
+    this._userbase.checkMailId(this.loginEmailForm.value).then((data)=>{
+      console.log('id exists',data);
+      if(data){
+       this.resetInfo=true;
+      }else{
+        window.alert('Email address was not registered with us Please Signup with Jobnut');
+        this.router.navigateByUrl('signin');
+      }
+    })
+  
 }
 onSubmit(){
-  console.log('login form value',this.loginEmailForm.value);
-  console.log('reset form value',this.resetForm.value);
-this._userbase.passwordUpdate(this.loginEmailForm.value.userEmail,this.resetForm.value.password)
+this._userbase.passwordUpdate(this.loginEmailForm.value,this.resetForm.value.password)
 .then(()=>{
   console.log('password updated successfully');
   this.router.navigateByUrl('login');

@@ -50,11 +50,10 @@ export class UserViewPostDetailsComponent implements OnInit {
   applytopost() {
     // console.log('shhhhhhhooooooooo', this.hrpost.applicants);
     this.hrpost.applicants.map((ele) => {
-      console.log('shortlisted', ele.isShortlisted
-    );
+      console.log('shortlisted ', ele.isShortlisted);
       if (ele._id._id === this.id) {
         this.istoapply = true;
-       console.log(this.istoapply);
+       console.log('apply status ',this.istoapply);
       }
     });
 

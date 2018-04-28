@@ -13,14 +13,30 @@ export class UserBaseService {
 
   constructor(private http: Http) { }
 
-  passwordUpdate(email:any,password:any):Promise<boolean>{
+checkMailId(checkDetails:any):Promise<any> {
+  let emailDetails={
+    email:checkDetails.userEmail,
+    isHr:checkDetails.isHr
+  }
+return this.http.post(environment.USER_SERVER + `/api/checkMailId`,emailDetails)
+.toPromise()
+    .then((data)=>{
+     data=data.json();
+     console.log('returned data',data.status)
+      return data.status;
+    })
+  }
+
+  passwordUpdate(emailDetails:any,password:any):Promise<boolean>{
     let personalDetails={
-      email:email,
+      email:emailDetails.userEmail,
+      isHr:emailDetails.isHr,
       password:password
     }
-return this.http.post(environment.USER_SERVER + `/api/forgetPassword`,personalDetails)
+return this.http.post(environment.USER_SERVER + `/api/resetPassword`,personalDetails)
     .toPromise()
     .then(()=>{
+      console.log('returned');
       return true;
     })
   }
