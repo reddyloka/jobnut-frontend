@@ -76,11 +76,14 @@ export class ApplicantComponent implements OnInit {
       label: {
         duration: 0,
       },
-      debug: true,
+      // debug: true,
       performance: true,
     });
+    
+    
   }
   tooglepwd() {
+    console.log('form pass', this.applicantForm.controls.password.valid);
     if (this.inputType === 'password') {
       this.inputType = 'text';
     } else if (this.inputType === 'text') {
@@ -91,7 +94,6 @@ export class ApplicantComponent implements OnInit {
     this.educationInfo = true;
     this.personalInfo = false;
   }
-
 
   onSubmit() {
     console.log('Applicant details', this.user_details);

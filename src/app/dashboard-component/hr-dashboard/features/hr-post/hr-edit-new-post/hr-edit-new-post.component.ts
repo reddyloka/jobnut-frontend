@@ -65,7 +65,7 @@ export class HrEditNewPostComponent implements OnInit {
       label: {
         duration: 0,
       },
-      debug: true,
+      // debug: true,
       performance: true,
     });
   }

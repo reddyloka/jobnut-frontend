@@ -4,20 +4,12 @@ import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
-<<<<<<< HEAD
-import {NgxPaginationModule} from 'ngx-pagination';
-=======
 import { NgxPaginationModule } from 'ngx-pagination';
->>>>>>> 84a2d18d9a775b930fc3171a68514a1504127d3e
 import { CommonModule } from '@angular/common';
 
 import { Ng2ImgMaxModule } from 'ng2-img-max';
 
-<<<<<<< HEAD
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-=======
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
->>>>>>> 84a2d18d9a775b930fc3171a68514a1504127d3e
 // import {ToasterModule, ToasterService} from '@angular2-toaster';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
@@ -76,10 +68,6 @@ import { DataService } from './_shared/data.service';
 import { HrManageApplicantListComponent } from './dashboard-component/hr-dashboard/features/hr-postdetails/hr-manage-applicant/hr-manage-applicant-list/hr-manage-applicant-list.component';
 import { HrHeaderComponent } from './dashboard-component/hr-dashboard/hr-header/hr-header.component';
 import { HrManageApplicantListDetailsComponent } from './dashboard-component/hr-dashboard/features/hr-postdetails/hr-manage-applicant/hr-manage-applicant-list-details/hr-manage-applicant-list-details.component';
-<<<<<<< HEAD
-=======
-// import { AppRoutingModule } from './resume/app-routing/app-routing.module';
->>>>>>> 84a2d18d9a775b930fc3171a68514a1504127d3e
 import { HomeComponent } from './resume/home/home.component';
 import { ResumeBuilderComponent } from './resume/resume-builder/resume-builder.component';
 import { PersonalDetailsComponent } from './resume/resume-builder/personal-details/personal-details.component';

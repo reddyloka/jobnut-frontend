@@ -203,12 +203,12 @@
                   <h5>Skill Required</h5>
                 </div>
                 <div class="col-md-6">
-                  <!-- <p>{{hrpost. skillValue}}</p> -->
+                  <p>{{hrdata?.skillValue}}</p>
                 </div>
               </div>
             </div>
             <div *ngIf="SkillsOpen">
-              <app-hr-skill (discardClick)="closeSkills()"></app-hr-skill>
+              <app-hr-skill [hrdata]="hrdata" (discardClick)="closeSkills()"></app-hr-skill>
             </div>
 
           </div>

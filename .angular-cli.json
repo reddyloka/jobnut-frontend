@@ -28,14 +28,7 @@
         "../node_modules/froala-editor/css/froala_style.min.css"
       ],
       "scripts": [
-        "../node_modules/jquery/dist/jquery.min.js",
-<<<<<<< HEAD
         "../node_modules/froala-editor/js/froala_editor.pkgd.min.js",
-=======
-        "../node_modules/froala-editor/js/froala_editor.pkgd.min.js"
-      ],
-      "scripts": [
->>>>>>> 84a2d18d9a775b930fc3171a68514a1504127d3e
         "../node_modules/blueimp-canvas-to-blob/js/canvas-to-blob.min.js"
       ],
       "environmentSource": "environments/environment.ts",

@@ -111,7 +111,6 @@ export class UserBaseService {
         console.log('data get of user: ', response.json());
         return response.json();
       });
-
   }
 
   updateUserDetailsById(updateDetails: any, user: string): Promise<ApplicantBase> {
@@ -127,7 +126,6 @@ export class UserBaseService {
         console.log('data get of user: ', response.json());
         return response.json();
       });
-
   }
 
   updateUserApplyPost(postid: string, userid: string): Promise<Boolean> {
