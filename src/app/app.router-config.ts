@@ -1,25 +1,4 @@
 import { Routes } from '@angular/router';
-import { LoginComponent } from './uni-component/login/login.component';
-import { SignupComponent } from './uni-component/signup/signup.component';
-import { HrComponent } from './uni-component/signup/hr/hr.component';
-import { ApplicantComponent } from './uni-component/signup/applicant/applicant.component';
-import { HrDashboardComponent } from './dashboard-component/hr-dashboard/hr-dashboard.component';
-import { HrPostdetailsComponent } from './dashboard-component/hr-dashboard/features/hr-postdetails/hr-postdetails.component';
-import { HrPostComponent } from './dashboard-component/hr-dashboard/features/hr-post/hr-post.component';
-import { HrEditNewPostComponent } from './dashboard-component/hr-dashboard/features/hr-post/hr-edit-new-post/hr-edit-new-post.component';
-import { UserDashboardComponent } from './dashboard-component/user-dashboard/user-dashboard.component';
-import { UserViewPostComponent } from './dashboard-component/user-dashboard/features/user-view-post/user-view-post.component';
-import { UserViewComponent } from './dashboard-component/user-dashboard/features/user-view/user-view.component';
-import { UserViewPostDetailsComponent } from './dashboard-component/user-dashboard/features/user-view-post/user-view-post-details/user-view-post-details.component';
-import { UserViewPostDeatilssummaryComponent } from './dashboard-component/user-dashboard/features/user-view-post/user-view-post-details/user-view-post-deatilssummary/user-view-post-deatilssummary.component';
-
-import { CallbackComponent } from './uni-component/misc/callback/callback.component';
-import { LoggedInGuard } from './_guards/logged-in.guard';
-import { HrDashboardDetailsComponent } from './dashboard-component/hr-dashboard/hr-dashboard-details/hr-dashboard-details.component';
-// import { HrDetailsComponent } from './dashboard-component/hr-dashboard/hr-data/hr-details/hr-details.component';
-import { UserProfileComponent } from './dashboard-component/user-dashboard/features/user-profile/user-profile.component';
-import { NotificationComponent } from './uni-component/misc/notification/notification.component';
-import { HrManageApplicantComponent } from './dashboard-component/hr-dashboard/features/hr-postdetails/hr-manage-applicant/hr-manage-applicant.component';
 // resume editor routes
 // import { IndexPageComponent } from './resume/index-page/index-page.component';
 import { HomeComponent } from './resume/home/home.component';
@@ -36,9 +15,26 @@ import { ResumePreviewComponent } from './resume/resume-preview/resume-preview.c
 import { ResumePreview1Component } from './resume/resume-preview-1/resume-preview-1.component';
 import { ResumePreview2Component } from './resume/resume-preview-2/resume-preview-2.component';
 import { ResumePreview3Component } from './resume/resume-preview-3/resume-preview-3.component';
-import { UserViewAppliedPostComponent } from './dashboard-component/user-dashboard/features/user-view-applied-post/user-view-applied-post.component';
-import { UserViewAppliedPostDetailsComponent } from './dashboard-component/user-dashboard/features/user-view-applied-post/user-view-applied-post-details/user-view-applied-post-details.component';
-import { SignupHomeComponent } from './uni-component/signup/signup-home/signup-home.component';
+import { LoginComponent } from './_shared/components/login/login.component';
+import { HrPostdetailsComponent } from './dashboards/hr-dashboard/features/hr-postdetails/hr-postdetails.component';
+import { HrManageApplicantComponent } from './dashboards/hr-dashboard/features/hr-postdetails/hr-manage-applicant/hr-manage-applicant.component';
+import { CallbackComponent } from './_shared/components/misc/callback/callback.component';
+import { HrDashboardComponent } from './dashboards/hr-dashboard/hr-dashboard.component';
+import { HrDashboardDetailsComponent } from './dashboards/hr-dashboard/hr-dashboard-details/hr-dashboard-details.component';
+import { HrEditNewPostComponent } from './dashboards/hr-dashboard/features/hr-post/hr-edit-new-post/hr-edit-new-post.component';
+import { HrPostComponent } from './dashboards/hr-dashboard/features/hr-post/hr-post.component';
+import { UserViewPostDetailsComponent } from './dashboards/user-dashboard/features/user-view-post/user-view-post-details/user-view-post-details.component';
+import { UserViewAppliedPostComponent } from './dashboards/user-dashboard/features/user-view-applied-post/user-view-applied-post.component';
+import { UserViewAppliedPostDetailsComponent } from './dashboards/user-dashboard/features/user-view-applied-post/user-view-applied-post-details/user-view-applied-post-details.component';
+import { LoggedInGuard } from './core/gaurds/logged-in.guard';
+import { UserViewComponent } from './dashboards/user-dashboard/features/user-view/user-view.component';
+import { UserProfileComponent } from './dashboards/user-dashboard/features/user-profile/user-profile.component';
+import { SignupHomeComponent } from './_shared/components/signup/signup-home/signup-home.component';
+import { SignupComponent } from './_shared/components/signup/signup.component';
+import { HrComponent } from './_shared/components/signup/hr/hr.component';
+import { ApplicantComponent } from './_shared/components/signup/applicant/applicant.component';
+import { NotificationComponent } from './_shared/components/misc/notification/notification.component';
+
 
 
 export const routerConfig: Routes = [

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 // import { ToasterService } from 'angular2-toaster';
-import { NotificationService } from './_shared/notification.service';
+import { NotificationService } from './_shared/services/notification.service';
 
 @Component({
   selector: 'app-root',
