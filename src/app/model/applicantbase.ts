@@ -63,7 +63,4 @@ export class ApplicantBase {
         return new ApplicantBase(null, null, null, null, null, null, null, null, null, [], null, null, null, null, null, [{ higherDegreeValue: '', universityName: '', passingYearValue: '', percentageValue: '' }], []);
     }
 
-    // public static createblankeducation(): Education {
-    //     return this.newEducation;
-    // }
 }

@@ -37,6 +37,8 @@ import { ResumePreview2Component } from './resume/resume-preview-2/resume-previe
 import { ResumePreview3Component } from './resume/resume-preview-3/resume-preview-3.component';
 import { UserViewAppliedPostComponent } from './dashboard-component/user-dashboard/features/user-view-applied-post/user-view-applied-post.component';
 import { UserViewAppliedPostDetailsComponent } from './dashboard-component/user-dashboard/features/user-view-applied-post/user-view-applied-post-details/user-view-applied-post-details.component';
+import { ForgetpasswordComponent } from './uni-component/forgetpassword/forgetpassword.component';
+import { SignupHomeComponent } from './uni-component/signup/signup-home/signup-home.component';
 
 
 export const routerConfig: Routes = [
@@ -117,6 +119,16 @@ export const routerConfig: Routes = [
   },
   // applicant routes
 
+    {
+      path: 'signin-home',
+      component: SignupHomeComponent
+    },
+
+  {
+    path: 'signin',
+    redirectTo: 'signin-home'
+  },
+
   // signup routes during
   {
     path: 'signin',
@@ -139,8 +151,8 @@ export const routerConfig: Routes = [
 
   { path: 'notif', component: NotificationComponent },
   { path: 'callback', component: CallbackComponent },
-
-
+  { path: 'forgetPassword', component: ForgetpasswordComponent },
+  
   { path: '', redirectTo: 'login', pathMatch: 'full' },
 
   // remume builder routes

@@ -31,7 +31,7 @@ export class ApplicantComponent implements OnInit {
     this.user_details = ApplicantBase.createblank();
     this.buildFormGroup();
     this.highestDegreeArray = ['B.Tech', 'B.Sc', '12th', '10th'];
-    this.yearArray = ['2017', '2016', '2015', '2014', '2013', '2012', '2011', '2010', '2009', '2008', '2007', '2006', '2005', '2004'];
+    this.yearArray = this.years();
     this.skills = ['Angular', 'CSS', 'Graphic Design', 'Ember', 'HTML',
       'Information Architecture', 'Javascript', 'Mechanical Engineering',
       'Meteor', 'NodeJS', 'UI Design', 'Python', 'Rails', 'React', 'Ruby'];
@@ -43,6 +43,16 @@ export class ApplicantComponent implements OnInit {
     this.personalInfo = true;
     this.inputType = 'password';
   }
+
+
+  years(): string[] {
+    const year = [];
+    for (let i = 1990; i <= 2030; i++) {
+      year.push(i);
+    }
+    return year;
+  }
+
   buildFormGroup(): void {
     const fg = {
       'firstName': new FormControl(null, [Validators.required, Validators.minLength(4)]),
@@ -79,8 +89,12 @@ export class ApplicantComponent implements OnInit {
       // debug: true,
       performance: true,
     });
+<<<<<<< HEAD
     
     
+=======
+    // console.log('form password', this.applicantForm);
+>>>>>>> ed5f107680829ca46764141c176411b13c44e3d5
   }
   tooglepwd() {
     console.log('form pass', this.applicantForm.controls.password.valid);

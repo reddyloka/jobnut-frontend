@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
-
+import { AbstractControl, ValidatorFn, FormBuilder, FormGroup, FormControl, Validators, FormsModule } from '@angular/forms';
 declare var $: any;
 @Component({
   selector: 'app-user-skills-details',
@@ -7,6 +7,7 @@ declare var $: any;
   styleUrls: ['./user-skills-details.component.css']
 })
 export class UserSkillsDetailsComponent implements OnInit {
+  applicantForm: FormGroup;
   skillsArray: string[];
   @Input()
   userdata;
@@ -23,8 +24,16 @@ export class UserSkillsDetailsComponent implements OnInit {
     this.skillsArray = ['Angular', 'CSS', 'Graphic Design', 'Ember', 'HTML',
     'Information Architecture', 'Javascript', 'Mechanical Engineering',
     'Meteor', 'NodeJS', 'UI Design', 'Python', 'Rails', 'React', 'Ruby'];
+    this.buildFormGroup();
    }
 
+   
+  buildFormGroup(): void {
+    const fg = {
+      'skillValue':new FormControl(null, [Validators.required])
+    };
+    this.applicantForm = new FormGroup(fg);
+  }
   ngOnInit() {
     $('.dropdown').dropdown({
       label: {
@@ -33,6 +42,8 @@ export class UserSkillsDetailsComponent implements OnInit {
       debug: true,
       performance: true,
     });
+
+    console.log(this.userdata)
   }
 
 }

@@ -1,9 +1,15 @@
 <div class="ui very padded container segment" >
-    <form class="ui form">
+    <form class="ui form" [formGroup]="applicantForm">
       <h4 class="ui dividing header"></h4>
+      <p>{{userdata.skillValue}}</p>
+      <div class="field">
+      <select  class="ui fluid search dropdown" formControlName="skillValue" multiple="" >
+        <option value="">{{userdata.skillValue}}</option>
+      </select>
+    </div>
         <div class="field">
           <label>Skills</label>
-          <select  class="ui fluid search dropdown" [(ngModel)]="userdata.skillValue" multiple="" >
+          <select  class="ui fluid search dropdown" formControlName="skillValue" [(ngModel)]="userdata.skillValue" multiple="" >
             <option value="">Select</option>
             <option *ngFor="let option of skillsArray">{{option}}</option>
           </select>

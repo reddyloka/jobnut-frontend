@@ -86,6 +86,7 @@ import { ResumePreview3Component } from './resume/resume-preview-3/resume-previe
 import { HrPostdetailsEditListComponent } from './dashboard-component/hr-dashboard/features/hr-postdetails/hr-postdetails-edit-list/hr-postdetails-edit-list.component';
 import { UserViewAppliedPostComponent } from './dashboard-component/user-dashboard/features/user-view-applied-post/user-view-applied-post.component';
 import { UserViewAppliedPostDetailsComponent } from './dashboard-component/user-dashboard/features/user-view-applied-post/user-view-applied-post-details/user-view-applied-post-details.component';
+import { ForgetpasswordComponent } from './uni-component/forgetpassword/forgetpassword.component';
 
 import { DataStoreService } from './resume/services/data-store.service';
 import { FroalaEditorService } from './resume/services/froala-editor.service';
@@ -98,6 +99,8 @@ import { InterestsDataService } from './resume/services/interests-data.service';
 import { CertificatesDataService } from './resume/services/certificates-data.service';
 import { LanguagesDataService } from './resume/services/languages-data.service';
 import { DownloadService } from './resume/services/download.service';
+import { SignupHomeComponent } from './uni-component/signup/signup-home/signup-home.component';
+import { QuotesService } from './_shared/quotes.service';
 
 
 
@@ -162,7 +165,9 @@ import { DownloadService } from './resume/services/download.service';
     IndexPageComponent,
     HrPostdetailsEditListComponent,
     UserViewAppliedPostComponent,
-    UserViewAppliedPostDetailsComponent
+    UserViewAppliedPostDetailsComponent,
+    ForgetpasswordComponent,
+    SignupHomeComponent
 
   ],
   imports: [
@@ -187,6 +192,7 @@ import { DownloadService } from './resume/services/download.service';
     DataService,
     AuthService,
     JwtService,
+    QuotesService,
     ResumeBuilderComponent,
     FroalaEditorService,
     DataStoreService,

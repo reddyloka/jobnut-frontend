@@ -13,6 +13,34 @@ export class UserBaseService {
 
   constructor(private http: Http) { }
 
+checkMailId(checkDetails:any):Promise<any> {
+  let emailDetails={
+    email:checkDetails.userEmail,
+    isHr:checkDetails.isHr
+  }
+return this.http.post(environment.USER_SERVER + `/api/checkMailId`,emailDetails)
+.toPromise()
+    .then((data)=>{
+     data=data.json();
+     console.log('returned data ',data.status)
+      return data.status;
+    })
+  }
+
+  passwordUpdate(emailDetails:any,password:any):Promise<boolean>{
+    let personalDetails={
+      email:emailDetails.userEmail,
+      isHr:emailDetails.isHr,
+      password:password
+    }
+return this.http.post(environment.USER_SERVER + `/api/resetPassword`,personalDetails)
+    .toPromise()
+    .then(()=>{
+      console.log('returned');
+      return true;
+    })
+  }
+
   addNewUser(userDetail: any, files: {}): Promise<boolean> {
     return this.http.post(environment.USER_SERVER + `/api/hr`, userDetail)
       .toPromise()
@@ -21,32 +49,6 @@ export class UserBaseService {
         console.log(final_data);
         this.updateProfilePicture(final_data, files);
         return final_data;
-        // const profile_details = response;
-        // console.log('respoonse is : ', final_data);
-        // const formData: FormData = new FormData();
-        // // console.log(' 123 : ', response);
-        // // if (files['profile_photo']) {
-        // const file: File = files['profile_photo'];
-        //   // formData.append('profile_photo', file, file.name);
-        // // }
-        // console.log('AAAAA', file);
-        // const d = formData.append('profile_photo', file, file.name);
-        // // return Http.call('POST', `${environment.USER_SERVER}/api/user/upload-profile`, {formData});
-        //   return this.http.post(`${environment.USER_SERVER}/api/user/upload-profile`, formData, {
-        //     params: {
-        //       id: final_data._id,
-        //       isHr: final_data.isHr,
-        //       isApplicant: final_data.isApplicant
-        //     }
-        //   })
-        //     .toPromise()
-        //     .then(image_response => {
-        //       console.log(image_response);
-        //       return false;
-        //     })
-        //     .catch();
-
-        // const final_userDetail =
       });
   }
   experiencedetailsUpdate(expdetails: any) {
