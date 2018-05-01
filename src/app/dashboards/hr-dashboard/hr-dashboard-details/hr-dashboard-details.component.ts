@@ -52,7 +52,7 @@ export class HrDashboardDetailsComponent implements OnInit {
     this.id = uuid();
   }
 
-  async ngOnInit() {
+  ngOnInit() {
     // console.log('from hr: ', this._authService.isLoggedIn());
     // if (!this._authService.isLoggedIn()) {
     //   this.router.navigateByUrl('login');
@@ -60,13 +60,11 @@ export class HrDashboardDetailsComponent implements OnInit {
     if (!this._authService.isLoggedIn) {
       this.router.navigateByUrl('login');
     }
-    const result = await this.hrbaseservice.getHrDetailsById(this.id);
-    console.log('::data::', result.data);
-    this.hrdata = result.data;
-
-      await console.log('sjbjn', this.hrdata);
-
+    this.hrbaseservice.getHrDetailsById(this.id).then((data) => {
+      this.hrdata = data;
+      console.log('hr data', this.hrdata);
       this.profile_photo_for_viewing = this.getUrl();
+    });
 
   }
 
@@ -135,9 +133,9 @@ export class HrDashboardDetailsComponent implements OnInit {
     if (!file || file.size > 202400000) {
       this._notif.pop('Please Select an Image\n or file size is greater then 2mb', 'Wrong Input!', 3000);
     }
-    this.ng2ImgMax.resizeImage(file, 250, 250).subscribe( resImg => {
-      this.ng2ImgMax.compressImage(resImg, 1.00).subscribe( async ( finalImg ) => {
-        const result = await this._userService.updateProfilePicture(this.hrdata, {'profile_photo': finalImg});
+    this.ng2ImgMax.resizeImage(file, 250, 250).subscribe(resImg => {
+      this.ng2ImgMax.compressImage(resImg, 1.00).subscribe(async (finalImg) => {
+        const result = await this._userService.updateProfilePicture(this.hrdata, { 'profile_photo': finalImg });
         this.hrdata.profile_photo = result.data;
         this.profile_photo_for_viewing = this.getUrl();
         this._notif.pop(result.message, 'New Profile Pic', 3000);

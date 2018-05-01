@@ -1,6 +1,5 @@
 import { Routes } from '@angular/router';
 // resume editor routes
-// import { IndexPageComponent } from './resume/index-page/index-page.component';
 import { HomeComponent } from './resume/home/home.component';
 import { ResumeBuilderComponent } from './resume/resume-builder/resume-builder.component';
 import { PersonalDetailsComponent } from './resume/resume-builder/personal-details/personal-details.component';
@@ -34,6 +33,7 @@ import { SignupComponent } from './_shared/components/signup/signup.component';
 import { HrComponent } from './_shared/components/signup/hr/hr.component';
 import { ApplicantComponent } from './_shared/components/signup/applicant/applicant.component';
 import { NotificationComponent } from './_shared/components/misc/notification/notification.component';
+import { ForgetpasswordComponent } from './_shared/components/forgetpassword/forgetpassword.component';
 
 
 
@@ -115,10 +115,10 @@ export const routerConfig: Routes = [
   },
   // applicant routes
 
-    {
-      path: 'signin-home',
-      component: SignupHomeComponent
-    },
+  {
+    path: 'signin-home',
+    component: SignupHomeComponent
+  },
 
   {
     path: 'signin',
@@ -147,7 +147,7 @@ export const routerConfig: Routes = [
 
   { path: 'notif', component: NotificationComponent },
   { path: 'callback', component: CallbackComponent },
-
+  { path: 'forgetPassword', component: ForgetpasswordComponent },
 
   { path: '', redirectTo: 'login', pathMatch: 'full' },
 

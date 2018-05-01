@@ -24,8 +24,6 @@ saveClick = new EventEmitter<boolean>();
     this.discardClick.emit(true);
   }
 
-
-
   constructor(private hrbaseservice: HrbaseService) {
     this.buildFormGroup();
     this.id = uuid();

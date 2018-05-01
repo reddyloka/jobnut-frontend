@@ -41,7 +41,6 @@ import { ResumePreview1Component } from './resume/resume-preview-1/resume-previe
 import { ResumePreview2Component } from './resume/resume-preview-2/resume-preview-2.component';
 import { ResumePreview3Component } from './resume/resume-preview-3/resume-preview-3.component';
 
-
 import { DataStoreService } from './resume/services/data-store.service';
 import { FroalaEditorService } from './resume/services/froala-editor.service';
 import { PersonalDetailsDataService } from './resume/services/personal-details-data.service';
@@ -101,6 +100,7 @@ import { UserViewAppliedPostDetailsComponent } from './dashboards/user-dashboard
 import { SignupHomeComponent } from './_shared/components/signup/signup-home/signup-home.component';
 import { LoggedInGuard } from './core/gaurds/logged-in.guard';
 import { JwtService } from './_shared/services/jwt.service';
+import { ForgetpasswordComponent } from './_shared/components/forgetpassword/forgetpassword.component';
 
 
 
@@ -165,6 +165,7 @@ import { JwtService } from './_shared/services/jwt.service';
     HrPostdetailsEditListComponent,
     UserViewAppliedPostComponent,
     UserViewAppliedPostDetailsComponent,
+    ForgetpasswordComponent,
     SignupHomeComponent
 
   ],

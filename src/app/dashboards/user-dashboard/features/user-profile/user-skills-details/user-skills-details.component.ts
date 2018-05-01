@@ -4,6 +4,7 @@ import { UserBaseService } from '../../../../../_shared/services/user-base.servi
 import { uuid } from '../../../../../_shared/models/uuid';
 
 declare var $: any;
+
 @Component({
   selector: 'app-user-skills-details',
   templateUrl: './user-skills-details.component.html',

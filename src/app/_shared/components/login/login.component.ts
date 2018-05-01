@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-// import { JwtService } from '../../_helper/jwt.service';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { JwtService } from '../../services/jwt.service';
 import { AuthService } from '../../services/auth.service';
 
@@ -14,9 +13,12 @@ export class LoginComponent implements OnInit {
   cover_photo: string;
   password: string;
   username: string;
+
   loginForm: FormGroup;
+
   message: any;
   variable: any;
+
 
   constructor(
     private _jwtService: JwtService,
@@ -39,6 +41,7 @@ export class LoginComponent implements OnInit {
       password: ['', Validators.required],
       isHr: [false, Validators.required]
     });
+
     this.cover_photo = '../../assets/images/pics/1.png';
   }
 
@@ -78,9 +81,9 @@ export class LoginComponent implements OnInit {
           });
     }
   }
-  // abhishek's changes for routing data token jwt
-  checkValid() {
-    console.log(this.loginForm.value.username.length);
+
+  forgetPassword() {
+    this.router.navigateByUrl('forgetPassword');
   }
 
 }

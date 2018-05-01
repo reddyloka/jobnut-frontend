@@ -15,6 +15,34 @@ export class UserBaseService {
 
   constructor(private http: Http) { }
 
+  checkMailId(checkDetails: any): Promise<any> {
+    const emailDetails = {
+      email: checkDetails.userEmail,
+      isHr: checkDetails.isHr
+    };
+    return this.http.post(environment.USER_SERVER + `/api/checkMailId`, emailDetails)
+      .toPromise()
+      .then((data) => {
+        data = data.json();
+        console.log('returned data ', data.status);
+        return data.status;
+      });
+  }
+
+  passwordUpdate(emailDetails: any, password: any): Promise<boolean> {
+    const personalDetails = {
+      email: emailDetails.userEmail,
+      isHr: emailDetails.isHr,
+      password: password
+    };
+    return this.http.post(environment.USER_SERVER + `/api/resetPassword`, personalDetails)
+      .toPromise()
+      .then(() => {
+        console.log('returned');
+        return true;
+      });
+  }
+
   addNewUser(userDetail: any, files: {}): Promise<boolean> {
     return this.http.post(environment.USER_SERVER + `/api/hr`, userDetail)
       .toPromise()
@@ -87,7 +115,6 @@ export class UserBaseService {
         console.log('data get of user: ', response.json());
         return response.json();
       });
-
   }
 
   updateUserDetailsById(updateDetails: any, user: string): Promise<ApplicantBase> {
@@ -100,10 +127,9 @@ export class UserBaseService {
     })
       .toPromise()
       .then((response) => {
-        console.log('data get of user: ',  JSON.stringify(response.json().data));
+        console.log('data get of user: ', JSON.stringify(response.json().data));
         return response.json();
       });
-
   }
 
   updateUserApplyPost(postid: string, userid: string): Promise<Boolean> {

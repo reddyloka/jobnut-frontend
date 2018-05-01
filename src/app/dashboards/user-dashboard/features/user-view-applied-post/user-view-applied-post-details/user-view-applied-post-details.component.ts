@@ -13,10 +13,11 @@ declare const $: any;
   templateUrl: './user-view-applied-post-details.component.html'
 })
 export class UserViewAppliedPostDetailsComponent implements OnInit {
+  isshortlist: string;
   userdata: ApplicantBase;
   id: string;
   uploadNewCv: boolean;
-  hrpost: HrPostDetail;
+  hrpost: any;
 
   constructor(private route: ActivatedRoute,
     private hrbaseservice: HrbaseService,
@@ -24,25 +25,36 @@ export class UserViewAppliedPostDetailsComponent implements OnInit {
     private router: Router) {
     this.uploadNewCv = false;
     this.id = uuid();
+    // this.isshortlist = false;
   }
   ngOnInit() {
-    this.route.paramMap.subscribe((params: ParamMap) => {
+    this.route.paramMap.subscribe(async (params: ParamMap) => {
       // console.log('NNNNNNNNNNNNNNNNNnn');
       const hrpost_id = params.get('user-post.id');
-      this.hrbaseservice.getHrPostById(hrpost_id).
-        then((hrpost) => {
-          this.hrpost = hrpost;
-         this.shortlisted();
-        });
-    });
-    this.userbaseservice.getUserDetailsById(this.id).
-      then((userdata) => {
-        this.userdata = userdata;
+      this.hrpost = await this.hrbaseservice.getHrPostById(hrpost_id);
+      // .
+      // then((hrpost) => {
+        // this.hrpost = hrpost;
+        // console.log('shhhhhhh', this.hrpost);
+        // });
+        this.userdata = await this.userbaseservice.getUserDetailsById(this.id);
+      // .
+      // then((userdata) => {
+        //  = userdata;
+        // console.log("UUUUUUUUUUUUUUUU");
+        this.shortlisted();
       });
-
   }
-   shortlisted() {
-
+  shortlisted() {
+    console.log('shhhhhhhooooooooo', this.hrpost.applicants);
+    this.hrpost.applicants.map((ele) => {
+      console.log('shhhhhhhooooooooorrrrrrr', ele.isShortlisted
+    );
+      if (ele._id._id === this.id) {
+        this.isshortlist = ele.isShortlisted;
+       console.log(this.isshortlist);
+      }
+    });
    }
 }
 

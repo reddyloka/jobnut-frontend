@@ -15,10 +15,11 @@ declare const $: any;
   styleUrls: ['./user-view-post-details.component.css']
 })
 export class UserViewPostDetailsComponent implements OnInit {
+  isApply: boolean;
   userdata: ApplicantBase;
   id: string;
   uploadNewCv: boolean;
-  hrpost: HrPostDetail;
+  hrpost: any;
 
   constructor(private route: ActivatedRoute,
     private hrbaseservice: HrbaseService,
@@ -26,6 +27,7 @@ export class UserViewPostDetailsComponent implements OnInit {
     private router: Router) {
     this.uploadNewCv = false;
     this.id = uuid();
+    this.isApply = false;
   }
 
 
@@ -36,22 +38,38 @@ export class UserViewPostDetailsComponent implements OnInit {
       this.hrbaseservice.getHrPostById(hrpost_id).
         then((hrpost) => {
           this.hrpost = hrpost;
+          this.shortlisted();
         });
     });
 
     this.userbaseservice.getUserDetailsById(this.id).
       then((userdata) => {
         this.userdata = userdata;
+        this.applyToPost();
       });
   }
+
+
   uploadNew() {
     this.uploadNewCv = true;
-
   }
 
   uploadOld() {
     this.uploadNewCv = false;
   }
+
+  shortlisted() {
+    console.log('shhhhhhhooooooooo', this.hrpost.applicants);
+    this.hrpost.applicants.map((ele) => {
+      console.log('shhhhhhhooooooooorrrrrrr', ele.isShortlisted
+    );
+      if (ele._id._id === this.id) {
+        this.isApply = true;
+     //  console.log(this.isshortlist);
+      }
+    });
+   }
+
   applyToPost() {
     console.log('post_id', this.hrpost._id);
     console.log('id', this.id);

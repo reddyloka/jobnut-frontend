@@ -67,13 +67,14 @@ export class HrEditNewPostComponent implements OnInit {
       label: {
         duration: 0,
       },
-      debug: true,
+      // debug: true,
       performance: true,
     });
   }
 
   // accept incoming change new notification feature added
   onSubmit() {
+    this.router.navigateByUrl('jobs-posted');
     this.hrbaseservice.addNewPost(this.hrpostNewData, this.id)
       .then((res) => {
         this._notif.pop(res.message, 'Successfull', 3000);

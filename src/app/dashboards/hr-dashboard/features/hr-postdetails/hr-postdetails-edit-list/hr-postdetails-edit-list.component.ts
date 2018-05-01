@@ -57,7 +57,7 @@ saveClick = new EventEmitter<boolean>();
       label: {
         duration: 0,
       },
-      debug: true,
+      // debug: true,
       performance: true,
     });
     this.id = this.hrpost._id;

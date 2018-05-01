@@ -15,20 +15,16 @@ export class HrExperienceAddDetailsComponent implements OnInit {
   personaldata: Hrbase;
   id: string;
   applicantForm: FormGroup;
+
   @Output()
   discardClick = new EventEmitter<boolean>();
-
   @Output()
   saveClick = new EventEmitter<boolean>();
 
-  discardClicked() {
-    this.discardClick.emit(true);
-  }
   constructor(private hrbaservice: HrbaseService,
     private router: Router) {
     this.buildFormGroup();
     this.id = uuid();
-
   }
 
   buildFormGroup(): void {
@@ -41,19 +37,24 @@ export class HrExperienceAddDetailsComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.buildFormGroup();
     this.personaldata = this.hrdata;
   }
 
-  onSubmit() {
-    console.log('new', this.applicantForm.value);
-    this.hrbaservice.updateHrExpDetailsById(this.applicantForm.value, this.id).
+  async onSubmit() {
+    await this.hrdata.experience.push(this.applicantForm.value);
+    console.log('values exp', this.hrdata);
+    this.hrbaservice.updateHrDetailsById(this.hrdata, this.id).
       then((res) => {
         this.personaldata = res;
-        console.log('success');
+
+        console.log('experience updated');
       });
     // this.router.navigateByUrl('hr');
     this.saveClick.emit(true);
   }
 
-
+  discardClicked() {
+    this.discardClick.emit(true);
+  }
 }

@@ -98,7 +98,7 @@ export class HrbaseService {
 
   }
 
-  updateHrDetailsById(updateDetails: any, user: string): Promise<Hrbase> {
+  updateHrDetailsById(updateDetails: Hrbase, user: string): Promise<Hrbase> {
     console.log('hr_id', user);
     console.log('hr update details', updateDetails);
     return this.http.put(`${environment.USER_SERVER}/api/hrs/update`, updateDetails, {
@@ -129,6 +129,23 @@ export class HrbaseService {
       });
 
   }
+
+  updateHrSkillsById(updateDetails: any, user: string): Promise<Hrbase> {
+    console.log('hr_id', user);
+    console.log('hr update details', updateDetails);
+    return this.http.put(`${environment.USER_SERVER}/api/hrs/skillsUpdate`, updateDetails, {
+      params: {
+        'id': user
+      }
+    })
+      .toPromise()
+      .then((response) => {
+        console.log('data get of user: ', response.json());
+        return response.json();
+      });
+
+  }
+
   hrShortlist(data: any, postid: string, userid: string): Promise<Boolean> {
     console.log('post_id', postid);
     return this.http.put(`${environment.USER_SERVER}/api/posts/shortlist`, data, {

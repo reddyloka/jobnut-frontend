@@ -157,7 +157,6 @@ export class UserProfileComponent implements OnInit {
 
   getUrl() {
     console.log('fd', this.userdata);
-
     return `url(http://localhost:3000/images/${this.userdata ? this.userdata.profile_photo : 'skj'})`;
     // return `url()`;/
     // return "url('http://estringsoftware.com/wp-content/uploads/2017/07/estring-header-lowsat.jpg')";
