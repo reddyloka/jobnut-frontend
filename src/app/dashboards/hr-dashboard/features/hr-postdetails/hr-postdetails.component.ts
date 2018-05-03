@@ -10,7 +10,7 @@ import { HrPostDetail } from '../../../../_shared/models/hrpostdetails';
   styleUrls: ['./hr-postdetails.component.css']
 })
 export class HrPostdetailsComponent implements OnInit {
-
+ 
   editviewback: boolean;
   postviewback: boolean;
   editpostDetailsInfo: boolean;
@@ -63,5 +63,14 @@ export class HrPostdetailsComponent implements OnInit {
   this.editviewback = false;
   this.postDetailsInfo = true;
  this.editpostDetailsInfo = false;
+}
+deletepost(){
+  let windowStatus=window.confirm('confirm to delete post');
+  if(windowStatus){
+  this.hrbaseservice.deleteHrPost(this.hrpost._id).then(()=>{
+    this.router.navigateByUrl('hr/jobs-posted');
+    console.log('deleted successfully');
+  })
+}
 }
 }
