@@ -1,44 +1,53 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-// import { UserBaseService } from '../../../services/userbase/user-base.service';
 import { Router } from '@angular/router';
+import {Http} from '@angular/http';
 import { Location } from '@angular/common';
 import { Hrbase } from '../../../models/hrbase';
 import { UserBaseService } from '../../../services/user-base.service';
-
+import * as citiesData from '../../../data/india-cities.json';
+declare var $:any;
 @Component({
   selector: 'app-hr',
   templateUrl: './hr.component.html',
   styleUrls: ['./hr.component.css']
 })
 export class HrComponent implements OnInit {
+  errorMsg: string;
   signupForm: FormGroup;
   options: any;
   states: any;
   imageFile: boolean;
   hrsignupActive: boolean;
-
+   cities:any={};
   // my variables Abhhishek Mittal
   hrDetails: Hrbase;
   profile_photo: File;
   userExist: boolean;
 
   ngOnInit() {
+    $('.dropdown').dropdown({
+      label: {
+        duration: 0,
+      },
+      // debug: true,
+      performance: true,
+    });
     this.imageFile = false;
     this.hrsignupActive = true;
   }
 
   constructor(private _userService: UserBaseService,
     private router: Router,
-    private location: Location
+    private location: Location,private http:Http
   ) {
+    this.errorMsg='please fill required fields'
     this.options = ['Textiles / Garments / Fashion / Accessories', 'Accounting / Finance', 'Advertising / PR / MR / Event Management', 'Agriculture / Dairy', 'Hotels / Restaurants / Airlines / Travel', 'Architecture / Interior Design', 'Automobile / Auto Anciliary / Auto Components', 'Pharma / Biotechnology / Clinical Research', 'Construction / Engineering / Cement / Metals', 'Chemicals / PetroChemical / Plastics / Rubber', 'FMCG / Foods / Beverage', 'Consumer Goods / Durables', 'Courier / Transportation / Freight/ Warehousing', 'BPO / Call Centre / ITES', 'Education / Teaching / Training', 'Recruitment', 'Media / Dotcom / Entertainment', 'Export / Import', 'Gems / Jewellery', 'IT Hardware / Networking', 'Medical / Healthcare / Hospital', 'Insurance', 'Legal', 'Industrial Products/ Heavy Machinery', 'NGO / Social Services', 'Office Equipment / Automation', 'Oil and Gas / Power / Infrastructure / Projects', 'Packaging / Printing', 'Real Estate / Property', 'Retail', 'Security / Law Enforcement', 'IT Software / Software Services', 'Semiconductors / Electronics', 'Telecom/ISP', 'Other', 'Shipping/Marine', 'Animation / Gaming', 'Banking/FinancialServices/Broking', 'Brewery/Distillery', 'Ceramics/Sanitaryware', 'Government/Defence', 'Electricals/Switchgears', 'FacilityManagement', 'fertilizers/Pesticides', 'FoodProcessing', 'HeatVentilation/AirConditioning', 'KPO/Research/Analytics', 'Mining', 'Publishing', 'Steel', 'Strategy/ManagementConsultingFirms', 'Tyres', 'WaterTreatment/WasteManagement', 'Wellness/Fitness/Sports'];
 
     this.states = [
-      'Andaman and Nicobar Islands', 'Andhra Pradesh', 'Arunachal Pradesh', 'Assam', 'Bihar', 'Chandigarh', 'Chhattisgarh', 'Dadra and Nagar Haveli', 'Daman and Diu', 'Delhi', 'Goa', 'Gujarat', 'Haryana', 'Himachal Pradesh', 'Jammu and Kashmir', 'Jharkhand', 'Karnataka', 'Kerala', 'Lakshadweep', 'Madhya Pradesh', 'Maharashtra', 'Manipur', 'Meghalaya', 'Mizoram', 'Nagaland', 'Orissa', 'Pondicherry', 'Punjab', 'Rajasthan', 'Sikkim', 'Tamil Nadu', 'Tripura', 'Uttar Pradesh', 'Uttaranchal', 'West Bengal'
+       'Andhra Pradesh', 'Arunachal Pradesh', 'Assam', 'Bihar', 'Chhattisgarh','Goa', 'Gujarat','Haryana', 'Himachal Pradesh','Jammu and Kashmir', 'Jharkhand', 'Karnataka', 'Kerala', 'Madhya Pradesh', 'Maharashtra', 'Manipur', 'Meghalaya', 'Mizoram', 'Nagaland', 'Orissa', 'Punjab', 'Rajasthan', 'Sikkim', 'TamilNadu','Telangana','Tripura', 'Uttar Pradesh', 'Uttarakhand', 'West Bengal'
     ];
-
-
+    this.cities=citiesData;
     this.hrDetails = Hrbase.createBlankUser();
     this.buildFormGroup();
     this.profile_photo = null;
@@ -51,17 +60,18 @@ export class HrComponent implements OnInit {
     const fg = {
       'firstName': new FormControl(null, Validators.required),
       'lastName': new FormControl(null),
-      'email': new FormControl(null, [Validators.required, Validators.email]),
-      'password': new FormControl(null, Validators.required),
+      'email': new FormControl(null, [Validators.required,Validators.pattern('[A-Za-z\.0-9]+@[A-Za-z]+(.)[A-Za-z]+')]),
+      'password': new FormControl(null, [Validators.required,Validators.pattern('(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z]).{5,}$')]),
       'dob': new FormControl(null, Validators.required),
-      'phone': new FormControl(null, Validators.required),
+      'phone': new FormControl(null,[Validators.required,Validators.pattern('[0-9]{10}')]),
       'industry': new FormControl(null, Validators.required),
       'country': new FormControl(null, Validators.required),
       'state': new FormControl(null, Validators.required),
       'city': new FormControl(null, Validators.required),
       'designation': new FormControl(null, Validators.required),
       'address': new FormControl(null, Validators.required),
-      'jobProfile': new FormControl(null, Validators.required)
+      'jobProfile': new FormControl(null, Validators.required),
+      'termsCheck': new FormControl(null, Validators.required)
     };
 
     this.signupForm = new FormGroup(fg);
@@ -104,4 +114,5 @@ export class HrComponent implements OnInit {
   goBack() {
     this.location.back();
   }
+
 }

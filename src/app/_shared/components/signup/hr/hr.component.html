@@ -12,6 +12,9 @@
       <div class="two fields">
         <div class="field">
           <input type="text" placeholder="First Name" [(ngModel)]="hrDetails.firstName" formControlName="firstName">
+          <div *ngIf="!signupForm.controls['firstName'].valid && signupForm.controls['firstName'].touched">
+              <p>{{errorMsg}}*</p>
+            </div>
         </div>
         <div class="field">
           <input type="text" placeholder="Last Name" [(ngModel)]="hrDetails.lastName" formControlName="lastName">
@@ -23,9 +26,15 @@
       <div class="fields">
         <div class="eight wide field">
           <input type="text" placeholder="Email" [(ngModel)]="hrDetails.email" formControlName="email">
+          <div *ngIf="!signupForm.controls['email'].valid && signupForm.controls['email'].touched">
+              <p>{{errorMsg}}*</p>
+            </div>
         </div>
         <div class="eight wide field">
           <input type="password" placeholder="Password" [(ngModel)]="hrDetails.password" formControlName="password">
+          <div *ngIf="!signupForm.controls['password'].valid && signupForm.controls['password'].touched">
+              <p>{{errorMsg}}*</p>
+            </div>
         </div>
       </div>
     </div>
@@ -34,25 +43,29 @@
         <span style="color:red">*</span>
       </label>
       <input type="date" formControlName="dob" placeholder="enter date of birth" [(ngModel)]="hrDetails.dob">
-      <!-- <div class="alert alert-danger" *ngIf="!applicantForm.controls['dob'].dirty && applicantForm.controls['dob'].touched">
-        <p>Please fill required fields
-          <span style="color:red">*</span>
-        </p>
-      </div> -->
+      <div *ngIf="!signupForm.controls['dob'].valid && signupForm.controls['dob'].touched">
+          <p>{{errorMsg}}*</p>
+        </div>
     </div>
     <div class="field">
       <label>Phone *</label>
       <div class="field">
         <input type="text" placeholder="phone" [(ngModel)]="hrDetails.phone" formControlName="phone">
+        <div *ngIf="!signupForm.controls['phone'].valid && signupForm.controls['phone'].touched">
+            <p>{{errorMsg}}*</p>
+          </div>
       </div>
     </div>
     <div class="two fields">
       <div class="field">
         <label>Industry type</label>
-        <select class="ui fluid dropdown" [(ngModel)]="hrDetails.industry" formControlName="industry">
-          <option>Select</option>
+        <select class="ui fluid search dropdown"  [(ngModel)]="hrDetails.industry" formControlName="industry">
+          <option value=''>select your industry</option>
           <option [value]="industry" *ngFor="let industry of options">{{industry}}</option>
         </select>
+        <div *ngIf="(hrDetails.industry==='select your industry')&&signupForm.controls['industry'].valid">
+            <p>{{errorMsg}}*</p>
+          </div>
       </div>
       <div class="field">
         <label>Country *</label>
@@ -64,41 +77,61 @@
     </div>
     <div class="two fields">
       <div class="field">
-        <label>States *</label>
-        <input type="text" placeholder="State" [(ngModel)]="hrDetails.state" formControlName="state">
-        <!-- <select  class="ui fluid dropdown" formControlName="states">
-            <option>Select</option>
+        <label>State *</label>
+        <select class="ui fluid search dropdown"  formControlName="state" [(ngModel)]="hrDetails.state">
+            <option value=''>select your state</option>
             <option [value]="state" *ngFor="let state of states">{{state}}</option>
-          </select>-->
+          </select>
+          <div *ngIf="(hrDetails.state==='select your state')&&signupForm.controls['state'].valid">
+              <p>{{errorMsg}}*</p>
+            </div>
       </div>
       <div class="field">
         <label>City</label>
-        <input type="text" placeholder="City" [(ngModel)]="hrDetails.city" formControlName="city">
+        <select  class="ui fluid search dropdown"  formControlName="city" [(ngModel)]="hrDetails.city">
+            <option value=''>select your city</option>
+          <option [value]="city" *ngFor="let city of cities">{{city}}</option>
+        </select>
+        <div *ngIf="(hrDetails.city==='select your city')&&signupForm.controls['city'].valid">
+            <p>{{errorMsg}}*</p>
+          </div>
       </div>
     </div>
     <div class="field">
       <label>Designation *</label>
       <input type="text" placeholder="Designation" [(ngModel)]="hrDetails.designation" formControlName="designation">
+      <div *ngIf="!signupForm.controls['designation'].valid && signupForm.controls['designation'].touched">
+          <p>{{errorMsg}}*</p>
+        </div>
     </div>
     <div class="sixteen wide padded field">
       <label>Address *</label>
       <input type="text" placeholder="Address" [(ngModel)]="hrDetails.address" formControlName="address">
+      <div *ngIf="!signupForm.controls['address'].valid && signupForm.controls['address'].touched">
+          <p>{{errorMsg}}*</p>
+        </div>
     </div>
     <div class="field">
       <label>Job Profile *</label>
       <div class="eight wide field">
         <textarea type="text" placeholder="jobProfile" [(ngModel)]="hrDetails.jobProfile" formControlName="jobProfile"></textarea>
       </div>
+      <div *ngIf="!signupForm.controls['jobProfile'].valid && signupForm.controls['jobProfile'].touched">
+          <p>{{errorMsg}}*</p>
+        </div>
     </div>
     <div class="field">
       <label>Profile Photo:</label>
       <input type="file" placeholder="Photo" required="" capture (change)="fileTypeCheck($event)">
     </div>
     <div class="ui toggle checkbox">
-      <input type="checkbox" name="public">
+      <input type="checkbox" name="public" formControlName='termsCheck' >
       <label>I Agree to the
         <a href="#">Terms and Conditions</a>
       </label>
+      <div *ngIf="!signupForm.controls['termsCheck'].valid&&signupForm.controls['termsCheck'].touched">
+          <p>{{errorMsg}}*</p>
+        </div>
     </div>
     <div class="field">
       <button [disabled]="signupForm.invalid || imageFile" (click)="onSubmit()" class="ui button" type="submit" tabindex="0" (click)="gethrDash()">Register</button>
