@@ -13,12 +13,15 @@ import { HrPostDetail } from '../../../../../_shared/models/hrpostdetails';
 })
 export class HrManageApplicantComponent implements OnInit {
 
+  error_text: string;
   manageBack: boolean;
   textInfo: string;
   applicant: ApplicantBase;
   applicantDetailsInfo: boolean;
   manageApplicantInfo: boolean;
   hrpost: HrPostDetail;
+  loadPage: boolean = false;
+  loadError: boolean = false;
   constructor(
     private data: DataService,
     private route: ActivatedRoute,
@@ -60,7 +63,12 @@ export class HrManageApplicantComponent implements OnInit {
         then((hrpost) => {
           console.log(hrpost);
           this.hrpost = hrpost;
-        });
+          this.loadPage = true
+        }).
+        catch((error=>{
+          this.loadError = true;
+         this.error_text = "Get error on server request ";
+         }))
     });
   }
   backpage() {

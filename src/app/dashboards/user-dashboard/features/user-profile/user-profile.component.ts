@@ -14,10 +14,12 @@ declare var $: any;
   styleUrls: ['./user-profile.component.css']
 })
 export class UserProfileComponent implements OnInit {
+  skillsArray: string[];
   expAdd: boolean;
   educationAdd: boolean;
   id: any;
   meme: number;
+  meme1: boolean;
   // `c_${num}`: boolean;
   userdata: ApplicantBase;
   educationOpen: boolean;
@@ -48,6 +50,10 @@ export class UserProfileComponent implements OnInit {
     private ng2ImgMax: Ng2ImgMaxService,
     private _qod: QuotesService
   ) {
+    this.skillsArray = ['Angular', 'CSS', 'Graphic Design', 'Ember', 'HTML',
+    'Information Architecture', 'Javascript', 'Mechanical Engineering',
+    'Meteor', 'NodeJS', 'UI Design', 'Python', 'Rails', 'React', 'Ruby'];
+
     this.detailsMain = true;
     this.detailsOpen = false;
     this.expMain = true;
@@ -61,6 +67,7 @@ export class UserProfileComponent implements OnInit {
     this.id = uuid();
     this.highestDegreeArray = ['B-Tech', 'B.Sc'];
     this.yearArray = ['2018', '2017', '2016', '2015', '2014', '2013', '2012', '2011', '2010', '2009', '2008', '2007', '2006', '2005', '2004', '2003', '2002', '2001', '2000', '1999', '1998'];
+    this.meme1 = false 
   }
 
   ngOnInit() {
@@ -81,6 +88,18 @@ export class UserProfileComponent implements OnInit {
     $('.ui.modal')
       .modal()
       ;
+
+
+
+      
+      $('.dropdown').dropdown({
+        label: {
+          duration: 0,
+        },
+        debug: true,
+        performance: true,
+      });
+
 
   }
 
@@ -193,13 +212,15 @@ export class UserProfileComponent implements OnInit {
     this._notif.pop('Successfully Deleted Education.', 'Great!', 2000);
   }
 
-  async editData(pos: number, type: string) {
+  async editData(pos: any, type: string) {
     // c = `c_${pos}`;
     // this.c = !this.c;
     if (type.toLowerCase() === 'edit') {
       this.meme = pos;
+      this.meme1=true;
     } else if (type.toLowerCase() === 'save') {
       this.meme = -1;
+      this.meme1=false;
       await this.userbaseservice.updateUserDetailsById(this.userdata, this.id);
       this._notif.pop('Updated New Education Details', 'Updated', 2000);
     }
