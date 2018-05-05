@@ -213,12 +213,12 @@
                   {{ meme1? 'Save' : 'Edit'}}
               </a>
             <div *ngIf="skillMain">
-                <div class="ui input">
+                <!-- <div class="ui input">
                 <select  *ngIf="meme1" class="ui fluid search dropdown" [(ngModel)]="userdata.skillValue" multiple="" >
                     <option value="">Select</option>
                     <option *ngFor="let option of skillsArray">{{option}}</option>
                   </select>
-                  </div>
+                  </div> -->
 
                 <span *ngIf="!meme1">{{userdata?.skillValue}}</span>
             </div>

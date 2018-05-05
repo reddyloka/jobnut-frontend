@@ -13,6 +13,7 @@ import { uuid } from '../../../../_shared/models/uuid';
 })
 
 export class UserViewComponent implements OnInit {
+  error_text: string;
   p: Number;
   jobtext: String;
   searchBarInfo: boolean;
@@ -27,6 +28,9 @@ export class UserViewComponent implements OnInit {
   searchLocation: any;
   userdata: ApplicantBase;
   hrpost: HrPostDetail[];
+  loadPage: boolean = false;
+  loadError: boolean = false;
+  searchpage: boolean = false;
   recomendedSkill: string[];
   constructor(private hrbaseservice: HrbaseService,
     private userbaseservice: UserBaseService,
@@ -62,7 +66,12 @@ export class UserViewComponent implements OnInit {
           }
         });
         console.log('post', this.suggestedjob);
-      });
+        this.loadPage = true
+      }).
+      catch((error=>{
+        this.loadError = true;
+       this.error_text = "Get error on server request ";
+       }))
   }
 
   onfocus() {
@@ -75,6 +84,7 @@ export class UserViewComponent implements OnInit {
       this.searchInfo = false;
     }
     if ((this.searchText === null || this.searchText === undefined) && (this.searchLocation !== null && this.searchLocation !== undefined)) {
+      this.searchpage = true;
       this.searchLocation = this.searchLocation.trim();
       console.log('location', this.searchLocation);
       console.log('hrpost', this.hrpost);
@@ -85,6 +95,8 @@ export class UserViewComponent implements OnInit {
       console.log('arrayvalue', this.searchData);
     }
     if ((this.searchText !== null && this.searchText !== undefined) && (this.searchLocation === null || this.searchLocation === undefined)) {
+      
+      this.searchpage = true;
       this.searchText = this.searchText.trim();
       console.log(this.searchText);
       this.searchData = this.hrpost.filter((el) => {
@@ -92,6 +104,7 @@ export class UserViewComponent implements OnInit {
       });
     }
     if ((this.searchText !== null && this.searchText !== undefined) && (this.searchLocation !== null && this.searchLocation !== undefined)) {
+      this.searchpage = true;
       this.searchText = this.searchText.trim();
       this.searchLocation = this.searchLocation.trim();
       this.searchData = this.hrpost.filter((el) => {
