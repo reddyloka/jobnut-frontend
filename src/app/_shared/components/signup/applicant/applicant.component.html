@@ -18,14 +18,14 @@
             <label>First Name
               <span style='color:red'>*</span>
             </label>
-            <input type="text" formControlName="firstName" placeholder="john" [(ngModel)]="user_details.firstName">
+            <input  autofocus type="text" formControlName="firstName" placeholder="john" [(ngModel)]="user_details.firstName">
             <div *ngIf="applicantForm.controls['firstName'].touched&&!applicantForm.controls['firstName'].valid">
               <p>Name need to be AtLeast 4 characters</p>
             </div>
           </div>
           <div class="field">
             <label>Last Name</label>
-            <input type="text" formControlName="lastName" placeholder="Carter" [(ngModel)]="user_details.lastName">
+            <input  type="text" formControlName="lastName" placeholder="Carter" [(ngModel)]="user_details.lastName">
           </div>
         </div>
         <div class="two fields">
@@ -78,7 +78,7 @@
               <input type={{inputType}} name="Password" formControlName="password" placeholder="create strong password" [(ngModel)]="user_details.password">
               <i [ngClass]="{red: !applicantForm.controls.password.valid, thumbs: !applicantForm.controls.password.valid, down:!applicantForm.controls.password.valid,green: applicantForm.controls.password.valid ,shield: applicantForm.controls.password.valid , alternate: applicantForm.controls.password.valid , icon:true}"></i>
             </div>
-            <a href="javascript:void(0);" (click)="tooglepwd()">show/hide</a>
+            <a href="javascript:void(0)" (click)="tooglepwd()">show/hide</a>
             <div *ngIf="applicantForm.controls['password'].touched&&!applicantForm.controls['password'].valid">
               <p>please create strong password</p>
             </div>

@@ -11,7 +11,7 @@
       <label>Name *</label>
       <div class="two fields">
         <div class="field">
-          <input type="text" placeholder="First Name" [(ngModel)]="hrDetails.firstName" formControlName="firstName">
+          <input autofocus type="text" placeholder="First Name" [(ngModel)]="hrDetails.firstName" formControlName="firstName">
           <div *ngIf="!signupForm.controls['firstName'].valid && signupForm.controls['firstName'].touched">
               <p>{{errorMsg}}*</p>
             </div>
