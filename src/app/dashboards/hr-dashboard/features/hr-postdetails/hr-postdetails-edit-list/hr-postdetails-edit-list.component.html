@@ -10,10 +10,8 @@
         <span style="color:red">*</span>
       </label>
       <input type="text" formControlName="companyname" [(ngModel)]="hrpost.companyname" class="form-control" placeholder="please company name">
-      <div class="alert alert-danger" *ngIf="!hrpostNewDataForm.controls['companyname'].valid && hrpostNewDataForm.controls['companyname'].touched">
-        <p>Please fill required fields
-          <span style="color:red">*</span>
-        </p>
+      <div *ngIf="!hrpostNewDataForm.controls['companyname'].valid && hrpostNewDataForm.controls['companyname'].touched">
+        <p style="color:red">Please fill required fields*</p>
       </div>
     </div>
 
@@ -22,10 +20,8 @@
         <span style="color:red">*</span>
       </label>
       <input type="text" formControlName="title" [(ngModel)]="hrpost.title" class="form-control" placeholder="Full Name">
-      <div class="alert alert-danger" *ngIf="!hrpostNewDataForm.controls['title'].valid && hrpostNewDataForm.controls['title'].touched">
-        <p>Please fill required fields
-          <span style="color:red">*</span>
-        </p>
+      <div *ngIf="!hrpostNewDataForm.controls['title'].valid && hrpostNewDataForm.controls['title'].touched">
+        <p style="color:red">Please fill required fields*</p>
       </div>
     </div>
 
@@ -35,38 +31,33 @@
         <span style="color:red">*</span>
       </label>
       <input type="text" formControlName="description" [(ngModel)]="hrpost.description" class="form-control" placeholder="please description">
-      <div class="alert alert-danger" *ngIf="!hrpostNewDataForm.controls['description'].valid && hrpostNewDataForm.controls['description'].touched">
+      <div *ngIf="!hrpostNewDataForm.controls['description'].valid && hrpostNewDataForm.controls['description'].touched">
+        <p style="color:red">Please fill required fields*</p>
+      </div>
+    </div>
+
+    <div class="field">
+      <label>Skills
+        <span style="color:red">*</span>
+      </label>
+      <select class="ui fluid search dropdown" multiple="" formControlName="skills" [(ngModel)]="hrpost.skills">
+        <option value="">select your skills</option>
+        <option *ngFor="let i of skillsArray">{{i}}</option>
+      </select>
+      <div *ngIf="!hrpostNewDataForm.controls['skills'].valid && hrpostNewDataForm.controls['skills'].touched">
         <p>Please fill required fields
           <span style="color:red">*</span>
         </p>
       </div>
-    </div> 
-
-    <div class="field">
-        <label>Skills
-          <span style="color:red">*</span>
-        </label>
-        <select class="ui fluid search dropdown" multiple="" formControlName="skills" [(ngModel)]="hrpost.skills">
-          <option value="">select your skills</option>
-          <option *ngFor="let i of skillsArray">{{i}}</option>
-        </select>
-        <div class="alert alert-danger" *ngIf="!hrpostNewDataForm.controls['skills'].valid && hrpostNewDataForm.controls['skills'].touched">
-          <p>Please fill required fields
-            <span style="color:red">*</span>
-          </p>
-        </div>
-      </div>
+    </div>
 
     <div class="field">
       <label>Selection Procedure
         <span style="color:red">*</span>
       </label>
-      <textarea type="text" formControlName="selectionProcedure" [(ngModel)]="hrpost.selectionProcedure" class="form-control"
-        placeholder="please enter steps for  selection procedure"></textarea>
-      <div class="alert alert-danger" *ngIf="!hrpostNewDataForm.controls['selectionProcedure'].valid && hrpostNewDataForm.controls['selectionProcedure'].touched">
-        <p>Please fill required fields
-          <span style="color:red">*</span>
-        </p>
+      <textarea type="text" formControlName="selectionProcedure" [(ngModel)]="hrpost.selectionProcedure" class="form-control" placeholder="please enter steps for  selection procedure"></textarea>
+      <div *ngIf="!hrpostNewDataForm.controls['selectionProcedure'].valid && hrpostNewDataForm.controls['selectionProcedure'].touched">
+        <p style="color:red">Please fill required fields*</p>
       </div>
     </div>
 
@@ -76,10 +67,8 @@
         <span style="color:red">*</span>
       </label>
       <input type="date" formControlName="startdate" [(ngModel)]="hrpost.startdate" class="form-control">
-      <div class="alert alert-danger" *ngIf="!hrpostNewDataForm.controls['startdate'].valid && hrpostNewDataForm.controls['startdate'].touched">
-        <p>Please fill required fields
-          <span style="color:red">*</span>
-        </p>
+      <div *ngIf="!hrpostNewDataForm.controls['startdate'].valid && hrpostNewDataForm.controls['startdate'].touched">
+        <p style="color:red">Please fill required fields*</p>
       </div>
     </div>
 
@@ -89,10 +78,8 @@
         <span style="color:red">*</span>
       </label>
       <input type="date" formControlName="enddate" [(ngModel)]="hrpost.enddate" class="form-control">
-      <div class="alert alert-danger" *ngIf="!hrpostNewDataForm.controls['enddate'].valid && hrpostNewDataForm.controls['enddate'].touched">
-        <p>Please fill required fields
-          <span style="color:red">*</span>
-        </p>
+      <div *ngIf="!hrpostNewDataForm.controls['enddate'].valid && hrpostNewDataForm.controls['enddate'].touched">
+        <p style="color:red">Please fill required fields*</p>
       </div>
     </div>
 
@@ -102,10 +89,8 @@
         <span style="color:red">*</span>
       </label>
       <input type="text" formControlName="location" [(ngModel)]="hrpost.location" class="form-control" placeholder="please enter location">
-      <div class="alert alert-danger" *ngIf="!hrpostNewDataForm.controls['location'].valid && hrpostNewDataForm.controls['location'].touched">
-        <p>Please fill required fields
-          <span style="color:red">*</span>
-        </p>
+      <div *ngIf="!hrpostNewDataForm.controls['location'].valid && hrpostNewDataForm.controls['location'].touched">
+        <p style="color:red">Please fill required fields*</p>
       </div>
     </div>
 
@@ -116,10 +101,8 @@
         <span style="color:red">*</span>
       </label>
       <input type="text" formControlName="salary" [(ngModel)]="hrpost.salary" class="form-control" placeholder="please enter salary">
-      <div class="alert alert-danger" *ngIf="!hrpostNewDataForm.controls['salary'].valid && hrpostNewDataForm.controls['salary'].touched">
-        <p>Please fill required fields
-          <span style="color:red">*</span>
-        </p>
+      <div *ngIf="!hrpostNewDataForm.controls['salary'].valid && hrpostNewDataForm.controls['salary'].touched">
+        <p style="color:red">Please fill required fields*</p>
       </div>
     </div>
 
@@ -130,10 +113,8 @@
         <span style="color:red">*</span>
       </label>
       <input type="text" formControlName="experinece" [(ngModel)]="hrpost.experinece" class="form-control" placeholder="please  the minumum experinece">
-      <div class="alert alert-danger" *ngIf="!hrpostNewDataForm.controls['experinece'].valid && hrpostNewDataForm.controls['experinece'].touched">
-        <p>Please fill required fields
-          <span style="color:red">*</span>
-        </p>
+      <div *ngIf="!hrpostNewDataForm.controls['experinece'].valid && hrpostNewDataForm.controls['experinece'].touched">
+        <p style="color:red">Please fill required fields*</p>
       </div>
     </div>
 
@@ -144,10 +125,8 @@
         <span style="color:red">*</span>
       </label>
       <input type="date" formControlName="dateOfJoining" [(ngModel)]="hrpost.dateOfJoining" class="form-control">
-      <div class="alert alert-danger" *ngIf="!hrpostNewDataForm.controls['dateOfJoining'].valid && hrpostNewDataForm.controls['dateOfJoining'].touched">
-        <p>Please fill required fields
-          <span style="color:red">*</span>
-        </p>
+      <div *ngIf="!hrpostNewDataForm.controls['dateOfJoining'].valid && hrpostNewDataForm.controls['dateOfJoining'].touched">
+        <p style="color:red">Please fill required fields*</p>
       </div>
     </div>
 
@@ -159,10 +138,8 @@
         <span style="color:red">*</span>
       </label>
       <input type="text" formControlName="CompanyUrl" [(ngModel)]="hrpost.CompanyUrl" class="form-control" placeholder="please enter Company Url">
-      <div class="alert alert-danger" *ngIf="!hrpostNewDataForm.controls['CompanyUrl'].valid && hrpostNewDataForm.controls['CompanyUrl'].touched">
-        <p>Please fill required fields
-          <span style="color:red">*</span>
-        </p>
+      <div *ngIf="!hrpostNewDataForm.controls['CompanyUrl'].valid && hrpostNewDataForm.controls['CompanyUrl'].touched">
+        <p style="color:red">Please fill required fields*</p>
       </div>
     </div>
 
@@ -174,10 +151,8 @@
         <span style="color:red">*</span>
       </label>
       <input type="text" formControlName="bondDetails" [(ngModel)]="hrpost.bondDetails" class="form-control" placeholder="please enter Bond Details">
-      <div class="alert alert-danger" *ngIf="!hrpostNewDataForm.controls['bondDetails'].valid && hrpostNewDataForm.controls['bondDetails'].touched">
-        <p>Please fill required fields
-          <span style="color:red">*</span>
-        </p>
+      <div *ngIf="!hrpostNewDataForm.controls['bondDetails'].valid && hrpostNewDataForm.controls['bondDetails'].touched">
+        <p style="color:red">Please fill required fields*</p>
       </div>
     </div>
 
@@ -189,10 +164,8 @@
         <span style="color:red">*</span>
       </label>
       <input type="text" formControlName="ReportingVenue" [(ngModel)]="hrpost.ReportingVenue" class="form-control" placeholder="please enter Reporting Venue">
-      <div class="alert alert-danger" *ngIf="!hrpostNewDataForm.controls['ReportingVenue'].valid && hrpostNewDataForm.controls['ReportingVenue'].touched">
-        <p>Please fill required fields
-          <span style="color:red">*</span>
-        </p>
+      <div *ngIf="!hrpostNewDataForm.controls['ReportingVenue'].valid && hrpostNewDataForm.controls['ReportingVenue'].touched">
+        <p style="color:red">Please fill required fields*</p>
       </div>
     </div>
 
@@ -206,10 +179,8 @@
       <input type="text" formControlName="ResourcePersonContact" [(ngModel)]="hrpost.ResourcePersonContact" class="form-control"
         placeholder="please enter Resource Person Contact">
 
-      <div class="alert alert-danger" *ngIf="!hrpostNewDataForm.controls['ResourcePersonContact'].valid && hrpostNewDataForm.controls['ResourcePersonContact'].touched">
-        <p>Please fill required fields
-          <span style="color:red">*</span>
-        </p>
+      <div *ngIf="!hrpostNewDataForm.controls['ResourcePersonContact'].valid && hrpostNewDataForm.controls['ResourcePersonContact'].touched">
+        <p style="color:red">Please fill required fields*</p>
       </div>
     </div>
 
@@ -217,10 +188,8 @@
     <div class="field">
       <label>No Of Job Openings</label>
       <input type="text" formControlName="noOfJobOpenings" [(ngModel)]="hrpost.noOfJobOpenings" class="form-control" placeholder="please enter Extra Requirement">
-      <div class="alert alert-danger" *ngIf="!hrpostNewDataForm.controls['noOfJobOpenings'].valid && hrpostNewDataForm.controls['noOfJobOpenings'].touched">
-        <p>Please fill required fields
-          <span style="color:red">*</span>
-        </p>
+      <div *ngIf="!hrpostNewDataForm.controls['noOfJobOpenings'].valid && hrpostNewDataForm.controls['noOfJobOpenings'].touched">
+        <p style="color:red">Please fill required fields*</p>
       </div>
     </div>
 
@@ -230,10 +199,8 @@
     <div class="field">
       <label>Extra Requirement</label>
       <input type="text" formControlName="extraRequirement" [(ngModel)]="hrpost.extraRequirement" class="form-control" placeholder="please enter Extra Requirement">
-      <div class="alert alert-danger" *ngIf="!hrpostNewDataForm.controls['extraRequirement'].valid && hrpostNewDataForm.controls['extraRequirement'].touched">
-        <p>Please fill required fields
-          <span style="color:red">*</span>
-        </p>
+      <div *ngIf="!hrpostNewDataForm.controls['extraRequirement'].valid && hrpostNewDataForm.controls['extraRequirement'].touched">
+        <p style="color:red">Please fill required fields*</p>
       </div>
     </div>
 
@@ -241,7 +208,7 @@
 
     <div class="field">
       <button class="btn btn-success" [disabled]='hrpostNewDataForm.invalid' (click)="onSubmit()">submit</button>
-      <button class="ui button"  (click)="discardClicked()"> Discard </button>
+      <button class="ui button" (click)="discardClicked()"> Discard </button>
     </div>
   </form>
   <!-- </div> -->
