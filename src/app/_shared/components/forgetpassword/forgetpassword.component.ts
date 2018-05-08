@@ -11,7 +11,6 @@ import { UserBaseService } from '../../services/user-base.service';
 })
 export class ForgetpasswordComponent implements OnInit {
 
-
   loginEmailForm: FormGroup;
   resetForm: FormGroup;
   UserEmail: string;
