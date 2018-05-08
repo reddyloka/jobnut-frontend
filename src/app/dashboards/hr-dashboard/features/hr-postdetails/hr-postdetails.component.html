@@ -39,7 +39,7 @@
     <div *ngIf="editpostDetailsInfo">
       <div class="" style="border: 2px solid lightgrey">
         <div style="margin-top:20px">
-          <app-hr-postdetails-edit-list [hrpost]="hrpost" (saveClick)="editbackpage()"></app-hr-postdetails-edit-list>
+          <app-hr-postdetails-edit-list [hrpost]="hrpost" (saveClick)="editbackpage()" ></app-hr-postdetails-edit-list>
         </div>
       </div>
   </div>
@@ -47,7 +47,7 @@
 
 
 
-  <div class="four wide column" style="">
+  <div class="four wide column">
     <div style="border: solid 2px lightblue; margin-top:10px">
       <div class="row">
         <div class="col-md-7">
@@ -68,6 +68,10 @@
             <button class="btn btn-success" (click)="editpost()">Edit</button>
           </div>
     </div>
-    
+    <div style="margin-top:10px">
+      <div class="row" >
+          <button class="btn btn-danger" (click)="deletepost()">Delete</button>
+        </div>
+  </div>
   </div>
 </div>

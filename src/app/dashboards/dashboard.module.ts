@@ -18,7 +18,7 @@ import { HrSkillComponent } from './hr-dashboard/hr-dashboard-details/hr-skill/h
 import { HrHeaderComponent } from './hr-dashboard/hr-header/hr-header.component';
 import { UserEducationAddDetailsComponent } from './user-dashboard/features/user-profile/user-education-details/user-education-add-details/user-education-add-details.component';
 import { UserEducationDetailsComponent } from './user-dashboard/features/user-profile/user-education-details/user-education-details.component';
-import { UserExperienceAddDetailsComponent } from './user-dashboard/features/user-profile/user-experience-add-details/user-experience-add-details.component';
+
 import { UserPersonalDetailsComponent } from './user-dashboard/features/user-profile/user-personal-details/user-personal-details.component';
 import { UserExperienceDetailsComponent } from './user-dashboard/features/user-profile/user-experience-details/user-experience-details.component';
 import { UserSkillsDetailsComponent } from './user-dashboard/features/user-profile/user-skills-details/user-skills-details.component';
@@ -43,6 +43,7 @@ import { routerConfig } from '../app.router-config';
 import { RouterModule } from '@angular/router';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
+import { UserExperienceAddDetailsComponent } from './user-dashboard/features/user-profile/user-experience-add-details/user-experience-add-details.component';
 
 
 @NgModule({

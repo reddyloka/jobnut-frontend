@@ -145,5 +145,16 @@ export class HrbaseService {
       });
   }
 
+  deleteHrPost(id:string):Promise<boolean>{
+    console.log('id',id);
+    return this.http.put(`${environment.USER_SERVER}/api/posts/deleteHrPost`,{},
+     {params: {
+      'id': id
+    }})
+    .toPromise().then(()=>{
+      return true;
+    })
+  }
+
 }
 

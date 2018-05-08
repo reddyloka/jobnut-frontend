@@ -9,9 +9,12 @@ import { uuid } from '../../../../_shared/models/uuid';
   templateUrl: './user-view-applied-post.component.html'
 })
 export class UserViewAppliedPostComponent implements OnInit {
+  error_text: string;
   hrpost: HrPostDetail[];
   p: number;
   id: string;
+  loadPage: boolean = false;
+  loadError: boolean = false;
   constructor(private userbaseservice: UserBaseService,
               private router: Router) {
     this.id = uuid();
@@ -22,7 +25,12 @@ export class UserViewAppliedPostComponent implements OnInit {
     then((hrpost) => {
       console.log('applied data', hrpost);
      this.hrpost = hrpost;
-    });
+     this.loadPage = true
+    }).
+    catch((error=>{
+      this.loadError = true;
+     this.error_text = "Get error on server request ";
+     }));
   this.p = 1;
   }
   routeronclicked(hrpost_id) {

@@ -6,6 +6,18 @@
   </div>
   <div class="ten wide column" style="border: 2px solid lightgrey;height: 600px">
     <br>
+    <div *ngIf='!loadPage && !loadError'>
+        <h4>loading...... please wait</h4>
+       <span> <img src="assets/loader.svg" height="64" alt="Nice green circle"/></span>
+    </div>
+    <h4 *ngIf='loadPage && !loadError && (!hrpost || !hrpost.length)'>
+        No jobs were posted by you
+    </h4>
+    <div *ngIf="loadError">
+        <div class="alert alert-danger">
+          {{error_text}}
+        </div>
+    </div>
    <app-hr-post-list-summary *ngFor="let hrpost of hrpost" [hrpost]=hrpost (userclick)="routeronclicked($event)"></app-hr-post-list-summary>
   </div>
 </div>
