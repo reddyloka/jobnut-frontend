@@ -8,6 +8,7 @@ import { HrbaseService } from '../../../../../_shared/services/hrbase.service';
 import { NotificationService } from '../../../../../_shared/services/notification.service';
 import { HrPostDetail } from '../../../../../_shared/models/hrpostdetails';
 import { uuid } from '../../../../../_shared/models/uuid';
+import { Hrbase } from '../../../../../_shared/models/hrbase';
 declare var $: any;
 @Component({
   selector: 'app-hr-edit-new-post',
@@ -16,6 +17,7 @@ declare var $: any;
 })
 export class HrEditNewPostComponent implements OnInit {
   skillsArray: string[];
+  hrdata:Hrbase;
   hrpostNewDataForm: FormGroup;
   id: string;
   popup = {
@@ -69,6 +71,9 @@ export class HrEditNewPostComponent implements OnInit {
       },
       // debug: true,
       performance: true,
+    });
+    this.hrbaseservice.getHrDetailsById(this.id).then((data) => {
+      this.hrdata = data;
     });
   }
 
