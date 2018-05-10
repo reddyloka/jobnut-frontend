@@ -21,43 +21,62 @@
       </div>
     </div>
   </div>
-
-<div class="row">
-  <div class="col-md-1">
-
-  </div>
-  <div class="col-md-6" style="border: 2px solid lightgrey;height: 600px">
-    <br>
-    <div *ngIf="jobInfo">
-      <h2>Recommended jobs for you</h2>
-      <div *ngIf='!loadPage && !loadError'>
-          <h4>loading...... please wait</h4>
-         <span> <img src="assets/loader.svg" height="64" alt="Nice green circle"/></span>
-      </div>
-      <h4 *ngIf='loadPage && !loadError && (!suggestedjob || !suggestedjob.length)'>
-          no  Recommended jobs for you Present
-      </h4>
-      <div *ngIf="loadError">
-          <div class="alert alert-danger">
-            {{error_text}}
+  <br>
+<div class="ui grid" id="viewposts">
+    <div class="two wide column"></div>
+    <div class="eight wide column">
+        <div *ngIf="jobInfo">
+            <h2>Recommended jobs for you</h2>
+            <div *ngIf='!loadPage && !loadError'>
+                <h4>loading...... please wait</h4>
+               <span> <img src="assets/loader.svg" height="64" alt="Nice green circle"/></span>
+            </div>
+            <h4 *ngIf='loadPage && !loadError && (!suggestedjob || !suggestedjob.length)'>
+                no  Recommended jobs for you Present
+            </h4>
+            <div *ngIf="loadError">
+                <div class="alert alert-danger">
+                  {{error_text}}
+                </div>
+            </div>
+            <app-user-view-post *ngFor="let hrpost of suggestedjob | paginate: { itemsPerPage: 2, currentPage: p }" [hrpost]=hrpost (userclick)="routeronclicked($event)"></app-user-view-post>
           </div>
-      </div>
-      <app-user-view-post *ngFor="let hrpost of suggestedjob | paginate: { itemsPerPage: 2, currentPage: p }" [hrpost]=hrpost (userclick)="routeronclicked($event)"></app-user-view-post>
-    </div>
-    <div *ngIf="searchInfo">
-       
-      <h2>Search results</h2>
-      <br>
-      <div *ngIf='!searchpage && !loadError'>
-          <h4>loading...... please wait</h4>
-          <span> <img src="assets/loader.svg" height="64" alt="Nice green circle"/></span>
-      </div>
-      <h4 *ngIf='searchpage && !loadError && (!searchData || !searchData.length)'>
-          no  results for you search
-      </h4>
-      <app-user-view-post *ngFor="let hrpost of searchData | paginate: { itemsPerPage: 2, currentPage: p }" [hrpost]="hrpost" (userclick)="routeronclicked($event)"></app-user-view-post>
-    </div>
 
-    <pagination-controls (pageChange)="p = $event"></pagination-controls>
-  </div>
+          <div *ngIf="searchInfo">
+       
+              <h2>Search results</h2>
+              <br>
+              <div *ngIf='!searchpage && !loadError'>
+                  <h4>loading...... please wait</h4>
+                  <span> <img src="assets/loader.svg" height="64" alt="Nice green circle"/></span>
+              </div>
+              <h4 *ngIf='searchpage && !loadError && (!searchData || !searchData.length)'>
+                  no  results for you search
+              </h4>
+              <app-user-view-post *ngFor="let hrpost of searchData | paginate: { itemsPerPage: 2, currentPage: p }" [hrpost]="hrpost" (userclick)="routeronclicked($event)"></app-user-view-post>
+            </div>
+        
+            <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </div>
+    <div class="six wide column">
+      <div class="ui grid">
+      <div class="four wide column">
+
+      </div>
+      <div class="ten wide column">
+          <div class="ui piled segment">
+              <h4 class="ui header">Job Nut</h4>
+              <p>Te eum doming eirmod, nominati pertinacia argumentum ad his. Ex eam alia facete scriptorem, est autem aliquip detraxit at. </p>
+               <p>Audiam quaerendum eu sea, pro omittam definiebas ex. Te est latine definitiones. Quot wisi nulla ex duo. Vis sint</p>
+               <p>Eu quo homero blandit intellegebat. Incorrupte consequuntur mei id. Mei ut facer dolores adolescens, no illum aperiri </p>
+            </div>
+            <div class="ui piled segment">
+                <h4 class="ui header">Job Nut</h4>
+                <p>Te eum doming eirmod, nominati pertinacia argumentum ad his. Ex eam alia facete scriptorem, est autem aliquip detraxit at. </p>
+                 <p>Audiam quaerendum eu sea, pro omittam definiebas ex. Te est latine definitiones. Quot wisi nulla ex duo. Vis sint</p>
+                 <p>Eu quo homero blandit intellegebat. Incorrupte consequuntur mei id. Mei ut facer dolores adolescens, no illum aperiri </p>
+              </div>
+      </div>
+    </div>
+    </div>
 </div>

@@ -1,24 +1,15 @@
 <app-user-header [userdata]="userdata"></app-user-header>
 <br>
-<div class="row">
-  <div class="col-md-3" style="background-color: rgb(100, 99, 99); height:700px">
-    <div style="margin-top: 30px; background-color: lightbalck">
-      <a href="javascript:void(0)">
-        <h4 class="nav">Hr Profile View</h4>
-      </a>
+<div class="ui grid">
+  <div class="three wide column">
+    
     </div>
-    <div style="margin-top: 30px; background-color: lightbalck">
-      <a href="javascript:void(0)">
-        <h4 class="nav">Chating</h4>
-      </a>
-    </div>
-    </div>
-  <div class="col-md-6" style="border: 2px solid lightgrey">
+  <div class="eight wide column" style="border: 2px solid lightgrey">
       <app-user-view-post-deatilssummary [hrpost]=hrpost> </app-user-view-post-deatilssummary>
   </div>
-  <div class="col-md-3" >
-    <div class="row">
-      <div class="col-md-3">
+  <div class="five wide column" >
+    <div class="ui grid">
+      <div class="eight wide column">
           <button class="btn btn-primary" [disabled]="isApply" target="_self" data-backdrop="static" data-target="#Apply_modal" data-toggle="modal">Apply</button>
           <div class="modal fade" id="Apply_modal">
               <div class="modal-dialog">
@@ -52,9 +43,6 @@
               </div>
               </div>
       </div>
-      <div class="col-md-3">
-          <button class="btn btn-info">save</button>
-        </div>
     </div>
   </div>
 </div>
