@@ -56,7 +56,7 @@ export class HrSkillComponent implements OnInit {
 
   onSubmit() {
     this.hrdata.skillValue = this.hrSkillForm.value.skills;
-    console.log(console.log('new', this.hrSkillForm.value));
+    console.log(console.log('new', this.hrSkillForm.value.skills));
     this.hrbaservice.updateHrDetailsById(this.hrdata, this.id).
       then((res) => {
         // this.personaldata = res;
