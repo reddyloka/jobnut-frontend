@@ -37,8 +37,6 @@ export class UserViewComponent implements OnInit {
     private router: Router) {
     this.id = uuid();
     this.jobInfo = true;
-    this.searchBarInfo = true;
-    this.searchBarInfo1 = false;
     this.p = 1;
   }
   ngOnInit() {
@@ -74,11 +72,10 @@ export class UserViewComponent implements OnInit {
       }));
   }
 
-  onfocus() {
-    this.searchBarInfo = false;
-    this.searchBarInfo1 = true;
-  }
   searchClicked() {
+    console.log("search")
+    console.log("sa",this.searchText)
+    console.log("sa",this.searchLocation)
     if (this.searchText === null || this.searchText === undefined) {
       this.jobInfo = true;
       this.searchInfo = false;

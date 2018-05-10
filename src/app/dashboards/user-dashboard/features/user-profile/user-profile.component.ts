@@ -27,7 +27,7 @@ export class UserProfileComponent implements OnInit {
   skillOpen: boolean;
   skillActive = false;
   skillMain: boolean;
-  bindings: {foo: '<'};
+  bindings: { foo: '<' };
   expOpen: boolean;
   expMain: boolean;
   detailsOpen: boolean;
@@ -73,16 +73,7 @@ export class UserProfileComponent implements OnInit {
     this.meme1 = false;
   }
   ngOnInit() {
-
-    this.userbaseservice.getUserDetailsById(this.id).
-      then((userdata) => {
-        console.log('maindata', userdata);
-        this.userdata = userdata;
-        this.profile_photo_for_viewing = this.getUrl();
-        this.isMale = this.userdata.gender.toLowerCase() === 'male';
-        this.isFemale = this.userdata.gender.toLowerCase() === 'female';
-        this.otherGender = this.userdata.gender.toLowerCase() === 'other';
-      });
+    this.getdata();
     this.accordionClicked();
     this._qod.getQOD().then(q => {
       this.qod = q;
@@ -105,6 +96,17 @@ export class UserProfileComponent implements OnInit {
 
   }
 
+  getdata() {
+    this.userbaseservice.getUserDetailsById(this.id).
+      then((userdata) => {
+        console.log('maindata', userdata);
+        this.userdata = userdata;
+        this.profile_photo_for_viewing = this.getUrl();
+        this.isMale = this.userdata.gender.toLowerCase() === 'male';
+        this.isFemale = this.userdata.gender.toLowerCase() === 'female';
+        this.otherGender = this.userdata.gender.toLowerCase() === 'other';
+      });
+  }
   accordionClicked() {
     $('.ui.accordion')
       .accordion({
@@ -133,17 +135,9 @@ export class UserProfileComponent implements OnInit {
   AddExperienceMore(): void {
     this.expAdd = true;
   }
-  EditExpDetails() {
-    this.expMain = false;
-    this.expOpen = true;
-
-  }
-  closeExp() {
-    this.expMain = true;
-    this.expOpen = false;
-
-  }
-  closeAddExp() {
+  closeAddExp(event) {
+    this.userdata = event;
+    // this.getdata()
     this.expAdd = false;
   }
   EditSkillsDetails() {
@@ -157,22 +151,12 @@ export class UserProfileComponent implements OnInit {
   }
 
   AddEducationMore(): void {
-    //  this.edituserdata = this.userdata;
     this.educationAdd = true;
-    // if (this.userdata.education) {
-    //   this.userdata.education.push({higherDegreeValue: '', universityName: '', passingYearValue: '', percentageValue: ''});
-    // }
-  }
-  EditEducationDetails() {
-    this.educationMain = false;
-    this.educationOpen = true;
-  }
-  closeEducation() {
-    this.educationMain = true;
-    this.educationOpen = false;
   }
 
-  closeAddEducation() {
+
+  closeAddEducation(event) {
+    this.userdata = event;
     this.educationAdd = false;
   }
 

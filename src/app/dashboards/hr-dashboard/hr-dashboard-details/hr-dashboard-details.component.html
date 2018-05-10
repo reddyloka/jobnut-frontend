@@ -1,4 +1,4 @@
-<app-hr-header></app-hr-header>
+<app-hr-header [hrdata]="hrdata"></app-hr-header>
 <div class="ui very padded container segment">
 
   <h3 class="ui dividing header">H.R Dashboard</h3>
@@ -138,7 +138,7 @@
             </div>
           </div>
           <div *ngIf="detailsOpen">
-            <app-hr-details (discardClick)="closeDetails()" (saveClick)="closeDetails()" [hrdata]="hrdata"></app-hr-details>
+            <app-hr-details (discardClick)="closeDetails($event)" (saveClick)="closeDetails($event)" [hrdata]="hrdata"></app-hr-details>
           </div>
         </div>
 

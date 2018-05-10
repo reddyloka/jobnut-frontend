@@ -28,6 +28,20 @@ export class UserBaseService {
         return data.status;
       });
   }
+  checkCurrentPassword(value: any, id: string): Promise<any> {
+    const obj = {
+      id: id,
+      currentPassword: value.currentPassword,
+      newPassword: value.newPassword
+    };
+    return this.http.post(environment.USER_SERVER + `/api/checkPassword`, obj)
+      .toPromise()
+      .then((data) => {
+        data = data.json();
+        console.log('returned status ', data, data.status);
+        return data;
+      });
+  }
 
   passwordUpdate(emailDetails: any, password: any): Promise<boolean> {
     const personalDetails = {
@@ -85,36 +99,6 @@ export class UserBaseService {
         return response.json();
       });
 
-  }
-
-  updateUserEduDetailsById(updateDetails: any, user: string): Promise<ApplicantBase> {
-    console.log('user_id', user);
-    console.log('user update details', updateDetails);
-    return this.http.put(`${environment.USER_SERVER}/api/users/eduUpdate`, updateDetails, {
-      params: {
-        'id': user
-      }
-    })
-      .toPromise()
-      .then((response) => {
-        console.log('data get of user: ', JSON.stringify(response.json().data));
-        return response.json();
-      });
-
-  }
-  updateUserExpDetailsById(updateDetails: any, user: string): Promise<ApplicantBase> {
-    console.log('user_id', user);
-    console.log('user update details', updateDetails);
-    return this.http.put(`${environment.USER_SERVER}/api/users/expUpdate`, updateDetails, {
-      params: {
-        'id': user
-      }
-    })
-      .toPromise()
-      .then((response) => {
-        console.log('data get of user: ', response.json());
-        return response.json();
-      });
   }
 
   updateUserDetailsById(updateDetails: any, user: string): Promise<ApplicantBase> {

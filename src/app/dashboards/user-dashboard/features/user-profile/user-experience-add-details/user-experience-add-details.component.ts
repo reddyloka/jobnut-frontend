@@ -16,11 +16,9 @@ export class UserExperienceAddDetailsComponent implements OnInit {
   userdata;
 
   @Output()
-  discardClick = new EventEmitter<boolean>();
-
+  discardClick = new EventEmitter();
   @Output()
   saveClick = new EventEmitter();
-
   constructor(private _userService: UserBaseService) {
     this.buildFormGroup();
     this.id = uuid();
@@ -36,23 +34,18 @@ export class UserExperienceAddDetailsComponent implements OnInit {
   }
   
   ngOnInit() {
-    this.buildFormGroup();
-    this.personaldata = this.userdata;
+    this.personaldata  = JSON.stringify(this.userdata);
+  this.personaldata=JSON.parse(this.personaldata)
   }
-  async onSubmit() {
-    console.log('experience', this.applicantForm.value);
-    // await this._userService.updateUserExpDetailsById(this.applicantForm.value, this.id).
-    await this.userdata.experience.push(this.applicantForm.value);
-    console.log('values exp', this.userdata);
-    this._userService.updateUserExpDetailsById(this.userdata, this.id).
-    then((res) => {
-      this.personaldata = res;
-      console.log('experience updated');
+  onSubmit() {
+     this.personaldata.experience.push(this.applicantForm.value);
+    console.log('values exp', this.personaldata);
+    this._userService.updateUserDetailsById( this.personaldata, this.id).
+    then(() => {
+      this.saveClick.emit(this.personaldata);
     });
-    this.saveClick.emit(this.userdata);
   }
-  
   discardClicked() {
-    this.discardClick.emit(true);
+    this.discardClick.emit(this.personaldata);
   }
 }

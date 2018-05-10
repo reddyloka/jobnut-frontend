@@ -9,19 +9,20 @@ import { uuid } from '../../../../_shared/models/uuid';
   styleUrls: []
 })
 export class HrDetailsComponent implements OnInit {
+  temp: any;
   id: string;
   hrdetailForm: FormGroup;
 @Input()
 hrdata;
 
   @Output()
-  discardClick = new EventEmitter<boolean>();
+  discardClick = new EventEmitter();
 
 @Output()
-saveClick = new EventEmitter<boolean>();
+saveClick = new EventEmitter();
 
   discardClicked() {
-    this.discardClick.emit(true);
+    this.discardClick.emit(JSON.parse(this.temp));
   }
 
   constructor(private hrbaseservice: HrbaseService) {
@@ -49,6 +50,7 @@ saveClick = new EventEmitter<boolean>();
   }
 
   ngOnInit() {
+    this.temp = JSON.stringify(this.hrdata);
   }
 
   onSubmit() {
@@ -58,6 +60,6 @@ saveClick = new EventEmitter<boolean>();
       then((res) => {
         console.log('success');
       });
-      this.saveClick.emit(true);
+      this.saveClick.emit(this.hrdata);
   }
 }
