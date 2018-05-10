@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { HrbaseService } from '../../../../_shared/services/hrbase.service';
 import { HrPostDetail } from '../../../../_shared/models/hrpostdetails';
 import { uuid } from '../../../../_shared/models/uuid';
+import { Hrbase } from '../../../../_shared/models/hrbase';
 
 @Component({
   selector: 'app-hr-post',
@@ -12,6 +13,7 @@ import { uuid } from '../../../../_shared/models/uuid';
 export class HrPostComponent implements OnInit {
   error_text: any;
   id: string;
+  hrdata:Hrbase;
   hrpost: HrPostDetail[];
   loadPage: boolean = false;
   loadError: boolean = false;
@@ -21,6 +23,9 @@ export class HrPostComponent implements OnInit {
     }
 
   ngOnInit() {
+    this.hrbaseservice.getHrDetailsById(this.id).then((data) => {
+      this.hrdata = data;
+    });
     this.hrbaseservice.getAllHrPost(this.id).
       then((hrpost) => {
         this.hrpost = hrpost;

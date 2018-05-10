@@ -4,13 +4,16 @@ import { Location } from '@angular/common';
 import { HrbaseService } from '../../../../_shared/services/hrbase.service';
 import { DataService } from '../../../../_shared/services/data.service';
 import { HrPostDetail } from '../../../../_shared/models/hrpostdetails';
+import { Hrbase } from '../../../../_shared/models/hrbase';
+import { uuid } from '../../../../_shared/models/uuid';
 @Component({
   selector: 'app-hr-postdetails',
   templateUrl: './hr-postdetails.component.html',
   styleUrls: ['./hr-postdetails.component.css']
 })
 export class HrPostdetailsComponent implements OnInit {
- 
+ hrdata:Hrbase;
+ id:string;
   editviewback: boolean;
   postviewback: boolean;
   editpostDetailsInfo: boolean;
@@ -28,10 +31,15 @@ export class HrPostdetailsComponent implements OnInit {
     this.textInfo = 'Manage Applicant';
     this.postviewback = true;
     this.editviewback = false;
+    this.id = uuid();
   }
 
   ngOnInit() {
+    this.hrbaseservice.getHrDetailsById(this.id).then((data) => {
+      this.hrdata = data;
+    });
     this.postdetails();
+   
   }
 
   manageApplicant() {
