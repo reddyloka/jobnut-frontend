@@ -1,7 +1,7 @@
 
 <div class="ui very padded container segment">
   <div>
-      <button class="fr ui button primary" (click)="EditPersonalDetails()">Chat</button>
+      <button class="fr ui button primary" (click)="chatOpenClicked()">Chat</button>
       <input type="button" class="fr ui button primary" id="shortlist" (click)="shortlist($event.target.value)" [value]="isShortlisted ? 'Deselect' : 'Shortlisted'" >
       <br>
       <h3 class="ui dividing header">Applicant Details</h3>
@@ -150,3 +150,9 @@
     </div>
     <hr>
   </div>
+
+
+  <div *ngIf="chatOpen" [ngClass]="{'visible': chatOpen , 'active': chatOpen }" class="ui dimmer modals page top aligned transition"
+  style="display: flex !important;">
+  <app-chat [initiator]="this.hrpost.hrRef" [recepient]="this.postData._id"></app-chat>
+</div>

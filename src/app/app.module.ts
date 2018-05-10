@@ -13,9 +13,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // import {ToasterModule, ToasterService} from '@angular2-toaster';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
-
-
-import * as $ from 'jquery';
 import { AppComponent } from './app.component';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { routerConfig } from './app.router-config';
@@ -87,7 +84,6 @@ import { UserSkillsDetailsComponent } from './dashboards/user-dashboard/features
 import { UserEducationDetailsComponent } from './dashboards/user-dashboard/features/user-profile/user-education-details/user-education-details.component';
 import { UserEducationAddDetailsComponent } from './dashboards/user-dashboard/features/user-profile/user-education-details/user-education-add-details/user-education-add-details.component';
 import { NotificationComponent } from './_shared/components/misc/notification/notification.component';
-import { ApplicantPreviewComponent } from './dashboards/applicant-preview/applicant-preview.component';
 import { UserExperienceAddDetailsComponent } from './dashboards/user-dashboard/features/user-profile/user-experience-add-details/user-experience-add-details.component';
 import { HrExperienceAddDetailsComponent } from './dashboards/hr-dashboard/hr-dashboard-details/hr-experience-add-details/hr-experience-add-details.component';
 import { HrManageApplicantComponent } from './dashboards/hr-dashboard/features/hr-postdetails/hr-manage-applicant/hr-manage-applicant.component';
@@ -101,6 +97,9 @@ import { SignupHomeComponent } from './_shared/components/signup/signup-home/sig
 import { LoggedInGuard } from './core/gaurds/logged-in.guard';
 import { JwtService } from './_shared/services/jwt.service';
 import { ForgetpasswordComponent } from './_shared/components/forgetpassword/forgetpassword.component';
+import { ChatModule } from './_shared/components/chat/chat.module';
+import { ChatService } from './_shared/components/chat/chat.service';
+import { ChatComponent } from './_shared/components/chat/chat.component';
 
 
 
@@ -140,7 +139,6 @@ import { ForgetpasswordComponent } from './_shared/components/forgetpassword/for
     UserEducationDetailsComponent,
     UserEducationAddDetailsComponent,
     NotificationComponent,
-    ApplicantPreviewComponent,
     UserExperienceAddDetailsComponent,
     HrExperienceAddDetailsComponent,
     HrManageApplicantComponent,
@@ -166,7 +164,7 @@ import { ForgetpasswordComponent } from './_shared/components/forgetpassword/for
     UserViewAppliedPostComponent,
     UserViewAppliedPostDetailsComponent,
     ForgetpasswordComponent,
-    SignupHomeComponent
+    SignupHomeComponent,
 
   ],
   imports: [
@@ -177,6 +175,7 @@ import { ForgetpasswordComponent } from './_shared/components/forgetpassword/for
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
+    ChatModule,
     Ng2ImgMaxModule,
     HttpClientModule,
     NgxPaginationModule,
@@ -188,6 +187,7 @@ import { ForgetpasswordComponent } from './_shared/components/forgetpassword/for
     HrbaseService,
     LoggedInGuard,
     NotificationService,
+    ChatService,
     DataService,
     AuthService,
     JwtService,
