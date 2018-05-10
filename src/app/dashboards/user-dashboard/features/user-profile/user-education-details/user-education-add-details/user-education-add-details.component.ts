@@ -52,6 +52,7 @@ export class UserEducationAddDetailsComponent implements OnInit {
     console.log('updated data', this.personaldata);
     this.userbaservice.updateUserEduDetailsById(this.applicantForm.value, this.id).
       then(() => {
+        this.discardClicked()
       console.log('success');
       });
   }

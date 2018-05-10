@@ -72,7 +72,9 @@ export class HrDashboardDetailsComponent implements OnInit {
     this.detailsOpen = true;
     this.detailsMain = false;
   }
-  closeDetails() {
+  closeDetails(event) {
+     console.log("as",event)
+  this.hrdata = event
     this.detailsOpen = false;
     this.detailsMain = true;
   }

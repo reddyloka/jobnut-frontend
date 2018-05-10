@@ -71,16 +71,7 @@ export class UserProfileComponent implements OnInit {
   }
 
   ngOnInit() {
-
-    this.userbaseservice.getUserDetailsById(this.id).
-      then((userdata) => {
-        console.log('maindata', userdata);
-        this.userdata = userdata;
-        this.profile_photo_for_viewing = this.getUrl();
-        this.isMale = this.userdata.gender.toLowerCase() === 'male';
-        this.isFemale = this.userdata.gender.toLowerCase() === 'female';
-        this.otherGender = this.userdata.gender.toLowerCase() === 'other';
-      });
+    this.getdata()
     this.accordionClicked();
     this._qod.getQOD().then(q => {
       this.qod = q;
@@ -103,6 +94,17 @@ export class UserProfileComponent implements OnInit {
 
   }
 
+  getdata(){
+    this.userbaseservice.getUserDetailsById(this.id).
+      then((userdata) => {
+        console.log('maindata', userdata);
+        this.userdata = userdata;
+        this.profile_photo_for_viewing = this.getUrl();
+        this.isMale = this.userdata.gender.toLowerCase() === 'male';
+        this.isFemale = this.userdata.gender.toLowerCase() === 'female';
+        this.otherGender = this.userdata.gender.toLowerCase() === 'other';
+      });
+  }
   accordionClicked() {
     $('.ui.accordion')
       .accordion({
@@ -142,6 +144,7 @@ export class UserProfileComponent implements OnInit {
 
   }
   closeAddExp() {
+    this.getdata()
     this.expAdd = false;
   }
   EditSkillsDetails() {
@@ -171,6 +174,7 @@ export class UserProfileComponent implements OnInit {
   }
 
   closeAddEducation() {
+    this.getdata()
     this.educationAdd = false;
   }
 

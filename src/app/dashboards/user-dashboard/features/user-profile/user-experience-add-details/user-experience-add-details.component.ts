@@ -37,6 +37,7 @@ discardClick = new EventEmitter<boolean>();
   console.log('experience', this.applicantForm);
   this.userbaservice.updateUserExpDetailsById(this.applicantForm.value, this.id).
   then(() => {
+    this.discardClicked()
   console.log('success');
   });
   }
