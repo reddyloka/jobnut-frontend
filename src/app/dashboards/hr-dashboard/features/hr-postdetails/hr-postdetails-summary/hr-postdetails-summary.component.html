@@ -30,7 +30,7 @@
     <h4>StartDate To Register:</h4>
   </div>
   <div class="col-md-9">
-    <p>{{hrpost?.startdate}}</p>
+    <p>{{hrpost?.startdate | date: 'dd/MM/yyyy'}}</p>
   </div>
 </div>
 <br>
@@ -39,7 +39,7 @@
     <h4>EndDate To Register:</h4>
   </div>
   <div class="col-md-9">
-    <p>{{hrpost?.enddate}}</p>
+    <p>{{hrpost?.enddate | date: 'dd/MM/yyyy'}}</p>
   </div>
 </div>
 <br>
@@ -84,7 +84,7 @@
       <h4>Date of Joining:</h4>
     </div>
     <div class="col-md-9">
-      <p>{{hrpost?.dateOfJoining}}</p>
+      <p>{{hrpost?.dateOfJoining |date: 'dd/MM/yyyy'}}</p>
     </div>
 </div>
 <br>

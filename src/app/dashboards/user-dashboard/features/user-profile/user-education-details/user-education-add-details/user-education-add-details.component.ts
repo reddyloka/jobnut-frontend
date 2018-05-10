@@ -10,9 +10,10 @@ import { uuid } from '../../../../../../_shared/models/uuid';
 })
 export class UserEducationAddDetailsComponent implements OnInit {
 
+  
   applicantForm: FormGroup;
   id: string;
-  personaldata: ApplicantBase;
+  personaldata: any;
   // newEducationDetails: Education;
   yearArray: string[];
   highestDegreeArray1: string[];
@@ -20,13 +21,10 @@ export class UserEducationAddDetailsComponent implements OnInit {
   userdata;
 
   @Output()
-  discardClick = new EventEmitter<boolean>();
-
-  discardClicked() {
-    this.discardClick.emit(true);
-  }
-
-  constructor(private userbaservice: UserBaseService) {
+  discardClick = new EventEmitter<any>();
+  @Output()
+ saveClick= new EventEmitter<any>();
+  constructor(private _userService: UserBaseService) {
    this.id = uuid();
    this.buildFormGroup();
     this.highestDegreeArray1 = ['B-Tech', 'B.Sc'];
@@ -45,15 +43,18 @@ export class UserEducationAddDetailsComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    this.personaldata  = JSON.stringify(this.userdata);
+  this.personaldata=JSON.parse(this.personaldata)
   }
-  onsubmit() {
-    // this.personaldata.education.push(this.applicantForm.value);
-    console.log('updated data', this.personaldata);
-    this.userbaservice.updateUserEduDetailsById(this.applicantForm.value, this.id).
-      then(() => {
-      console.log('success');
-      });
+  onSubmit() {
+     this.personaldata.education.push(this.applicantForm.value);
+    console.log('values exp', this.personaldata);
+    this._userService.updateUserDetailsById( this.personaldata, this.id).
+    then(() => {
+      this.saveClick.emit(this.personaldata);
+    });
   }
-
+  discardClicked() {
+    this.discardClick.emit(this.personaldata);
+  }
 }

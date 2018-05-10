@@ -4,19 +4,19 @@
       <div class="field">
         <label>Profile Title</label> 
         <div class="field"> 
-          <input type="text"  placeholder="Designation" formControlName="designation" [ngModel]="hrdata?.designation">
+          <input type="text"  placeholder="Designation" formControlName="designation" >
         </div>
       </div>
       <div class="field">
         <label>Experience</label>
         <div class="field">
-          <input type="text"  placeholder="Experience in years" formControlName="totalExperience" [ngModel]="hrdata?.totalExperience">
+          <input type="text"  placeholder="Experience in years" formControlName="totalExperience" >
         </div>
       </div>
       <div class="field">
         <label>Description</label>
        <div class="field">
-          <input type="text" placeholder="About your project and your role" formControlName="description" [ngModel]="hrdata?.description">
+          <input type="text" placeholder="About your project and your role" formControlName="description">
         </div>
       </div>
       <button class="ui primary button" [disabled]= "applicantForm.invalid" type="submit" (click)="onSubmit()"> Save </button>
