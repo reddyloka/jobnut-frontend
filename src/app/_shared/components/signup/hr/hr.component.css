@@ -1,14 +1,13 @@
 input.ng-invalid.ng-touched {
   border: 1px solid red;
 }
-input.ng-valid.ng-touched {
-  border: 1px solid green;
-}
 .ui button {
   background-color: rgb(0, 106, 114);
   color: white
 }
-
+p{
+  color:red
+}
 .registration-hr {
   margin: 2em auto;
 }

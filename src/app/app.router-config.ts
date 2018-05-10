@@ -25,7 +25,7 @@ import { HrPostComponent } from './dashboards/hr-dashboard/features/hr-post/hr-p
 import { UserViewPostDetailsComponent } from './dashboards/user-dashboard/features/user-view-post/user-view-post-details/user-view-post-details.component';
 import { UserViewAppliedPostComponent } from './dashboards/user-dashboard/features/user-view-applied-post/user-view-applied-post.component';
 import { UserViewAppliedPostDetailsComponent } from './dashboards/user-dashboard/features/user-view-applied-post/user-view-applied-post-details/user-view-applied-post-details.component';
-import { LoggedInGuard } from './core/gaurds/logged-in.guard';
+
 import { UserViewComponent } from './dashboards/user-dashboard/features/user-view/user-view.component';
 import { UserProfileComponent } from './dashboards/user-dashboard/features/user-profile/user-profile.component';
 import { SignupHomeComponent } from './_shared/components/signup/signup-home/signup-home.component';
@@ -34,6 +34,7 @@ import { HrComponent } from './_shared/components/signup/hr/hr.component';
 import { ApplicantComponent } from './_shared/components/signup/applicant/applicant.component';
 import { NotificationComponent } from './_shared/components/misc/notification/notification.component';
 import { ForgetpasswordComponent } from './_shared/components/forgetpassword/forgetpassword.component';
+import { LoggedInGuard } from './core/guards/logged-in.guard';
 
 
 

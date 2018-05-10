@@ -1,10 +1,12 @@
 <app-user-header [userdata]=userdata></app-user-header>
 <div class="ui grid centered" style="margin-top: 2%;">
   <div class="four wide ui segment column grid" style="padding-left: 0%; padding-right: 20px;">
+      
     <div class="row centered">
       <div class="avatar-upload">
         <div class="avatar-edit">
           <input type="file" id="imageUpload" accept=".png, .jpg, .jpeg" (change)="updateProfilePicture($event.target.files)" />
+          
           <label for="imageUpload"></label>
         </div>
         <div class="avatar-preview">
@@ -113,7 +115,7 @@
                 </div>
               </div>
               <div *ngIf="expOpen">
-                <app-user-experience-details (discardClick)="closeExp()" [userdata]="userdata"></app-user-experience-details>
+                <app-user-experience-add-details (discardClick)="closeExp()" [userdata]="userdata"></app-user-experience-add-details>
               </div>
               <hr>
             </div>
@@ -143,10 +145,10 @@
                   </div>
                   <div class="col-md-6">
                     <div class="ui input">
-                      <select *ngIf="meme == i" class="ui search dropdown" [(ngModel)]="userdata?.education[i].higherDegreeValue">
-                        <option>Select your highest qualification</option>
-                        <option *ngFor="let degree of highestDegreeArray">{{degree}}</option>
-                      </select>
+                        <select *ngIf="meme == i" class="ui search dropdown"  [(ngModel)]="userdata?.education[i].higherDegreeValue">
+                            <option>Select your highest qualification</option>
+                            <option *ngFor="let degree of highestDegreeArray">{{degree}}</option>
+                          </select>
                     </div>
                     <span *ngIf="!(meme == i)">{{userdata?.education[i].higherDegreeValue}}</span>
                     <!-- <span>{{userdata?.education[i].higherDegreeValue}}</span> -->
@@ -168,13 +170,13 @@
                     <h5>Passing Year</h5>
                   </div>
                   <div class="col-md-6">
-                    <div class="ui input">
+                      <div class="ui input">
                       <!-- <select name="gender" > -->
-                      <!-- </select> -->
-                      <select *ngIf="meme == i" class="ui search dropdown" [(ngModel)]="userdata?.education[i].passingYearValue">
-                        <option>Select your option</option>
-                        <option *ngFor="let year of yearArray">{{year}}</option>
-                      </select>
+                        <!-- </select> -->
+                        <select  *ngIf="meme == i" class="ui search dropdown" [(ngModel)]="userdata?.education[i].passingYearValue"  >
+                            <option>Select your option</option>
+                            <option *ngFor="let year of yearArray">{{year}}</option>
+                        </select>
                     </div>
                     <span *ngIf="!(meme==i)">{{userdata?.education[i].passingYearValue}}</span>
                   </div>
@@ -220,7 +222,7 @@
                   </select>
                   </div> -->
 
-              <span *ngIf="!meme1">{{userdata?.skillValue}}</span>
+                <span *ngIf="!meme1">{{userdata?.skillValue}}</span>
             </div>
           </div>
         </div>
@@ -242,5 +244,5 @@
   <app-user-personal-details *ngIf="detailsOpen" (discardClick)="closeDetails($event)" (saveClick)="closeDetails($event)" [userdata]="userdata"></app-user-personal-details>
   <app-user-skills-details *ngIf="skillOpen" (discardClick)="closeSkill($event)" (saveClick)="closeSkill($event)" [userdata]="userdata"></app-user-skills-details>
   <app-user-experience-details *ngIf="expAdd" (discardClick)="closeAddExp()"></app-user-experience-details>
-  <app-user-education-add-details *ngIf="educationAdd" (discardClick)="closeAddEducation()" [userdata]="userdata"></app-user-education-add-details>
+  <app-user-education-add-details *ngIf="educationAdd" (discardClick)="closeAddEducation()" [userdata]="userdata" [messagec]="messagec"></app-user-education-add-details>
 </div>

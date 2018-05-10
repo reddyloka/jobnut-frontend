@@ -10,8 +10,11 @@ import { uuid } from '../../../../_shared/models/uuid';
   styleUrls: []
 })
 export class HrPostComponent implements OnInit {
+  error_text: any;
   id: string;
   hrpost: HrPostDetail[];
+  loadPage: boolean = false;
+  loadError: boolean = false;
   constructor(private hrbaseservice: HrbaseService,
     private router: Router) {
       this.id = uuid();
@@ -22,7 +25,12 @@ export class HrPostComponent implements OnInit {
       then((hrpost) => {
         this.hrpost = hrpost;
         console.log(hrpost);
-      });
+        this.loadPage = true
+      }).
+      catch((error=>{
+       this.loadError = true;
+      this.error_text = "Get error on server request ";
+      }))
   }
 
   public routeronclicked(hrpost_id): void {

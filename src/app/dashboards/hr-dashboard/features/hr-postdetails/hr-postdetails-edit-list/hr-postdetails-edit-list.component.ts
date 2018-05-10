@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AbstractControl, ValidatorFn, FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { HrbaseService } from '../../../../../_shared/services/hrbase.service';
-
+ 
 declare var $: any;
 @Component({
   selector: 'app-hr-postdetails-edit-list',
@@ -70,5 +70,9 @@ saveClick = new EventEmitter<boolean>();
         console.log('success');
       });
       this.saveClick.emit(true);
+  }
+  discardClicked(){
+  window.alert('Your changes will not get updated in our database');
+   this.router.navigateByUrl('hr/jobs-posted');
   }
 }

@@ -105,6 +105,9 @@ export class ChatComponent implements OnInit {
           return new Date(a.created) > new Date(b.created) ? 1 : new Date(a.created) < new Date(b.created) ? -1 : 0;
           // return new Date(a.created) > new Date(b.created) ? true : false;
         });
+        setTimeout(() => {
+          $('#chatBox').scrollTop($('#chatBox')[0].scrollHeight);
+        }, 100);
         console.log('message array is ', this.messageArray1);
 
         //  this.messageArray = res.messages;
@@ -169,6 +172,10 @@ export class ChatComponent implements OnInit {
     date = new Date(date);
     // console.log('todays date is ', d.getDay(), ' ', date.getDate(), ' year ', date.getFullYear());
     if (d.getDate() === date.getDate() && d.getMonth() === date.getMonth() && d.getFullYear() === date.getFullYear()) {
+      // console.log('second is : ', d.getTime());
+      if ((d.getTime() - 2000 ) <= date.getTime()) {
+        return 'Now';
+      }
       return 'Today';
     } else if (d.getDate() - date.getDate() === 1 && d.getMonth() === date.getMonth() && d.getFullYear() === date.getFullYear()) {
       return 'Yesterday';

@@ -34,7 +34,7 @@ export class HrEditNewPostComponent implements OnInit {
     console.log(this.hrpostNewData);
     this.buildFormGroup();
     this.id = uuid();
-    this.skillsArray = ['Angular', 'CSS', 'Graphic Design', 'Ember', 'HTML', 'Javascript',
+    this.skillsArray = ['Angular', 'CSS', 'Graphic Design', 'HTML','MongoDB','Javascript',
       'NodeJS', 'UI Design', 'Python', 'Rails', 'React', 'Ruby', 'c', 'c++', 'java', 'Database', 'Mean stack', 'Full stack'];
   }
 
@@ -74,11 +74,12 @@ export class HrEditNewPostComponent implements OnInit {
 
   // accept incoming change new notification feature added
   onSubmit() {
-    this.router.navigateByUrl('jobs-posted');
+    
     this.hrbaseservice.addNewPost(this.hrpostNewData, this.id)
       .then((res) => {
         this._notif.pop(res.message, 'Successfull', 3000);
         if (res.success) {
+          this.router.navigateByUrl('hr/jobs-posted');
           console.log( res.message, res.data );
         }
       }).catch();
