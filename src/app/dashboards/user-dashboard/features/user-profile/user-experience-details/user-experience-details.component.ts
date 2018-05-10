@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { AbstractControl, ValidatorFn, FormBuilder, FormGroup, FormControl, Validators, FormsModule } from '@angular/forms';
-import { UserBaseService } from '../../../../../_shared/services/user-base.service';
+import { uuid } from '../../../../../_shared/models/uuid';
 
 @Component({
   selector: 'app-user-experience-details',
@@ -8,21 +8,24 @@ import { UserBaseService } from '../../../../../_shared/services/user-base.servi
   styleUrls: []
 })
 export class UserExperienceDetailsComponent implements OnInit {
-
+  personaldata: any;
+  id: any;
   applicantForm: FormGroup;
-@Input()
-userdata;
-@Output()
-discardClick = new EventEmitter<boolean>();
+  @Input()
+  userdata;
 
-  discardClicked() {
-    this.discardClick.emit(true);
-  }
-  constructor(private _userService: UserBaseService) {
+  @Output()
+  discardClick = new EventEmitter<boolean>();
+
+  @Output()
+  saveClick = new EventEmitter();
+
+  constructor() {
     this.buildFormGroup();
-   }
-
-   buildFormGroup(): void {
+    this.id = uuid();
+  }
+  
+  buildFormGroup(): void {
     const fg = {
       'designation': new FormControl(null, Validators.required),
       'totalExperience': new FormControl(null, Validators.required),
@@ -30,12 +33,14 @@ discardClick = new EventEmitter<boolean>();
     };
     this.applicantForm = new FormGroup(fg);
   }
-
+  
   ngOnInit() {
+    this.buildFormGroup();
+    this.personaldata = this.userdata;
   }
-  onSubmit() {
-    // this._userService.detailsUpdate(this.applicantForm, {
-    // })
+  
+  
+  discardClicked() {
+    this.discardClick.emit(true);
   }
-
 }

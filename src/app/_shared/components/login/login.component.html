@@ -8,7 +8,7 @@
             <div class="field">
               <label>Username</label>
               <div class="ui left icon input">
-                <input type="text" placeholder="Username" formControlName="username" >
+                <input autofocus type="text" placeholder="Username" formControlName="username" >
                 <i class="user icon"></i>
               </div>
               <div *ngIf="loginForm.controls['username'].touched&&!loginForm.controls['username'].valid" class="alert alert-danger">
@@ -26,7 +26,7 @@
                 </div>
             </div>
             <div class="field">
-              <input class="ui tomato fluid submit button" type="button" value="Login" [disabled]="!loginForm.valid" (click)="login()">
+              <button auto-focus class="ui tomato fluid submit button" [disabled]="!loginForm.valid" (click)="login()">login</button>
             </div>
 
             <div class="field">
@@ -34,7 +34,9 @@
                   <input type="checkbox" name="public" formControlName="isHr" value="">
                     <label>I am an HR</label>
                   </div>
-            </div><div class="field">
+                </div>
+                
+            <div class="field">
               <h4><a href="javascript:void(0)" (click)="forgetPassword()">Forgot your password?</a></h4>
             </div>
             </form>

@@ -34,7 +34,7 @@ export class HrEditNewPostComponent implements OnInit {
     console.log(this.hrpostNewData);
     this.buildFormGroup();
     this.id = uuid();
-    this.skillsArray = ['Angular', 'CSS', 'Graphic Design', 'Ember', 'HTML', 'Javascript',
+    this.skillsArray = ['Angular', 'CSS', 'Graphic Design', 'HTML','MongoDB','Javascript',
       'NodeJS', 'UI Design', 'Python', 'Rails', 'React', 'Ruby', 'c', 'c++', 'java', 'Database', 'Mean stack', 'Full stack'];
   }
 

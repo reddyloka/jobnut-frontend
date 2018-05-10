@@ -133,18 +133,9 @@ export class UserProfileComponent implements OnInit {
   AddExperienceMore(): void {
     this.expAdd = true;
   }
-  EditExpDetails() {
-    this.expMain = false;
-    this.expOpen = true;
-
-  }
-  closeExp() {
-    this.expMain = true;
-    this.expOpen = false;
-
-  }
-  closeAddExp() {
-    this.getdata()
+  closeAddExp(event) {
+    this.userdata = event;
+    // this.getdata()
     this.expAdd = false;
   }
   EditSkillsDetails() {
@@ -158,23 +149,12 @@ export class UserProfileComponent implements OnInit {
   }
 
   AddEducationMore(): void {
-    //  this.edituserdata = this.userdata;
     this.educationAdd = true;
-    // if (this.userdata.education) {
-    //   this.userdata.education.push({higherDegreeValue: '', universityName: '', passingYearValue: '', percentageValue: ''});
-    // }
-  }
-  EditEducationDetails() {
-    this.educationMain = false;
-    this.educationOpen = true;
-  }
-  closeEducation() {
-    this.educationMain = true;
-    this.educationOpen = false;
   }
 
-  closeAddEducation() {
-    this.getdata()
+
+  closeAddEducation(event) {
+    this.userdata=event;
     this.educationAdd = false;
   }
 
@@ -221,10 +201,10 @@ export class UserProfileComponent implements OnInit {
     // this.c = !this.c;
     if (type.toLowerCase() === 'edit') {
       this.meme = pos;
-      this.meme1=true;
+      // this.meme1=true;
     } else if (type.toLowerCase() === 'save') {
       this.meme = -1;
-      this.meme1=false;
+      // this.meme1=false;
       await this.userbaseservice.updateUserDetailsById(this.userdata, this.id);
       this._notif.pop('Updated New Education Details', 'Updated', 2000);
     }
