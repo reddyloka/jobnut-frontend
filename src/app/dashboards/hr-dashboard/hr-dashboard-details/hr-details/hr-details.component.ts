@@ -57,8 +57,8 @@ saveClick = new EventEmitter();
     console.log(this.hrdetailForm);
     console.log('update values', this.hrdetailForm);
     this.hrbaseservice.updateHrDetailsById(this.hrdetailForm.value, this.id).
-      then((res) => {
-        console.log('success');
+      subscribe(() => {
+      console.log('success');
       });
       this.saveClick.emit(this.hrdata);
   }

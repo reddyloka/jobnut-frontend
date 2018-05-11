@@ -28,14 +28,14 @@ id:string;
   }
 
   ngOnInit() {
-    this.hrbaseservice.getHrDetailsById(this.id).then((data) => {
+    this.hrbaseservice.getHrDetailsById(this.id).subscribe((data) => {
       this.hrdata = data;
     });
   }
   deletePost(){
     let windowStatus=window.confirm('confirm to delete post');
     if(windowStatus){
-    this.hrbaseservice.deleteHrPost(this.hrpost._id).then(()=>{
+    this.hrbaseservice.deleteHrPost(this.hrpost._id).subscribe(()=>{
       console.log('deleted successfully');
     })
   }

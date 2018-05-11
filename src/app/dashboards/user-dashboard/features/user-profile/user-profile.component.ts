@@ -96,7 +96,7 @@ export class UserProfileComponent implements OnInit {
 
   getdata(){
     this.userbaseservice.getUserDetailsById(this.id).
-      then((userdata) => {
+      subscribe((userdata) => {
         console.log('maindata', userdata);
         this.userdata = userdata;
         this.profile_photo_for_viewing = this.getUrl();

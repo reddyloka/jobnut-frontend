@@ -37,7 +37,7 @@ export class HrManageApplicantListDetailsComponent implements OnInit {
    console.log('short', this.hrpostdata._id);
    console.log('short', this.userdata._id);
        this.hrbaseservice.hrShortlist(applicants, this.hrpostdata._id, this.userdata._id).
-      then((res) => {
+      subscribe((res) => {
         console.log('success');
       });
     // if (this.isShortlisted) {

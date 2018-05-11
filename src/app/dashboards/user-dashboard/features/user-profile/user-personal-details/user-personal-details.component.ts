@@ -58,7 +58,7 @@ export class UserPersonalDetailsComponent implements OnInit {
   onsubmit() {
     console.log('update values', this.applicantForm);
     this.userbaseservice.updateUserDetailsById(this.applicantForm.value, this.id).
-      then((res: any) => {
+      subscribe(() => {
         this.saveClick.emit(this.userdata);
         console.log('success');
       });

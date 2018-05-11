@@ -50,9 +50,10 @@ export class UserEducationAddDetailsComponent implements OnInit {
      this.personaldata.education.push(this.applicantForm.value);
     console.log('values exp', this.personaldata);
     this._userService.updateUserDetailsById( this.personaldata, this.id).
-    then(() => {
-      this.saveClick.emit(this.personaldata);
+    subscribe(() => {
+    console.log('success');
     });
+    this.saveClick.emit(this.personaldata);
   }
   discardClicked() {
     this.discardClick.emit(this.personaldata);

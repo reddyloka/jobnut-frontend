@@ -25,30 +25,22 @@ export class UserViewAppliedPostDetailsComponent implements OnInit {
     private router: Router) {
     this.uploadNewCv = false;
     this.id = uuid();
-    // this.isshortlist = false;
   }
   ngOnInit() {
     this.route.paramMap.subscribe(async (params: ParamMap) => {
-      // console.log('NNNNNNNNNNNNNNNNNnn');
       const hrpost_id = params.get('user-post.id');
       this.hrpost = await this.hrbaseservice.getHrPostById(hrpost_id);
-      // .
-      // then((hrpost) => {
-        // this.hrpost = hrpost;
-        // console.log('shhhhhhh', this.hrpost);
-        // });
-        this.userdata = await this.userbaseservice.getUserDetailsById(this.id);
-      // .
-      // then((userdata) => {
-        //  = userdata;
-        // console.log("UUUUUUUUUUUUUUUU");
+      console.log('hrpost from applied',this.hrpost);
+       this.userbaseservice.getUserDetailsById(this.id).subscribe((res)=>{
+       return this.userdata=res;
+        });
         this.shortlisted();
       });
   }
   shortlisted() {
-    console.log('shhhhhhhooooooooo', this.hrpost.applicants);
+    console.log('applicant', this.hrpost.applicants);
     this.hrpost.applicants.map((ele) => {
-      console.log('shhhhhhhooooooooorrrrrrr', ele.isShortlisted
+      console.log('shortlisted', ele.isShortlisted
     );
       if (ele._id._id === this.id) {
         this.isshortlist = ele.isShortlisted;

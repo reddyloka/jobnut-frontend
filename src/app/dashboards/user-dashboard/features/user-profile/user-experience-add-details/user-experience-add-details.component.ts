@@ -41,7 +41,7 @@ export class UserExperienceAddDetailsComponent implements OnInit {
      this.personaldata.experience.push(this.applicantForm.value);
     console.log('values exp', this.personaldata);
     this._userService.updateUserDetailsById( this.personaldata, this.id).
-    then(() => {
+    subscribe(() => {
       this.saveClick.emit(this.personaldata);
     });
   }

@@ -37,7 +37,7 @@ export class HrExperienceComponent implements OnInit {
   onSubmit() {
     console.log('update values', this.hrexperienceForm);
     this.hrbaseService.updateHrExpDetailsById(this.hrexperienceForm.value, this.id).
-      then((res) => {
+      subscribe(() => {
         console.log('success');
       });
     this.saveClick.emit(true);

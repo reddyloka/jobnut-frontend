@@ -45,7 +45,7 @@ export class HrExperienceAddDetailsComponent implements OnInit {
     await this.hrdata.experience.push(this.applicantForm.value);
     console.log('values exp', this.hrdata);
     this.hrbaservice.updateHrDetailsById(this.hrdata, this.id).
-      then((res) => {
+      subscribe((res) => {
         this.personaldata = res;
 
         console.log('experience updated');

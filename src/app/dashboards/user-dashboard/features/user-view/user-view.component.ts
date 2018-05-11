@@ -41,7 +41,7 @@ export class UserViewComponent implements OnInit {
   }
   ngOnInit() {
     this.userbaseservice.getUserDetailsById(this.id).
-      then((userdata) => {
+      subscribe((userdata) => {
         console.log('maindata', userdata);
         this.userdata = userdata;
         this.suggestedjobs();
@@ -49,7 +49,8 @@ export class UserViewComponent implements OnInit {
   }
   suggestedjobs() {
     this.hrbaseservice.getAllUserViewPost().
-      then((hrpost) => {
+      subscribe((hrpost) => {
+        console.log('hrpost',hrpost);
         this.hrpost = hrpost;
         this.suggestedjob = this.hrpost.filter((ele) => {
           const data = ele.skills.filter((ele1) => {
@@ -65,11 +66,11 @@ export class UserViewComponent implements OnInit {
         });
         console.log('post', this.suggestedjob);
         this.loadPage = true
-      }).
-      catch((error=>{
-        this.loadError = true;
-       this.error_text = "Get error on server request ";
-       }))
+      })
+      // .catch((error=>{
+      //   this.loadError = true;
+      //  this.error_text = "Get error on server request ";
+      //  }))
   }
 
   searchClicked() {

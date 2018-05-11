@@ -60,7 +60,7 @@ export class HrDashboardDetailsComponent implements OnInit {
     if (!this._authService.isLoggedIn) {
       this.router.navigateByUrl('login');
     }
-    this.hrbaseservice.getHrDetailsById(this.id).then((data) => {
+    this.hrbaseservice.getHrDetailsById(this.id).subscribe((data) => {
       this.hrdata = data;
       console.log('hr data', this.hrdata);
       this.profile_photo_for_viewing = this.getUrl();
