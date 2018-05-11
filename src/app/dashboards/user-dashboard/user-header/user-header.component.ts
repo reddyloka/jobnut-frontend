@@ -53,18 +53,12 @@ public currentForm:FormGroup;
       onDeny    : function(){
         return true;
       }
-    })
-    .modal('show');
+    }).modal('show');
     console.log('request to change password',this.currentForm.value);
   this.userbase.checkCurrentPassword(this.currentForm.value,this.id).then((data)=>{
     console.log('data',data)
     if(data.status)
-    {  $('.small.modal').modal({
-      closable : true,
-       onDeny  : function(){
-        return true;
-      }
-    }).modal('toggle');
+    {  $('.small.modal').modal('toggle');
       this.logoutClicked();
     }
     else {
