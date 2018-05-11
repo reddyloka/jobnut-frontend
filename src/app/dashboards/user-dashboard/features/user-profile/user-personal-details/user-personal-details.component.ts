@@ -41,11 +41,9 @@ export class UserPersonalDetailsComponent implements OnInit {
       'lastName': new FormControl(null),
       'email': new FormControl(null, [Validators.required, Validators.pattern('[A-Za-z\.0-9]+@[A-Za-z]+(.)[A-Za-z]+')]),
       'dob': new FormControl(null, [Validators.required, Validators.pattern('[0-9]{10}')]),
-      'password': new FormControl(null, [Validators.required, Validators.pattern('(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z]).{5,}$')]),
       'phone': new FormControl(null, [Validators.required, Validators.pattern('[0-9]{10}')]),
-      'skillValue': new FormControl(null, Validators.required),
       'address': new FormControl(null, Validators.required),
-      'location': new FormControl(null, Validators.required),
+      'city': new FormControl(null, Validators.required),
       'gender': new FormControl(null, Validators.required),
     };
     this.applicantForm = new FormGroup(fg);

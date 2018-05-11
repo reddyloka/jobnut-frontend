@@ -64,13 +64,13 @@
         </p>
       </div>
     </div>
-    <!-- location -->
+    <!-- city -->
     <div class="field">
-      <label>Location
+      <label>City
         <span style="color:red">*</span>
       </label>
-      <input type="text" formControlName="location" [(ngModel)]="userdata.location" placeholder="enter your current location">
-      <div class="alert alert-danger" *ngIf="applicantForm.controls['location'].touched&&!applicantForm.controls['location'].valid">
+      <input type="text" formControlName="city" [(ngModel)]="userdata.city" placeholder="enter your current city">
+      <div class="alert alert-danger" *ngIf="applicantForm.controls['city'].touched&&!applicantForm.controls['city'].valid">
         <p>please fill required fields
           <span style="color:red">*</span>
         </p>
