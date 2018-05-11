@@ -150,9 +150,11 @@
     </div>
     <hr>
   </div>
+  <app-chat *ngIf="chatOpen" [initiator]="this.hrpost.hrRef" [recepient]="this.postData._id" (expandClick)="st = $event;"></app-chat>
 
 
-  <div *ngIf="chatOpen" [ngClass]="{'visible': chatOpen , 'active': chatOpen }" class="ui dimmer modals page top aligned transition"
-  style="display: flex !important;">
-  <app-chat [initiator]="this.hrpost.hrRef" [recepient]="this.postData._id"></app-chat>
+<!-- <app-chat *ngIf="st" [initiator]="this.hrpost.hrRef" [recepient]="this.postData._id" (expandClick)="chatOpen = !chatOpen;st = $event;"></app-chat> -->
+
+<div>
+  {{st}}
 </div>

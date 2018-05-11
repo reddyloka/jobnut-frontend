@@ -219,8 +219,4 @@ export class UserProfileComponent implements OnInit {
   // activateClass(subModule) {
   //   subModule.active = !subModule.active;
   // }
-
-  sayHello() {
-    alert('not wo');
-  }
 }

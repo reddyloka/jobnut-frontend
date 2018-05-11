@@ -9,7 +9,6 @@ import { HttpModule } from '@angular/http';
 import { Ng2ImgMaxModule } from 'ng2-img-max';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxPaginationModule } from 'ngx-pagination';
-import { routerConfig } from '../../app.router-config';
 import { RouterModule } from '@angular/router';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
@@ -31,6 +30,8 @@ import { HrHeaderComponent } from './hr-header/hr-header.component';
 import { HrSkillComponent } from './hr-dashboard-details/hr-skill/hr-skill.component';
 // import { UserExperienceAddDetailsComponent } from './user-dashboard/features/user-profile/user-experience-add-details/user-experience-add-details.component';
 import { ChatModule } from '../../_shared/components/chat/chat.module';
+import { StrinCleaner } from '../../_shared/pipes/stringCleaner';
+import { hrRouterConfig } from './hr-dashboard.router-config';
 
 
 @NgModule({
@@ -46,7 +47,7 @@ import { ChatModule } from '../../_shared/components/chat/chat.module';
     Ng2ImgMaxModule,
     HttpClientModule,
     NgxPaginationModule,
-    RouterModule.forRoot(routerConfig),
+    RouterModule.forRoot(hrRouterConfig),
     BrowserModule
   ],
   declarations: [
@@ -66,6 +67,7 @@ import { ChatModule } from '../../_shared/components/chat/chat.module';
     HrExperienceAddDetailsComponent,
     HrSkillComponent,
     HrHeaderComponent,
+    StrinCleaner
   ]
 })
 export class HrDashboardModule { }

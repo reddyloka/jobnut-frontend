@@ -1,5 +1,5 @@
 <div class="container-fluid">
-  <button type="button" class="btn btn-primary" (click)="join()">Join</button>
+  <!-- <button type="button" class="btn btn-primary" (click)="join()">Join</button> -->
   <!-- <div class="row"> -->
     <!-- <div class="col-sm-5">
       <div class="form-group">
@@ -54,11 +54,13 @@
 <hr>
 <hr>
 
+<div [ngClass]="{'visible': true , 'active': true, 'ui': x }" class="dimmer transition modals page top aligned transition"
+  style="display: flex !important;">
 <div *ngIf='sendInviteButton'>
     <button type="button" class="btn btn-primary" (click)='sendInvite()'>Send Invite</button>
   <!-- <button type="button" class="btn btn-primary" (click)='receiveInvite()'>Receive Invite</button> -->
 </div>
-<div *ngIf='chatWindow' [ngClass]="{'chat-container-expand': !x, 'chat-container-shrink': x}" class="chat-container" >
+<div *ngIf='chatWindow' [ngClass]="{'chat-container-expand': x, 'chat-container-shrink': !x}" class="chat-container" >
     <div class="ab-header-chat">
         {{receiver}}
         <div class="ab-header-options">
@@ -98,4 +100,5 @@
     </button>
 
   </div>
+</div>
 </div>

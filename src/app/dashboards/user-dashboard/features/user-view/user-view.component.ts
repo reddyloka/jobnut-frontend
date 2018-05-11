@@ -73,9 +73,9 @@ export class UserViewComponent implements OnInit {
   }
 
   searchClicked() {
-    console.log("search")
-    console.log("sa",this.searchText)
-    console.log("sa",this.searchLocation)
+    console.log('search');
+    console.log('sa', this.searchText);
+    console.log('sa', this.searchLocation);
     if (this.searchText === null || this.searchText === undefined) {
       this.jobInfo = true;
       this.searchInfo = false;

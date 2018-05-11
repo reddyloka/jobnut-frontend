@@ -26,6 +26,9 @@ export class ChatComponent implements OnInit {
   @Input()
   recepient: any; // applicant
 
+  @Output()
+  expandClick = new EventEmitter<any>();
+
   formId: String;
 
   // @Output()
@@ -52,6 +55,7 @@ export class ChatComponent implements OnInit {
     this.sender = this.initiator ? this.initiator.email : 'NAN' ;
     this.receiver = this.recepient ? this.recepient.email : 'NAN' ;
     console.log('va;l', this.sender, this.receiver);
+    this.join();
   }
   constructor(public _chatService: ChatService) {
     this.chatInvitesButton = true;
@@ -192,6 +196,7 @@ export class ChatComponent implements OnInit {
 
   expandClicked() {
     this.x = !this.x;
+    this.expandClick.emit(this.x);
     console.log('expand clicked');
     this.expandClass = this.expandClass.expand ? {'expand': false, 'braille': true} : {'expand': true, 'braille': false} ;
   }

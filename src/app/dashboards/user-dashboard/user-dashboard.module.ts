@@ -12,7 +12,6 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { RouterModule } from '@angular/router';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
-import { routerConfig } from '../../app.router-config';
 import { UserEducationAddDetailsComponent } from './features/user-profile/user-education-details/user-education-add-details/user-education-add-details.component';
 import { UserEducationDetailsComponent } from './features/user-profile/user-education-details/user-education-details.component';
 import { UserExperienceAddDetailsComponent } from './features/user-profile/user-experience-add-details/user-experience-add-details.component';
@@ -30,6 +29,9 @@ import { UserViewPostDetailsComponent } from './features/user-view-post/user-vie
 import { ChatComponent } from '../../_shared/components/chat/chat.component';
 import { UserViewAppliedPostDetailsComponent } from './features/user-view-applied-post/user-view-applied-post-details/user-view-applied-post-details.component';
 import { ChatModule } from '../../_shared/components/chat/chat.module';
+import { userRouterConfig } from './user-dashboard.router-config';
+
+
 
 
 @NgModule({
@@ -45,7 +47,7 @@ import { ChatModule } from '../../_shared/components/chat/chat.module';
     Ng2ImgMaxModule,
     HttpClientModule,
     NgxPaginationModule,
-    RouterModule.forRoot(routerConfig),
+    RouterModule.forRoot(userRouterConfig),
     BrowserModule
   ],
   declarations: [
