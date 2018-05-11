@@ -29,12 +29,18 @@ export class UserViewAppliedPostDetailsComponent implements OnInit {
   ngOnInit() {
     this.route.paramMap.subscribe(async (params: ParamMap) => {
       const hrpost_id = params.get('user-post.id');
-      this.hrpost = await this.hrbaseservice.getHrPostById(hrpost_id);
+       await this.hrbaseservice.getHrPostById(hrpost_id).subscribe((res)=>{
+       this.hrpost=res;
+      //  console.log('hrdata from applied',this.hrpost);
+       return  this.shortlisted();
+      });
       console.log('hrpost from applied',this.hrpost);
        this.userbaseservice.getUserDetailsById(this.id).subscribe((res)=>{
-       return this.userdata=res;
+      this.userdata=res;
+      //  console.log('userdata from applied',this.userdata);
+       return  this.userdata;
         });
-        this.shortlisted();
+        
       });
   }
   shortlisted() {

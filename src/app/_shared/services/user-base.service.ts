@@ -110,8 +110,8 @@ export class UserBaseService extends ApiServiceService {
   }
 
   updateUserApplyPost(postid: string, userid: string): Observable<Boolean> {
-    console.log('post_id', postid);
-    console.log('user_id', userid);
+    console.log('post_id u', postid);
+    console.log('user_id u', userid);
     return this.http.put(`${environment.USER_SERVER}/api/users/apply`, {}, {
       params: {
         'id': postid,
