@@ -67,6 +67,7 @@ export class ApplicantComponent implements OnInit {
       'state': new FormControl(null, Validators.required),
       'city': new FormControl(null, Validators.required),
       'address': new FormControl(null, Validators.required),
+      'country': new FormControl(null, Validators.required),
       'skillValue': new FormControl(null, Validators.required),
       'termsCheck': new FormControl(null, Validators.required)
     };
