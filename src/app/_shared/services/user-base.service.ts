@@ -140,7 +140,7 @@ export class UserBaseService extends ApiServiceService {
     const image_response = await this.http.post(`${environment.USER_SERVER}/api/user/upload-profile`, formData, {
       params: {
         id: final_data._id,
-        isHr: final_data.isHr,
+        isHr: Boolean(final_data.isHr),
         isApplicant: final_data.isApplicant
       }
     }).toPromise();

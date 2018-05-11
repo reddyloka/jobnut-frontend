@@ -28,9 +28,9 @@ export class UserViewComponent implements OnInit {
   searchLocation: any;
   userdata: ApplicantBase;
   hrpost: HrPostDetail[];
-  loadPage: boolean = false;
-  loadError: boolean = false;
-  searchpage: boolean = false;
+  loadPage = false;
+  loadError = false;
+  searchpage = false;
   recomendedSkill: string[];
   constructor(private hrbaseservice: HrbaseService,
     private userbaseservice: UserBaseService,
@@ -74,9 +74,9 @@ export class UserViewComponent implements OnInit {
   }
 
   searchClicked() {
-    console.log("search")
-    console.log("sa",this.searchText)
-    console.log("sa",this.searchLocation)
+    console.log('search');
+    console.log('sa', this.searchText);
+    console.log('sa', this.searchLocation);
     if (this.searchText === null || this.searchText === undefined) {
       this.jobInfo = true;
       this.searchInfo = false;
@@ -93,7 +93,7 @@ export class UserViewComponent implements OnInit {
       console.log('arrayvalue', this.searchData);
     }
     if ((this.searchText !== null && this.searchText !== undefined) && (this.searchLocation === null || this.searchLocation === undefined)) {
-      
+
       this.searchpage = true;
       this.searchText = this.searchText.trim();
       console.log(this.searchText);

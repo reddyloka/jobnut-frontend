@@ -14,15 +14,17 @@ export class HrManageApplicantListDetailsComponent implements OnInit {
   hrpost;
   userdata: any;
   isShortlisted: boolean;
+  chatOpen: boolean;
   id: string;
   hrpostdata: any;
   constructor(private _notif: NotificationService,
               private hrbaseservice: HrbaseService) {
     this.id = uuid();
+    this.chatOpen = false;
   }
 
   ngOnInit( ) {
-    console.log('looo', this.userdata);
+    console.log('looo', this.hrpost);
     this.isShortlisted = this.postData.isShortlisted;
     this.userdata = this.postData._id;
     this.hrpostdata = this.hrpost;
@@ -45,6 +47,10 @@ export class HrManageApplicantListDetailsComponent implements OnInit {
     // } else {
     //   this._notif.pop(`${this.userdata.firstName + ' ' + this.userdata.lastName} has been deselected\nfrom Job Tittle`, 'Deselect Successfull', 3000);
     // }
+  }
+
+  chatOpenClicked() {
+    this.chatOpen = true;
   }
 
 }

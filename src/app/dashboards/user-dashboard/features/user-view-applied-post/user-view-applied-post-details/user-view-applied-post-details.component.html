@@ -29,8 +29,14 @@
     <br>
     <div class="ui grid">
       <div class="col-md-3">
-        <button [disabled]="!isshortlist" class="btn btn-info">Chating</button>
+        <button [disabled]="!isshortlist" class="btn btn-info" (click)="chatOpenClicked()" >Chating</button>
       </div>
     </div>
   </div>
+</div>
+
+<div *ngIf="chatOpen" [ngClass]="{'visible': chatOpen , 'active': chatOpen }" class="ui dimmer modals page top aligned transition"
+  style="display: flex !important;">
+  <app-chat [initiator]="this.userdata" [recepient]="this.hrpost.hrRef"></app-chat>
+  <!-- <app-chat-invites></app-chat-invites> -->
 </div>

@@ -16,6 +16,7 @@ export class UserViewAppliedPostDetailsComponent implements OnInit {
   isshortlist: string;
   userdata: ApplicantBase;
   id: string;
+  chatOpen: boolean;
   uploadNewCv: boolean;
   hrpost: any;
 
@@ -24,6 +25,7 @@ export class UserViewAppliedPostDetailsComponent implements OnInit {
     private userbaseservice: UserBaseService,
     private router: Router) {
     this.uploadNewCv = false;
+    this.chatOpen = false;
     this.id = uuid();
   }
   ngOnInit() {
@@ -53,6 +55,10 @@ export class UserViewAppliedPostDetailsComponent implements OnInit {
        console.log(this.isshortlist);
       }
     });
+   }
+
+   chatOpenClicked() {
+    this.chatOpen = true;
    }
 }
 

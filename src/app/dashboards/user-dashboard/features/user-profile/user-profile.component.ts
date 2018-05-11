@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, SimpleChange } from '@angular/core';
 import { Ng2ImgMaxService } from 'ng2-img-max';
 import { UserBaseService } from '../../../../_shared/services/user-base.service';
 import { NotificationService } from '../../../../_shared/services/notification.service';
@@ -27,6 +27,7 @@ export class UserProfileComponent implements OnInit {
   skillOpen: boolean;
   skillActive = false;
   skillMain: boolean;
+  bindings: { foo: '<' };
   expOpen: boolean;
   expMain: boolean;
   detailsOpen: boolean;
@@ -38,6 +39,7 @@ export class UserProfileComponent implements OnInit {
   qod = 'quote of the day.';
   highestDegreeArray: any;
   yearArray: any;
+  message = 'abhishek';
 
   // c_0 = true;
   // c_1 = true;
@@ -50,9 +52,10 @@ export class UserProfileComponent implements OnInit {
     private ng2ImgMax: Ng2ImgMaxService,
     private _qod: QuotesService
   ) {
+    // $('#chagecheck').change(this.sayHello());
     this.skillsArray = ['Angular', 'CSS', 'Graphic Design', 'Ember', 'HTML',
-    'Information Architecture', 'Javascript', 'Mechanical Engineering',
-    'Meteor', 'NodeJS', 'UI Design', 'Python', 'Rails', 'React', 'Ruby'];
+      'Information Architecture', 'Javascript', 'Mechanical Engineering',
+      'Meteor', 'NodeJS', 'UI Design', 'Python', 'Rails', 'React', 'Ruby'];
 
     this.detailsMain = true;
     this.detailsOpen = false;
@@ -67,11 +70,10 @@ export class UserProfileComponent implements OnInit {
     this.id = uuid();
     this.highestDegreeArray = ['B-Tech', 'B.Sc'];
     this.yearArray = ['2018', '2017', '2016', '2015', '2014', '2013', '2012', '2011', '2010', '2009', '2008', '2007', '2006', '2005', '2004', '2003', '2002', '2001', '2000', '1999', '1998'];
-    this.meme1 = false 
+    this.meme1 = false;
   }
-
   ngOnInit() {
-    this.getdata()
+    this.getdata();
     this.accordionClicked();
     this._qod.getQOD().then(q => {
       this.qod = q;
@@ -82,19 +84,19 @@ export class UserProfileComponent implements OnInit {
 
 
 
-      
-      $('.dropdown').dropdown({
-        label: {
-          duration: 0,
-        },
-        debug: true,
-        performance: true,
-      });
+
+    $('.dropdown').dropdown({
+      label: {
+        duration: 0,
+      },
+      debug: true,
+      performance: true,
+    });
 
 
   }
 
-  getdata(){
+  getdata() {
     this.userbaseservice.getUserDetailsById(this.id).
       subscribe((userdata) => {
         console.log('maindata', userdata);
@@ -110,10 +112,10 @@ export class UserProfileComponent implements OnInit {
       .accordion({
         collapsible: false
       });
-      $('.ui.selection.dropdown').dropdown();
+    $('.ui.selection.dropdown').dropdown();
     $('#select')
-  .dropdown()
-;
+      .dropdown()
+      ;
   }
 
   EditPersonalDetails() {
@@ -154,7 +156,7 @@ export class UserProfileComponent implements OnInit {
 
 
   closeAddEducation(event) {
-    this.userdata=event;
+    this.userdata = event;
     this.educationAdd = false;
   }
 
@@ -201,10 +203,10 @@ export class UserProfileComponent implements OnInit {
     // this.c = !this.c;
     if (type.toLowerCase() === 'edit') {
       this.meme = pos;
-      // this.meme1=true;
+      this.meme1 = true;
     } else if (type.toLowerCase() === 'save') {
       this.meme = -1;
-      // this.meme1=false;
+      this.meme1 = false;
       await this.userbaseservice.updateUserDetailsById(this.userdata, this.id);
       this._notif.pop('Updated New Education Details', 'Updated', 2000);
     }

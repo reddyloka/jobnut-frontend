@@ -13,12 +13,12 @@ export class UserViewAppliedPostComponent implements OnInit {
   hrpost: HrPostDetail[];
   p: number;
   id: string;
-  loadPage: boolean = false;
-  loadError: boolean = false;
+  loadPage = false;
+  loadError = false;
   constructor(private userbaseservice: UserBaseService,
-              private router: Router) {
+    private router: Router) {
     this.id = uuid();
-   }
+  }
 
   ngOnInit() {
     this.userbaseservice.getUserApplyPost(this.id).
