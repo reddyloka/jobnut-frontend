@@ -135,7 +135,8 @@ export class HrDashboardDetailsComponent implements OnInit {
     this.expMain = false;
     this.ExpOpen = true;
   }
-  closeexp() {
+  closeexp(event) {
+    this.hrdata = event;
     this.expMain = true;
     this.ExpOpen = false;
   }

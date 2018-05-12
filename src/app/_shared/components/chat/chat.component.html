@@ -1,83 +1,20 @@
-<div class="container-fluid">
-  <!-- <button type="button" class="btn btn-primary" (click)="join()">Join</button> -->
-  <!-- <div class="row"> -->
-    <!-- <div class="col-sm-5">
-      <div class="form-group">
-        <input type="text" [(ngModel)]="sender" class="form-control" id="emailaddress" placeholder="Enter Email Address">
-        <input type="text" [(ngModel)]="receiver" class="form-control" id="receiver_email" placeholder="Enter Receiver's Email Address">
-      </div>
+<div *ngIf='chatWindow' [ngClass]="{'chat-container-expand': x, 'chat-container-shrink': !x}" class="chat-container">
+  <div class="ab-header-chat">
+    {{receiver}}
+    <div class="ab-header-options">
+      <i [ngClass]="expandClass" class="icon" (click)="expandClicked();"></i>
     </div>
-    <div class="col sm-2">
-      <div style="margin-top:19px;" class="pull-right">
-
-        <button type="button" class="btn btn-default" (click)="leave()">Leave</button>
-      </div>
-    </div> -->
-  <!-- </div> -->
-  <!-- <div *ngIf='chatWindow'>
-    <div class="row">
-      <div class="well" style="height:200px; padding:15px;overflow:scroll;">
-        <div class="col-sm-6">
-          <div>
-            <span *ngFor="let item of messageArray1">
-              <p *ngIf="item.sender == 'a'">
-                <strong>{{item.user}}: </strong>
-                <br>{{item.message}} </p>
-              <p *ngIf="item.sender=='b'" style="padding-left:60px">
-                <strong>{{item.user}}: </strong>
-                <br>{{item.message}} </p>
-            </span>
-            <span *ngFor="let item of messageArray">
-              <p *ngIf="item.sender == 'a'">
-                <strong>{{item.user}}: </strong>
-                <br>{{item.message}} </p>
-              <p *ngIf="item.sender=='b'" style="padding-left:60px">
-                <strong>{{item.user}}: </strong>
-                <br>{{item.message}} </p>
-            </span>
-          </div>
-        </div>
-
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-10">
-
-      </div>
-      <div class="col-sm-2">
-      </div>
-    </div>
-  </div> -->
-</div>
-
-<hr>
-<hr>
-<hr>
-
-<div [ngClass]="{'visible': true , 'active': true, 'ui': x }" class="dimmer transition modals page top aligned transition"
-  style="display: flex !important;">
-<div *ngIf='sendInviteButton'>
-    <button type="button" class="btn btn-primary" (click)='sendInvite()'>Send Invite</button>
-  <!-- <button type="button" class="btn btn-primary" (click)='receiveInvite()'>Receive Invite</button> -->
-</div>
-<div *ngIf='chatWindow' [ngClass]="{'chat-container-expand': x, 'chat-container-shrink': !x}" class="chat-container" >
-    <div class="ab-header-chat">
-        {{receiver}}
-        <div class="ab-header-options">
-          <i [ngClass]="expandClass" class="icon" (click)="expandClicked();"></i>
-        </div>
-      </div>
+  </div>
   <div id="chatBox" class="chat-box ui card">
-      
-    <div [ngClass]="{'ab-message-left': message?.sender===receiver,'ab-message-right': message?.sender===sender}" *ngFor="let message of messageArray1;" >
+
+    <div [ngClass]="{'ab-message-left': message?.sender===receiver,'ab-message-right': message?.sender===sender}" *ngFor="let message of messageArray1;">
       <!-- <span *ngIf="getDay(message?.created)" ></span> -->
       <h4 style="color: #222">{{message?.sender}}</h4>
       <div [ngClass]="{'ab-left': message?.sender===receiver,'ab-right': message?.sender===sender}" class="description">
         {{message?.message}}
       </div>
       <div [ngClass]="{'left': message?.sender===receiver,'right': message?.sender===sender}" class="ab-createdAt">
-          {{getDayAndTime(message.created)}} At 
-          {{message?.created | date:'shortTime'}}
+        {{getDayAndTime(message.created)}} At {{message?.created | date:'shortTime'}}
       </div>
     </div>
     <div [ngClass]="{'ab-message-left': message?.sender===receiver,'ab-message-right': message?.sender===sender}" *ngFor="let message of messageArray">
@@ -86,19 +23,17 @@
         {{message?.message}}
       </div>
       <div [ngClass]="{'left': message?.sender===receiver,'right': message?.sender===sender}" class="ab-createdAt">
-          {{getDayAndTime(message.created)}} At
-          {{message?.created | date:'shortTime'}}
+        {{getDayAndTime(message.created)}} At {{message?.created | date:'shortTime'}}
       </div>
     </div>
   </div>
   <div class="ui action input ab-message-input-box">
-    <input type="text" class="form-control ab-message-input" [(ngModel)]="messageText" >
+    <input type="text" class="form-control ab-message-input" [(ngModel)]="messageText">
     <button type="button" class="ab-button ui" (click)="sendMessage()">
-        <svg height='24' viewbox='0 0 24 24' width='24' style="fill: tomato">
-          <path d='M2.01 21L23 12 2.01 3 2 10l15 2-15 2z'></path>
-        </svg>
+      <svg height='24' viewbox='0 0 24 24' width='24' style="fill: tomato">
+        <path d='M2.01 21L23 12 2.01 3 2 10l15 2-15 2z'></path>
+      </svg>
     </button>
 
   </div>
-</div>
 </div>
