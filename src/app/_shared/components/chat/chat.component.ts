@@ -195,8 +195,8 @@ export class ChatComponent implements OnInit {
   // }
 
   expandClicked() {
-    this.x = !this.x;
     this.expandClick.emit(this.x);
+    this.x = !this.x;
     console.log('expand clicked');
     this.expandClass = this.expandClass.expand ? {'expand': false, 'braille': true} : {'expand': true, 'braille': false} ;
   }

@@ -32,7 +32,7 @@ export class UserExperienceAddDetailsComponent implements OnInit {
     };
     this.applicantForm = new FormGroup(fg);
   }
-  
+
   ngOnInit() {
     this.personaldata  = JSON.stringify(this.userdata);
   this.personaldata=JSON.parse(this.personaldata)

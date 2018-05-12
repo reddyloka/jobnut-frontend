@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { NotificationService } from '../../../../../../_shared/services/notification.service';
 import { HrbaseService } from '../../../../../../_shared/services/hrbase.service';
 import { uuid } from '../../../../../../_shared/models/uuid';
@@ -7,6 +7,9 @@ import { uuid } from '../../../../../../_shared/models/uuid';
   templateUrl: './hr-manage-applicant-list-details.component.html'
 })
 export class HrManageApplicantListDetailsComponent implements OnInit {
+
+  @Output()
+  openChat = new EventEmitter<boolean>();
 
   @Input()
   postData;
@@ -50,7 +53,7 @@ export class HrManageApplicantListDetailsComponent implements OnInit {
   }
 
   chatOpenClicked() {
-    this.chatOpen = true;
+    this.openChat.emit(true);
   }
 
 }
