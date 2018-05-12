@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ApplicantBase } from '../../../models/applicantbase';
 import { UserBaseService } from '../../../services/user-base.service';
 import * as citiesData from '../../../data/india-cities.json';
+
 declare var $: any;
 @Component({
   selector: 'app-applicant',
@@ -17,9 +18,9 @@ export class ApplicantComponent implements OnInit {
   applicantForm: FormGroup;
   user_details: ApplicantBase;
   skills: string[];
-  cities:any=[];
-  states:any=[];
-  genders:any=[];
+  cities: any = [];
+  states: any = [];
+  genders: any = [];
   imageFile: any;
   profile_photo: File;
   isApplicant: boolean;
@@ -31,13 +32,13 @@ export class ApplicantComponent implements OnInit {
     private router: Router) {
     this.user_details = ApplicantBase.createblank();
     this.buildFormGroup();
-    this.states=[
-      'Andhra Pradesh', 'Arunachal Pradesh', 'Assam', 'Bihar', 'Chhattisgarh','Goa', 'Gujarat','Haryana', 'Himachal Pradesh','Jammu and Kashmir', 'Jharkhand', 'Karnataka', 'Kerala', 'Madhya Pradesh', 'Maharashtra', 'Manipur', 'Meghalaya', 'Mizoram', 'Nagaland', 'Orissa', 'Punjab', 'Rajasthan', 'Sikkim', 'TamilNadu','Telangana','Tripura', 'Uttar Pradesh', 'Uttarakhand', 'West Bengal'];
-    this.genders=['Male','Female','Other'];
-    this.highestDegreeArray = ['B.A','B.Arch','B.Des','B.EL.Ed','B.P.Ed','B.U.M.S','BAMS','BCA' ,'B.B.A/B.B.M','B.Com','B.Ed','BDS','BFA','BHM','B.Phrama','B.Sc','B.Tech/B.E','BHMS','MBBS','Diploma','BVSC','12th','10th','other'];
-    this.skills = ['Angular','ASP.Net','C#','C#.Net','ADO.Net','SQL Server','Spring','C','C++','JAVA','CSS','Graphic Design', 'Ember', 'DataBase','PHP','Full Stack Developing','Testing','HTML','Javascript', 'NodeJS', 'UI Design', 'Python', 'Rails', 'React', 'Ruby'];
+    this.states = [
+      'Andhra Pradesh', 'Arunachal Pradesh', 'Assam', 'Bihar', 'Chhattisgarh', 'Goa', 'Gujarat', 'Haryana', 'Himachal Pradesh', 'Jammu and Kashmir', 'Jharkhand', 'Karnataka', 'Kerala', 'Madhya Pradesh', 'Maharashtra', 'Manipur', 'Meghalaya', 'Mizoram', 'Nagaland', 'Orissa', 'Punjab', 'Rajasthan', 'Sikkim', 'TamilNadu', 'Telangana', 'Tripura', 'Uttar Pradesh', 'Uttarakhand', 'West Bengal'];
+    this.genders = ['Male', 'Female', 'Other'];
+    this.highestDegreeArray = ['B.A', 'B.Arch', 'B.Des', 'B.EL.Ed', 'B.P.Ed', 'B.U.M.S', 'BAMS', 'BCA', 'B.B.A/B.B.M', 'B.Com', 'B.Ed', 'BDS', 'BFA', 'BHM', 'B.Phrama', 'B.Sc', 'B.Tech/B.E', 'BHMS', 'MBBS', 'Diploma', 'BVSC', '12th', '10th', 'other'];
+    this.skills = ['Angular', 'ASP.Net', 'C#', 'C#.Net', 'ADO.Net', 'SQL Server', 'Spring', 'C', 'C++', 'JAVA', 'CSS', 'Graphic Design', 'Ember', 'DataBase', 'PHP', 'Full Stack Developing', 'Testing', 'HTML', 'Javascript', 'NodeJS', 'UI Design', 'Python', 'Rails', 'React', 'Ruby'];
     this.yearArray = this.years();
-    this.cities=citiesData;
+    this.cities = citiesData;
     this.profile_photo = null;
     this.isApplicant = true;
     this.isHr = false;
@@ -63,7 +64,7 @@ export class ApplicantComponent implements OnInit {
       'phone': new FormControl(null, [Validators.required, Validators.pattern('[0-9]{10}')]),
       'email': new FormControl(null, [Validators.required, Validators.pattern('[A-Za-z\.0-9]+@[A-Za-z]+(.)[A-Za-z]+')]),
       'password': new FormControl(null, [Validators.required, Validators.pattern('(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z]).{5,}$')]),
-      'state':new FormControl(null, Validators.required),
+      'state': new FormControl(null, Validators.required),
       'city': new FormControl(null, Validators.required),
       'address': new FormControl(null, Validators.required),
       'skillValue': new FormControl(null, Validators.required),
@@ -103,16 +104,17 @@ export class ApplicantComponent implements OnInit {
   }
   onSubmit() {
     console.log('Applicant details', this.user_details);
-    this.user_details.skillValue=this.user_details.skillValue.filter((ele)=>{
-    if(ele!='select your skills')
-    return ele;
-  });
+    this.user_details.skillValue = this.user_details.skillValue.filter((ele) => {
+      if (ele !== 'select your skills') {
+        return ele;
+      }
+    });
     this._userService.addNewUser(this.user_details, {
       profile_photo: this.profile_photo
     }).then((result) => {
-        this.router.navigateByUrl('login');
-        console.log(result);
-      });
+      this.router.navigateByUrl('login');
+      console.log(result);
+    });
   }
 
   fileTypeCheck(event): any {

@@ -28,19 +28,19 @@ export class UserBaseService {
         return data.status;
       });
   }
-  checkCurrentPassword(value:any,id:string):Promise<any>{
-    const obj={
-      id:id,
-      currentPassword:value.currentPassword,
-      newPassword:value.newPassword
+  checkCurrentPassword(value: any, id: string): Promise<any> {
+    const obj = {
+      id: id,
+      currentPassword: value.currentPassword,
+      newPassword: value.newPassword
     };
     return this.http.post(environment.USER_SERVER + `/api/checkPassword`, obj)
-    .toPromise()
-    .then((data) => {
-      data = data.json();
-      console.log('returned status ',data,data.status);
-      return data;
-    });
+      .toPromise()
+      .then((data) => {
+        data = data.json();
+        console.log('returned status ', data, data.status);
+        return data;
+      });
   }
 
   passwordUpdate(emailDetails: any, password: any): Promise<boolean> {
@@ -146,7 +146,7 @@ export class UserBaseService {
     const image_response = await this.http.post(`${environment.USER_SERVER}/api/user/upload-profile`, formData, {
       params: {
         id: final_data._id,
-        isHr: final_data.isHr,
+        isHr: Boolean(final_data.isHr),
         isApplicant: final_data.isApplicant
       }
     }).toPromise();

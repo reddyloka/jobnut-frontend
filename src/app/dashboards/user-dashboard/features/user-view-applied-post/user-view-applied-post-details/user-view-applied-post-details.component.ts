@@ -16,6 +16,7 @@ export class UserViewAppliedPostDetailsComponent implements OnInit {
   isshortlist: string;
   userdata: ApplicantBase;
   id: string;
+  chatOpen: boolean;
   uploadNewCv: boolean;
   hrpost: any;
 
@@ -24,6 +25,7 @@ export class UserViewAppliedPostDetailsComponent implements OnInit {
     private userbaseservice: UserBaseService,
     private router: Router) {
     this.uploadNewCv = false;
+    this.chatOpen = false;
     this.id = uuid();
     // this.isshortlist = false;
   }
@@ -46,7 +48,7 @@ export class UserViewAppliedPostDetailsComponent implements OnInit {
       });
   }
   shortlisted() {
-    console.log('shhhhhhhooooooooo', this.hrpost.applicants);
+    console.log('shhhhhhhooooooooo', this.userdata);
     this.hrpost.applicants.map((ele) => {
       console.log('shhhhhhhooooooooorrrrrrr', ele.isShortlisted
     );
@@ -55,6 +57,10 @@ export class UserViewAppliedPostDetailsComponent implements OnInit {
        console.log(this.isshortlist);
       }
     });
+   }
+
+   chatOpenClicked() {
+    this.chatOpen = true;
    }
 }
 

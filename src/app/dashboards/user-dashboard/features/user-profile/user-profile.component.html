@@ -1,10 +1,12 @@
 <app-user-header [userdata]=userdata></app-user-header>
 <div class="ui grid centered" style="margin-top: 2%;">
   <div class="four wide ui segment column grid" style="padding-left: 0%; padding-right: 20px;">
+      
     <div class="row centered">
       <div class="avatar-upload">
         <div class="avatar-edit">
           <input type="file" id="imageUpload" accept=".png, .jpg, .jpeg" (change)="updateProfilePicture($event.target.files)" />
+          
           <label for="imageUpload"></label>
         </div>
         <div class="avatar-preview">
@@ -143,7 +145,7 @@
               <div *ngIf="educationMain" class="">
                 <!-- <a class="fr" (click)="EditEducationDetails()">Edit</a> -->
                 <a class="ui orange left ribbon label" (click)="editData(i, $event.target.innerText)">
-                 {{ meme == i ? 'Save' : 'Edit'}}
+                  {{ meme == i ? 'Save' : 'Edit'}}
                 </a>
                 <a class="ui orange right ribbon label" (click)="deleteEducation(i);" style="margin: 0px -52px ">Delete</a>
                 <div class="row">
@@ -216,11 +218,11 @@
       <div class="content">
         <div class='panel panel-default'>
           <div class="panel-body">
-              <a class="ui orange left ribbon label" (click)="editData(meme1,$event.target.innerText)">
-                  {{ meme1? 'Save' : 'Edit'}}
-              </a>
+            <a class="ui orange left ribbon label" (click)="editData(meme1,$event.target.innerText)">
+              {{ meme1? 'Save' : 'Edit'}}
+            </a>
             <div *ngIf="skillMain">
-                <!-- <div class="ui input">
+              <!-- <div class="ui input">
                 <select  *ngIf="meme1" class="ui fluid search dropdown" [(ngModel)]="userdata.skillValue" multiple="" >
                     <option value="">Select</option>
                     <option *ngFor="let option of skillsArray">{{option}}</option>

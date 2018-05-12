@@ -19,7 +19,7 @@ export class HrExperienceAddDetailsComponent implements OnInit {
   @Output()
   discardClick = new EventEmitter<boolean>();
   @Output()
-  saveClick = new EventEmitter<boolean>();
+  saveClick = new EventEmitter<any>();
 
   constructor(private hrbaservice: HrbaseService,
     private router: Router) {

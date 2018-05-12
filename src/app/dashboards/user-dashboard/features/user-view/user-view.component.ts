@@ -28,9 +28,9 @@ export class UserViewComponent implements OnInit {
   searchLocation: any;
   userdata: ApplicantBase;
   hrpost: HrPostDetail[];
-  loadPage: boolean = false;
-  loadError: boolean = false;
-  searchpage: boolean = false;
+  loadPage = false;
+  loadError = false;
+  searchpage = false;
   recomendedSkill: string[];
   constructor(private hrbaseservice: HrbaseService,
     private userbaseservice: UserBaseService,
@@ -72,13 +72,12 @@ export class UserViewComponent implements OnInit {
           return this.getpostfromlocation(ele)
         }
         });
-
         this.loadPage = true
       }).
-      catch((error=>{
+      catch((error => {
         this.loadError = true;
-       this.error_text = "Get error on server request ";
-       }))
+        this.error_text = 'Get error on server request ';
+      }));
   }
 
   getpostfromlocation(postdata){
@@ -91,7 +90,6 @@ export class UserViewComponent implements OnInit {
 
   }
   searchClicked() {
-
     if (this.searchText === null || this.searchText === undefined) {
       this.jobInfo = true;
       this.searchInfo = false;
@@ -106,7 +104,7 @@ export class UserViewComponent implements OnInit {
 
     }
     if ((this.searchText !== null && this.searchText !== undefined) && (this.searchLocation === null || this.searchLocation === undefined)) {
-      
+
       this.searchpage = true;
       this.searchText = this.searchText.trim();
       this.searchData = this.hrpost.filter((el) => {

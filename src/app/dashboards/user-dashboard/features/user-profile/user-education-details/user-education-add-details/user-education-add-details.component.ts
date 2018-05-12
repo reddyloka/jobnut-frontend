@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { AbstractControl, ValidatorFn, FormBuilder, FormGroup, FormControl, Validators, FormsModule } from '@angular/forms';
 import { UserBaseService } from '../../../../../../_shared/services/user-base.service';
 import { ApplicantBase } from '../../../../../../_shared/models/applicantbase';
@@ -8,9 +8,9 @@ import { uuid } from '../../../../../../_shared/models/uuid';
   templateUrl: './user-education-add-details.component.html',
   // styleUrls: ['./user-education-add-details.component.css']
 })
-export class UserEducationAddDetailsComponent implements OnInit {
+export class UserEducationAddDetailsComponent implements OnInit, OnChanges {
 
-  
+
   applicantForm: FormGroup;
   id: string;
   personaldata: any;
@@ -19,14 +19,21 @@ export class UserEducationAddDetailsComponent implements OnInit {
   highestDegreeArray1: string[];
   @Input()
   userdata;
+  @Input()
+  messagec;
 
   @Output()
   discardClick = new EventEmitter<any>();
   @Output()
- saveClick= new EventEmitter<any>();
+  saveClick = new EventEmitter<any>();
+
+
+  // discardClicked() {
+  //   this.discardClick.emit(true);
+  // }
   constructor(private _userService: UserBaseService) {
-   this.id = uuid();
-   this.buildFormGroup();
+    this.id = uuid();
+    this.buildFormGroup();
     this.highestDegreeArray1 = ['B-Tech', 'B.Sc'];
     this.yearArray = ['2018', '2017', '2016', '2015', '2014', '2013', '2012', '2011', '2010', '2009', '2008', '2007', '2006', '2005', '2004', '2003', '2002', '2001', '2000', '1999', '1998'];
   }
@@ -42,9 +49,13 @@ export class UserEducationAddDetailsComponent implements OnInit {
     this.applicantForm = new FormGroup(fg);
   }
 
+  ngOnChanges(changes: SimpleChanges): void {
+    alert('fired');
+  }
+
   ngOnInit() {
-    this.personaldata  = JSON.stringify(this.userdata);
-  this.personaldata=JSON.parse(this.personaldata)
+    this.personaldata = JSON.stringify(this.userdata);
+    this.personaldata = JSON.parse(this.personaldata);
   }
   onSubmit() {
      this.personaldata.education.push(this.applicantForm.value);
