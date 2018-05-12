@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { HrbaseService } from '../../../../_shared/services/hrbase.service';
 import { UserBaseService } from '../../../../_shared/services/user-base.service';
 import { HrPostDetail } from '../../../../_shared/models/hrpostdetails';
@@ -34,7 +34,8 @@ export class UserViewComponent implements OnInit {
   recomendedSkill: string[];
   constructor(private hrbaseservice: HrbaseService,
     private userbaseservice: UserBaseService,
-    private router: Router) {
+    private router: Router,
+  private route: ActivatedRoute) {
     this.id = uuid();
     this.jobInfo = true;
     this.p = 1;
@@ -130,7 +131,9 @@ export class UserViewComponent implements OnInit {
     }
   }
   routeronclicked(hrpost_id) {
-    this.router.navigateByUrl('user-view-post/' + hrpost_id);
+    this.router.navigate([hrpost_id], {relativeTo: this.route});
+    // this.router.navigateByUrl('user-profile/user-view-post/' + hrpost_id);
+    // console.log(hrpost_id);
   }
 
 

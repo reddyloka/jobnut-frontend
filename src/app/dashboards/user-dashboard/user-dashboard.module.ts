@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { BrowserModule } from '@angular/platform-browser';
+
+// import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+// import { BrowserModule } from '@angular/platform-browser';
 import { SelectModule } from 'ng2-select';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
@@ -27,15 +28,19 @@ import { ChatComponent } from '../../_shared/components/chat/chat.component';
 import { UserViewAppliedPostDetailsComponent } from './features/user-view-applied-post/user-view-applied-post-details/user-view-applied-post-details.component';
 import { ChatModule } from '../../_shared/components/chat/chat.module';
 import { userRouterConfig } from './user-dashboard.router-config';
+import { StatisticsComponent } from '../../_shared/components/statistics/statistics.component';
+import { NumberToWordsPipe } from '../../_shared/pipes/numberToWords.pipe';
+import { SharedModule } from '../../_shared/shared.module';
 
 
 
 
 @NgModule({
   imports: [
+    SharedModule,
     CommonModule,
-    BrowserAnimationsModule,
-    BrowserModule,
+    // BrowserAnimationsModule,
+    // BrowserModule,
     SelectModule,
     FormsModule,
     ReactiveFormsModule,
@@ -44,12 +49,12 @@ import { userRouterConfig } from './user-dashboard.router-config';
     Ng2ImgMaxModule,
     HttpClientModule,
     NgxPaginationModule,
-    RouterModule.forChild(userRouterConfig),
-    BrowserModule
+    RouterModule.forChild(userRouterConfig)
   ],
   declarations: [
+    // NumberToWordsPipe,
     UserEducationAddDetailsComponent,
-
+    StatisticsComponent,
     UserExperienceAddDetailsComponent,
     UserPersonalDetailsComponent,
     UserSkillsDetailsComponent,
@@ -76,7 +81,8 @@ import { userRouterConfig } from './user-dashboard.router-config';
     UserViewPostDeatilssummaryComponent,
     UserViewPostDetailsComponent,
     UserHeaderComponent,
-    UserDashboardComponent
+    UserDashboardComponent,
+    RouterModule
   ]
 })
 export class UserDashboardModule { }

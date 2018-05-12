@@ -82,14 +82,16 @@ export class UserProfileComponent implements OnInit {
       .modal()
       ;
 
-  
-      $('.dropdown').dropdown({
-        label: {
-          duration: 0,
-        },
-        debug: true,
-        performance: true,
-      });
+
+
+
+    $('.dropdown').dropdown({
+      label: {
+        duration: 0,
+      },
+      debug: true,
+      performance: true,
+    });
 
 
   }

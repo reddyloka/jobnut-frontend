@@ -154,10 +154,10 @@
                   </div>
                   <div class="col-md-6 col-md-offset-2">
                     <div class="ui input">
-                      <select *ngIf="meme == i" class="ui search dropdown" [(ngModel)]="userdata?.education[i].higherDegreeValue">
-                        <option>Select your highest qualification</option>
-                        <option *ngFor="let degree of highestDegreeArray">{{degree}}</option>
-                      </select>
+                        <select *ngIf="meme == i" class="ui search dropdown"  [(ngModel)]="userdata.education[i].higherDegreeValue">
+                            <option>Select your highest qualification</option>
+                            <option *ngFor="let degree of highestDegreeArray">{{degree}}</option>
+                          </select>
                     </div>
                     <span *ngIf="!(meme == i)">{{userdata?.education[i].higherDegreeValue}}</span>
                     <!-- <span>{{userdata?.education[i].higherDegreeValue}}</span> -->
