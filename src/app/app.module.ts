@@ -49,25 +49,6 @@ import { HrDashboardModule } from './dashboards/hr-dashboard/hr-dashboard.module
     CallbackComponent,
     CallbackComponent,
     NotificationComponent,
-<<<<<<< HEAD
-    ApplicantPreviewComponent,
-=======
-    ResumeBuilderComponent,
-    PersonalDetailsComponent,
-    EducationComponent,
-    HomeComponent,
-    ResumePreviewComponent,
-    ResumePreview1Component,
-    ResumePreview2Component,
-    ResumePreview3Component,
-    SkillsComponent,
-    ExperienceComponent,
-    HobbiesComponent,
-    InterestsComponent,
-    CertificatesComponent,
-    LanguagesComponent,
-    IndexPageComponent,
->>>>>>> a60d25fcceab1c839611d3c23ccc5192340f84d2
     ForgetpasswordComponent,
     SignupHomeComponent,
 

@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { SelectModule } from 'ng2-select';
@@ -12,10 +11,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { RouterModule } from '@angular/router';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
-import { UserEducationAddDetailsComponent } from './features/user-profile/user-education-details/user-education-add-details/user-education-add-details.component';
-import { UserEducationDetailsComponent } from './features/user-profile/user-education-details/user-education-details.component';
+import { UserEducationAddDetailsComponent } from './features/user-profile/user-education-add-details/user-education-add-details.component';
 import { UserExperienceAddDetailsComponent } from './features/user-profile/user-experience-add-details/user-experience-add-details.component';
-import { UserExperienceDetailsComponent } from './features/user-profile/user-experience-details/user-experience-details.component';
 import { UserPersonalDetailsComponent } from './features/user-profile/user-personal-details/user-personal-details.component';
 import { UserSkillsDetailsComponent } from './features/user-profile/user-skills-details/user-skills-details.component';
 import { UserProfileComponent } from './features/user-profile/user-profile.component';
@@ -52,9 +49,8 @@ import { userRouterConfig } from './user-dashboard.router-config';
   ],
   declarations: [
     UserEducationAddDetailsComponent,
-    UserEducationDetailsComponent,
+
     UserExperienceAddDetailsComponent,
-    UserExperienceDetailsComponent,
     UserPersonalDetailsComponent,
     UserSkillsDetailsComponent,
     UserProfileComponent,
@@ -70,9 +66,7 @@ import { userRouterConfig } from './user-dashboard.router-config';
   exports: [
     UserViewAppliedPostDetailsComponent,
     UserEducationAddDetailsComponent,
-    UserEducationDetailsComponent,
     UserExperienceAddDetailsComponent,
-    UserExperienceDetailsComponent,
     UserPersonalDetailsComponent,
     UserSkillsDetailsComponent,
     UserProfileComponent,

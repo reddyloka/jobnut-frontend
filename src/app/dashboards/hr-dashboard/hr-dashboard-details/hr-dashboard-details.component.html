@@ -73,7 +73,7 @@
     <div class="ui styled fluid accordion">
       <!-- Experiences -->
       <div class="active title" (click)="skillActive = false;">
-        <a class="fr float right" (click)="EditExpDetails()">Add more Experiences</a>
+        <a class="fr float right" (click)="AddExperienceMore()">Add more Experiences</a>
         <i class="dropdown icon"></i>
         Experinces
       </div>
@@ -142,7 +142,7 @@
             <div *ngIf="hrdata?.skillValue.length === 0" class="ui compact message" style="margin: 4em auto;left: 42%;">
                 <p>It's Time To add Some Experince</p>
               </div>
-            <div *ngIf="hrdata?.skillValue.length === 0">
+            <!-- <div *ngIf="hrdata?.skillValue.length === 0"> -->
               <!-- <div class="ui input">
                 <select  *ngIf="meme1" class="ui fluid search dropdown" [(ngModel)]="hrdata.skillValue" multiple="" >
                     <option value="">Select</option>
@@ -150,8 +150,8 @@
                   </select>
                   </div> -->
 
-              <span *ngIf="!meme1">{{hrdata?.skillValue}}</span>
-            </div>
+              <span>{{hrdata?.skillValue}}</span>
+            <!-- </div> -->
           </div>
         </div>
       </div>

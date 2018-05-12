@@ -25,7 +25,6 @@ import { HrPostdetailsComponent } from './features/hr-postdetails/hr-postdetails
 import { HrDashboardDetailsComponent } from './hr-dashboard-details/hr-dashboard-details.component';
 import { HrDetailsComponent } from './hr-dashboard-details/hr-details/hr-details.component';
 import { HrExperienceAddDetailsComponent } from './hr-dashboard-details/hr-experience-add-details/hr-experience-add-details.component';
-import { HrExperienceComponent } from './hr-dashboard-details/hr-experience/hr-experience.component';
 import { HrHeaderComponent } from './hr-header/hr-header.component';
 import { HrSkillComponent } from './hr-dashboard-details/hr-skill/hr-skill.component';
 // import { UserExperienceAddDetailsComponent } from './user-dashboard/features/user-profile/user-experience-add-details/user-experience-add-details.component';
@@ -63,7 +62,6 @@ import { hrRouterConfig } from './hr-dashboard.router-config';
     HrPostdetailsComponent,
     HrDashboardDetailsComponent,
     HrDetailsComponent,
-    HrExperienceComponent,
     HrExperienceAddDetailsComponent,
     HrSkillComponent,
     HrHeaderComponent,

@@ -34,20 +34,14 @@ export class UserExperienceAddDetailsComponent implements OnInit {
   }
   
   ngOnInit() {
-<<<<<<< HEAD
-    this.buildFormGroup();
-    // this.personaldata = this.userdata;
-=======
     this.personaldata  = JSON.stringify(this.userdata);
   this.personaldata=JSON.parse(this.personaldata)
->>>>>>> a60d25fcceab1c839611d3c23ccc5192340f84d2
   }
   onSubmit() {
-     this.personaldata.experience.push(this.applicantForm.value);
-    console.log('values exp', this.personaldata);
-    this._userService.updateUserDetailsById( this.personaldata, this.id).
+     this.userdata.experience.push(this.applicantForm.value);
+    this._userService.updateUserDetailsById( this.userdata, this.id).
     then(() => {
-      this.saveClick.emit(this.personaldata);
+      this.saveClick.emit(this.userdata);
     });
   }
   discardClicked() {
