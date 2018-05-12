@@ -1,8 +1,9 @@
-<div class="ui very padded container segment">
+<div class="ui very padded container segment"> 
   <form [formGroup]="hrdetailForm" class="ui form">
     <h4 class="ui dividing header">New H.R Registration</h4>
-    <div class="two fields">
+    <div class="field">
       <label>Name *</label>
+      <div class='two fields'>
         <div class="field">
           <input  autofocus type="text"  placeholder="First Name" [(ngModel)]="hrdata.firstName" formControlName="firstName">
           <div *ngIf="!hrdetailForm.controls['firstName'].valid && hrdetailForm.controls['firstName'].touched">
@@ -11,6 +12,7 @@
         </div>
         <div class="field">
           <input type="text"  placeholder="Last Name" [(ngModel)]="hrdata.lastName" formControlName="lastName">
+        </div>
         </div>
     </div>
     <div class="two fields">
@@ -23,7 +25,7 @@
       <div *ngIf="!hrdetailForm.controls['dob'].valid && hrdetailForm.controls['dob'].touched">
           <p>please fill required fields*</p>
         </div>
-</div>
+      </div>
     </div>
     <div class="field">
       <label>Phone *</label>
@@ -38,7 +40,7 @@
     <div class="two fields">
         <div class="field">
             <label>Email *</label>
-            <div class="field">
+          <div class="field">
         <input type="text"  placeholder="Email" [(ngModel)]="hrdata.email" formControlName="email">
         <div *ngIf="!hrdetailForm.controls['email'].valid && hrdetailForm.controls['email'].touched">
             <p>please fill required fields*</p>

@@ -5,7 +5,10 @@ import { UserViewPostDetailsComponent } from './features/user-view-post/user-vie
 import { UserProfileComponent } from './features/user-profile/user-profile.component';
 export const userRouterConfig: Routes = [
   // applicant routes
-
+  {
+    path: 'user-view-post/:user-post.id',
+    component: UserViewPostDetailsComponent
+  },
   { // applocant dash board home page
     path: 'user-view-post',
     component: UserViewComponent,

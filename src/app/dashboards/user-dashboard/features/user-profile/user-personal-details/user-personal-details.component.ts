@@ -3,12 +3,19 @@ import { AbstractControl, ValidatorFn, FormBuilder, FormGroup, FormControl, Vali
 import { UserBaseService } from '../../../../../_shared/services/user-base.service';
 import { ApplicantBase } from '../../../../../_shared/models/applicantbase';
 import { uuid } from '../../../../../_shared/models/uuid';
+import * as citiesData from '../../../../../_shared/data/india-cities.json';
+declare var $: any;
 @Component({
   selector: 'app-user-personal-details',
   templateUrl: './user-personal-details.component.html',
   styleUrls: []
 })
 export class UserPersonalDetailsComponent implements OnInit {
+ 
+
+  cities: any = [];
+  states: string[];
+  genders: string[];
   id: string;
   temp: any;
   personaldata: ApplicantBase;
@@ -28,10 +35,14 @@ export class UserPersonalDetailsComponent implements OnInit {
     this.discardClick.emit(JSON.parse(this.temp));
   }
   constructor(private userbaseservice: UserBaseService) {
+    this.states = [
+      'Andhra Pradesh', 'Arunachal Pradesh', 'Assam', 'Bihar', 'Chhattisgarh', 'Goa', 'Gujarat', 'Haryana', 'Himachal Pradesh', 'Jammu and Kashmir', 'Jharkhand', 'Karnataka', 'Kerala', 'Madhya Pradesh', 'Maharashtra', 'Manipur', 'Meghalaya', 'Mizoram', 'Nagaland', 'Orissa', 'Punjab', 'Rajasthan', 'Sikkim', 'TamilNadu', 'Telangana', 'Tripura', 'Uttar Pradesh', 'Uttarakhand', 'West Bengal'];
+    this.genders = ['Male', 'Female', 'Other'];
+    this.cities = citiesData;
     this.buildFormGroup();
     // this.personaldata = this.userdata;
     // this.temp = this.userdata;
-    console.log('personalDatadwkfnn kdjsnkjwnjk', JSON.stringify(this.userdata));
+    console.log('personalData', JSON.stringify(this.userdata));
     this.id = uuid();
   }
 
@@ -39,18 +50,26 @@ export class UserPersonalDetailsComponent implements OnInit {
     const fg = {
       'firstName': new FormControl(null, [Validators.required, Validators.minLength(4)]),
       'lastName': new FormControl(null),
-      'email': new FormControl(null, [Validators.required, Validators.pattern('[A-Za-z\.0-9]+@[A-Za-z]+(.)[A-Za-z]+')]),
-      'dob': new FormControl(null, [Validators.required, Validators.pattern('[0-9]{10}')]),
-      'password': new FormControl(null, [Validators.required, Validators.pattern('(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z]).{5,}$')]),
-      'phone': new FormControl(null, [Validators.required, Validators.pattern('[0-9]{10}')]),
-      'skillValue': new FormControl(null, Validators.required),
-      'address': new FormControl(null, Validators.required),
-      'location': new FormControl(null, Validators.required),
+      'dob': new FormControl(null, Validators.required),
       'gender': new FormControl(null, Validators.required),
+      'phone': new FormControl(null, [Validators.required, Validators.pattern('[0-9]{10}')]),
+      'email': new FormControl(null, [Validators.required, Validators.pattern('[A-Za-z\.0-9]+@[A-Za-z]+(.)[A-Za-z]+')]),
+      'state': new FormControl(null, Validators.required),
+      'city': new FormControl(null, Validators.required),
+      'address': new FormControl(null, Validators.required),
+      'country': new FormControl(null, Validators.required),
+      'skillValue': new FormControl(null, Validators.required),
     };
     this.applicantForm = new FormGroup(fg);
   }
   ngOnInit() {
+    $('.dropdown').dropdown({
+      label: {
+        duration: 0,
+      },
+      // debug: true,
+      performance: true,
+    });
     this.temp = JSON.stringify(this.userdata);
     console.log('personalDatadwkfnn kdjsnkjwnjk', JSON.stringify(this.temp));
   }

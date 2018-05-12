@@ -1,95 +1,110 @@
 <div class="ui centered segment very padded" style="margin-top: 4em;">
   <form class="ui form" [formGroup]="applicantForm">
-    <!-- firstName -->
-    <div class="field">
-      <label>First Name
-        <span style="color:red">*</span>
-      </label>
-        <input type="text" formControlName="firstName" [(ngModel)]="userdata.firstName" placeholder="enter the first name">
-      <div *ngIf="applicantForm.controls['firstName'].touched && !applicantForm.controls['firstName'].valid" class="alert alert-danger">
-        <p>Name need to be AtLeast 4 characters</p>
+      <div class="two fields">
+        <div class="field">
+          <label>First Name
+            <span style='color:red'>*</span>
+          </label>
+          <input  autofocus type="text" formControlName="firstName" placeholder="john" [(ngModel)]="user_details.firstName">
+          <div *ngIf="applicantForm.controls['firstName'].touched&&!applicantForm.controls['firstName'].valid">
+            <p style='color:red'>Name need to be AtLeast 4 characters</p>
+          </div>
+        </div>
+        <div class="field">
+          <label>Last Name</label>
+          <input  type="text" formControlName="lastName" placeholder="Carter" [(ngModel)]="user_details.lastName">
+        </div>
       </div>
-    </div>
-    <!-- lastName -->
-    <div class="field">
-      <label>Last Name
-      </label>
-      <input type="text" formControlName="lastName" [(ngModel)]="userdata.lastName" placeholder="enter the last name">
-    </div>
-    <!-- email -->
-    <div class="field">
-      <label>Email
-        <span style="color:red">*</span>
-      </label>
-      <input type="text" formControlName="email" [(ngModel)]="userdata.email " placeholder="valid Email addresss">
-      <div class="alert alert-danger" *ngIf="applicantForm.controls['email'].touched&&!applicantForm.controls['email'].valid">
-        <p>Enter a valid email address
-          <span style="color:red">*</span>
-        </p>
+      <div class="two fields">
+        <div class="field">
+          <label>Date Of Birth
+            <span style='color:red'>*</span>
+          </label>
+          <input type="date" formControlName="dob" placeholder="enter date of birth" [(ngModel)]="user_details.dob">
+          <div *ngIf="!applicantForm.controls['dob'].dirty && applicantForm.controls['dob'].touched">
+            <p style='color:red'>Date of Birth required</p>
+          </div>
+        </div>
+        <div class="field">
+          <label>Gender
+            <span style='color:red'>*</span>
+          </label>
+          <select class="ui fluid search dropdown" formControlName="gender" [(ngModel)]="user_details.gender">
+            <option value="">select your gender</option>
+            <option [value]='gender' *ngFor="let gender of genders">{{gender}}</option>
+          </select>
+          <div *ngIf="applicantForm.controls['gender'].touched&&!applicantForm.controls['gender'].valid">
+            <p style='color:red'>please fill required fields</p>
+          </div>
+        </div>
       </div>
-    </div>
-    <!-- date of birth -->
-    <div class="field">
-      <label>Date Of Birth
-        <span style="color:red">*</span>
-      </label>
-      <input type="date" formControlName="dob" [(ngModel)]="userdata.dob" placeholder="enter date of birth">
-      <div class="alert alert-danger" *ngIf="!applicantForm.controls['dob'].dirty && applicantForm.controls['dob'].touched">
-        <p>Please fill required fields
-          <span style="color:red">*</span>
-        </p>
+      <div class='two fields'>
+      <div class="field">
+        <label>Mobile Number
+          <span style='color:red'>*</span>
+        </label>
+        <input type="number" formControlName="phone" placeholder="please enter your contact number" [(ngModel)]="user_details.phone">
+        <div *ngIf="applicantForm.controls['phone'].touched &&!applicantForm.controls['phone'].valid">
+          <p style='color:red'>enter a valid mobile number </p>
+        </div>
       </div>
-    </div>
-    <!-- mobile number -->
-    <div class="field">
-      <label>Mobile Number
-        <span style="color:red">*</span>
-      </label>
-      <input type="number" formControlName="phone" [(ngModel)]="userdata.phone" placeholder="please enter your contact number">
-      <div class="alert alert-danger" *ngIf="applicantForm.controls['phone'].touched &&!applicantForm.controls['phone'].valid">
-        <p>enter a valid mobile number
-          <span style="color:red">*</span>
-        </p>
+        <div class="field">
+          <label>Email
+            <span style='color:red'>*</span>
+          </label>
+          <input type="text" formControlName="email" placeholder="valid Email addresss" [(ngModel)]="user_details.email">
+          <div *ngIf="applicantForm.controls['email'].touched&&!applicantForm.controls['email'].valid">
+            <p style='color:red'>Enter a valid email address</p>
+          </div>
+        </div>
+        </div>
+      <div class="two fields">
+        <div class="field">
+          <label>State
+            <span style='color:red'>*</span>
+          </label>
+          <select class="ui fluid search dropdown" formControlName="state" [(ngModel)]="user_details.state">
+            <option value="">select your state</option>
+            <option [value]='state' *ngFor="let state of states">{{state}}</option>
+          </select>
+          <div *ngIf="((user_details.state=='select your state')&&!applicantForm.controls['state'].valid)&&applicantForm.controls['state'].touched">
+            <p style='color:red'>please fill required fields</p>
+          </div>
+        </div>
+        <div class="field">
+          <label>city
+            <span style='color:red'>*</span>
+          </label>
+          <select class="ui fluid search dropdown" formControlName="city" [(ngModel)]="user_details.city">
+            <option value=''>select your city</option>
+            <option [value]='city' *ngFor="let city of cities">{{city}}</option>
+          </select>
+          <div *ngIf="applicantForm.controls['city'].touched&&((user_details.city=='select your city')&&!applicantForm.controls['city'].valid)">
+            <p style='color:red'>please fill required fields</p>
+          </div>
+        </div>
       </div>
-    </div>
-    <!-- address -->
-    <div class="field">
-      <label>Address
-        <span style="color:red">*</span>
-      </label>
-      <input type="text" formControlName="address" [(ngModel)]="userdata.address" placeholder="enter your current Address">
-      <div class="alert alert-danger" *ngIf="applicantForm.controls['address'].touched&&!applicantForm.controls['address'].valid">
-        <p>please fill required fields
-          <span style="color:red">*</span>
-        </p>
+
+      <div class="two fields">
+      <div class="field">
+        <label>Address
+          <span style='color:red'>*</span>
+        </label>
+        <input type="text" formControlName="address" placeholder="enter your current Address" [(ngModel)]="user_details.address">
+        <div *ngIf="applicantForm.controls['address'].touched&&!applicantForm.controls['address'].valid">
+          <p style='color:red'>please fill required fields</p>
+        </div>
       </div>
-    </div>
-    <!-- location -->
-    <div class="field">
-      <label>Location
-        <span style="color:red">*</span>
-      </label>
-      <input type="text" formControlName="location" [(ngModel)]="userdata.location" placeholder="enter your current location">
-      <div class="alert alert-danger" *ngIf="applicantForm.controls['location'].touched&&!applicantForm.controls['location'].valid">
-        <p>please fill required fields
-          <span style="color:red">*</span>
-        </p>
+      <div class="field">
+        <label>Country
+          <span style='color:red'>*</span>
+        </label>
+        <input type="text" formControlName="country" placeholder="enter your current country" [(ngModel)]="user_details.country">
+        <div *ngIf="applicantForm.controls['country'].touched&&!applicantForm.controls['country'].valid">
+          <p style='color:red'>please fill required fields</p>
+        </div>
       </div>
-    </div>
-    <!-- Gender -->
-    <div class="field">
-      <label>Gender</label>
-      <select class="ui dropdown" formControlName="gender" [(ngModel)]="userdata.gender">
-        <option value="">select your gender</option>
-        <option value="male">Male</option>
-        <option value="female">Female</option>
-      </select>
-      <div class="alert alert-danger" *ngIf="applicantForm.controls['gender'].touched&&!applicantForm.controls['gender'].valid">
-        <p>please fill required fields
-          <span style="color:red">*</span>
-        </p>
       </div>
-    </div>
     <!-- submit and discard action -->
     <button class="ui primary button" type="submit" (click)="onsubmit()"> Save </button>
     <button class="ui button" (click)="discardClicked()"> Discard </button>
