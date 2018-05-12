@@ -43,12 +43,12 @@ export class HrExperienceAddDetailsComponent implements OnInit {
   }
 
   async onSubmit() {
-    await this.personaldata.experience.push(this.applicantForm.value);
+    await this.hrdata.experience.push(this.applicantForm.value);
     console.log('values exp', this.hrdata);
     this.hrbaservice.updateHrDetailsById(this.hrdata, this.id).
       subscribe((res) => {
         this.personaldata = res;
-        this.saveClick.emit(this.personaldata);
+        this.saveClick.emit(this.hrdata);
         console.log('experience updated');
       });
     // this.router.navigateByUrl('hr');

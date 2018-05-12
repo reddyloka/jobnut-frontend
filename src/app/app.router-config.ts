@@ -1,14 +1,8 @@
 import { Routes } from '@angular/router';
-// resume editor routes
-
 import { LoginComponent } from './_shared/components/login/login.component';
 import { CallbackComponent } from './_shared/components/misc/callback/callback.component';
-import { UserViewPostDetailsComponent } from './dashboards/user-dashboard/features/user-view-post/user-view-post-details/user-view-post-details.component';
-import { UserViewAppliedPostComponent } from './dashboards/user-dashboard/features/user-view-applied-post/user-view-applied-post.component';
-import { UserViewAppliedPostDetailsComponent } from './dashboards/user-dashboard/features/user-view-applied-post/user-view-applied-post-details/user-view-applied-post-details.component';
 
-import { UserViewComponent } from './dashboards/user-dashboard/features/user-view/user-view.component';
-import { UserProfileComponent } from './dashboards/user-dashboard/features/user-profile/user-profile.component';
+
 import { SignupHomeComponent } from './_shared/components/signup/signup-home/signup-home.component';
 import { SignupComponent } from './_shared/components/signup/signup.component';
 import { HrComponent } from './_shared/components/signup/hr/hr.component';
@@ -19,10 +13,15 @@ import { LoggedInGuard } from './core/guards/logged-in.guard';
 
 
 
+
 export const routerConfig: Routes = [
   // basic routes
   // login routes during
   { path: 'login', component: LoginComponent },
+  {
+    path: 'user-profile',
+    loadChildren: './dashboards/user-dashboard/user-dashboard.module#UserDashboardModule'
+  },
 
   // hr routes
   { path: 'applicant', canActivate: [LoggedInGuard && localStorage['isApplicant']], redirectTo: 'user-view-post' },
@@ -30,21 +29,10 @@ export const routerConfig: Routes = [
   //   path: 'jobs-posted/:id',
   //   component: HrPostdetailsComponent
   // },
-
-
-  {
-    path: 'user-view-post/:user-post.id',
-    component: UserViewPostDetailsComponent,
-  },
-  {
-    path: 'applied-job',
-    component: UserViewAppliedPostComponent,
-  },
-  {
-    path: 'applied-job/:user-post.id',
-    component: UserViewAppliedPostDetailsComponent,
-  },
-
+  // {
+  //   path: 'user-view-post',
+  //   loadChildren: 'app/user-view-post/user-view-post.module#UserDashboardModule',
+  // },
 
   {
     path: 'signin-home',
@@ -80,8 +68,5 @@ export const routerConfig: Routes = [
   { path: 'callback', component: CallbackComponent },
   { path: 'forgetPassword', component: ForgetpasswordComponent },
 
-  { path: '', redirectTo: 'login', pathMatch: 'full' },
-
-  // remume builder routes
-
+  { path: '', redirectTo: 'login', pathMatch: 'full' }
 ];

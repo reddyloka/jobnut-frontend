@@ -8,6 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 import { ChatInvitesComponent } from '../chat-invites/chat-invites.component';
+import { CommonModule } from '@angular/common';
 
 const chatRoutes: ModuleWithProviders = RouterModule.forChild([
     {
@@ -31,7 +32,8 @@ const chatRoutes: ModuleWithProviders = RouterModule.forChild([
     imports: [
         chatRoutes,
         FormsModule,
-        BrowserModule,
+        CommonModule,
+        // BrowserModule,
         HttpModule
     ],
     exports: [

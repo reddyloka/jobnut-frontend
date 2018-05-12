@@ -111,20 +111,7 @@ export class HrbaseService {
 
   }
 
-  updateHrExpDetailsById(updateDetails: any, user: string): Observable<Hrbase> {
-    console.log('hr_id', user);
-    console.log('hr update details', updateDetails);
-    return this.http.put(`${environment.USER_SERVER}/api/hrs/expUpdate`, updateDetails, {
-      params: {
-        'id': user
-      }
-    }).map((res)=>{let data = res.json();
-      return data || {};
-    }).catch((error: any) =>{
-      return new ErrorObservable(error.error);
-    });
 
-  }
 
   hrShortlist(data: any, postid: string, userid: string): Observable<Boolean> {
     console.log('post_id', postid);

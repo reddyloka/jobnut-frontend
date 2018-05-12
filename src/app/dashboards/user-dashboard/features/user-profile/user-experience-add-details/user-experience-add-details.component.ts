@@ -23,7 +23,7 @@ export class UserExperienceAddDetailsComponent implements OnInit {
     this.buildFormGroup();
     this.id = uuid();
   }
-  
+
   buildFormGroup(): void {
     const fg = {
       'designation': new FormControl(null, Validators.required),
@@ -38,11 +38,10 @@ export class UserExperienceAddDetailsComponent implements OnInit {
   this.personaldata=JSON.parse(this.personaldata)
   }
   onSubmit() {
-     this.personaldata.experience.push(this.applicantForm.value);
-    console.log('values exp', this.personaldata);
-    this._userService.updateUserDetailsById( this.personaldata, this.id).
+     this.userdata.experience.push(this.applicantForm.value);
+    this._userService.updateUserDetailsById( this.userdata, this.id).
     subscribe(() => {
-      this.saveClick.emit(this.personaldata);
+      this.saveClick.emit(this.userdata);
     });
   }
   discardClicked() {

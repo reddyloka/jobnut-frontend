@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { AuthService } from '../../../_shared/services/auth.service';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { UserBaseService } from '../../../_shared/services/user-base.service';
@@ -21,7 +21,7 @@ inputType: string='password';
 public currentForm:FormGroup;
  public resetInfo:Boolean=false;
   constructor(private router: Router,
-  private _authService: AuthService,private userbase:UserBaseService) {
+  private _authService: AuthService,private userbase:UserBaseService,private route: ActivatedRoute) {
     this.id = uuid(); 
     this.buildFormGroup(); 
   }
@@ -44,7 +44,7 @@ public currentForm:FormGroup;
   }
   getJob() {
 
-    this.router.navigateByUrl('/user-view-post');
+    this.router.navigate(['user-view-post'], {relativeTo: this.route.parent});
   }
   changePassword(){
     $('.small.modal')
@@ -80,7 +80,8 @@ public currentForm:FormGroup;
     this.router.navigateByUrl('login');
   }
   getAppliedJob() {
-
-    this.router.navigateByUrl('/applied-job');
+    
+    this.router.navigateByUrl('/user-profile/applied-job');
+    // this.router.navigate(['/applied-job'], {relativeTo: this.route});
   }
 }

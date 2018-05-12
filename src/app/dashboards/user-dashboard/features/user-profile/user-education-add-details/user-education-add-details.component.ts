@@ -1,8 +1,8 @@
 import { Component, OnInit, Output, EventEmitter, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { AbstractControl, ValidatorFn, FormBuilder, FormGroup, FormControl, Validators, FormsModule } from '@angular/forms';
-import { UserBaseService } from '../../../../../../_shared/services/user-base.service';
-import { ApplicantBase } from '../../../../../../_shared/models/applicantbase';
-import { uuid } from '../../../../../../_shared/models/uuid';
+import { UserBaseService } from '../../../../../_shared/services/user-base.service';
+import { ApplicantBase } from '../../../../../_shared/models/applicantbase';
+import { uuid } from '../../../../../_shared/models/uuid';
 @Component({
   selector: 'app-user-education-add-details',
   templateUrl: './user-education-add-details.component.html',
@@ -58,11 +58,10 @@ export class UserEducationAddDetailsComponent implements OnInit, OnChanges {
     this.personaldata = JSON.parse(this.personaldata);
   }
   onSubmit() {
-     this.personaldata.education.push(this.applicantForm.value);
-    console.log('values exp', this.personaldata);
-    this._userService.updateUserDetailsById( this.personaldata, this.id).
+     this.userdata.education.push(this.applicantForm.value);
+    this._userService.updateUserDetailsById( this.userdata, this.id).
     subscribe(() => {
-    console.log('success');
+      this.saveClick.emit(this.userdata);
     });
     this.saveClick.emit(this.personaldata);
   }
