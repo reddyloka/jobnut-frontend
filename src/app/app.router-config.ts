@@ -20,8 +20,6 @@ import { UserViewPostDetailsComponent } from './dashboards/user-dashboard/featur
 import { UserViewAppliedPostComponent } from './dashboards/user-dashboard/features/user-view-applied-post/user-view-applied-post.component';
 import { UserViewAppliedPostDetailsComponent } from './dashboards/user-dashboard/features/user-view-applied-post/user-view-applied-post-details/user-view-applied-post-details.component';
 
-import { UserViewComponent } from './dashboards/user-dashboard/features/user-view/user-view.component';
-import { UserProfileComponent } from './dashboards/user-dashboard/features/user-profile/user-profile.component';
 import { SignupHomeComponent } from './_shared/components/signup/signup-home/signup-home.component';
 import { SignupComponent } from './_shared/components/signup/signup.component';
 import { HrComponent } from './_shared/components/signup/hr/hr.component';
@@ -43,12 +41,10 @@ export const routerConfig: Routes = [
   //   path: 'jobs-posted/:id',
   //   component: HrPostdetailsComponent
   // },
-
-
-  {
-    path: 'user-view-post/:user-post.id',
-    component: UserViewPostDetailsComponent,
-  },
+  // {
+  //   path: 'user-view-post',
+  //   loadChildren: 'app/user-view-post/user-view-post.module#UserDashboardModule',
+  // },
   {
     path: 'applied-job',
     component: UserViewAppliedPostComponent,

@@ -82,7 +82,8 @@ import { userRouterConfig } from './user-dashboard.router-config';
     UserViewPostDeatilssummaryComponent,
     UserViewPostDetailsComponent,
     UserHeaderComponent,
-    UserDashboardComponent
+    UserDashboardComponent,
+    RouterModule
   ]
 })
 export class UserDashboardModule { }
