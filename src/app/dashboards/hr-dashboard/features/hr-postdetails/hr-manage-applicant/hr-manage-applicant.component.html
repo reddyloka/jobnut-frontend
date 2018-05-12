@@ -1,5 +1,5 @@
 
-<app-hr-header></app-hr-header>
+<app-hr-header [hrdata]='hrdata' ></app-hr-header>
 <br>
 <div class="ui grid">
   <div class="four wide column" style="background-color: rgb(100, 99, 99); height:750px">
@@ -25,7 +25,7 @@
           <h4>loading...... please wait</h4>
          <span> <img src="assets/loader.svg" height="64" alt="Nice green circle"/></span>
       </div>
-      <h4 *ngIf='loadPage && !loadError && (!hrpost.applicants || !hrpost.applicants)'>
+      <h4 *ngIf='loadPage && !loadError && (!hrpost?.applicants || !hrpost?.applicants)'>
           No one is apply to this post
       </h4>
       <div *ngIf="loadError">
@@ -39,7 +39,7 @@
   </div>
   <div *ngIf="applicantDetailsInfo">
     <div class="">
-     <app-hr-manage-applicant-list-details [postData]="applicant" [hrpost]="hrpost"></app-hr-manage-applicant-list-details>
+     <app-hr-manage-applicant-list-details (openChat)="chatOpen = $event" [postData]="applicant" [hrpost]="hrpost"></app-hr-manage-applicant-list-details>
    </div>
   </div>
 </div>
@@ -58,5 +58,6 @@
         </div>
       </div>
     </div>
+    <app-chat *ngIf="chatOpen" [initiator]="this.hrpost.hrRef" [recepient]="this.applicant?._id" (expandClick)="st = $event;"></app-chat>
   </div>
 </div>

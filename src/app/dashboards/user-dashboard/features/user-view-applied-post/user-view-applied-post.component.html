@@ -1,29 +1,26 @@
 <app-user-header [userdata]=userdata></app-user-header>
-<div class="row">
-  <div class="col-md-3" style="background-color: rgb(100, 99, 99); height:750px">
-    <div style="margin-top: 30px; background-color: lightbalck">
-      <!-- <a href="">
-        <h4 class="nav">Saved JOb</h4>
-      </a> -->
-    </div>
-  </div>
-  <div class="col-md-6" style="border: 2px solid lightgrey;height: 600px">
+<br>
+<br>
+<div class="ui grid" id="viewposts">
+  <div class="two wide column"></div>
+  <div class="eight wide column">
     <h2>Applied jobs of you</h2>
     <div *ngIf='!loadPage && !loadError'>
-        <h4>loading...... please wait</h4>
-       <span> <img src="assets/loader.svg" height="64" alt="Nice green circle"/></span>
+      <h4>loading...... please wait</h4>
+      <span>
+        <img src="assets/loader.svg" height="64" alt="Nice green circle" />
+      </span>
     </div>
     <h4 *ngIf='loadPage && !loadError && (!hrpost || !hrpost.length)'>
-        no  Recommended jobs for you Present
+      no Recommended jobs for you Present
     </h4>
     <div *ngIf="loadError">
-        <div class="alert alert-danger">
-          {{error_text}}
-        </div>
+      <div class="alert alert-danger">
+        {{error_text}}
+      </div>
     </div>
-    <app-user-view-post *ngFor="let hrpost of hrpost | paginate: { itemsPerPage: 2, currentPage: p }" [hrpost]="hrpost"
-      (userclick)="routeronclicked($event)"></app-user-view-post>
-      <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    <app-user-view-post *ngFor="let hrpost of hrpost | paginate: { itemsPerPage: 2, currentPage: p }" [hrpost]="hrpost" (userclick)="routeronclicked($event)"></app-user-view-post>
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
   </div>
-  
+
 </div>

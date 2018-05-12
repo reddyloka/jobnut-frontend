@@ -11,7 +11,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // import {ToasterModule, ToasterService} from '@angular2-toaster';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
-// import * as $ from 'jquery';
 import { AppComponent } from './app.component';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { routerConfig } from './app.router-config';
@@ -30,12 +29,13 @@ import { HrComponent } from './_shared/components/signup/hr/hr.component';
 import { ApplicantComponent } from './_shared/components/signup/applicant/applicant.component';
 import { CallbackComponent } from './_shared/components/misc/callback/callback.component';
 import { NotificationComponent } from './_shared/components/misc/notification/notification.component';
-import { ApplicantPreviewComponent } from './dashboards/applicant-preview/applicant-preview.component';
 import { SignupHomeComponent } from './_shared/components/signup/signup-home/signup-home.component';
 import { JwtService } from './_shared/services/jwt.service';
 import { ForgetpasswordComponent } from './_shared/components/forgetpassword/forgetpassword.component';
+import { ChatModule } from './_shared/components/chat/chat.module';
 import { LoggedInGuard } from './core/guards/logged-in.guard';
-import { DashboardModule } from './dashboards/dashboard.module';
+import { UserDashboardModule } from './dashboards/user-dashboard/user-dashboard.module';
+import { HrDashboardModule } from './dashboards/hr-dashboard/hr-dashboard.module';
 
 
 
@@ -49,9 +49,27 @@ import { DashboardModule } from './dashboards/dashboard.module';
     CallbackComponent,
     CallbackComponent,
     NotificationComponent,
+<<<<<<< HEAD
     ApplicantPreviewComponent,
+=======
+    ResumeBuilderComponent,
+    PersonalDetailsComponent,
+    EducationComponent,
+    HomeComponent,
+    ResumePreviewComponent,
+    ResumePreview1Component,
+    ResumePreview2Component,
+    ResumePreview3Component,
+    SkillsComponent,
+    ExperienceComponent,
+    HobbiesComponent,
+    InterestsComponent,
+    CertificatesComponent,
+    LanguagesComponent,
+    IndexPageComponent,
+>>>>>>> a60d25fcceab1c839611d3c23ccc5192340f84d2
     ForgetpasswordComponent,
-    SignupHomeComponent
+    SignupHomeComponent,
 
   ],
   imports: [
@@ -62,10 +80,12 @@ import { DashboardModule } from './dashboards/dashboard.module';
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
+    ChatModule,
+    UserDashboardModule,
+    HrDashboardModule,
     Ng2ImgMaxModule,
     HttpClientModule,
     NgxPaginationModule,
-    DashboardModule,
     RouterModule.forRoot(routerConfig),
     BrowserModule, FormsModule, AngularFontAwesomeModule, FroalaEditorModule.forRoot(), FroalaViewModule.forRoot()
   ],

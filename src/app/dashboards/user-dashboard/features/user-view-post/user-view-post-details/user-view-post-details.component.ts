@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
+
 import { Router } from '@angular/router';
 import { HrbaseService } from '../../../../../_shared/services/hrbase.service';
 import { UserBaseService } from '../../../../../_shared/services/user-base.service';
@@ -15,6 +16,7 @@ declare const $: any;
   styleUrls: ['./user-view-post-details.component.css']
 })
 export class UserViewPostDetailsComponent implements OnInit {
+
   isApply: boolean;
   userdata: ApplicantBase;
   id: string;
@@ -29,8 +31,6 @@ export class UserViewPostDetailsComponent implements OnInit {
     this.id = uuid();
     this.isApply = false;
   }
-
-
   ngOnInit() {
 
     this.route.paramMap.subscribe((params: ParamMap) => {
@@ -57,11 +57,12 @@ export class UserViewPostDetailsComponent implements OnInit {
     this.uploadNewCv = false;
   }
 
+
   shortlisted() {
     console.log('shhhhhhhooooooooo', this.hrpost.applicants);
     this.hrpost.applicants.map((ele) => {
       if (ele._id._id === this.id) {
-        console.log(ele._id._id)
+        console.log(ele._id._id);
         this.isApply = true;
       console.log(this.isApply);
       }

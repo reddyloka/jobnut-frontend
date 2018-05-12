@@ -25,7 +25,7 @@ export class UserExperienceDetailsComponent implements OnInit {
     this.buildFormGroup();
     this.id = uuid();
   }
-  
+
   buildFormGroup(): void {
     const fg = {
       'designation': new FormControl(null, Validators.required),
@@ -34,7 +34,7 @@ export class UserExperienceDetailsComponent implements OnInit {
     };
     this.applicantForm = new FormGroup(fg);
   }
-  
+
   ngOnInit() {
     this.buildFormGroup();
     // this.personaldata = this.userdata;
@@ -44,14 +44,14 @@ export class UserExperienceDetailsComponent implements OnInit {
     // await this._userService.updateUserExpDetailsById(this.applicantForm.value, this.id).
     await this.userdata.experience.push(this.applicantForm.value);
     console.log('values exp', this.userdata);
-    this._userService.updateUserExpDetailsById(this.userdata, this.id).
-    then((res) => {
-      this.personaldata = res;
-      console.log('experience updated');
-    });
+    this._userService.updateUserDetailsById(this.userdata, this.id).
+      then((res) => {
+        this.personaldata = res;
+        console.log('experience updated');
+      });
     this.saveClick.emit(this.userdata);
   }
-  
+
   discardClicked() {
     this.discardClick.emit(true);
   }

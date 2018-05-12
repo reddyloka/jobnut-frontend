@@ -1,88 +1,82 @@
 <app-user-header [userdata]=userdata></app-user-header>
-<div *ngIf="searchBarInfo">
-  <div class="search-container">
-    <div class="row">
-      <div class="col-md-6 col-md-offset-3" style="margin-top: 10px; margin-bottom: 10px">
-        <div class="form-group" style="float:left;width:90%">
-          <input type="text" (click)="onfocus()" class="form-control" placeholder="Search for jobs">
-        </div>
-        <div class="form-group" style="float:right;width:10%">
-          <button class="form-control" value="submit">
-            <span class="glyphicon glyphicon-search"></span>
-          </button>
-        </div>
-        <div class="clearfix"></div>
-      </div>
-    </div>
-  </div>
-</div>
-<div *ngIf="searchBarInfo1">
-  <div class="search-container">
-    <div class="row">
-      <div class="col-md-6 col-md-offset-3" style="margin-top: 10px; margin-bottom: 10px">
-        <div class="form-group" style="float:left;width:90%">
-          <input type="text" [(ngModel)]="searchText" class="form-control" placeholder="Search through Designation,Skills,Company name">
-        </div>
-        <div class="form-group" style="float:left;width:90%">
-          <input type="text" [(ngModel)]="searchLocation" class="form-control" placeholder="Search through Location">
-        </div>
-        <div class="form-group" style="float:right;width:10%">
-          <button  class="form-control" value="submit" (click)="searchClicked()">
-            <span class="glyphicon glyphicon-search"></span>
-          </button>
-        </div>
-        <div class="clearfix"></div>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="row">
-  <div class="col-md-3" style="background-color: rgb(100, 99, 99); height:750px">
-    <!-- <div style="margin-top: 30px; background-color: lightbalck">
-      <a (click)="userAppliedJob()">
-        <h4 class="nav">{{jobtext}}</h4>
-      </a>
-    </div>
-    <div style="margin-top: 30px; background-color: lightbalck">
-      <a href="">
-        <h4 class="nav">Saved JOb</h4>
-      </a>
-    </div> -->
-  </div>
-  <div class="col-md-6" style="border: 2px solid lightgrey;height: 600px">
-    <br>
 
-    
-    <div *ngIf="jobInfo">
-      <h2>Recommended jobs for you</h2>
-      <div *ngIf='!loadPage && !loadError'>
-          <h4>loading...... please wait</h4>
-         <span> <img src="assets/loader.svg" height="64" alt="Nice green circle"/></span>
-      </div>
-      <h4 *ngIf='loadPage && !loadError && (!suggestedjob || !suggestedjob.length)'>
-          no  Recommended jobs for you Present
-      </h4>
-      <div *ngIf="loadError">
-          <div class="alert alert-danger">
-            {{error_text}}
+  <div class="search-container">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-2" style="margin-top: 10px; margin-bottom: 10px">
+        <div class="form-inline">
+          <div class="form-group">
+            <div class="input-group">
+              <input type="text" [(ngModel)]="searchText" style="height: 45px;width: 350px;" class="form-control" placeholder="Search through Designation,Skills,Company name">
+            </div>
+            <div class="input-group">
+              <input type="text" [(ngModel)]="searchLocation"  style="height: 45px;width: 350px;" class="form-control" placeholder="Search through Location">
+            </div>
+            <div class="input-group">
+              <button  style="height: 45px;width: 50px;" class="form-control" (click)="searchClicked()">
+                <span class="glyphicon glyphicon-search"></span>
+              </button>
+            </div>
           </div>
+        </div>
       </div>
-      <app-user-view-post *ngFor="let hrpost of suggestedjob | paginate: { itemsPerPage: 2, currentPage: p }" [hrpost]=hrpost (userclick)="routeronclicked($event)"></app-user-view-post>
     </div>
-    <div *ngIf="searchInfo">
-       
-      <h2>Search results</h2>
-      <br>
-      <div *ngIf='!searchpage && !loadError'>
-          <h4>loading...... please wait</h4>
-          <span> <img src="assets/loader.svg" height="64" alt="Nice green circle"/></span>
-      </div>
-      <h4 *ngIf='searchpage && !loadError && (!searchData || !searchData.length)'>
-          no  results for you search
-      </h4>
-      <app-user-view-post *ngFor="let hrpost of searchData | paginate: { itemsPerPage: 2, currentPage: p }" [hrpost]="hrpost" (userclick)="routeronclicked($event)"></app-user-view-post>
-    </div>
-
-    <pagination-controls (pageChange)="p = $event"></pagination-controls>
   </div>
+  <br>
+<div class="ui grid" id="viewposts">
+    <div class="two wide column"></div>
+    <div class="eight wide column">
+        <div *ngIf="jobInfo">
+            <h2>Recommended jobs for you</h2>
+            <div *ngIf='!loadPage && !loadError'>
+                <h4>loading...... please wait</h4>
+               <span> <img src="assets/loader.svg" height="64" alt="Nice green circle"/></span>
+            </div>
+            <h4 *ngIf='loadPage && !loadError && (!suggestedjob || !suggestedjob.length)'>
+                no  Recommended jobs for you Present
+            </h4>
+            <div *ngIf="loadError">
+                <div class="alert alert-danger">
+                  {{error_text}}
+                </div>
+            </div>
+            <app-user-view-post *ngFor="let hrpost of suggestedjob | paginate: { itemsPerPage: 2, currentPage: p }" [hrpost]=hrpost (userclick)="routeronclicked($event)"></app-user-view-post>
+          </div>
+
+          <div *ngIf="searchInfo">
+       
+              <h2>Search results</h2>
+              <br>
+              <div *ngIf='!searchpage && !loadError'>
+                  <h4>loading...... please wait</h4>
+                  <span> <img src="assets/loader.svg" height="64" alt="Nice green circle"/></span>
+              </div>
+              <h4 *ngIf='searchpage && !loadError && (!searchData || !searchData.length)'>
+                  no  results for you search
+              </h4>
+              <app-user-view-post *ngFor="let hrpost of searchData | paginate: { itemsPerPage: 2, currentPage: p }" [hrpost]="hrpost" (userclick)="routeronclicked($event)"></app-user-view-post>
+            </div>
+        
+            <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </div>
+    <div class="six wide column">
+      <div class="ui grid">
+      <div class="four wide column">
+
+      </div>
+      <div class="ten wide column">
+          <div class="ui piled segment">
+              <h4 class="ui header">Job Nut</h4>
+              <p>Te eum doming eirmod, nominati pertinacia argumentum ad his. Ex eam alia facete scriptorem, est autem aliquip detraxit at. </p>
+               <p>Audiam quaerendum eu sea, pro omittam definiebas ex. Te est latine definitiones. Quot wisi nulla ex duo. Vis sint</p>
+               <p>Eu quo homero blandit intellegebat. Incorrupte consequuntur mei id. Mei ut facer dolores adolescens, no illum aperiri </p>
+            </div>
+            <div class="ui piled segment">
+                <h4 class="ui header">Job Nut</h4>
+                <p>Te eum doming eirmod, nominati pertinacia argumentum ad his. Ex eam alia facete scriptorem, est autem aliquip detraxit at. </p>
+                 <p>Audiam quaerendum eu sea, pro omittam definiebas ex. Te est latine definitiones. Quot wisi nulla ex duo. Vis sint</p>
+                 <p>Eu quo homero blandit intellegebat. Incorrupte consequuntur mei id. Mei ut facer dolores adolescens, no illum aperiri </p>
+              </div>
+      </div>
+    </div>
+    </div>
 </div>

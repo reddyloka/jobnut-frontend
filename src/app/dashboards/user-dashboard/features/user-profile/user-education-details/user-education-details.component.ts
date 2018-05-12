@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input, OnChanges, SimpleChange, SimpleChanges } from '@angular/core';
 @Component({
   selector: 'app-user-education-details',
   templateUrl: './user-education-details.component.html',
@@ -7,9 +7,14 @@ import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 export class UserEducationDetailsComponent implements OnInit {
   // addEducation: boolean;
   editEducation: boolean;
+<<<<<<< HEAD
   @Input()
   userdata;
+=======
+>>>>>>> a60d25fcceab1c839611d3c23ccc5192340f84d2
 
+  @Input()
+  userdata;
 
   yearArray: string[];
   highestDegreeArray1: string[];

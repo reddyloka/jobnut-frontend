@@ -5,6 +5,8 @@ import { DataService } from '../../../../../_shared/services/data.service';
 import { HrbaseService } from '../../../../../_shared/services/hrbase.service';
 import { ApplicantBase } from '../../../../../_shared/models/applicantbase';
 import { HrPostDetail } from '../../../../../_shared/models/hrpostdetails';
+import { Hrbase } from '../../../../../_shared/models/hrbase';
+import { uuid } from '../../../../../_shared/models/uuid';
 
 @Component({
   selector: 'app-hr-manage-applicant',
@@ -12,7 +14,8 @@ import { HrPostDetail } from '../../../../../_shared/models/hrpostdetails';
   // styleUrls: ['./hr-manage-applicant.component.css']
 })
 export class HrManageApplicantComponent implements OnInit {
-
+  hrdata:Hrbase;
+  id:string;
   error_text: string;
   manageBack: boolean;
   textInfo: string;
@@ -20,8 +23,9 @@ export class HrManageApplicantComponent implements OnInit {
   applicantDetailsInfo: boolean;
   manageApplicantInfo: boolean;
   hrpost: HrPostDetail;
-  loadPage: boolean = false;
-  loadError: boolean = false;
+  loadPage = false;
+  loadError = false;
+  chatOpen = false;
   constructor(
     private data: DataService,
     private route: ActivatedRoute,
@@ -33,12 +37,17 @@ export class HrManageApplicantComponent implements OnInit {
     this.applicantDetailsInfo = false;
     this.textInfo = '';
     this.manageBack = true;
+    this.id = uuid();
   }
 
   ngOnInit() {
     // console.log('hrpost', this.hrpost);
     // this.data.currentMessage.subscribe(message => this.hrpost = message );
+    this.hrbaseservice.getHrDetailsById(this.id).then((data) => {
+      this.hrdata = data;
+    });
     this.applicantdetails();
+    
   }
   viewprofile(event) {
      console.log('applicant data', event);
