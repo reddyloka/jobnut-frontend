@@ -30,12 +30,16 @@ import { ChatComponent } from '../../_shared/components/chat/chat.component';
 import { UserViewAppliedPostDetailsComponent } from './features/user-view-applied-post/user-view-applied-post-details/user-view-applied-post-details.component';
 import { ChatModule } from '../../_shared/components/chat/chat.module';
 import { userRouterConfig } from './user-dashboard.router-config';
+import { StatisticsComponent } from '../../_shared/components/statistics/statistics.component';
+import { NumberToWordsPipe } from '../../_shared/pipes/numberToWords.pipe';
+import { SharedModule } from '../../_shared/shared.module';
 
 
 
 
 @NgModule({
   imports: [
+    SharedModule,
     CommonModule,
     // BrowserAnimationsModule,
     // BrowserModule,
@@ -50,8 +54,10 @@ import { userRouterConfig } from './user-dashboard.router-config';
     RouterModule.forChild(userRouterConfig)
   ],
   declarations: [
+    // NumberToWordsPipe,
     UserEducationAddDetailsComponent,
     UserEducationDetailsComponent,
+    StatisticsComponent,
     UserExperienceAddDetailsComponent,
     UserExperienceDetailsComponent,
     UserPersonalDetailsComponent,

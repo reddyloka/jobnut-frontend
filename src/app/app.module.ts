@@ -36,6 +36,7 @@ import { ChatModule } from './_shared/components/chat/chat.module';
 import { LoggedInGuard } from './core/guards/logged-in.guard';
 // import { UserDashboardModule } from './dashboards/user-dashboard/user-dashboard.module';
 import { HrDashboardModule } from './dashboards/hr-dashboard/hr-dashboard.module';
+import { StatisticsComponent } from './_shared/components/statistics/statistics.component';
 
 
 
