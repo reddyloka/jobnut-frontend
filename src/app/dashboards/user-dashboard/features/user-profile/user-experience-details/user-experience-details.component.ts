@@ -37,7 +37,7 @@ export class UserExperienceDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.buildFormGroup();
-    this.personaldata = this.userdata;
+    // this.personaldata = this.userdata;
   }
   async onSubmit() {
     console.log('experience', this.applicantForm.value);

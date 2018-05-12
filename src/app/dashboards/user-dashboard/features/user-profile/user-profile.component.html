@@ -86,6 +86,39 @@
           <div class="ui long panel-body" style="overflow-y: auto;margin: 0em -1em;padding: 1em 3em;height: 22em;">
 
             <div *ngFor="let experience of userdata?.experience; let i = index">
+<<<<<<< HEAD
+              <div *ngIf="expMain">
+                <a class="ui orange right ribbon label" (click)="deleteExperience(i);">Delete</a>
+                <div class="row">
+                  <div class="col-md-3">
+                    <h5>Profile Title</h5>
+                  </div>
+                  <div class="col-md-6">
+                    {{userdata.experience[i]?.designation}}
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-3">
+                    <h5>Experience</h5>
+                  </div>
+                  <div class="col-md-6">
+                    {{userdata.experience[i]?.totalExperience}}
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-3">
+                    <h5>Description</h5>
+                  </div>
+                  <div class="col-md-6">
+                    {{userdata?.experience[i].description}}
+                  </div>
+
+                </div>
+              </div>
+              <div *ngIf="expOpen">
+                <app-user-experience-details (discardClick)="closeExp()" [userdata]="userdata"></app-user-experience-details>
+              </div>
+=======
               <a class="ui orange left ribbon label" (click)="editData(i, $event.target.innerText)">
                     {{ meme == i ? 'Save' : 'Edit'}}
                    </a>
@@ -126,6 +159,7 @@
                         </div>
       
                       </div>
+>>>>>>> a60d25fcceab1c839611d3c23ccc5192340f84d2
               <hr>
             </div>
           </div>
@@ -154,10 +188,17 @@
                   </div>
                   <div class="col-md-6 col-md-offset-2">
                     <div class="ui input">
+<<<<<<< HEAD
+                      <select *ngIf="meme == i" class="ui search dropdown" [(ngModel)]="userdata?.education[i].higherDegreeValue">
+                        <option>Select your highest qualification</option>
+                        <option *ngFor="let degree of highestDegreeArray">{{degree}}</option>
+                      </select>
+=======
                         <select *ngIf="meme == i" class="ui search dropdown"  [(ngModel)]="userdata.education[i].higherDegreeValue">
                             <option>Select your highest qualification</option>
                             <option *ngFor="let degree of highestDegreeArray">{{degree}}</option>
                           </select>
+>>>>>>> a60d25fcceab1c839611d3c23ccc5192340f84d2
                     </div>
                     <span *ngIf="!(meme == i)">{{userdata?.education[i].higherDegreeValue}}</span>
                     <!-- <span>{{userdata?.education[i].higherDegreeValue}}</span> -->
@@ -178,14 +219,19 @@
                   <div class="col-md-2">
                     <h5>Passing Year</h5>
                   </div>
+<<<<<<< HEAD
+                  <div class="col-md-6">
+                    <div class="ui input">
+=======
                   <div class="col-md-6 col-md-offset-2">
                       <div class="ui input">
+>>>>>>> a60d25fcceab1c839611d3c23ccc5192340f84d2
                       <!-- <select name="gender" > -->
-                        <!-- </select> -->
-                        <select  *ngIf="meme == i" class="ui search dropdown" [(ngModel)]="userdata?.education[i].passingYearValue"  >
-                            <option>Select your option</option>
-                            <option *ngFor="let year of yearArray">{{year}}</option>
-                        </select>
+                      <!-- </select> -->
+                      <select *ngIf="meme == i" class="ui search dropdown" [(ngModel)]="userdata?.education[i].passingYearValue">
+                        <option>Select your option</option>
+                        <option *ngFor="let year of yearArray">{{year}}</option>
+                      </select>
                     </div>
                     <span *ngIf="!(meme==i)">{{userdata?.education[i].passingYearValue}}</span>
                   </div>
@@ -229,7 +275,7 @@
                   </select>
                   </div> -->
 
-                <span *ngIf="!meme1">{{userdata?.skillValue}}</span>
+              <span *ngIf="!meme1">{{userdata?.skillValue}}</span>
             </div>
           </div>
         </div>
@@ -250,7 +296,13 @@
   style="display: flex !important;">
   <app-user-personal-details *ngIf="detailsOpen" (discardClick)="closeDetails($event)" (saveClick)="closeDetails($event)" [userdata]="userdata"></app-user-personal-details>
   <app-user-skills-details *ngIf="skillOpen" (discardClick)="closeSkill($event)" (saveClick)="closeSkill($event)" [userdata]="userdata"></app-user-skills-details>
+<<<<<<< HEAD
+  <app-user-experience-details *ngIf="expAdd" (discardClick)="closeAddExp()"></app-user-experience-details>
+  <app-user-education-add-details *ngIf="educationAdd" (discardClick)="closeAddEducation()" [userdata]="userdata"></app-user-education-add-details>
+</div>
+=======
   <app-user-experience-add-details *ngIf="expAdd" (discardClick)="closeAddExp($event)" (saveClick)="closeAddExp($event)" [userdata]="userdata"></app-user-experience-add-details>
   <app-user-education-add-details *ngIf="educationAdd" (discardClick)="closeAddEducation($event)" (saveClick)="closeAddEducation($event)" [userdata]="userdata"></app-user-education-add-details>
 </div>
  
+>>>>>>> a60d25fcceab1c839611d3c23ccc5192340f84d2
