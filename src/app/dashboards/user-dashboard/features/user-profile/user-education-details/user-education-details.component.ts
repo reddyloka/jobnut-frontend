@@ -7,8 +7,8 @@ import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 export class UserEducationDetailsComponent implements OnInit {
   // addEducation: boolean;
   editEducation: boolean;
-@Input()
-userdata;
+  @Input()
+  userdata;
 
 
   yearArray: string[];

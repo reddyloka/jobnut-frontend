@@ -113,7 +113,7 @@
                 </div>
               </div>
               <div *ngIf="expOpen">
-                <app-user-add-experience-details (discardClick)="closeExp()" [userdata]="userdata"></app-user-add-experience-details>
+                <app-user-experience-details (discardClick)="closeExp()" [userdata]="userdata"></app-user-experience-details>
               </div>
               <hr>
             </div>
@@ -134,7 +134,7 @@
               <div *ngIf="educationMain" class="">
                 <!-- <a class="fr" (click)="EditEducationDetails()">Edit</a> -->
                 <a class="ui orange left ribbon label" (click)="editData(i, $event.target.innerText)">
-                 {{ meme == i ? 'Save' : 'Edit'}}
+                  {{ meme == i ? 'Save' : 'Edit'}}
                 </a>
                 <a class="ui orange right ribbon label" (click)="deleteEducation(i);" style="margin: 0px -52px ">Delete</a>
                 <div class="row">
@@ -143,10 +143,10 @@
                   </div>
                   <div class="col-md-6">
                     <div class="ui input">
-                        <select *ngIf="meme == i" class="ui search dropdown"  [(ngModel)]="userdata?.education[i].higherDegreeValue">
-                            <option>Select your highest qualification</option>
-                            <option *ngFor="let degree of highestDegreeArray">{{degree}}</option>
-                          </select>
+                      <select *ngIf="meme == i" class="ui search dropdown" [(ngModel)]="userdata?.education[i].higherDegreeValue">
+                        <option>Select your highest qualification</option>
+                        <option *ngFor="let degree of highestDegreeArray">{{degree}}</option>
+                      </select>
                     </div>
                     <span *ngIf="!(meme == i)">{{userdata?.education[i].higherDegreeValue}}</span>
                     <!-- <span>{{userdata?.education[i].higherDegreeValue}}</span> -->
@@ -168,13 +168,13 @@
                     <h5>Passing Year</h5>
                   </div>
                   <div class="col-md-6">
-                      <div class="ui input">
+                    <div class="ui input">
                       <!-- <select name="gender" > -->
-                        <!-- </select> -->
-                        <select  *ngIf="meme == i" class="ui search dropdown" [(ngModel)]="userdata?.education[i].passingYearValue"  >
-                            <option>Select your option</option>
-                            <option *ngFor="let year of yearArray">{{year}}</option>
-                        </select>
+                      <!-- </select> -->
+                      <select *ngIf="meme == i" class="ui search dropdown" [(ngModel)]="userdata?.education[i].passingYearValue">
+                        <option>Select your option</option>
+                        <option *ngFor="let year of yearArray">{{year}}</option>
+                      </select>
                     </div>
                     <span *ngIf="!(meme==i)">{{userdata?.education[i].passingYearValue}}</span>
                   </div>
@@ -209,18 +209,18 @@
       <div class="content">
         <div class='panel panel-default'>
           <div class="panel-body">
-              <a class="ui orange left ribbon label" (click)="editData(meme1,$event.target.innerText)">
-                  {{ meme1? 'Save' : 'Edit'}}
-              </a>
+            <a class="ui orange left ribbon label" (click)="editData(meme1,$event.target.innerText)">
+              {{ meme1? 'Save' : 'Edit'}}
+            </a>
             <div *ngIf="skillMain">
-                <!-- <div class="ui input">
+              <!-- <div class="ui input">
                 <select  *ngIf="meme1" class="ui fluid search dropdown" [(ngModel)]="userdata.skillValue" multiple="" >
                     <option value="">Select</option>
                     <option *ngFor="let option of skillsArray">{{option}}</option>
                   </select>
                   </div> -->
 
-                <span *ngIf="!meme1">{{userdata?.skillValue}}</span>
+              <span *ngIf="!meme1">{{userdata?.skillValue}}</span>
             </div>
           </div>
         </div>
@@ -241,6 +241,6 @@
   style="display: flex !important;">
   <app-user-personal-details *ngIf="detailsOpen" (discardClick)="closeDetails($event)" (saveClick)="closeDetails($event)" [userdata]="userdata"></app-user-personal-details>
   <app-user-skills-details *ngIf="skillOpen" (discardClick)="closeSkill($event)" (saveClick)="closeSkill($event)" [userdata]="userdata"></app-user-skills-details>
-  <app-user-experience-add-details *ngIf="expAdd" (discardClick)="closeAddExp()"></app-user-experience-add-details>
+  <app-user-experience-details *ngIf="expAdd" (discardClick)="closeAddExp()"></app-user-experience-details>
   <app-user-education-add-details *ngIf="educationAdd" (discardClick)="closeAddEducation()" [userdata]="userdata"></app-user-education-add-details>
 </div>
