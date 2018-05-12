@@ -50,7 +50,7 @@
     <div class="field">
       <label>Country *</label>
       <div class='field'>
-      <input type="text" placeholder="country" [(ngModel)]="hrDetails.country" formControlName="country">
+      <input type="text" placeholder="country" [(ngModel)]="hrdata.country" formControlName="country">
       <div *ngIf="!hrdetailForm.controls['country'].valid && hrdetailForm.controls['country'].touched">
           <p>please fill required fields*</p>
         </div>
@@ -61,43 +61,39 @@
   <div class="two fields">
     <div class="field">
       <label>State *</label>
-      <select class="ui fluid search dropdown"  formControlName="state" [(ngModel)]="hrDetails.state">
+      <select class="ui fluid search dropdown"  formControlName="state" [(ngModel)]="hrdata.state">
           <option value=''>select your state</option>
           <option [value]="state" *ngFor="let state of states">{{state}}</option>
         </select>
-        <div *ngIf="(hrDetails.state==='select your state')&&hrdetailForm.controls['state'].valid">
+        <div *ngIf="(hrdata.state==='select your state')&&hrdetailForm.controls['state'].valid">
             <p>please fill required fields*</p>
           </div>
     </div>
     <div class="field">
       <label>City</label>
-      <select  class="ui fluid search dropdown"  formControlName="city" [(ngModel)]="hrDetails.city">
+      <select  class="ui fluid search dropdown"  formControlName="city" [(ngModel)]="hrdata.city">
           <option value=''>select your city</option>
         <option [value]="city" *ngFor="let city of cities">{{city}}</option>
       </select>
-      <div *ngIf="(hrDetails.city==='select your city')&&hrdetailForm.controls['city'].valid">
+      <div *ngIf="(hrdata.city==='select your city')&&hrdetailForm.controls['city'].valid">
         <p>please fill required fields*</p>
         </div>
     </div>
   </div>
   <div class="field">
     <label>Designation *</label>
-    <input type="text" placeholder="Designation" [(ngModel)]="hrDetails.designation" formControlName="designation">
+    <input type="text" placeholder="Designation" [(ngModel)]="hrdata.designation" formControlName="designation">
     <div *ngIf="!hrdetailForm.controls['designation'].valid && hrdetailForm.controls['designation'].touched">
       <p>please fill required fields*</p>
       </div>
   </div>
   <div class="sixteen wide padded field">
     <label>Address*</label>
-    <input type="text" placeholder="Address" [(ngModel)]="hrDetails.address" formControlName="address">
+    <input type="text" placeholder="Address" [(ngModel)]="hrdata.address" formControlName="address">
     <div *ngIf="!hrdetailForm.controls['address'].valid && hrdetailForm.controls['address'].touched">
       <p>please fill required fields*</p>
       </div>
   </div>
-      <div class="field">
-        <label>Designation *</label>
-        <input type="text"  placeholder="Designation" [(ngModel)]="hrdata.designation" formControlName="designation">
-      </div>
       <div class="field">
         <label>Job Profile *</label>
         <div class="eight wide field">
