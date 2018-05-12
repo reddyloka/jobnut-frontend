@@ -1,83 +1,107 @@
 <div class="ui very padded container segment">
   <form [formGroup]="hrdetailForm" class="ui form">
     <h4 class="ui dividing header">New H.R Registration</h4>
-    <div class="field">
+    <div class="two fields">
       <label>Name *</label>
-      <div class="two fields">
         <div class="field">
-          <input type="text"  placeholder="First Name" [(ngModel)]="hrdata.firstName" formControlName="firstName">
+          <input  autofocus type="text"  placeholder="First Name" [(ngModel)]="hrdata.firstName" formControlName="firstName">
+          <div *ngIf="!hrdetailForm.controls['firstName'].valid && hrdetailForm.controls['firstName'].touched">
+              <p>please fill required fields*</p>
+            </div>
         </div>
         <div class="field">
           <input type="text"  placeholder="Last Name" [(ngModel)]="hrdata.lastName" formControlName="lastName">
         </div>
-      </div>
     </div>
-    <div class="field">
-      <label>Email *</label>
-      <div class="field">
-          <input type="text"  placeholder="Email" [(ngModel)]="hrdata.email" formControlName="email">
-    </div>
-    </div>
+    <div class="two fields">
     <div class="field">
       <label>Date Of Birth
         <span style="color:red">*</span>
       </label>
+      <div class="field">
       <input type="date" formControlName="dob" placeholder="enter date of birth" [(ngModel)]="hrdata.dob">
-      <!-- <div class="alert alert-danger" *ngIf="!applicantForm.controls['dob'].dirty && applicantForm.controls['dob'].touched">
-        <p>Please fill required fields
-          <span style="color:red">*</span>
-        </p>
-      </div> -->
+      <div *ngIf="!hrdetailForm.controls['dob'].valid && hrdetailForm.controls['dob'].touched">
+          <p>please fill required fields*</p>
+        </div>
+</div>
     </div>
     <div class="field">
       <label>Phone *</label>
       <div class="field">
         <input type="text"  placeholder="phone" [(ngModel)]="hrdata.phone" formControlName="phone">
+        <div *ngIf="!hrdetailForm.controls['phone'].valid && hrdetailForm.controls['phone'].touched">
+            <p>please fill required fields*</p>
+          </div>
       </div>
     </div>
+    </div>
+    <div class="two fields">
+        <div class="field">
+            <label>Email *</label>
+            <div class="field">
+        <input type="text"  placeholder="Email" [(ngModel)]="hrdata.email" formControlName="email">
+        <div *ngIf="!hrdetailForm.controls['email'].valid && hrdetailForm.controls['email'].touched">
+            <p>please fill required fields*</p>
+          </div>
+          </div>
+          </div>
+    <div class="field">
+      <label>Country *</label>
+      <div class='field'>
+      <input type="text" placeholder="country" [(ngModel)]="hrDetails.country" formControlName="country">
+      <div *ngIf="!hrdetailForm.controls['country'].valid && hrdetailForm.controls['country'].touched">
+          <p>please fill required fields*</p>
+        </div>
+      </div>
+    </div>
+  </div>
 
-        <div class="field">
-          <label>Country *</label>
-          <input type="text"  placeholder="country"  [(ngModel)]="hrdata.country" formControlName="country">
-         <!-- <select  class="ui fluid dropdown" formControlName="country">
-            <option>Select</option>
-            </select> -->
-      </div>
-    
-      <div class="two fields">
-        <div class="field">
-          <label>States *</label>
-          <input type="text"  placeholder="State" [(ngModel)]="hrdata.state" formControlName="state">
-          <!-- <select  class="ui fluid dropdown" formControlName="states">
-            <option>Select</option>
-            <option [value]="state" *ngFor="let state of states">{{state}}</option>
-          </select>-->
+  <div class="two fields">
+    <div class="field">
+      <label>State *</label>
+      <select class="ui fluid search dropdown"  formControlName="state" [(ngModel)]="hrDetails.state">
+          <option value=''>select your state</option>
+          <option [value]="state" *ngFor="let state of states">{{state}}</option>
+        </select>
+        <div *ngIf="(hrDetails.state==='select your state')&&hrdetailForm.controls['state'].valid">
+            <p>please fill required fields*</p>
+          </div>
+    </div>
+    <div class="field">
+      <label>City</label>
+      <select  class="ui fluid search dropdown"  formControlName="city" [(ngModel)]="hrDetails.city">
+          <option value=''>select your city</option>
+        <option [value]="city" *ngFor="let city of cities">{{city}}</option>
+      </select>
+      <div *ngIf="(hrDetails.city==='select your city')&&hrdetailForm.controls['city'].valid">
+        <p>please fill required fields*</p>
         </div>
-        <div class="field">
-          <label>City</label>
-          <input type="text"  placeholder="City" [(ngModel)]="hrdata.city" formControlName="city">
-        </div>
+    </div>
+  </div>
+  <div class="field">
+    <label>Designation *</label>
+    <input type="text" placeholder="Designation" [(ngModel)]="hrDetails.designation" formControlName="designation">
+    <div *ngIf="!hrdetailForm.controls['designation'].valid && hrdetailForm.controls['designation'].touched">
+      <p>please fill required fields*</p>
       </div>
+  </div>
+  <div class="sixteen wide padded field">
+    <label>Address*</label>
+    <input type="text" placeholder="Address" [(ngModel)]="hrDetails.address" formControlName="address">
+    <div *ngIf="!hrdetailForm.controls['address'].valid && hrdetailForm.controls['address'].touched">
+      <p>please fill required fields*</p>
+      </div>
+  </div>
       <div class="field">
         <label>Designation *</label>
         <input type="text"  placeholder="Designation" [(ngModel)]="hrdata.designation" formControlName="designation">
       </div>
-      <div class="sixteen wide padded field">
-        <label>Address *</label>
-        <input type="text"  placeholder="Address" [(ngModel)]="hrdata.address" formControlName="address">
-      </div>
-
       <div class="field">
         <label>Job Profile *</label>
         <div class="eight wide field">
           <textarea type="text"  placeholder="jobProfile" [(ngModel)]="hrdata.jobProfile" formControlName="jobProfile"></textarea>
         </div>
       </div>
-
-      <!-- <div class="field">
-        <label>Profile Photo:</label>
-        <input  type="file"  placeholder="Photo" required="" capture (change)="fileTypeCheck($event)">
-      </div> -->
       <div class="field">
         <button class="ui primary button"  type="submit" (click)="onSubmit()"> Save </button>
       <button class="ui button"  (click)="discardClicked()"> Discard </button>
