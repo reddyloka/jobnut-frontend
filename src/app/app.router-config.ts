@@ -1,19 +1,6 @@
 import { Routes } from '@angular/router';
 // resume editor routes
-import { HomeComponent } from './resume/home/home.component';
-import { ResumeBuilderComponent } from './resume/resume-builder/resume-builder.component';
-import { PersonalDetailsComponent } from './resume/resume-builder/personal-details/personal-details.component';
-import { EducationComponent } from './resume/resume-builder/education/education.component';
-import { SkillsComponent } from './resume/resume-builder/skills/skills.component';
-import { ExperienceComponent } from './resume/resume-builder/experience/experience.component';
-import { HobbiesComponent } from './resume/resume-builder/hobbies/hobbies.component';
-import { InterestsComponent } from './resume/resume-builder/interests/interests.component';
-import { CertificatesComponent } from './resume/resume-builder/certificates/certificates.component';
-import { LanguagesComponent } from './resume/resume-builder/languages/languages.component';
-import { ResumePreviewComponent } from './resume/resume-preview/resume-preview.component';
-import { ResumePreview1Component } from './resume/resume-preview-1/resume-preview-1.component';
-import { ResumePreview2Component } from './resume/resume-preview-2/resume-preview-2.component';
-import { ResumePreview3Component } from './resume/resume-preview-3/resume-preview-3.component';
+
 import { LoginComponent } from './_shared/components/login/login.component';
 import { CallbackComponent } from './_shared/components/misc/callback/callback.component';
 import { UserViewPostDetailsComponent } from './dashboards/user-dashboard/features/user-view-post/user-view-post-details/user-view-post-details.component';
@@ -96,25 +83,5 @@ export const routerConfig: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
 
   // remume builder routes
-
-  // {path:'resume-builder',component:IndexPageComponent},
-  { path: 'resume-home', component: HomeComponent },
-  {
-    path: 'resumeDetails/:id', component: ResumeBuilderComponent, children: [
-      { path: '', redirectTo: 'personalDetails', pathMatch: 'full' },
-      { path: 'personalDetails', component: PersonalDetailsComponent },
-      { path: 'education', component: EducationComponent },
-      { path: 'skills', component: SkillsComponent },
-      { path: 'experiences', component: ExperienceComponent },
-      { path: 'hobbies', component: HobbiesComponent },
-      { path: 'interests', component: InterestsComponent },
-      { path: 'certificates', component: CertificatesComponent },
-      { path: 'languages', component: LanguagesComponent }
-    ]
-  },
-  { path: '1', component: ResumePreviewComponent },
-  { path: '2', component: ResumePreview1Component },
-  { path: '3', component: ResumePreview2Component },
-  { path: '4', component: ResumePreview3Component },
 
 ];

@@ -84,6 +84,16 @@ export class UserProfileComponent implements OnInit {
 
 
 
+<<<<<<< HEAD
+      
+      $('.dropdown').dropdown({
+        label: {
+          duration: 0,
+        },
+        // debug: true,
+        performance: true,
+      });
+=======
 
     $('.dropdown').dropdown({
       label: {
@@ -92,6 +102,7 @@ export class UserProfileComponent implements OnInit {
       debug: true,
       performance: true,
     });
+>>>>>>> a60d25fcceab1c839611d3c23ccc5192340f84d2
 
 
   }

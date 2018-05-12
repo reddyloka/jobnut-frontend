@@ -23,8 +23,9 @@ export class HrManageApplicantComponent implements OnInit {
   applicantDetailsInfo: boolean;
   manageApplicantInfo: boolean;
   hrpost: HrPostDetail;
-  loadPage: boolean = false;
-  loadError: boolean = false;
+  loadPage = false;
+  loadError = false;
+  chatOpen = false;
   constructor(
     private data: DataService,
     private route: ActivatedRoute,
