@@ -1,4 +1,4 @@
-import { BrowserModule } from '@angular/platform-browser';
+// import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -34,7 +34,7 @@ import { JwtService } from './_shared/services/jwt.service';
 import { ForgetpasswordComponent } from './_shared/components/forgetpassword/forgetpassword.component';
 import { ChatModule } from './_shared/components/chat/chat.module';
 import { LoggedInGuard } from './core/guards/logged-in.guard';
-import { UserDashboardModule } from './dashboards/user-dashboard/user-dashboard.module';
+// import { UserDashboardModule } from './dashboards/user-dashboard/user-dashboard.module';
 import { HrDashboardModule } from './dashboards/hr-dashboard/hr-dashboard.module';
 
 
@@ -49,25 +49,6 @@ import { HrDashboardModule } from './dashboards/hr-dashboard/hr-dashboard.module
     CallbackComponent,
     CallbackComponent,
     NotificationComponent,
-<<<<<<< HEAD
-    ApplicantPreviewComponent,
-=======
-    ResumeBuilderComponent,
-    PersonalDetailsComponent,
-    EducationComponent,
-    HomeComponent,
-    ResumePreviewComponent,
-    ResumePreview1Component,
-    ResumePreview2Component,
-    ResumePreview3Component,
-    SkillsComponent,
-    ExperienceComponent,
-    HobbiesComponent,
-    InterestsComponent,
-    CertificatesComponent,
-    LanguagesComponent,
-    IndexPageComponent,
->>>>>>> a60d25fcceab1c839611d3c23ccc5192340f84d2
     ForgetpasswordComponent,
     SignupHomeComponent,
 
@@ -75,19 +56,20 @@ import { HrDashboardModule } from './dashboards/hr-dashboard/hr-dashboard.module
   imports: [
     BrowserAnimationsModule,
     // ToasterModule.forRoot(),
-    BrowserModule,
+    // BrowserModule,
     SelectModule,
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
     ChatModule,
-    UserDashboardModule,
+    // UserDashboardModule,
     HrDashboardModule,
     Ng2ImgMaxModule,
     HttpClientModule,
     NgxPaginationModule,
     RouterModule.forRoot(routerConfig),
-    BrowserModule, FormsModule, AngularFontAwesomeModule, FroalaEditorModule.forRoot(), FroalaViewModule.forRoot()
+    // BrowserModule,
+    FormsModule, AngularFontAwesomeModule, FroalaEditorModule.forRoot(), FroalaViewModule.forRoot()
   ],
   providers: [
     UserBaseService,

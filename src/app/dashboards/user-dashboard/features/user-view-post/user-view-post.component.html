@@ -1,59 +1,28 @@
 
-   <div class='panel panel-default' style="max-width:900px; background-color: lightblue">
-    <div class="panel-body">
-        <div class="ui grid">
-            <div class="ten wide column">
-                <h2>{{hrpost.title}}</h2>
-                <h4><i class='building icon'></i>{{hrpost.companyname}}</h4>
-                <div>
-                  <p>
-                    <span class="glyphicon glyphicon-map-marker"></span> {{hrpost.location}}
-                  </p>
-                </div>
-                <div>
-                  <h4>Skills Required:</h4>
-                  <p>{{hrpost.skills}}</p>
-                </div>
-            </div>
-  <div class="six wide column">
-      <div>
-          <h5>
-              <span class="glyphicon glyphicon-user"></span>Applicants Registered
-            </h5>
-           <p><span class="glyphicon glyphicon-thumbs-up"></span>0</p>
+
+
+
+<div id="card">
+    <button class="btn btn-primary" (click)='userclicked()' style="
+    position: relative;
+    top: 11%;
+    right:  4%;
+    float:  right;
+  ">More Details</button>
+  <div id="content"><span><i class='building icon'></i>{{(hrpost?.companyname || 'NAN') | titlecase}}</span>
+    <h1>{{(hrpost?.title || 'NAN') | titlecase}}</h1>
+    <span class="glyphicon glyphicon-map-marker"></span> {{(hrpost?.location || 'NAN')| titlecase}}
+    <p>Purchase fuel at petrol pumps & service stations and claim reimbursements using Optima.</p>
+    <h3>Skills Required: <span>{{hrpost?.skills || 'NAN'}}</span></h3>
+    <div id="color-bar"></div>
+    <div class="detail">
+      <div class="circle">
+        <div class="left" style="background:#FA5964;"></div>
+        <div class="right" style="background:#FA3E4B;"></div>
       </div>
-      <br>
-       <div>
-         <button class="btn btn-primary" (click)='userclicked()'>More Details</button>
-       </div>
-  </div>
-          </div>
-      <!-- <div style="float: left">
-        <h2>{{hrpost.title}}</h2>
-        <h4><i class='building icon'></i>{{hrpost.companyname}}</h4>
-        <div>
-          <p>
-            <span class="glyphicon glyphicon-map-marker"></span> {{hrpost.location}}
-          </p>
-        </div>
-        <div>
-          <h4>Skills Required:</h4>
-          <p>{{hrpost.skills}}</p>
-        </div>
-      </div> -->
-      <!-- <div style="float: right; padding-right:20px">
-        <div>
-            <h5>
-                <span class="glyphicon glyphicon-user"></span>Applicants Registered
-              </h5>
-             <p><span class="glyphicon glyphicon-thumbs-up"></span>0</p>
-        </div>
-        <br>
-         <div>
-           <button class="btn btn-primary" (click)='userclicked()'>More Details</button>
-         </div>
-      </div> -->
-
+      <h2>Applicants Registered</h2><span id="hex">{{hrpost?.applicants.length || 0}}</span>
     </div>
-
+    
   </div>
+  
+</div>

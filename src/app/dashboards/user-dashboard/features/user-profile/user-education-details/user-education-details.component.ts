@@ -7,11 +7,6 @@ import { Component, OnInit, Output, EventEmitter, Input, OnChanges, SimpleChange
 export class UserEducationDetailsComponent implements OnInit {
   // addEducation: boolean;
   editEducation: boolean;
-<<<<<<< HEAD
-  @Input()
-  userdata;
-=======
->>>>>>> a60d25fcceab1c839611d3c23ccc5192340f84d2
 
   @Input()
   userdata;

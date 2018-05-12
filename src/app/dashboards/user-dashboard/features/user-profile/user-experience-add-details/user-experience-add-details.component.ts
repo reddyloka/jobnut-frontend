@@ -23,7 +23,7 @@ export class UserExperienceAddDetailsComponent implements OnInit {
     this.buildFormGroup();
     this.id = uuid();
   }
-  
+
   buildFormGroup(): void {
     const fg = {
       'designation': new FormControl(null, Validators.required),
@@ -32,23 +32,20 @@ export class UserExperienceAddDetailsComponent implements OnInit {
     };
     this.applicantForm = new FormGroup(fg);
   }
-  
+
   ngOnInit() {
-<<<<<<< HEAD
     this.buildFormGroup();
     // this.personaldata = this.userdata;
-=======
-    this.personaldata  = JSON.stringify(this.userdata);
-  this.personaldata=JSON.parse(this.personaldata)
->>>>>>> a60d25fcceab1c839611d3c23ccc5192340f84d2
+    this.personaldata = JSON.stringify(this.userdata);
+    this.personaldata = JSON.parse(this.personaldata);
   }
   onSubmit() {
-     this.personaldata.experience.push(this.applicantForm.value);
+    this.personaldata.experience.push(this.applicantForm.value);
     console.log('values exp', this.personaldata);
-    this._userService.updateUserDetailsById( this.personaldata, this.id).
-    then(() => {
-      this.saveClick.emit(this.personaldata);
-    });
+    this._userService.updateUserDetailsById(this.personaldata, this.id).
+      then(() => {
+        this.saveClick.emit(this.personaldata);
+      });
   }
   discardClicked() {
     this.discardClick.emit(this.personaldata);

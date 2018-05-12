@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { UserBaseService } from '../../../../_shared/services/user-base.service';
 import { HrPostDetail } from '../../../../_shared/models/hrpostdetails';
 import { uuid } from '../../../../_shared/models/uuid';
@@ -16,7 +16,7 @@ export class UserViewAppliedPostComponent implements OnInit {
   loadPage = false;
   loadError = false;
   constructor(private userbaseservice: UserBaseService,
-    private router: Router) {
+    private router: Router, private route: ActivatedRoute) {
     this.id = uuid();
   }
 
@@ -34,7 +34,8 @@ export class UserViewAppliedPostComponent implements OnInit {
     this.p = 1;
   }
   routeronclicked(hrpost_id) {
-    this.router.navigateByUrl('applied-job/' + hrpost_id);
+    // this.router.navigateByUrl('user-profile/applied-job/' + hrpost_id);
+    this.router.navigate([hrpost_id], {relativeTo: this.route});
     // console.log(hrpost_id);
   }
 

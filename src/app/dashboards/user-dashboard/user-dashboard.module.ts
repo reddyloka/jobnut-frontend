@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { BrowserModule } from '@angular/platform-browser';
+// import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+// import { BrowserModule } from '@angular/platform-browser';
 import { SelectModule } from 'ng2-select';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
@@ -37,8 +37,8 @@ import { userRouterConfig } from './user-dashboard.router-config';
 @NgModule({
   imports: [
     CommonModule,
-    BrowserAnimationsModule,
-    BrowserModule,
+    // BrowserAnimationsModule,
+    // BrowserModule,
     SelectModule,
     FormsModule,
     ReactiveFormsModule,
@@ -47,8 +47,7 @@ import { userRouterConfig } from './user-dashboard.router-config';
     Ng2ImgMaxModule,
     HttpClientModule,
     NgxPaginationModule,
-    RouterModule.forRoot(userRouterConfig),
-    BrowserModule
+    RouterModule.forChild(userRouterConfig)
   ],
   declarations: [
     UserEducationAddDetailsComponent,

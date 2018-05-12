@@ -3,7 +3,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 @Component({
   selector: 'app-user-view-post',
   templateUrl: './user-view-post.component.html',
-  // styleUrls: ['./user-view-post.component.css']
+  styleUrls: ['./user-view-post-component.css']
 })
 export class UserViewPostComponent implements OnInit {
 @Input()
