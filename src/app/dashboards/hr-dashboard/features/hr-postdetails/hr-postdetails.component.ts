@@ -35,7 +35,7 @@ export class HrPostdetailsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.hrbaseservice.getHrDetailsById(this.id).then((data) => {
+    this.hrbaseservice.getHrDetailsById(this.id).subscribe((data) => {
       this.hrdata = data;
     });
     this.postdetails();
@@ -56,7 +56,7 @@ export class HrPostdetailsComponent implements OnInit {
     this.route.paramMap.subscribe((params: ParamMap) => {
       const hrpost_id = params.get('id');
       this.hrbaseservice.getHrPostById(hrpost_id).
-        then((hrpost) => {
+        subscribe((hrpost) => {
           console.log(hrpost);
           this.hrpost = hrpost;
         });
@@ -75,7 +75,7 @@ export class HrPostdetailsComponent implements OnInit {
 deletepost(){
   let windowStatus=window.confirm('confirm to delete post');
   if(windowStatus){
-  this.hrbaseservice.deleteHrPost(this.hrpost._id).then(()=>{
+  this.hrbaseservice.deleteHrPost(this.hrpost._id).subscribe(()=>{
     this.router.navigateByUrl('hr/jobs-posted');
     console.log('deleted successfully');
   })

@@ -66,10 +66,11 @@ saveClick = new EventEmitter<boolean>();
   onSubmit() {
     console.log('edit', this.hrpostNewDataForm.value);
     this.hrbaseservice.HrPostUpdate(this.hrpostNewDataForm.value, this.id).
-      then((res) => {
+      subscribe(() => {
+        this.saveClick.emit(true);
         console.log('success');
       });
-      this.saveClick.emit(true);
+    
   }
   discardClicked(){
   window.alert('Your changes will not get updated in our database');

@@ -22,16 +22,16 @@ export class UserViewAppliedPostComponent implements OnInit {
 
   ngOnInit() {
     this.userbaseservice.getUserApplyPost(this.id).
-      then((hrpost) => {
-        console.log('applied data', hrpost);
-        this.hrpost = hrpost;
-        this.loadPage = true;
-      }).
-      catch((error => {
-        this.loadError = true;
-        this.error_text = 'Get error on server request ';
-      }));
-    this.p = 1;
+    subscribe((hrpost) => {
+      console.log('applied data', hrpost);
+     this.hrpost = hrpost;
+     this.loadPage = true
+    })
+    // .catch((error=>{
+    //   this.loadError = true;
+    //  this.error_text = "Get error on server request ";
+    //  }));
+  this.p = 1;
   }
   routeronclicked(hrpost_id) {
     // this.router.navigateByUrl('user-profile/applied-job/' + hrpost_id);

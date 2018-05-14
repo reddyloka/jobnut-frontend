@@ -40,23 +40,23 @@ export class ForgetpasswordComponent implements OnInit {
       this.inputType = 'password';
     }
   }
-  resetPassword() {
+  resetPassword() { 
+    console.log('form value',this.loginEmailForm.value);
     this.forgetInfo = false;
-    this._userbase.checkMailId(this.loginEmailForm.value).then((data) => {
-      console.log('id exists', data);
-      if (data) {
+    this._userbase.checkMailId(this.loginEmailForm.value).subscribe((res) => {
+      console.log('id exists', res);
+      if (res) {
         this.resetInfo = true;
       } else {
         window.alert('Email address was not registered with us Please Signup with Jobnut');
         this.router.navigateByUrl('signin');
       }
     });
-
   }
   onSubmit() {
     this._userbase.passwordUpdate(this.loginEmailForm.value, this.resetForm.value.password)
-      .then(() => {
-        console.log('password updated successfully');
+      .subscribe((res) => {
+        console.log('password updated successfully',res);
         this.router.navigateByUrl('login');
       });
   }

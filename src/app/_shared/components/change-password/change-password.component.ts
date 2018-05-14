@@ -80,7 +80,6 @@ export class ChangePasswordComponent implements OnInit {
 
   closeChangePasswordClicked() {
     console.log('clicked');
-    
     $('.small.modal')
     .modal({
       closable  : false,

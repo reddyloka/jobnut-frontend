@@ -23,19 +23,20 @@ export class HrPostComponent implements OnInit {
     }
 
   ngOnInit() {
-    this.hrbaseservice.getHrDetailsById(this.id).then((data) => {
+    this.hrbaseservice.getHrDetailsById(this.id).subscribe((data) => {
       this.hrdata = data;
     });
     this.hrbaseservice.getAllHrPost(this.id).
-      then((hrpost) => {
+      subscribe((hrpost) => {
         this.hrpost = hrpost;
         console.log(hrpost);
         this.loadPage = true
-      }).
-      catch((error=>{
-       this.loadError = true;
-      this.error_text = "Get error on server request ";
-      }))
+      })
+
+      // .catch((error=>{
+      //  this.loadError = true;
+      // this.error_text = "Get error on server request ";
+      // }))
   }
 
   public routeronclicked(hrpost_id): void {

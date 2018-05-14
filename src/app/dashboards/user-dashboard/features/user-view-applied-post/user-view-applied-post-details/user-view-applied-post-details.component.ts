@@ -27,30 +27,28 @@ export class UserViewAppliedPostDetailsComponent implements OnInit {
     this.uploadNewCv = false;
     this.chatOpen = false;
     this.id = uuid();
-    // this.isshortlist = false;
   }
   ngOnInit() {
     this.route.paramMap.subscribe(async (params: ParamMap) => {
-      // console.log('NNNNNNNNNNNNNNNNNnn');
       const hrpost_id = params.get('user-post.id');
-      this.hrpost = await this.hrbaseservice.getHrPostById(hrpost_id);
-      // .
-      // then((hrpost) => {
-        // this.hrpost = hrpost;
-        // console.log('shhhhhhh', this.hrpost);
-        // });
-        this.userdata = await this.userbaseservice.getUserDetailsById(this.id);
-      // .
-      // then((userdata) => {
-        //  = userdata;
-        // console.log("UUUUUUUUUUUUUUUU");
-        this.shortlisted();
+       await this.hrbaseservice.getHrPostById(hrpost_id).subscribe((res)=>{
+       this.hrpost=res;
+      //  console.log('hrdata from applied',this.hrpost);
+       return  this.shortlisted();
+      });
+      console.log('hrpost from applied',this.hrpost);
+       this.userbaseservice.getUserDetailsById(this.id).subscribe((res)=>{
+      this.userdata=res;
+      //  console.log('userdata from applied',this.userdata);
+       return  this.userdata;
+        });
+        
       });
   }
   shortlisted() {
-    console.log('shhhhhhhooooooooo', this.userdata);
+    console.log('applicant', this.hrpost.applicants);
     this.hrpost.applicants.map((ele) => {
-      console.log('shhhhhhhooooooooorrrrrrr', ele.isShortlisted
+      console.log('shortlisted', ele.isShortlisted
     );
       if (ele._id._id === this.id) {
         this.isshortlist = ele.isShortlisted;

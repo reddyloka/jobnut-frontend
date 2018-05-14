@@ -74,7 +74,7 @@ export class HrDashboardDetailsComponent implements OnInit {
     if (!this._authService.isLoggedIn) {
       this.router.navigateByUrl('login');
     }
-    this.hrbaseservice.getHrDetailsById(this.id).then((data) => {
+    this.hrbaseservice.getHrDetailsById(this.id).subscribe((data) => {
       this.hrdata = data;
       console.log('hr data', this.hrdata);
       // if (this.hrdata.profile_photo) {
@@ -129,6 +129,7 @@ export class HrDashboardDetailsComponent implements OnInit {
     this.ContactOpen = false;
   }
   AddExperienceMore() {
+    console.log("sdd")
     this.expAdd = true;
   }
   EditExpDetails() {

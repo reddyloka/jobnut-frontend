@@ -16,17 +16,18 @@ export class HrSkillComponent implements OnInit {
   hrSkillForm: FormGroup;
   id: string;
   functional: string[];
-  personaldata: Hrbase;
+  personaldata: any;
 
   @Input()
   hrdata;
 
   @Output()
-  discardClick = new EventEmitter<boolean>();
+  discardClick = new EventEmitter<any>();
   @Output()
-  saveClick = new EventEmitter<boolean>();
+  saveClick = new EventEmitter<any>();
 
   constructor(private hrbaservice: HrbaseService, private router: Router) {
+    this.buildFormGroup();
     this.skillsArray = ['Angular', 'CSS', 'Graphic Design', 'Ember', 'HTML',
       'Information Architecture', 'Javascript', 'Mechanical Engineering',
       'Meteor', 'NodeJS', 'UI Design', 'Python', 'Rails', 'React', 'Ruby'];
@@ -48,8 +49,9 @@ export class HrSkillComponent implements OnInit {
       // debug: true,
       performance: true,
     });
-    this.buildFormGroup();
-    this.personaldata = this.hrdata;
+ 
+    this.personaldata = JSON.stringify(this.hrdata);
+    this.personaldata = JSON.parse(this.personaldata);
     // console.log(this.hrdata);
 
   }
@@ -58,14 +60,14 @@ export class HrSkillComponent implements OnInit {
     this.hrdata.skillValue = this.hrSkillForm.value.skills;
     console.log(console.log('new', this.hrSkillForm.value.skills));
     this.hrbaservice.updateHrDetailsById(this.hrdata, this.id).
-      then((res) => {
+      subscribe((res) => {
         // this.personaldata = res;
         console.log('skills updated');
       });
-    this.saveClick.emit(true);
+    this.saveClick.emit(this.hrdata);
   }
 
   discardClicked() {
-    this.discardClick.emit(true);
+    this.discardClick.emit(this.personaldata);
   }
 }

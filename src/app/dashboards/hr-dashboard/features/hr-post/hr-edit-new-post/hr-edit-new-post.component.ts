@@ -72,7 +72,7 @@ export class HrEditNewPostComponent implements OnInit {
       // debug: true,
       performance: true,
     });
-    this.hrbaseservice.getHrDetailsById(this.id).then((data) => {
+    this.hrbaseservice.getHrDetailsById(this.id).subscribe((data) => {
       this.hrdata = data;
     });
   }
@@ -81,13 +81,13 @@ export class HrEditNewPostComponent implements OnInit {
   onSubmit() {
     
     this.hrbaseservice.addNewPost(this.hrpostNewData, this.id)
-      .then((res) => {
+      .subscribe((res) => {
         this._notif.pop(res.message, 'Successfull', 3000);
         if (res.success) {
           this.router.navigateByUrl('hr/jobs-posted');
           console.log( res.message, res.data );
         }
-      }).catch();
+      });
     // this.router.navigate(['hr-post']);
   }
 

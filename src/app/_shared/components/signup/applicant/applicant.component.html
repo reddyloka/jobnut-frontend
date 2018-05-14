@@ -111,6 +111,7 @@
           </div>
         </div>
 
+        <div class="two fields">
         <div class="field">
           <label>Address
             <span style='color:red'>*</span>
@@ -119,6 +120,16 @@
           <div *ngIf="applicantForm.controls['address'].touched&&!applicantForm.controls['address'].valid">
             <p>please fill required fields</p>
           </div>
+        </div>
+        <div class="field">
+          <label>Country
+            <span style='color:red'>*</span>
+          </label>
+          <input type="text" formControlName="country" placeholder="enter your current country" [(ngModel)]="user_details.country">
+          <div *ngIf="applicantForm.controls['country'].touched&&!applicantForm.controls['country'].valid">
+            <p>please fill required fields</p>
+          </div>
+        </div>
         </div>
 
         <div class="field">

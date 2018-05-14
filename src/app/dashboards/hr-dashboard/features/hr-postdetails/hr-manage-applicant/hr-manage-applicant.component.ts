@@ -43,7 +43,7 @@ export class HrManageApplicantComponent implements OnInit {
   ngOnInit() {
     // console.log('hrpost', this.hrpost);
     // this.data.currentMessage.subscribe(message => this.hrpost = message );
-    this.hrbaseservice.getHrDetailsById(this.id).then((data) => {
+    this.hrbaseservice.getHrDetailsById(this.id).subscribe((data) => {
       this.hrdata = data;
     });
     this.applicantdetails();
@@ -69,15 +69,15 @@ export class HrManageApplicantComponent implements OnInit {
     this.route.paramMap.subscribe((params: ParamMap) => {
       const hrpost_id = params.get('id');
       this.hrbaseservice.getHrPostById(hrpost_id).
-        then((hrpost) => {
+        subscribe((hrpost) => {
           console.log(hrpost);
           this.hrpost = hrpost;
           this.loadPage = true
-        }).
-        catch((error=>{
-          this.loadError = true;
-         this.error_text = "Get error on server request ";
-         }))
+        })
+        // .catch((error=>{
+        //   this.loadError = true;
+        //  this.error_text = "Get error on server request ";
+        //  }))
     });
   }
   backpage() {

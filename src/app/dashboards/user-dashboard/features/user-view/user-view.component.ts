@@ -42,7 +42,7 @@ export class UserViewComponent implements OnInit {
   }
   ngOnInit() {
     this.userbaseservice.getUserDetailsById(this.id).
-      then((userdata) => {
+      subscribe((userdata) => {
         console.log('maindata', userdata);
         this.userdata = userdata;
         this.suggestedjobs();
@@ -50,33 +50,48 @@ export class UserViewComponent implements OnInit {
   }
   suggestedjobs() {
     this.hrbaseservice.getAllUserViewPost().
-      then((hrpost) => {
+      subscribe((hrpost) => {
+        console.log('hrpost',hrpost);
         this.hrpost = hrpost;
         this.suggestedjob = this.hrpost.filter((ele) => {
+          if(this.userdata.skillValue.length > 0){
           const data = ele.skills.filter((ele1) => {
-            if (this.userdata.skillValue.includes(ele1)) {
-              // console.log(ele1);
-              // console.log(this.userdata.skillValue);
-              return ele1;
-            }
+   
+              if (this.userdata.skillValue.toString().toLowerCase().includes(ele1.toLowerCase())) {
+              
+                return ele1;
+              }
           });
+
           if (data.length > 0) {
             return ele;
           }
+          else{
+            return this.getpostfromlocation(ele)
+          }
+        }else{
+          return this.getpostfromlocation(ele)
+        }
         });
         console.log('post', this.suggestedjob);
-        this.loadPage = true;
-      }).
-      catch((error => {
-        this.loadError = true;
-        this.error_text = 'Get error on server request ';
-      }));
+        this.loadPage = true
+      })
+      // .catch((error=>{
+      //   this.loadError = true;
+      //  this.error_text = "Get error on server request ";
+      //  }))
   }
 
+  getpostfromlocation(postdata){
+
+     if(this.userdata.city != null && this.userdata.city != undefined){
+      if(this.userdata.city.toLowerCase().includes(postdata.location.toLowerCase())){
+         return postdata;
+      }
+    }
+
+  }
   searchClicked() {
-    console.log('search');
-    console.log('sa', this.searchText);
-    console.log('sa', this.searchLocation);
     if (this.searchText === null || this.searchText === undefined) {
       this.jobInfo = true;
       this.searchInfo = false;
@@ -84,19 +99,16 @@ export class UserViewComponent implements OnInit {
     if ((this.searchText === null || this.searchText === undefined) && (this.searchLocation !== null && this.searchLocation !== undefined)) {
       this.searchpage = true;
       this.searchLocation = this.searchLocation.trim();
-      console.log('location', this.searchLocation);
-      console.log('hrpost', this.hrpost);
       this.searchData = this.hrpost.filter((el) => {
-        console.log('ele', el);
+
         return el.location.toLowerCase().indexOf(this.searchLocation.toLowerCase()) > -1;
       });
-      console.log('arrayvalue', this.searchData);
+
     }
     if ((this.searchText !== null && this.searchText !== undefined) && (this.searchLocation === null || this.searchLocation === undefined)) {
 
       this.searchpage = true;
       this.searchText = this.searchText.trim();
-      console.log(this.searchText);
       this.searchData = this.hrpost.filter((el) => {
         return ((el.title.toLowerCase().indexOf(this.searchText.toLowerCase()) > -1) || (el.skills.toString().toLowerCase().indexOf(this.searchText.toLowerCase()) > -1) || (el.companyname.toLowerCase().indexOf(this.searchText.toLowerCase()) > -1));
       });

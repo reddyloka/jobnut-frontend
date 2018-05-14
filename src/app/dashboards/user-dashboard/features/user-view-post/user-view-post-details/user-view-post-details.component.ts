@@ -36,14 +36,14 @@ export class UserViewPostDetailsComponent implements OnInit {
     this.route.paramMap.subscribe((params: ParamMap) => {
       const hrpost_id = params.get('user-post.id');
       this.hrbaseservice.getHrPostById(hrpost_id).
-        then((hrpost) => {
+        subscribe((hrpost) => {
           this.hrpost = hrpost;
           this.shortlisted();
         });
     });
 
     this.userbaseservice.getUserDetailsById(this.id).
-      then((userdata) => {
+      subscribe((userdata) => {
         this.userdata = userdata;
       });
   }
@@ -73,7 +73,7 @@ export class UserViewPostDetailsComponent implements OnInit {
     console.log('post_id', this.hrpost._id);
     console.log('id', this.id);
     this.userbaseservice.updateUserApplyPost(this.hrpost._id, this.id).
-      then(() => {
+      subscribe(() => {
         console.log('successfully applied and notified');
         this.router.navigateByUrl('user-view-post');
       });
