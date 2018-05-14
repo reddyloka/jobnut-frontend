@@ -61,7 +61,7 @@ export class UserViewPostDetailsComponent implements OnInit {
   shortlisted() {
     console.log('shhhhhhhooooooooo', this.hrpost.applicants);
     this.hrpost.applicants.map((ele) => {
-      if (ele._id._id === this.id) {
+      if ( ele._id && (this.id === ele._id._id)) {
         console.log(ele._id._id);
         this.isApply = true;
       console.log(this.isApply);
