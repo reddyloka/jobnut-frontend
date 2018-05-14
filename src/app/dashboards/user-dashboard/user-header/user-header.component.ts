@@ -27,8 +27,9 @@ export class UserHeaderComponent implements OnInit {
 
 
   ngOnInit() {
-
-  }
+    $(document).ready(function(){
+      $('.ui.dropdown').dropdown();});
+    }
   getprofile() {
     this.router.navigateByUrl('/user-profile');
   }

@@ -56,7 +56,7 @@ export class ChangePasswordComponent implements OnInit {
 
   changePassword() {
     console.log('request to change password', this.currentForm.value);
-    this.userbase.checkCurrentPassword(this.currentForm.value, this.id).then((data) => {
+    this.userbase.checkCurrentPassword(this.currentForm.value, this.id).subscribe((data) => {
       console.log('data', data);
       if (data.status) {
         $('.small.modal').modal({
