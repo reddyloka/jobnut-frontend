@@ -36,8 +36,8 @@ export class UserViewPostDetailsComponent implements OnInit {
     this.route.paramMap.subscribe((params: ParamMap) => {
       const hrpost_id = params.get('user-post.id');
       this.hrbaseservice.getHrPostById(hrpost_id).
-        subscribe((hrpost) => {
-          this.hrpost = hrpost;
+        subscribe((hrpost: any) => {
+          this.hrpost = hrpost.data;
           this.shortlisted();
         });
     });

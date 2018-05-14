@@ -56,9 +56,9 @@ export class HrPostdetailsComponent implements OnInit {
     this.route.paramMap.subscribe((params: ParamMap) => {
       const hrpost_id = params.get('id');
       this.hrbaseservice.getHrPostById(hrpost_id).
-        subscribe((hrpost) => {
+        subscribe((hrpost: any) => {
           console.log(hrpost);
-          this.hrpost = hrpost;
+          this.hrpost = hrpost.data;
         });
     });
   }

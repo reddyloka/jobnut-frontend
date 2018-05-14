@@ -15,7 +15,7 @@ hrpost;
 @Output()
 userclick: EventEmitter<number> = new EventEmitter();
 
-hrdata:Hrbase;
+hrdata: Hrbase;
 id:string;
  public userclicked() {
 
@@ -28,6 +28,7 @@ id:string;
   }
 
   ngOnInit() {
+    
     this.hrbaseservice.getHrDetailsById(this.id).subscribe((data) => {
       this.hrdata = data;
     });

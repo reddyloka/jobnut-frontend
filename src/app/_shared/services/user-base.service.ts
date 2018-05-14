@@ -23,24 +23,26 @@ export class UserBaseService extends ApiServiceService {
       email: checkDetails.userEmail,
       isHr: checkDetails.isHr
     };
-    return this.http.post(environment.USER_SERVER + `/api/checkMailId`, emailDetails,this.post()).map((res)=>{let data = res.json();
+    return this.http.post(environment.USER_SERVER + `/api/checkMailId`, emailDetails, this.post()).map((res) => {
+      let data = res.json();
       return data || {};
-    }).catch((error: any) =>{
+    }).catch((error: any) => {
       return new ErrorObservable(error.error);
     });
   }
-  checkCurrentPassword(value:any,id:string):Observable<any>{
-    const obj={
-      id:id,
-      currentPassword:value.currentPassword,
-      newPassword:value.newPassword
+  checkCurrentPassword(value: any, id: string): Observable<any> {
+    const obj = {
+      id: id,
+      currentPassword: value.currentPassword,
+      newPassword: value.newPassword
     };
-    return this.http.post(environment.USER_SERVER + `/api/changePassword`, obj,this.post())
-    .map((res)=>{let data = res.json();
-      return data || {};
-    }).catch((error: any) =>{
-      return new ErrorObservable(error.error);
-    });
+    return this.http.post(environment.USER_SERVER + `/api/changePassword`, obj, this.post())
+      .map((res) => {
+        let data = res.json();
+        return data || {};
+      }).catch((error: any) => {
+        return new ErrorObservable(error.error);
+      });
   }
 
   passwordUpdate(emailDetails: any, password: any): Observable<boolean> {
@@ -49,12 +51,13 @@ export class UserBaseService extends ApiServiceService {
       isHr: emailDetails.isHr,
       password: password
     };
-    return this.http.post(environment.USER_SERVER + `/api/resetPassword`, personalDetails,this.post())
-    .map((res)=>{let data = res.json();
-      return data || {};
-    }).catch((error: any) =>{
-      return new ErrorObservable(error.error);
-    });
+    return this.http.post(environment.USER_SERVER + `/api/resetPassword`, personalDetails, this.post())
+      .map((res) => {
+        let data = res.json();
+        return data || {};
+      }).catch((error: any) => {
+        return new ErrorObservable(error.error);
+      });
   }
 
   addNewUser(userDetail: any, files: {}): Promise<boolean> {
@@ -74,11 +77,11 @@ export class UserBaseService extends ApiServiceService {
       params: {
         'id': user
       }
-    }).map((res)=>{
-      console.log('res data ',res);
+    }).map((res) => {
+      console.log('res data ', res);
       let data = res.json();
       return data || {};
-    }).catch((error: any) =>{
+    }).catch((error: any) => {
       return new ErrorObservable(error.error);
     });
 
@@ -90,9 +93,10 @@ export class UserBaseService extends ApiServiceService {
       params: {
         'id': user
       }
-    }).map((res)=>{let data = res.json();
+    }).map((res) => {
+      let data = res.json();
       return data || {};
-    }).catch((error: any) =>{
+    }).catch((error: any) => {
       return new ErrorObservable(error.error);
     });
   }
@@ -102,9 +106,10 @@ export class UserBaseService extends ApiServiceService {
       params: {
         'id': user
       }
-    }).map((res)=>{let data = res.json();
+    }).map((res) => {
+      let data = res.json();
       return data || {};
-    }).catch((error: any) =>{
+    }).catch((error: any) => {
       return new ErrorObservable(error.error);
     });
   }
@@ -117,11 +122,11 @@ export class UserBaseService extends ApiServiceService {
         'id': postid,
         'hrRef': userid
       }
-    }).map((res)=>{
-      console.log('re data',res);
+    }).map((res) => {
+      console.log('re data', res);
       let data = res.json();
       return data || {};
-    }).catch((error: any) =>{
+    }).catch((error: any) => {
       return new ErrorObservable(error.error);
     });
   }

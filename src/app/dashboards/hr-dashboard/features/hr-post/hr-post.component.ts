@@ -27,9 +27,9 @@ export class HrPostComponent implements OnInit {
       this.hrdata = data;
     });
     this.hrbaseservice.getAllHrPost(this.id).
-      subscribe((hrpost) => {
-        this.hrpost = hrpost;
-        console.log(hrpost);
+      subscribe((hrpost: any) => {
+        this.hrpost = hrpost.data;
+        console.log('here: ',hrpost);
         this.loadPage = true
       })
 

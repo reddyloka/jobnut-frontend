@@ -52,7 +52,7 @@ export class UserViewComponent implements OnInit {
     this.hrbaseservice.getAllUserViewPost().
       subscribe((hrpost) => {
         console.log('hrpost',hrpost);
-        this.hrpost = hrpost;
+        this.hrpost = hrpost.data;
         this.suggestedjob = this.hrpost.filter((ele) => {
           if(this.userdata.skillValue.length > 0){
           const data = ele.skills.filter((ele1) => {
