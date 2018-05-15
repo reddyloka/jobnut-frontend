@@ -65,7 +65,9 @@ saveClick = new EventEmitter();
       performance: true,
     });
     this.temp = JSON.stringify(this.hrdata);
-    console.log('cities',this.cities,'states',this.states);
+    if(this.hrdata!=null && this.hrdata!=undefined)
+    { this.hrdata.dob=this.hrdata.dob.replace(/T00:00:00.000Z/,''); 
+    }
   }
 
   onSubmit() {

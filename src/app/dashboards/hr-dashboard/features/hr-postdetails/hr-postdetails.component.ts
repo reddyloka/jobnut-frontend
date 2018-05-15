@@ -20,7 +20,7 @@ export class HrPostdetailsComponent implements OnInit {
   textInfo: string;
 
   postDetailsInfo: boolean;
-  hrpost: HrPostDetail;
+  hrpost: any;
   constructor(private route: ActivatedRoute,
     private hrbaseservice: HrbaseService,
     private data: DataService,
@@ -57,8 +57,11 @@ export class HrPostdetailsComponent implements OnInit {
       const hrpost_id = params.get('id');
       this.hrbaseservice.getHrPostById(hrpost_id).
         subscribe((hrpost) => {
-          console.log(hrpost);
           this.hrpost = hrpost;
+          this.hrpost.dateOfJoining=this.hrpost.dateOfJoining.replace(/T00:00:00.000Z/,'');
+          this.hrpost.startdate=this.hrpost.startdate.replace(/T00:00:00.000Z/,'');
+          this.hrpost.enddate=this.hrpost.enddate.replace(/T00:00:00.000Z/,'');
+            // console.log('hrpost',this.hrpost);
         });
     });
   }

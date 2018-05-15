@@ -179,15 +179,13 @@
                     <h5>Passing Year</h5>
                   </div>
                   <div class="col-md-6 col-md-offset-2">
-                      <div class="ui input">
                       <!-- <select name="gender" > -->
                       <!-- </select> -->
                       <select *ngIf="meme == i" class="ui search dropdown" [(ngModel)]="userdata?.education[i].passingYearValue">
                         <option>Select your option</option>
-                        <option *ngFor="let year of yearArray">{{year}}</option>
+                        <option [value]='year' *ngFor="let year of yearArray">{{year}}</option>
                       </select>
-                    </div>
-                    <span *ngIf="!(meme==i)">{{userdata?.education[i].passingYearValue}}</span>
+                  <span *ngIf="!(meme==i)">{{userdata?.education[i].passingYearValue}}</span>
                   </div>
                 </div>
                 <div class="row">
@@ -222,13 +220,6 @@
               {{ meme1? 'Save' : 'Edit'}}
             </a>
             <div *ngIf="skillMain">
-              <!-- <div class="ui input">
-                <select  *ngIf="meme1" class="ui fluid search dropdown" [(ngModel)]="userdata.skillValue" multiple="" >
-                    <option value="">Select</option>
-                    <option *ngFor="let option of skillsArray">{{option}}</option>
-                  </select>
-                  </div> -->
-
               <span *ngIf="!meme1">{{userdata?.skillValue}}</span>
             </div>
           </div>
