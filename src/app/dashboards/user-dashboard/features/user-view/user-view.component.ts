@@ -35,58 +35,60 @@ export class UserViewComponent implements OnInit {
   constructor(private hrbaseservice: HrbaseService,
     private userbaseservice: UserBaseService,
     private router: Router,
-  private route: ActivatedRoute) {
+    private route: ActivatedRoute) {
     this.id = uuid();
     this.jobInfo = true;
     this.p = 1;
   }
   ngOnInit() {
     this.userbaseservice.getUserDetailsById(this.id).
-      subscribe((userdata) => {
-        console.log('maindata', userdata);
+      subscribe((userdata: any) => {
+        console.log('maindata');
+        console.log('maindata', userdata.data);
         this.userdata = userdata;
         this.suggestedjobs();
       });
   }
   suggestedjobs() {
+    console.log('hello');
+
     this.hrbaseservice.getAllUserViewPost().
-      subscribe((hrpost) => {
-        console.log('hrpost',hrpost);
-        this.hrpost = hrpost.data;
+      subscribe((hrpost: any) => {
+        console.log('hrpost', this.userdata);
+        this.hrpost = hrpost;
         this.suggestedjob = this.hrpost.filter((ele) => {
-          if(this.userdata.skillValue.length > 0){
-          const data = ele.skills.filter((ele1) => {
-   
+          if (this.userdata.skillValue && this.userdata.skillValue.length > 0) {
+            const data = ele.skills.filter((ele1) => {
+
               if (this.userdata.skillValue.toString().toLowerCase().includes(ele1.toLowerCase())) {
-              
+
                 return ele1;
               }
-          });
+            });
 
-          if (data.length > 0) {
-            return ele;
+            if (data.length > 0) {
+              return ele;
+            } else {
+              return this.getpostfromlocation(ele);
+            }
+          } else {
+            return this.getpostfromlocation(ele);
           }
-          else{
-            return this.getpostfromlocation(ele)
-          }
-        }else{
-          return this.getpostfromlocation(ele)
-        }
         });
         console.log('post', this.suggestedjob);
-        this.loadPage = true
-      })
-      // .catch((error=>{
-      //   this.loadError = true;
-      //  this.error_text = "Get error on server request ";
-      //  }))
+        this.loadPage = true;
+      });
+    // .catch((error=>{
+    //   this.loadError = true;
+    //  this.error_text = "Get error on server request ";
+    //  }))
   }
 
-  getpostfromlocation(postdata){
+  getpostfromlocation(postdata) {
 
-     if(this.userdata.city != null && this.userdata.city != undefined){
-      if(this.userdata.city.toLowerCase().includes(postdata.location.toLowerCase())){
-         return postdata;
+    if (this.userdata.city != null && this.userdata.city !== undefined) {
+      if (this.userdata.city.toLowerCase().includes(postdata.location.toLowerCase())) {
+        return postdata;
       }
     }
 
@@ -132,7 +134,7 @@ export class UserViewComponent implements OnInit {
     }
   }
   routeronclicked(hrpost_id) {
-    this.router.navigate([hrpost_id], {relativeTo: this.route});
+    this.router.navigate([hrpost_id], { relativeTo: this.route });
     // this.router.navigateByUrl('user-profile/user-view-post/' + hrpost_id);
     // console.log(hrpost_id);
   }

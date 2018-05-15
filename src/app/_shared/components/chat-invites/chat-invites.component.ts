@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import * as io from 'socket.io-client';
 import { Observable } from 'rxjs/Observable';
 import { Message } from '@angular/compiler/src/i18n/i18n_ast';
@@ -20,6 +20,10 @@ interface StatusTemplate {
 
 
 export class ChatInvitesComponent implements OnInit {
+
+  @Input()
+  email: string;
+
   user: string;
   // room: string;
   sender: any;
@@ -33,12 +37,14 @@ export class ChatInvitesComponent implements OnInit {
   noOfChatInvites:  Array<string> = [];
   ngOnInit() {
     console.log('On the initiation of chatInvite component');
+    this.enter();
   }
   constructor( public _chatService: ChatService) {
 this.result = false;
 this.show = false;
   }
  enter() {
+   this.sender = this.email;
    this.noOfChatInvites.length = 0;
    this._chatService.checkInvites(this.sender).
    then((res) => {

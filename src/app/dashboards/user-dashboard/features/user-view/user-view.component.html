@@ -53,7 +53,7 @@
                 {{error_text}}
               </div>
             </div>
-            <app-user-view-post *ngFor="let hrpost of suggestedjob | paginate: { itemsPerPage: 2, currentPage: p }" [hrpost]=hrpost (userclick)="routeronclicked($event)"></app-user-view-post>
+            <app-user-view-post *ngFor="let hrpost of suggestedjob | paginate: { itemsPerPage: 2, currentPage: p }" [hrpost]="hrpost" (userclick)="routeronclicked($event)"></app-user-view-post>
           </div>
 
           <div *ngIf="searchInfo">

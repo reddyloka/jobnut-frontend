@@ -10,6 +10,7 @@ import { environment } from '../../../environments/environment';
 import { ApplicantBase } from '../models/applicantbase';
 import { HrPostDetail } from '../models/hrpostdetails';
 import { ApiServiceService } from './api.service';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 @Injectable()
 export class UserBaseService extends ApiServiceService {
@@ -24,7 +25,7 @@ export class UserBaseService extends ApiServiceService {
       isHr: checkDetails.isHr
     };
     return this.http.post(environment.USER_SERVER + `/api/checkMailId`, emailDetails, this.post()).map((res) => {
-      let data = res.json();
+      const data = res.json();
       return data || {};
     }).catch((error: any) => {
       return new ErrorObservable(error.error);
@@ -38,7 +39,7 @@ export class UserBaseService extends ApiServiceService {
     };
     return this.http.post(environment.USER_SERVER + `/api/changePassword`, obj, this.post())
       .map((res) => {
-        let data = res.json();
+        const data = res.json();
         return data || {};
       }).catch((error: any) => {
         return new ErrorObservable(error.error);
@@ -53,7 +54,7 @@ export class UserBaseService extends ApiServiceService {
     };
     return this.http.post(environment.USER_SERVER + `/api/resetPassword`, personalDetails, this.post())
       .map((res) => {
-        let data = res.json();
+        const data = res.json();
         return data || {};
       }).catch((error: any) => {
         return new ErrorObservable(error.error);
@@ -79,7 +80,7 @@ export class UserBaseService extends ApiServiceService {
       }
     }).map((res) => {
       console.log('res data ', res);
-      let data = res.json();
+      const data = res.json();
       return data || {};
     }).catch((error: any) => {
       return new ErrorObservable(error.error);
@@ -94,7 +95,7 @@ export class UserBaseService extends ApiServiceService {
         'id': user
       }
     }).map((res) => {
-      let data = res.json();
+      const data = res.json();
       return data || {};
     }).catch((error: any) => {
       return new ErrorObservable(error.error);
@@ -107,7 +108,7 @@ export class UserBaseService extends ApiServiceService {
         'id': user
       }
     }).map((res) => {
-      let data = res.json();
+      const data = res.json();
       return data || {};
     }).catch((error: any) => {
       return new ErrorObservable(error.error);
@@ -124,7 +125,7 @@ export class UserBaseService extends ApiServiceService {
       }
     }).map((res) => {
       console.log('re data', res);
-      let data = res.json();
+      const data = res.json();
       return data || {};
     }).catch((error: any) => {
       return new ErrorObservable(error.error);

@@ -18,13 +18,13 @@ export class HrHeaderComponent implements OnInit {
   hrdata;
   
   id: string;
-  inputType: string='password';
+  inputType = 'password';
   currentForm: FormGroup;
   isActive: boolean[];
   constructor(
     private _authService: AuthService,
     private router: Router,
-    private userbase:UserBaseService
+    private userbase: UserBaseService
   ) {
     this.isActive = [true, false, false];
     // this.id =
@@ -44,6 +44,7 @@ export class HrHeaderComponent implements OnInit {
   this.currentForm = new FormGroup(fg);
 }
   ngOnInit() {
+
     $(document).ready(function(){
       $('.ui.dropdown').dropdown();});
   }

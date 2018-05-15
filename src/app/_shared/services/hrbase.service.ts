@@ -8,25 +8,41 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/catch';
 import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
+import { AuthService } from './auth.service';
 
 
 @Injectable()
 export class HrbaseService {
   hrpostdetails: any;
+  token: string;
   hrpostdetail: HrPostDetail;
   hrdostdetails: HrPostDetail[];
-  constructor(private http: Http) { }
+  constructor(private http: Http,
+    private _authService: AuthService
+  ) {
 
+  }
 
-  getAllHrPost(user: string): Observable<HrPostDetail[]> {
-    user = localStorage['id_token'];
+  setStatus(st) {
+    if (st.isHr) {
+      this.token = localStorage.getItem('id_token_hr');
+    } else
+      if (st.isApplicant) {
+        this.token = localStorage.getItem('id_token_applicant');
+      }
+  }
+
+  getAllHrPost(user: string, status: any): Observable<HrPostDetail[]> {
+    console.log('user is : ', user, this._authService.status);
+    this.setStatus(status);
     return this.http.get(`${environment.USER_SERVER}/api/posts`, {
       params: {
-        'token': user
+        'token': this.token
       }
-    }).map((res)=>{let data = res.json();
+    }).map((res) => {
+      let data = res.json();
       return data || {};
-    }).catch((error: any) =>{
+    }).catch((error: any) => {
       return new ErrorObservable(error.error);
     });
   }
@@ -38,35 +54,41 @@ export class HrbaseService {
       params: {
         'id': user
       }
-    }).map((res)=>{let data = res.json();
+    }).map((res) => {
+      let data = res.json();
       return data || {};
-    }).catch((error: any) =>{
+    }).catch((error: any) => {
       return new ErrorObservable(error.error);
     });
   }
 
-  getHrPostById(hrpost_id): Observable<HrPostDetail> {
+  getHrPostById(hrpost_id, status: any): Observable<HrPostDetail> {
     console.log(' :: ', hrpost_id);
+    this.setStatus(status);
     return this.http.get(`${environment.USER_SERVER}/api/posts/${hrpost_id}`, {
-      params: { token : localStorage['id_token']}
-    }).map((res)=>{let data = res.json();
+      params: { token: this.token }
+    }).map((res) => {
+      let data = res.json();
       return data || {};
-    }).catch((error: any) =>{
+    }).catch((error: any) => {
       return new ErrorObservable(error.error);
     });
   }
 
-  addNewPost(hrpostdetail: HrPostDetail, user: string): Observable<any> {
+  addNewPost(hrpostdetail: HrPostDetail, user: string, status: any): Observable<any> {
     // this.hrpostdetails.unshift(hrpostdetail);
     console.log('data123', hrpostdetail);
+    this.setStatus(status);
+
     user = localStorage['id_token'];
     return this.http.put(`${environment.USER_SERVER}/api/posts/new-post`, hrpostdetail, {
       params: {
-        'token': user
+        'token': this.token
       }
-    }).map((res)=>{let data = res.json();
+    }).map((res) => {
+      let data = res.json();
       return data || {};
-    }).catch((error: any) =>{
+    }).catch((error: any) => {
       return new ErrorObservable(error.error);
     });
   }
@@ -74,9 +96,10 @@ export class HrbaseService {
 
 
   getAllUserViewPost(): Observable<HrPostDetail[]> {
-    return this.http.get(`${environment.USER_SERVER}/api/posts/all/post`).map((res)=>{let data = res.json();
+    return this.http.get(`${environment.USER_SERVER}/api/posts/all/post`).map((res) => {
+      let data = res.json();
       return data || {};
-    }).catch((error: any) =>{
+    }).catch((error: any) => {
       return new ErrorObservable(error.error);
     });
   }
@@ -88,9 +111,10 @@ export class HrbaseService {
       params: {
         'id': user
       }
-    }).map((res)=>{let data = res.json();
+    }).map((res) => {
+      let data = res.json();
       return data || {};
-    }).catch((error: any) =>{
+    }).catch((error: any) => {
       return new ErrorObservable(error.error);
     });
 
@@ -103,9 +127,10 @@ export class HrbaseService {
       params: {
         'id': user
       }
-    }).map((res)=>{let data = res.json();
+    }).map((res) => {
+      let data = res.json();
       return data || {};
-    }).catch((error: any) =>{
+    }).catch((error: any) => {
       return new ErrorObservable(error.error);
     });
 
@@ -116,27 +141,31 @@ export class HrbaseService {
   hrShortlist(data: any, postid: string, userid: string): Observable<Boolean> {
     console.log('post_id', postid);
     return this.http.put(`${environment.USER_SERVER}/api/posts/shortlist`, data, {
-        params: {
-          'id': postid,
-          'hrRef': userid
-        }
-      }).map((res)=>{let body = res.json();
-        return body.data || {};
-      }).catch((error: any) =>{
-        return new ErrorObservable(error.error);
-      });
-  }
-
-  deleteHrPost(id:string):Observable<boolean>{
-    console.log('id',id);
-    return this.http.put(`${environment.USER_SERVER}/api/posts/deleteHrPost`,{},
-     {params: {
-      'id': id
-    }}).map((res)=>{let data = res.json();
-      return data || {};
-    }).catch((error: any) =>{
+      params: {
+        'id': postid,
+        'hrRef': userid
+      }
+    }).map((res) => {
+      let body = res.json();
+      return body.data || {};
+    }).catch((error: any) => {
       return new ErrorObservable(error.error);
     });
+  }
+
+  deleteHrPost(id: string): Observable<boolean> {
+    console.log('id', id);
+    return this.http.put(`${environment.USER_SERVER}/api/posts/deleteHrPost`, {},
+      {
+        params: {
+          'id': id
+        }
+      }).map((res) => {
+        let data = res.json();
+        return data || {};
+      }).catch((error: any) => {
+        return new ErrorObservable(error.error);
+      });
   }
 
 }

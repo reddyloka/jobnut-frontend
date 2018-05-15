@@ -129,7 +129,7 @@ export class HrDashboardDetailsComponent implements OnInit {
     this.ContactOpen = false;
   }
   AddExperienceMore() {
-    console.log("sdd")
+    // console.log("sdd");
     this.expAdd = true;
   }
   EditExpDetails() {

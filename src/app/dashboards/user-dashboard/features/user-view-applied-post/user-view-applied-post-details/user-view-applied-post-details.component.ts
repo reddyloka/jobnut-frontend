@@ -6,6 +6,7 @@ import { UserBaseService } from '../../../../../_shared/services/user-base.servi
 import { ApplicantBase } from '../../../../../_shared/models/applicantbase';
 import { HrPostDetail } from '../../../../../_shared/models/hrpostdetails';
 import { uuid } from '../../../../../_shared/models/uuid';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 declare const $: any;
 
 @Component({
@@ -19,6 +20,9 @@ export class UserViewAppliedPostDetailsComponent implements OnInit {
   chatOpen: boolean;
   uploadNewCv: boolean;
   hrpost: any;
+  st: any;
+  private userStatus = new BehaviorSubject<any>({});
+  public userStatusAs = this.userStatus.asObservable().pipe();
 
   constructor(private route: ActivatedRoute,
     private hrbaseservice: HrbaseService,
@@ -31,35 +35,49 @@ export class UserViewAppliedPostDetailsComponent implements OnInit {
   ngOnInit() {
     this.route.paramMap.subscribe(async (params: ParamMap) => {
       const hrpost_id = params.get('user-post.id');
-       await this.hrbaseservice.getHrPostById(hrpost_id).subscribe((res)=>{
-       this.hrpost=res;
-      //  console.log('hrdata from applied',this.hrpost);
-       return  this.shortlisted();
+      await this.hrbaseservice.getHrPostById(hrpost_id, {
+        'isHr': false,
+        'isApplicant': true
+      }).subscribe((res) => {
+        this.hrpost = res;
+        //  console.log('hrdata from applied',this.hrpost);
+        return this.shortlisted();
       });
-      console.log('hrpost from applied',this.hrpost);
-       this.userbaseservice.getUserDetailsById(this.id).subscribe((res)=>{
-      this.userdata=res;
-      //  console.log('userdata from applied',this.userdata);
-       return  this.userdata;
-        });
-        
+      console.log('hrpost from applied', this.hrpost);
+      this.userbaseservice.getUserDetailsById(this.id).subscribe((res) => {
+        this.userdata = res;
+        //  console.log('userdata from applied',this.userdata);
+        return this.userdata;
       });
+
+    });
+
+
+    this.userStatus.next({
+      'isHr': true,
+      'isApplicant': false
+    });
+
+    this.st = {
+      'isHr': true,
+      'isApplicant': false
+    };
   }
   shortlisted() {
     console.log('applicant', this.hrpost.applicants);
     this.hrpost.applicants.map((ele) => {
       console.log('shortlisted', ele.isShortlisted
-    );
+      );
       if (ele._id._id === this.id) {
         this.isshortlist = ele.isShortlisted;
-       console.log(this.isshortlist);
+        console.log(this.isshortlist);
       }
     });
-   }
+  }
 
-   chatOpenClicked() {
+  chatOpenClicked() {
     this.chatOpen = true;
-   }
+  }
 }
 
 

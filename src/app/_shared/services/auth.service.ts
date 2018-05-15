@@ -12,16 +12,30 @@ import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/throw';
 import { JwtService } from './jwt.service';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 
 const USER_SERVER = 'http://localhost:3000';
 @Injectable()
 export class AuthService {
 
+  private userStatus = new BehaviorSubject<any>({});
+  public userStatusIs = this.userStatus.asObservable().pipe();
+  status = {
+    'isHr': false,
+      'isApplicant': false
+  };
+
   constructor(
     private http: HttpClient,
     private jwtservice: JwtService
   ) { }
+
+  populate() {
+    if (this.jwtservice.getToken(this.status)) {
+
+    }
+  }
 
   login(formData): Observable<any> {
     console.log('inside', formData);
@@ -47,18 +61,25 @@ export class AuthService {
 
   private setSession(authResult) {
     console.log(' authResult is : ');
-    console.log(' authResult is : ', authResult.user.id);
+    console.log(' authResult is : ', authResult.user);
     // const expiresAt = moment().add(authResult.expiresIn, 'second');
     // if (authResult.user.id) {
     window.localStorage['uuid'] = authResult.user.id;
-    if (authResult.user.isHr) {
-      window.localStorage['isHr'] = authResult.user.isHr;
-    }
-    if (authResult.user.isApplicant) {
-      window.localStorage['isApplicant'] = authResult.user.isApplicant;
-    }
+    // if (authResult.user.isHr) {
+    //   window.localStorage['isHr'] = authResult.user.isHr;
     // }
-    this.jwtservice.saveToken(authResult.user.token);
+    // if (authResult.user.isApplicant) {
+    //   window.localStorage['isApplicant'] = authResult.user.isApplicant;
+    // }
+    // }
+    this.status = {
+      'isHr': authResult.user.isHr,
+      'isApplicant': authResult.user.isApplicant
+    };
+
+    this.userStatus.next(this.status);
+
+    this.jwtservice.saveToken(authResult.user);
     return {
       status: authResult.user.status,
       isHr: authResult.user.isHr,
@@ -69,15 +90,15 @@ export class AuthService {
 
   logout() {
     console.log(window.localStorage['uuid']);
-    this.jwtservice.destroyToken();
+    this.jwtservice.destroyToken(this.status);
     localStorage.clear();
     localStorage.removeItem('uuid');
     // localStorage.removeItem('expires_at');
   }
 
   public isLoggedIn() {
-    console.log('you got this : ', this.jwtservice.getToken());
-    if (this.jwtservice.getToken() && this.jwtservice.getToken().length) {
+    console.log('you got this : ', this.jwtservice.getToken(this.status));
+    if (this.jwtservice.getToken(this.status) && this.jwtservice.getToken(this.status).length) {
       return true;
     }
     return false;

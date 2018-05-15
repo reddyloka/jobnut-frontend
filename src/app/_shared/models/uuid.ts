@@ -1,4 +1,10 @@
+import { AuthService } from '../services/auth.service';
+import { OnInit, Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+
+
+
 export function uuid() {
-    const id = localStorage.getItem('uuid');
-    return id;
+    return localStorage.getItem('uuid') || 'null';
 }
+

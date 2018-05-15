@@ -16,6 +16,7 @@ export class UserHeaderComponent implements OnInit {
 
   id: string;
   passwordChangeRequest = false;
+  invitesOpen = false;
   @Input()
   userdata;
 
@@ -47,7 +48,7 @@ export class UserHeaderComponent implements OnInit {
     // this.router.navigate(['/applied-job'], {relativeTo: this.route});
   }
 
-  changePassword() {
+  changePassword(str) {
     $('.small.modal')
     .modal({
       closable  : true,
@@ -56,6 +57,12 @@ export class UserHeaderComponent implements OnInit {
       }
     })
     .modal('show');
-    this.passwordChangeRequest = true;
+    if (str === 'changePassword') {
+      this.passwordChangeRequest = true;
+      this.invitesOpen = false;
+    } else if (str === 'checkInvites') {
+      this.passwordChangeRequest = false;
+      this.invitesOpen = true;
+    }
   }
 }

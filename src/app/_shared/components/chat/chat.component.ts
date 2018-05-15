@@ -23,6 +23,8 @@ export class ChatComponent implements OnInit {
 
   @Input()
   initiator: any; // hr
+  // @Input()
+  // userStatus: any; // hr
   @Input()
   recepient: any; // applicant
 
@@ -47,16 +49,7 @@ export class ChatComponent implements OnInit {
   messageArray: Array<MessageTemplate> = [];
   messageArray1: any;
   x: boolean;
-  ngOnInit() {
-    //  this.socket = io('http://localhost:5000');
-    // this.OnCreate.emit(new Date());/
-    this.expandClass = {'expand': true, 'braille': false};
-    this.x = false;
-    this.sender = this.initiator ? this.initiator.email : 'NAN' ;
-    this.receiver = this.recepient ? this.recepient.email : 'NAN' ;
-    console.log('va;l', this.sender, this.receiver);
-    this.join();
-  }
+
   constructor(public _chatService: ChatService) {
     this.chatInvitesButton = true;
     this.chatWindow = false;
@@ -82,6 +75,17 @@ export class ChatComponent implements OnInit {
       });
   }
 
+  ngOnInit() {
+    //  this.socket = io('http://localhost:5000');
+    // this.OnCreate.emit(new Date());/
+    this.expandClass = { 'expand': true, 'braille': false };
+    this.x = false;
+    this.sender = this.initiator ? this.initiator.email : 'NAN';
+    this.receiver = this.recepient ? this.recepient.email : 'NAN';
+    console.log('val', this.sender, this.receiver);
+    this.join();
+  }
+
 
   // In case there is record of previous chat found join the same conversation
 
@@ -89,11 +93,13 @@ export class ChatComponent implements OnInit {
     let text = '';
     const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 
+    console.log('jnsnj', this.initiator, this.recepient);
+
     for (let i = 0; i < 5; i++) {
       text += possible.charAt(Math.floor(Math.random() * possible.length));
     }
     this.room = text;
-    this._chatService.joinRoom({
+    this._chatService.joinRoom(this.initiator, {
       user: this.user, room: this.room,
       sender: this.sender, receiver: this.receiver, chatWindow: false
     }).
@@ -104,15 +110,17 @@ export class ChatComponent implements OnInit {
         this.sendInviteButton = !res.flag;
         console.log(res.messages);
         // this.runmyFunc(res.messages);
-        this.messageArray1 = res.messages.sort((a, b) => {
-          console.log(' a:  ', a.created, ' b: ', b.created, ' :: ', a.created > b.created, ' for ', a.message, ' and ', b.message);
-          return new Date(a.created) > new Date(b.created) ? 1 : new Date(a.created) < new Date(b.created) ? -1 : 0;
-          // return new Date(a.created) > new Date(b.created) ? true : false;
-        });
-        setTimeout(() => {
-          $('#chatBox').scrollTop($('#chatBox')[0].scrollHeight);
-        }, 100);
-        console.log('message array is ', this.messageArray1);
+        if (res.flag) {
+          this.messageArray1 = res.messages.sort((a, b) => {
+            console.log(' a:  ', a.created, ' b: ', b.created, ' :: ', a.created > b.created, ' for ', a.message, ' and ', b.message);
+            return new Date(a.created) > new Date(b.created) ? 1 : new Date(a.created) < new Date(b.created) ? -1 : 0;
+            // return new Date(a.created) > new Date(b.created) ? true : false;
+          });
+          setTimeout(() => {
+            $('#chatBox').scrollTop($('#chatBox')[0].scrollHeight);
+          }, 100);
+          console.log('message array is ', this.messageArray1);
+        }
 
         //  this.messageArray = res.messages;
         // for(let i=0 ; i<len; i++){
@@ -124,9 +132,9 @@ export class ChatComponent implements OnInit {
 
   // send a new invite to chat message to a new person
   sendInvite() {
-    console.log('Inside Chat Component');
+    console.log('Inside Chat Component', this.initiator, this.recepient);
     this._chatService.sendInvite({
-      user: this.user, room: this.room, sender: this.sender,
+      user: this.sender, room: this.room, sender: this.sender,
       receiver: this.receiver
     });
     this.sendInviteButton = false;
@@ -139,7 +147,7 @@ export class ChatComponent implements OnInit {
 
   // Send New Message
   sendMessage() {
-    this._chatService.sendMessage({ user: this.user, message: this.messageText, sender: this.sender, receiver: this.receiver, fromId: this.formId  });
+    this._chatService.sendMessage({ user: this.user, message: this.messageText, sender: this.sender, receiver: this.receiver, fromId: this.formId });
     this.messageText = '';
   }
   sortByDateAsc(lhs, rhs) { return lhs > rhs ? 1 : lhs < rhs ? -1 : 0; }
@@ -177,7 +185,7 @@ export class ChatComponent implements OnInit {
     // console.log('todays date is ', d.getDay(), ' ', date.getDate(), ' year ', date.getFullYear());
     if (d.getDate() === date.getDate() && d.getMonth() === date.getMonth() && d.getFullYear() === date.getFullYear()) {
       // console.log('second is : ', d.getTime());
-      if ((d.getTime() - 2000 ) <= date.getTime()) {
+      if ((d.getTime() - 2000) <= date.getTime()) {
         return 'Now';
       }
       return 'Today';
@@ -198,7 +206,7 @@ export class ChatComponent implements OnInit {
     this.expandClick.emit(this.x);
     this.x = !this.x;
     console.log('expand clicked');
-    this.expandClass = this.expandClass.expand ? {'expand': false, 'braille': true} : {'expand': true, 'braille': false} ;
+    this.expandClass = this.expandClass.expand ? { 'expand': false, 'braille': true } : { 'expand': true, 'braille': false };
   }
 
 }

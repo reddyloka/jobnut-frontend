@@ -7,12 +7,13 @@
     <a class="item" (click)="getJob()">Job Offers</a>
     <a class="item" (click)="getAppliedJob()">Applied jobs</a>
     <div class="right menu">
+        <a class="item" (click)="changePassword('checkInvites')">Check Invites</a>
       <div class="ui dropdown item">
         <a>
           <i class="user circle icon"></i>{{userdata?.firstName}} {{userdata?.lastName }}</a>
         <div class="menu">
           <div class="item" (click)="getprofile()">My Profile</div>
-          <div class="item" (click)="changePassword()">Change Password</div>
+          <div class="item" (click)="changePassword('changePassword')">Change Password</div>
           <div class="item" (click)="logoutClicked()">Log Out</div>
         </div>
       </div>
@@ -21,7 +22,8 @@
 </div>
 
 <div class="ui small modal">
-<app-change-password (closeChangePassword)="passwordChangeRequest = $event"></app-change-password>
+    <app-chat-invites *ngIf="invitesOpen" [email]="userdata?.email"></app-chat-invites>
+<app-change-password *ngIf="passwordChangeRequest" (closeChangePassword)="passwordChangeRequest = $event"></app-change-password>
 </div>
 <br>
 <br>

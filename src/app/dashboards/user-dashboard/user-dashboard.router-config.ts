@@ -12,10 +12,6 @@ export const userRouterConfig: Routes = [
     path: '',
     component: UserProfileComponent,
   },
-  {
-    path: 'userv',
-    component: UserViewPostComponent
-  },
   { // applocant dash board home page
     path: 'user-view-post',
     component: UserViewComponent,

@@ -17,11 +17,11 @@ interface MessageTemplate {
 export class ChatService {
     socket = io('http://localhost:5000');
     constructor(public http: Http) { }
-    public joinRoom(value: any) {
-        console.log(' data: ', value);
-        if (localStorage.isApplicant) {
+    public joinRoom(userStatus: any, value: any) {
+        console.log(' data: ', userStatus);
+        if (userStatus.isApplicant) {
             value['userType'] = 'applicant';
-        } else {
+        } else if (userStatus.isHr) {
             value['userType'] = 'hr';
         }
         return this.http.post(`${environment.USER_SERVER}/join`, value)
@@ -39,8 +39,10 @@ export class ChatService {
                     messages = Array.of(...res1.data[0]._from.messages, ...res1.data[0]._to.messages);
                     console.log('mixed array is : ', messages);
                 }
-                console.log('messagesss Inside Chat Service', messages);
+                console.log('messagesss Inside Chat Service', messages, res1);
                 if (!res1.data || res1.data.length === 0 || !messages || messages.length === 0) {
+                    console.log('len 0');
+
                     return { messages: 'nothing', flag: false, fromId: null };
                 } else {
                     this.socket.emit('join', value);

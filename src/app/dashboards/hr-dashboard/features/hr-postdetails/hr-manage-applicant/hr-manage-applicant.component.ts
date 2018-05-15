@@ -44,6 +44,8 @@ export class HrManageApplicantComponent implements OnInit {
     // console.log('hrpost', this.hrpost);
     // this.data.currentMessage.subscribe(message => this.hrpost = message );
     this.hrbaseservice.getHrDetailsById(this.id).subscribe((data) => {
+      console.log('hr dqata', this.hrdata);
+      
       this.hrdata = data;
     });
     this.applicantdetails();
@@ -68,11 +70,14 @@ export class HrManageApplicantComponent implements OnInit {
   applicantdetails() {
     this.route.paramMap.subscribe((params: ParamMap) => {
       const hrpost_id = params.get('id');
-      this.hrbaseservice.getHrPostById(hrpost_id).
-        subscribe((hrpost) => {
+      this.hrbaseservice.getHrPostById(hrpost_id, {
+        'isHr': true,
+        'isApplicant': false
+      }).
+        subscribe((hrpost: any) => {
           console.log(hrpost);
           this.hrpost = hrpost;
-          this.loadPage = true
+          this.loadPage = true;
         })
         // .catch((error=>{
         //   this.loadError = true;

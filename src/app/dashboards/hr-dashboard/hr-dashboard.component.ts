@@ -25,10 +25,10 @@ hrdata;
     if (!_authService.isLoggedIn) {
       this.router.navigateByUrl('login');
     }
+    console.log('lopkln', this.hrdata, '\n');
   }
 
   ngOnInit() {
-
   }
 
   getprofile() {

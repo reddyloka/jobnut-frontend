@@ -17,7 +17,7 @@ declare var $: any;
 })
 export class HrEditNewPostComponent implements OnInit {
   skillsArray: string[];
-  hrdata:Hrbase;
+  hrdata: Hrbase;
   hrpostNewDataForm: FormGroup;
   id: string;
   popup = {
@@ -79,8 +79,10 @@ export class HrEditNewPostComponent implements OnInit {
 
   // accept incoming change new notification feature added
   onSubmit() {
-    
-    this.hrbaseservice.addNewPost(this.hrpostNewData, this.id)
+    this.hrbaseservice.addNewPost(this.hrpostNewData, this.id, {
+      'isHr': true,
+      'isApplicant': false
+    })
       .subscribe((res) => {
         this._notif.pop(res.message, 'Successfull', 3000);
         if (res.success) {

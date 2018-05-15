@@ -20,6 +20,6 @@
           {{error_text}}
         </div>
     </div>
-   <app-hr-post-list-summary *ngFor="let hrpost of hrpost" [hrpost]=hrpost (userclick)="routeronclicked($event)"></app-hr-post-list-summary>
+   <app-hr-post-list-summary *ngFor="let hrpos of hrpost" [hrpost]="hrpos" (userclick)="routeronclicked($event)"></app-hr-post-list-summary>
   </div>
 </div>

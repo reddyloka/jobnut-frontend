@@ -37,3 +37,12 @@
 
   </div>
 </div>
+
+<div *ngIf="!chatWindow && initiator.isHr" class="ui segment">
+  <button type="button" (click)="sendInvite()">Send Invite</button>
+</div>
+<div class="ui segment" *ngIf="!chatWindow && initiator.isApplicant">
+  <p class="ui mesage error">
+    Please Check Your Invites.
+  </p>
+</div>

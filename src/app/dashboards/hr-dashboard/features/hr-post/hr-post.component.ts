@@ -26,11 +26,14 @@ export class HrPostComponent implements OnInit {
     this.hrbaseservice.getHrDetailsById(this.id).subscribe((data) => {
       this.hrdata = data;
     });
-    this.hrbaseservice.getAllHrPost(this.id).
+    this.hrbaseservice.getAllHrPost(this.id, {
+      'isHr': true,
+      'isApplicant': false
+    }).
       subscribe((hrpost: any) => {
-        this.hrpost = hrpost.data;
-        console.log('here: ',hrpost);
-        this.loadPage = true
+        this.hrpost = hrpost;
+        console.log('here: ', hrpost);
+        this.loadPage = true;
       })
 
       // .catch((error=>{
