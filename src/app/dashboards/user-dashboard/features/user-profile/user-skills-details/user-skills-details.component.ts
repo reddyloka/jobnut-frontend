@@ -53,12 +53,14 @@ export class UserSkillsDetailsComponent implements OnInit {
 
 
 
-  async updateUserSkill() {
+ updateUserSkill() {
     // console.log(console.log('new', this.applicantSkillForm.value));
     this.userdata.skillValue = this.applicantSkillForm.value.skills;
     console.log('skills are:', JSON.stringify(this.userdata.skillValue));
-    await this._userService.updateUserDetailsById(this.userdata, uuid());
+   this._userService.updateUserDetailsById(this.userdata, uuid()).subscribe(() => {
     this.saveClick.emit(this.userdata);
+    console.log('success');
+  });
     // this.skillsArray.pop();
   }
 }

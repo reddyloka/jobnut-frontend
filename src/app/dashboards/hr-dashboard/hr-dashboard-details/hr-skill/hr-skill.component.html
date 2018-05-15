@@ -5,7 +5,7 @@
           <label>Skills</label>
           <select class="ui fluid search dropdown"  multiple="" formControlName="skills" [ngModel]="hrdata.skillValue">
             <option value="">Select</option>
-            <option *ngFor="let option of skillsArray">{{option}}</option>
+            <option [value]='option' *ngFor="let option of skillsArray">{{option}}</option>
           </select>
         </div>
       <button class="ui primary button" type="submit" (click)="onSubmit()"> Save </button>
