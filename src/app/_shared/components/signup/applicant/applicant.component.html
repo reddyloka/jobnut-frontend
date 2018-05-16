@@ -137,7 +137,7 @@
             <label>Highest Qualification
               <span style='color:red'>*</span>
             </label>
-            <select class="ui fluid search dropdown" formControlName="higherDegreeValue_{{0}}" [(ngModel)]="user_details.education[0].higherDegreeValue">
+            <select class="ui fluid search dropdown" formControlName="higherDegreeValue_{{0}}" [(ngModel)]="user_details.education[0].higherDegreeValue" (focus)="infoChange()">
               <option value="">Select your highest qualification</option>
               <option [value]='i' *ngFor="let i of highestDegreeArray">{{i}}</option>
             </select>

@@ -26,7 +26,8 @@ export class ApplicantComponent implements OnInit {
   isApplicant: boolean;
   isHr: boolean;
   status: boolean;
-
+  personalInfo:boolean=true;
+  educationInfo:boolean=false;
 
   constructor(private _userService: UserBaseService,
     private router: Router) {
@@ -95,17 +96,24 @@ export class ApplicantComponent implements OnInit {
       performance: true,
     });
   }
+  infoChange(){
+    this.personalInfo=false;
+    this.educationInfo=true;
+  }
   userExist(){
-    console.log('Email details', this.applicantForm.value.email);
     let emailObj={
-      email: this.applicantForm.value.email,
+      userEmail: this.applicantForm.value.email,
       isHr:false
     }
+    if(this.applicantForm.value.email!=null&&this.applicantForm.value.email!=undefined){
 this._userService.checkMailId(emailObj).subscribe((res)=>{
+  if(res.status){
   window.alert('Email address was already registered with us Please click ok to login');
   this.router.navigateByUrl('login');
-});
   }
+});
+}
+}
   tooglepwd() {
     console.log('form pass', this.applicantForm.controls.password.valid);
     if (this.inputType === 'password') {
