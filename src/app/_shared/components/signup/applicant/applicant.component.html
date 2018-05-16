@@ -75,7 +75,7 @@
               <span style='color:red'>*</span>
             </label>
             <div class="ui icon input">
-              <input type={{inputType}} name="Password" formControlName="password" placeholder="create strong password" [(ngModel)]="user_details.password">
+              <input type={{inputType}} name="Password" formControlName="password" placeholder="create strong password" [(ngModel)]="user_details.password" (focus)='userExist()'>
               <i [ngClass]="{red: !applicantForm.controls.password.valid, thumbs: !applicantForm.controls.password.valid, down:!applicantForm.controls.password.valid,green: applicantForm.controls.password.valid ,shield: applicantForm.controls.password.valid , alternate: applicantForm.controls.password.valid , icon:true}"></i>
             </div>
             <a href="javascript:void(0)" (click)="tooglepwd()">show/hide</a>

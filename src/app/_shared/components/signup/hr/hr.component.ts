@@ -77,6 +77,17 @@ export class HrComponent implements OnInit {
     this.signupForm = new FormGroup(fg);
   }
 
+  hrExist(){
+    console.log('HR Email details', this.signupForm.value.email);
+    let emailObj={
+      email: this.signupForm.value.email,
+      isHr:true
+    }
+this._userService.checkMailId(emailObj).subscribe((res)=>{
+  window.alert('Email address was already registered with us Please click ok to login');
+  this.router.navigateByUrl('login');
+});
+  }
   onSubmit(): void {
     console.log('hr details', this.hrDetails);
     this._userService.addNewUser(this.hrDetails, {

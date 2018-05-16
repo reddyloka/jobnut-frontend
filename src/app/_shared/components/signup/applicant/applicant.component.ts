@@ -95,6 +95,17 @@ export class ApplicantComponent implements OnInit {
       performance: true,
     });
   }
+  userExist(){
+    console.log('Email details', this.applicantForm.value.email);
+    let emailObj={
+      email: this.applicantForm.value.email,
+      isHr:false
+    }
+this._userService.checkMailId(emailObj).subscribe((res)=>{
+  window.alert('Email address was already registered with us Please click ok to login');
+  this.router.navigateByUrl('login');
+});
+  }
   tooglepwd() {
     console.log('form pass', this.applicantForm.controls.password.valid);
     if (this.inputType === 'password') {
