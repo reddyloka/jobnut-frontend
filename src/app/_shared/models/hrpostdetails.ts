@@ -11,6 +11,7 @@ export class HrPostDetail {
     location: string;
     salary: number;
     experinece: string;
+    applicants: any;
     dateOfJoining: Date;
     extraRequirement: string;
     noOfJobOpenings: number;
@@ -20,7 +21,7 @@ export class HrPostDetail {
     ResourcePersonContact: any;
     selectionProcedure: string;
 
-    constructor(id: string, title: string, companyname: string, description: string, startdate: Date, enddate: Date, skills: string[], location: string , salary: number, experinece: string, dateOfJoining: Date, extraRequirement: string, noOfJobOpenings: number, CompanyUrl: string, bondDetails: any, ReportingVenue: any, ResourcePersonContact: any, selectionProcedure: string) {
+    constructor(id: string, title: string, companyname: string, description: string, startdate: Date, enddate: Date, skills: string[], location: string , salary: number, experinece: string, dateOfJoining: Date, extraRequirement: string, noOfJobOpenings: number, CompanyUrl: string, bondDetails: any, ReportingVenue: any, ResourcePersonContact: any, selectionProcedure: string, applicants: any) {
         this._id = id;
         this.title = title;
         this.companyname = companyname;
@@ -39,12 +40,13 @@ export class HrPostDetail {
         this.ReportingVenue = ReportingVenue;
         this.ResourcePersonContact = ResourcePersonContact;
         this.selectionProcedure =  selectionProcedure;
+        this.applicants = applicants;
 
     }
 
     public static createblank(): HrPostDetail {
 
-        return new HrPostDetail(null , null, null,  null, null, null, [], null, null, null, null, null, null, null, null, null, null, null);
+        return new HrPostDetail(null , null, null,  null, null, null, [], null, null, null, null, null, null, null, null, null, null, null, []);
         }
 
 }

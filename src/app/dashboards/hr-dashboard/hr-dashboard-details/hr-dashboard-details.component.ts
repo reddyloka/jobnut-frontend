@@ -9,6 +9,7 @@ import { HrbaseService } from '../../../_shared/services/hrbase.service';
 import { Hrbase } from '../../../_shared/models/hrbase';
 import { uuid } from '../../../_shared/models/uuid';
 import { QuotesService } from '../../../_shared/services/quotes.service';
+import { environment } from '../../../../environments/environment';
 
 declare var $: any;
 @Component({
@@ -18,11 +19,12 @@ declare var $: any;
 })
 export class HrDashboardDetailsComponent implements OnInit {
   expAdd: boolean;
-  hrdata: Hrbase;
+  hrdata: any;
   id: string;
   meme: number;
   meme1: boolean;
   ExpOpen: boolean;
+  skillActive = false;
   expMain: boolean;
   ContactMain: boolean;
   ContactOpen: boolean;
@@ -160,7 +162,7 @@ export class HrDashboardDetailsComponent implements OnInit {
   getUrl() {
     console.log('fd', this.hrdata);
     if (this.hrdata.profile_photo) {
-      return `url(http://localhost:3000/images/${this.hrdata ? this.hrdata.profile_photo : 'skj'})`;
+      return `url(${ environment.USER_SERVER }/images/${this.hrdata ? this.hrdata.profile_photo : 'skj'})`;
     }
     // return `url()`;/
     console.log('inside geturl');

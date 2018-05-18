@@ -12,15 +12,15 @@ import { uuid } from '../../../../_shared/models/uuid';
   styleUrls: ['./hr-postdetails.component.css']
 })
 export class HrPostdetailsComponent implements OnInit {
- hrdata:Hrbase;
- id:string;
+  hrdata: Hrbase;
+  id: string;
   editviewback: boolean;
   postviewback: boolean;
   editpostDetailsInfo: boolean;
   textInfo: string;
 
   postDetailsInfo: boolean;
-  hrpost: HrPostDetail;
+  hrpost: any;
   constructor(private route: ActivatedRoute,
     private hrbaseservice: HrbaseService,
     private data: DataService,
@@ -39,7 +39,7 @@ export class HrPostdetailsComponent implements OnInit {
       this.hrdata = data;
     });
     this.postdetails();
-   
+
   }
 
   manageApplicant() {
@@ -47,10 +47,10 @@ export class HrPostdetailsComponent implements OnInit {
     this.router.navigate(['jobs-posted/' + this.hrpost._id + '/manageApplicant']);
   }
   editpost() {
-      this.postviewback = false;
-      this.editviewback = true;
-      this.postDetailsInfo = false;
-      this.editpostDetailsInfo = true;
+    this.postviewback = false;
+    this.editviewback = true;
+    this.postDetailsInfo = false;
+    this.editpostDetailsInfo = true;
   }
   postdetails() {
     this.route.paramMap.subscribe((params: ParamMap) => {
@@ -62,26 +62,30 @@ export class HrPostdetailsComponent implements OnInit {
         subscribe((hrpost: any) => {
           console.log(hrpost);
           this.hrpost = hrpost;
+          this.hrpost.dateOfJoining = this.hrpost.dateOfJoining.replace(/T00:00:00.000Z/, '');
+          this.hrpost.startdate = this.hrpost.startdate.replace(/T00:00:00.000Z/, '');
+          this.hrpost.enddate = this.hrpost.enddate.replace(/T00:00:00.000Z/, '');
+          // console.log('hrpost',this.hrpost);
         });
     });
   }
 
- postbackpage() {
-  this.location.back();
- }
- editbackpage() {
-  this.postviewback = true;
-  this.editviewback = false;
-  this.postDetailsInfo = true;
- this.editpostDetailsInfo = false;
-}
-deletepost(){
-  let windowStatus=window.confirm('confirm to delete post');
-  if(windowStatus){
-  this.hrbaseservice.deleteHrPost(this.hrpost._id).subscribe(()=>{
-    this.router.navigateByUrl('hr/jobs-posted');
-    console.log('deleted successfully');
-  })
-}
-}
+  postbackpage() {
+    this.location.back();
+  }
+  editbackpage() {
+    this.postviewback = true;
+    this.editviewback = false;
+    this.postDetailsInfo = true;
+    this.editpostDetailsInfo = false;
+  }
+  deletepost() {
+    const windowStatus = window.confirm('confirm to delete post');
+    if (windowStatus) {
+      this.hrbaseservice.deleteHrPost(this.hrpost._id).subscribe(() => {
+        this.router.navigateByUrl('hr/jobs-posted');
+        console.log('deleted successfully');
+      });
+    }
+  }
 }

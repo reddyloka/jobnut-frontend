@@ -47,7 +47,7 @@
       </label>
       <select class="ui fluid search dropdown" multiple="" formControlName="skills" [(ngModel)]="hrpostNewData.skills">
         <option value="">select your skills</option>
-        <option *ngFor="let i of skillsArray">{{i}}</option>
+        <option [value]='skill' *ngFor="let skill of skillsArray">{{skill}}</option>
       </select>
       <div *ngIf="!hrpostNewDataForm.controls['skills'].valid && hrpostNewDataForm.controls['skills'].touched">
         <p style="color:red">Please fill required fields*

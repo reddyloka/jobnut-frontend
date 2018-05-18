@@ -5,6 +5,7 @@ import { NotificationService } from '../../../../_shared/services/notification.s
 import { QuotesService } from '../../../../_shared/services/quotes.service';
 import { ApplicantBase } from '../../../../_shared/models/applicantbase';
 import { uuid } from '../../../../_shared/models/uuid';
+import { environment } from '../../../../../environments/environment';
 
 
 declare var $: any;
@@ -162,7 +163,7 @@ export class UserProfileComponent implements OnInit {
 
   getUrl() {
     console.log('fd', this.userdata);
-    return `url(http://localhost:3000/images/${this.userdata ? this.userdata.profile_photo : 'skj'})`;
+    return `url(${environment.USER_SERVER}/images/${this.userdata ? this.userdata.profile_photo : 'skj'})`;
     // return `url()`;/
     // return "url('http://estringsoftware.com/wp-content/uploads/2017/07/estring-header-lowsat.jpg')";
   }

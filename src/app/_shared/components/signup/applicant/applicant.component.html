@@ -1,9 +1,11 @@
 <div class="ui secondary pointing menu sticky fixed top" style="background-color: #aca978;">
   <a class="item" style="width: 44%;"></a>
+  <!-- <a class="item" style="color: white" [style.border-bottom]="personalInfo?'#222 solid':default"> -->
   <a class="item" style="color: white" [style.border-bottom]="personalInfo?'#222 solid':default">
     Personal Details
   </a>
   <a class="item" style="color: white" [style.border-bottom]="educationInfo?'#222 solid':default">
+  <!-- <a class="item" style="color: white" [style.border-bottom]="educationInfo?'#222 solid':default"> -->
     Education
   </a>
 </div>
@@ -176,7 +178,7 @@
             <option value=''>select your skills</option>
             <option [value]='i' *ngFor="let i of skills">{{i}}</option>
           </select>
-          <div *ngIf="((user_details.skillValue=='select your skills')&&!applicantForm.controls['skillValue'].valid )&& applicantForm.controls['skillValue'].touched">
+          <div *ngIf="((user_details.skillValue.includes('select your skills'))&&!applicantForm.controls['skillValue'].valid )&& applicantForm.controls['skillValue'].touched">
             <p>Please fill required fields</p>
           </div>
         </div>
@@ -190,7 +192,7 @@
           </div>
         </div>
         <div class='field'>
-          <button  auto-focus class="btn btn-success" (click)="onSubmit()" [disabled]="!applicantForm.valid">Register</button>
+          <button  auto-focus class="btn btn-success" (click)="onSubmit()" [disabled]="!applicantForm.valid">Sign Up</button>
         </div>
       </div>
     </form>

@@ -19,6 +19,8 @@ export class ChangePasswordComponent implements OnInit {
   closeChangePassword = new EventEmitter<boolean>();
   id: string;
   inputType = 'password';
+  password: any;
+  compareValue: any;
   public currentForm: FormGroup;
 
   constructor(

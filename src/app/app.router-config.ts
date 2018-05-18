@@ -10,6 +10,7 @@ import { ApplicantComponent } from './_shared/components/signup/applicant/applic
 import { NotificationComponent } from './_shared/components/misc/notification/notification.component';
 import { ForgetpasswordComponent } from './_shared/components/forgetpassword/forgetpassword.component';
 import { LoggedInGuard } from './core/guards/logged-in.guard';
+import { HomePageComponent } from './_shared/components/home-page/home-page.component';
 
 
 
@@ -17,6 +18,7 @@ import { LoggedInGuard } from './core/guards/logged-in.guard';
 export const routerConfig: Routes = [
   // basic routes
   // login routes during
+  {path: 'home', component: HomePageComponent},
   { path: 'login', component: LoginComponent },
   {
     path: 'user-profile',
@@ -68,5 +70,5 @@ export const routerConfig: Routes = [
   { path: 'callback', component: CallbackComponent },
   { path: 'forgetPassword', component: ForgetpasswordComponent },
 
-  { path: '', redirectTo: 'login', pathMatch: 'full' }
+  { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];

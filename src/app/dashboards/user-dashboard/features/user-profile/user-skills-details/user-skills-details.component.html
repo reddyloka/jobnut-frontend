@@ -3,14 +3,11 @@
     <h4 class="ui dividing header"></h4>
      <div class="field">
               <label>Skills</label>
-        <div class="ui input">
-      <select class="ui fluid search dropdown" [(ngModel)]="userdata.skillValue" multiple="" formControlName="skills">
+       <select class="ui fluid search dropdown" [(ngModel)]="userdata.skillValue" multiple="" formControlName="skills">
           <option value="">Select</option>
-          <option *ngFor="let option of skillsArray">{{option}}</option>
+          <option  [value]='option' *ngFor="let option of skillsArray">{{option}}</option>
         </select>
-      </div>
     </div>
- 
     <button class="ui primary button" type="submit" (click)="updateUserSkill()"> Save </button>
     <button class="ui button" (click)="discardClicked()"> Discard </button>
   </form>

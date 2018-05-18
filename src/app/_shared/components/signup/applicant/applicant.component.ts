@@ -26,7 +26,9 @@ export class ApplicantComponent implements OnInit {
   isApplicant: boolean;
   isHr: boolean;
   status: boolean;
-
+  personalInfo: any;
+  educationInfo: any;
+  default: any;
 
   constructor(private _userService: UserBaseService,
     private router: Router) {

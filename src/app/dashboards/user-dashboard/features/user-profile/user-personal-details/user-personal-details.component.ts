@@ -71,6 +71,9 @@ export class UserPersonalDetailsComponent implements OnInit {
       performance: true,
     });
     this.temp = JSON.stringify(this.userdata);
+    if(this.userdata!=null && this.userdata!=undefined)
+    { this.userdata.dob=this.userdata.dob.replace(/T00:00:00.000Z/,''); 
+    }
     console.log('personalDatadwkfnn kdjsnkjwnjk', JSON.stringify(this.temp));
   }
 

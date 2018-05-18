@@ -11,17 +11,20 @@ import { NotificationService } from './_shared/services/notification.service';
 })
 export class AppComponent {
   private _notif: NotificationService;
+  notifActivate: boolean;
   constructor(
     private router: Router,
     _notif: NotificationService
   ) {
     this._notif = _notif;
+    this.notifActivate = this._notif.activatePopup;
   }
   title = 'app';
 
   popupClicked(event) {
     console.log('poppup clicking');
     this._notif.activatePopup = event;
+    this.notifActivate = event;
     // this._notif.pop('message1', 'message2', 3000);
   }
 

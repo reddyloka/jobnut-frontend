@@ -28,9 +28,7 @@ export class UserSkillsDetailsComponent implements OnInit {
 
 
   constructor(private _userService: UserBaseService) {
-    this.skillsArray = ['Angular', 'CSS', 'Graphic Design', 'Ember', 'HTML',
-    'Information Architecture', 'Javascript', 'Mechanical Engineering',
-    'Meteor', 'NodeJS', 'UI Design', 'Python', 'Rails', 'React', 'Ruby'];
+    this.skillsArray = ['Angular', 'ASP.Net', 'C#', 'C#.Net', 'ADO.Net', 'SQL Server', 'Spring', 'C', 'C++', 'JAVA', 'CSS', 'Graphic Design', 'Ember', 'DataBase', 'PHP', 'Full Stack Developing', 'Testing', 'HTML', 'Javascript', 'NodeJS', 'UI Design', 'Python', 'Rails', 'React', 'Ruby'];
 
     this.buildFormGroup();
    }
@@ -55,12 +53,14 @@ export class UserSkillsDetailsComponent implements OnInit {
 
 
 
-  async updateUserSkill() {
+ updateUserSkill() {
     // console.log(console.log('new', this.applicantSkillForm.value));
     this.userdata.skillValue = this.applicantSkillForm.value.skills;
     console.log('skills are:', JSON.stringify(this.userdata.skillValue));
-    await this._userService.updateUserDetailsById(this.userdata, uuid());
+   this._userService.updateUserDetailsById(this.userdata, uuid()).subscribe(() => {
     this.saveClick.emit(this.userdata);
+    console.log('success');
+  });
     // this.skillsArray.pop();
   }
 }

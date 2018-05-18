@@ -8,7 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class HrPostdetailsSummaryComponent implements OnInit {
 
   @Input()
-  hrpost: Object;
+  hrpost: any;
 
   a: any;
   constructor() {

@@ -4,6 +4,7 @@ import { ChangePasswordComponent } from './components/change-password/change-pas
 import { CommonModule } from '@angular/common';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { SelectModule } from 'ng2-select';
+import { HomePageComponent } from './components/home-page/home-page.component';
 @NgModule({
     imports: [
         CommonModule,
@@ -12,10 +13,12 @@ import { SelectModule } from 'ng2-select';
     ],
     declarations: [
         NumberToWordsPipe,
-        ChangePasswordComponent
+        ChangePasswordComponent,
+        HomePageComponent
     ],
     exports: [
         NumberToWordsPipe,
+        HomePageComponent,
         ChangePasswordComponent
     ]
 })

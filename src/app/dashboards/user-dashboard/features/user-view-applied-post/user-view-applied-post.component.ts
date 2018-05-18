@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { UserBaseService } from '../../../../_shared/services/user-base.service';
 import { HrPostDetail } from '../../../../_shared/models/hrpostdetails';
 import { uuid } from '../../../../_shared/models/uuid';
+import { ApplicantBase } from '../../../../_shared/models/applicantbase';
 
 @Component({
   selector: 'app-user-view-applied-post',
@@ -10,6 +11,7 @@ import { uuid } from '../../../../_shared/models/uuid';
 })
 export class UserViewAppliedPostComponent implements OnInit {
   error_text: string;
+  userdata: ApplicantBase;
   hrpost: HrPostDetail[];
   p: number;
   id: string;
@@ -21,6 +23,11 @@ export class UserViewAppliedPostComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.userbaseservice.getUserDetailsById(this.id).subscribe((res)=>{
+      this.userdata=res;
+       console.log('userdata from applied',this.userdata);
+       return  this.userdata;
+        });
     this.userbaseservice.getUserApplyPost(this.id).
     subscribe((hrpost: any) => {
       console.log('applied data', hrpost);

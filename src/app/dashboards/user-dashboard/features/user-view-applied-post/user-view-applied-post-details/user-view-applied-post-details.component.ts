@@ -76,7 +76,7 @@ export class UserViewAppliedPostDetailsComponent implements OnInit {
   }
 
   chatOpenClicked() {
-    this.chatOpen = true;
+    this.chatOpen = !this.chatOpen;
   }
 }
 

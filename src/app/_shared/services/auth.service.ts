@@ -15,6 +15,7 @@ import { JwtService } from './jwt.service';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 
+// const USER_SERVER = 'https://jobnut-server-dedhtvmcgh.now.sh';
 const USER_SERVER = 'http://localhost:3000';
 @Injectable()
 export class AuthService {

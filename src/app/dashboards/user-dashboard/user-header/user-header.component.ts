@@ -28,7 +28,9 @@ export class UserHeaderComponent implements OnInit {
 
 
   ngOnInit() {
-
+    $(document).ready(function () {
+      $('.ui.dropdown').dropdown();
+    });
   }
   getprofile() {
     this.router.navigateByUrl('/user-profile');
@@ -50,13 +52,13 @@ export class UserHeaderComponent implements OnInit {
 
   changePassword(str) {
     $('.small.modal')
-    .modal({
-      closable  : true,
-      onDeny    : function() {
-        return true;
-      }
-    })
-    .modal('show');
+      .modal({
+        closable: true,
+        onDeny: function () {
+          return true;
+        }
+      })
+      .modal('show');
     if (str === 'changePassword') {
       this.passwordChangeRequest = true;
       this.invitesOpen = false;

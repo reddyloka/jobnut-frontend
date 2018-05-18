@@ -6,17 +6,19 @@ import { uuid } from '../../../_shared/models/uuid';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { UserBaseService } from '../../../_shared/services/user-base.service';
 
-declare var $:any;
+declare var $: any;
 @Component({
   selector: 'app-hr-header',
   templateUrl: './hr-header.component.html',
-  styles:['./hr-header.component.css']
+  styles: ['./hr-header.component.css']
 })
 export class HrHeaderComponent implements OnInit {
 
   @Input()
   hrdata;
-  
+
+  password: string;
+  compareValue: string;
   id: string;
   inputType = 'password';
   currentForm: FormGroup;
@@ -31,45 +33,46 @@ export class HrHeaderComponent implements OnInit {
     if (!_authService.isLoggedIn) {
       this.router.navigateByUrl('login');
     }
-   this.id = uuid(); 
-    this.buildFormGroup(); 
+    this.id = uuid();
+    this.buildFormGroup();
   }
 
   buildFormGroup(): void {
     const fg = {
-    currentPassword: new FormControl(null, [Validators.required, Validators.pattern('(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z]).{5,}$')]),
-    newPassword:new FormControl(null, [Validators.required, Validators.pattern('(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z]).{5,}$')]),
-    confirmPassword:new FormControl(null, [Validators.required]),
+      currentPassword: new FormControl(null, [Validators.required, Validators.pattern('(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z]).{5,}$')]),
+      newPassword: new FormControl(null, [Validators.required, Validators.pattern('(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z]).{5,}$')]),
+      confirmPassword: new FormControl(null, [Validators.required]),
+    }
+    this.currentForm = new FormGroup(fg);
   }
-  this.currentForm = new FormGroup(fg);
-}
   ngOnInit() {
 
-    $(document).ready(function(){
-      $('.ui.dropdown').dropdown();});
+    $(document).ready(function () {
+      $('.ui.dropdown').dropdown();
+    });
   }
-  changePassword(){
+  changePassword() {
     $('.small.modal')
-    .modal({
-      closable  : true,
-      onDeny    : function(){
-        return true;
+      .modal({
+        closable: true,
+        onDeny: function () {
+          return true;
+        }
+      })
+      .modal('show');
+    console.log('request to change password', this.currentForm.value);
+    this.userbase.checkCurrentPassword(this.currentForm.value, this.id).subscribe((data) => {
+      console.log('data', data)
+      if (data.status) {
+        $('.small.modal').modal('toggle');
+        this.logoutClicked();
+      }
+      else {
+        window.alert(data.errors.message);
+        this.buildFormGroup();
       }
     })
-    .modal('show');
-    console.log('request to change password',this.currentForm.value);
-  this.userbase.checkCurrentPassword(this.currentForm.value,this.id).subscribe((data)=>{
-    console.log('data',data)
-    if(data.status)
-    {  $('.small.modal').modal('toggle');
-      this.logoutClicked();
-    }
-    else {
-   window.alert(data.errors.message);
-   this.buildFormGroup(); 
-    }
-  })
-}
+  }
 
   tooglepwd() {
     if (this.inputType === 'password') {

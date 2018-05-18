@@ -31,6 +31,7 @@ import { userRouterConfig } from './user-dashboard.router-config';
 import { StatisticsComponent } from '../../_shared/components/statistics/statistics.component';
 import { NumberToWordsPipe } from '../../_shared/pipes/numberToWords.pipe';
 import { SharedModule } from '../../_shared/shared.module';
+// import { UserEducationDetailsComponent } from './features/user-profile/user-education-details/user-education-details.component';
 
 
 
@@ -82,6 +83,7 @@ import { SharedModule } from '../../_shared/shared.module';
     UserViewPostDetailsComponent,
     UserHeaderComponent,
     UserDashboardComponent,
+    UserEducationAddDetailsComponent,
     RouterModule
   ]
 })
