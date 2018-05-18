@@ -18,8 +18,9 @@ import { HomePageComponent } from './_shared/components/home-page/home-page.comp
 export const routerConfig: Routes = [
   // basic routes
   // login routes during
+  { path: 'login-home', component: LoginComponent },
+  {path: 'login', redirectTo: 'login-home'},
   {path: 'home', component: HomePageComponent},
-  { path: 'login', component: LoginComponent },
   {
     path: 'user-profile',
     loadChildren: './dashboards/user-dashboard/user-dashboard.module#UserDashboardModule'

@@ -1,6 +1,6 @@
 // import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
@@ -62,6 +62,8 @@ import { SharedModule } from './_shared/shared.module';
     SelectModule,
     FormsModule,
     SharedModule,
+    // RouterModule,
+    // Routes,
     ReactiveFormsModule,
     HttpModule,
     ChatModule,

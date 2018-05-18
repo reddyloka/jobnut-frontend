@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 declare const $: any;
 
@@ -9,7 +10,9 @@ declare const $: any;
 })
 export class HomePageComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private router: Router
+  ) { }
 
   ngOnInit() {
     $(document)
@@ -33,6 +36,12 @@ export class HomePageComponent implements OnInit {
       ;
     })
     ;
+  }
+  
+  signupclicked() {
+    console.log('jknkjnknjn');
+    
+    this.router.navigateByUrl('signin');
   }
 
 }

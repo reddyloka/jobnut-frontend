@@ -5,10 +5,12 @@ import { CommonModule } from '@angular/common';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { SelectModule } from 'ng2-select';
 import { HomePageComponent } from './components/home-page/home-page.component';
+import { RouterModule, Routes } from '@angular/router';
 @NgModule({
     imports: [
         CommonModule,
         SelectModule,
+        RouterModule,
         ReactiveFormsModule,
     ],
     declarations: [
@@ -19,7 +21,8 @@ import { HomePageComponent } from './components/home-page/home-page.component';
     exports: [
         NumberToWordsPipe,
         HomePageComponent,
-        ChangePasswordComponent
+        ChangePasswordComponent,
+        RouterModule
     ]
 })
 export class SharedModule { }
