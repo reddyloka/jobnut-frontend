@@ -46,8 +46,9 @@ export class SignupHomeComponent implements OnInit {
     // console.log('hrsignup: ', this.hrsignupActive);
   }
 
-  public goBackButton() {
-    this.location.back();
+  public loginButton() {
+    console.log('login page');
+    this.router.navigateByUrl('login');
   }
 
   frontViewChange(): Promise<any> {

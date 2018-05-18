@@ -32,16 +32,15 @@ export class HomePageComponent implements OnInit {
 
     // create sidebar and attach to menu open
     $('.ui.sidebar')
-      .sidebar('attach events', '.toc.item')
-      ;
-    })
-    ;
+      .sidebar('attach events', '.toc.item');
+    });
   }
-  
-  signupclicked() {
-    console.log('jknkjnknjn');
-    
+
+  signupclicked() {  
     this.router.navigateByUrl('signin');
+  }
+  loginclicked(){
+    this.router.navigateByUrl('login');
   }
 
 }
