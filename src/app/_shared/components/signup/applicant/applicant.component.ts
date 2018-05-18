@@ -26,8 +26,8 @@ export class ApplicantComponent implements OnInit {
   isApplicant: boolean;
   isHr: boolean;
   status: boolean;
-  personalInfo: any;
-  educationInfo: any;
+  personalInfo = false;
+  educationInfo = false;
   default: any;
 
   constructor(private _userService: UserBaseService,
@@ -96,6 +96,24 @@ export class ApplicantComponent implements OnInit {
       // debug: true,
       performance: true,
     });
+  }
+  infoChange() {
+    this.personalInfo = false;
+    this.educationInfo = true;
+  }
+  userExist() {
+    const emailObj = {
+      userEmail: this.applicantForm.value.email,
+      isHr: false
+    };
+    if (this.applicantForm.value.email != null && this.applicantForm.value.email !== undefined) {
+      this._userService.checkMailId(emailObj).subscribe((res) => {
+        if (res.status) {
+          window.alert('Email address was already registered with us Please click ok to login');
+          this.router.navigateByUrl('login');
+        }
+      });
+    }
   }
   tooglepwd() {
     console.log('form pass', this.applicantForm.controls.password.valid);

@@ -31,7 +31,7 @@
             </div>
         </div>
         <div class="eight wide field">
-          <input type="password" placeholder="Password" [(ngModel)]="hrDetails.password" formControlName="password">
+          <input type="password" placeholder="Password" [(ngModel)]="hrDetails.password" formControlName="password" (focus)="hrExist()">
           <div *ngIf="!signupForm.controls['password'].valid && signupForm.controls['password'].touched">
               <p>{{errorMsg}}*</p>
             </div>
