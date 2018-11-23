@@ -19,7 +19,7 @@ export const routerConfig: Routes = [
   // basic routes
   // login routes during
   { path: 'login-home', component: LoginComponent },
-  {path: 'login', redirectTo: 'login-home'},
+  // {path: 'login', redirectTo: 'login-home'},
   {path: 'home', component: HomePageComponent},
   {
     path: 'user-profile',
@@ -71,5 +71,5 @@ export const routerConfig: Routes = [
   { path: 'callback', component: CallbackComponent },
   { path: 'forgetPassword', component: ForgetpasswordComponent },
 
-  { path: '', redirectTo: 'home', pathMatch: 'full' }
+  { path: '', redirectTo: 'login-home', pathMatch: 'full' }
 ];
