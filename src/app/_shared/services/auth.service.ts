@@ -13,10 +13,11 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/throw';
 import { JwtService } from './jwt.service';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { environment } from '../../../environments/environment';
 
 
 // const USER_SERVER = 'https://jobnut-server-dedhtvmcgh.now.sh';
-const USER_SERVER = 'http://localhost:3000';
+// const USER_SERVER = 'http://localhost:3000';
 @Injectable()
 export class AuthService {
 
@@ -41,7 +42,7 @@ export class AuthService {
   login(formData): Observable<any> {
     console.log('inside', formData);
     return this.http.post(
-      USER_SERVER + '/api/login', formData)
+     `${environment.USER_SERVER}/api/login`, formData)
       .catch(error => {
         console.log('message is: ', error.error.errors);
         return Observable.throw(error.error.errors);
